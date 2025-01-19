@@ -14,7 +14,7 @@
         {
             "path": "pages/login/LoginPage",
             "style": {
-                "navigationBarTitleText": "野火IM"
+                "navigationBarTitleText": "ChatIM"
             }
         },
         {
@@ -302,7 +302,7 @@
         "list": [
             {
                 "pagePath": "pages/conversationList/ConversationListPage",
-                "text": "野火",
+                "text": "消息",
                 "iconPath": "static/image/tabbar/message_normal.png",
                 "selectedIconPath": "static/image/tabbar/message_press.png"
             },
@@ -331,7 +331,7 @@
     "globalStyle": {
         "backgroundTextStyle": "light",
         "navigationBarBackgroundColor": "#fff",
-        "navigationBarTitleText": "野火IM",
+        "navigationBarTitleText": "ChatIM",
         "navigationBarTextStyle": "black"
     },
     "subPackages": []
