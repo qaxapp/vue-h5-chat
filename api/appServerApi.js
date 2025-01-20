@@ -92,6 +92,10 @@ export class AppServerApi {
     delFav(favItemId) {
         return this._post('/fav/del/' + favItemId, '')
     }
+	
+	notifyChatUser(targetId, code) {
+		return this._post('/user-chat-notify', {targetId, code}, false, true)
+	}
 
     _interceptLoginResponse(responsePromise, resolve, reject) {
         responsePromise
