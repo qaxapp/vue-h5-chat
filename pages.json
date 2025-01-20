@@ -297,8 +297,8 @@
         }
     ],
     "tabBar": {
-        "selectedColor": "#3B62E0",
-        "color": "#7f8389",
+        "selectedColor": "#548DFF",
+        "color": "#FFFFFF",
         "list": [
             {
                 "pagePath": "pages/conversationList/ConversationListPage",
@@ -329,10 +329,10 @@
     },
     "sitemapLocation": "sitemap.json",
     "globalStyle": {
-        "backgroundTextStyle": "light",
-        "navigationBarBackgroundColor": "#fff",
+        "backgroundTextStyle": "dark",
+        "navigationBarBackgroundColor": "#212332",
         "navigationBarTitleText": "ChatIM",
-        "navigationBarTextStyle": "black"
+        "navigationBarTextStyle": "#F9F9FC"
     },
     "subPackages": []
 }

@@ -802,7 +802,7 @@ export default {
     height: var(--page-full-height-without-header);
     overflow: hidden;
     flex-direction: column;
-    background-color: #f3f3f3;
+    background-color: #909AB6;
     /*padding: 0 12px;*/
 }
 

@@ -1,11 +1,11 @@
 {
-    "theme_color": "#ffffff",
-    "background_color": "#ffffff",
+    "theme_color": "#212332",
+    "background_color": "#212332",
     "display": "standalone",
     "scope": "/",
     "start_url": "/",
-    "name": "\u91ce\u706bIM",
-    "short_name": "\u91ce\u706bIM",
+    "name": "ChatIM",
+    "short_name": "ChatIM",
     "icons": [
         {
             "src": "/static/image/logo.png",
