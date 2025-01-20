@@ -161,10 +161,10 @@
 		align-items: center;
 		z-index: 1000;
 		padding-left: 10px;
-		color: #262626;
+		color: #FFFFFF;
 		font-size: 14px;
 		position: sticky;
-		background-color: #fafafa;
+		background-color: #212332;
 	}
 
 	.category-item-container image {

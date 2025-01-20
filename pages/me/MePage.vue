@@ -98,7 +98,7 @@ export default {
     align-items: center;
     width: 100%;
     height: var(--page-full-height-without-header-and-tabbar);
-    background: #fafafa;
+    background: #212332;
 }
 
 .user-info {
@@ -106,7 +106,7 @@ export default {
     padding: 10px;
     height: 80px;
     display: flex;
-    background: white;
+    background: #212332;
     align-items: center;
     flex-direction: row;
     margin-bottom: 10px;
@@ -129,7 +129,7 @@ export default {
 .about {
     width: 100%;
     padding: 15px 10px;
-    background: white;
+    background: #212332;
 }
 
 .about:active {
