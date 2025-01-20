@@ -84,6 +84,7 @@ import Conversation from "@/wfc/model/conversation";
 import ConversationType from "@/wfc/model/conversationType";
 import FriendRequestView from "@/pages/contact/FriendRequestView";
 import wfc from "../../wfc/client/wfc";
+import appServerApi from "../../api/appServerApi";
 
 export default {
     name: "SearchResultView",
@@ -151,29 +152,17 @@ export default {
     methods: {
         addFriend(user) {
             console.log('add friend', user);
-            wfc.sendFriendRequest(user.uid, '你好', '', () => {
-                uni.showToast({
-                    title: '发送好友请求成功',
-                    icon: 'none',
-                });
-            }, err => {
-                console.log('sendFriendRequest fail', err)
-                uni.showToast({
-                    title: ' 发送好友请求失败',
-                    icon: 'none',
-                });
-            })
-            // this.$modal.show(
-            //     FriendRequestView,
-            //     {
-            //         userInfo: user,
-            //     },
-            //     {
-            //         name: 'friend-request-modal',
-            //         width: 600,
-            //         height: 250,
-            //         clickToClose: false,
-            //     }, {})
+			appServerApi.sendAddFriend('你好', user.uid).then(() => {
+				uni.showToast({
+				    title: '发送好友请求成功',
+				    icon: 'none',
+				});
+			}).catch(error => {
+				uni.showToast({
+				    title: error.message ? error.message : '发送好友请求失败',
+				    icon: 'none'
+				});
+			})
         },
         showAllUser() {
             this.shouldShowAllUser = true;
