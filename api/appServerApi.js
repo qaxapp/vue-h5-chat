@@ -96,6 +96,10 @@ export class AppServerApi {
 	notifyChatUser(targetId, code) {
 		return this._post('/user-chat-notify', {targetId, code}, false, true)
 	}
+	
+	searchUser(keyword) {
+		return this._post('/user/search', {keyword, page: 0, size: 200})
+	}
 
     _interceptLoginResponse(responsePromise, resolve, reject) {
         responsePromise
