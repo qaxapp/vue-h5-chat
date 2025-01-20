@@ -312,12 +312,12 @@
                 "iconPath": "static/image/tabbar/contact_normal.png",
                 "selectedIconPath": "static/image/tabbar/contact_press.png"
             },
-            {
-                "pagePath": "pages/discovery/DiscoveryPage",
-                "text": " 发现",
-                "iconPath": "static/image/tabbar/discovery_normal.png",
-                "selectedIconPath": "static/image/tabbar/discovery_press.png"
-            },
+            // {
+            //     "pagePath": "pages/discovery/DiscoveryPage",
+            //     "text": " 发现",
+            //     "iconPath": "static/image/tabbar/discovery_normal.png",
+            //     "selectedIconPath": "static/image/tabbar/discovery_press.png"
+            // },
             {
                 "pagePath": "pages/me/MePage",
                 "text": "我的",

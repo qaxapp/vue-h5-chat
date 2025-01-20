@@ -7,14 +7,14 @@
         <div class="about" @click="showAbout">
             <text>关于</text>
         </div>
-        <div class="about" @click="showApiTest">
+<!--        <div class="about" @click="showApiTest">
             <text>API测试</text>
         </div>
         <div class="info">
             <text>
                 {{ info }}
             </text>
-        </div>
+        </div> -->
         <button class="logout-button" @click="logout">退出登录</button>
     </div>
 
@@ -71,19 +71,19 @@ export default {
         },
         showAbout() {
             uni.navigateTo({
-                url: '/pages/misc/WebViewPage?url=https://wildfirechat.cn/',
+                url: '/pages/misc/WebViewPage?url=https://chat.com/',
                 fail: (e) => {
                     console.log(e)
                 }
             });
         },
         showApiTest() {
-            uni.navigateTo({
-                url: '/pages/misc/ApiTestPage',
-                fail: (e) => {
-                    console.log(e)
-                }
-            });
+            // uni.navigateTo({
+            //     url: '/pages/misc/ApiTestPage',
+            //     fail: (e) => {
+            //         console.log(e)
+            //     }
+            // });
 
         },
     }
