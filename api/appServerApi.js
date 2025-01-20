@@ -100,6 +100,11 @@ export class AppServerApi {
 	searchUser(keyword) {
 		return this._post('/user/search', {keyword, page: 0, size: 200})
 	}
+	
+	createGroup(members, groupName) {
+		return this._post('/group/create', {members, groupName})
+		
+	}
 
     _interceptLoginResponse(responsePromise, resolve, reject) {
         responsePromise
