@@ -15,6 +15,7 @@
         "new_friend": "新的朋友",
         "group": "群聊",
         "contact": "联系人",
+		"chatroom": "聊天室",
         "channel": "频道"
     },
     "friend_request": {
