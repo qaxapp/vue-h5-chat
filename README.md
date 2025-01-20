@@ -14,18 +14,7 @@
 
 ## 常见问题说明
 
-TODO
-
-## 应用截图
-
-会话列表
-![会话列表](./screenshots/uniapp_conversation_list.jpeg)
-
-联系人列表
-![联系人列表](./screenshots/uniapp_contact_tab.jpeg)
-
-会话界面
-![会话界面](./screenshots/uniapp_conversation.jpeg)
-
-用户详情界面
-![用户详情界面](./screenshots/uniapp_user_profile.jpeg)
+## 颜色值
+导航栏背景色: #0F162B
+内容背景色:#212332, 比如列表背景
+分割线: #909AB6
