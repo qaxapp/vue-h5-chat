@@ -21,10 +21,10 @@
 							@input="onInput" :value="text" placeholder="请输入信息..." hold-keyboard confirm-type="send"
 							@confirm="send(text)" :maxlength="-1" auto-height />
 						<view @click.prevent="toggleGif" class="wf-input-button-icon">
-							<image src="@/assets/images/gif-icon.png" mode="aspectFit" style=" width: 30px; height: 30px; display: block;" /> 
+							<image src="@/assets/images/gif-icon.png" mode="aspectFit" style=" width: 50rpx; height: 50rpx; display: block;" /> 
 						</view>
 						<view @click.prevent="toggleEmoji" class="wf-input-button-icon">
-							<image src="@/assets/images/emoji-icon.png" mode="aspectFit" style="margin-right: 12px;width: 30px; height: 30px; display: block;" /> 
+							<image src="@/assets/images/emoji-icon.png" mode="aspectFit" style="margin-right: 24rpx;width: 50rpx; height: 50rpx; display: block;" /> 
 						</view>
 					
 					
@@ -41,8 +41,7 @@
 
 				@touchstart.prevent=""
 				@touchmove.prevent="" @touchend.prevent="send(text)">
-					<image src="@/assets/images/send-icon.png" mode="aspectFit" style="width: 45px; height: 45px; display: block;" /> 
-
+					<image src="@/assets/images/send-icon.png" mode="aspectFit" class="send-icon" />
 				</view>
 				<!-- <view v-if="hideSendButton || text === ''" @click="toggleExt" class="wf-input-button-icon wxfont add2">
 				</view> -->
@@ -573,7 +572,7 @@ import appServerApi from "../../api/appServerApi";
 	.wf-message-input-toolbar {
 		position: relative;
 		z-index: 3;
-		padding: 16rpx 12rpx;
+		padding: 24rpx 32rpx;
 		box-sizing: border-box;
 		display: flex;
 		width: 100%;
@@ -591,11 +590,9 @@ import appServerApi from "../../api/appServerApi";
 
 	.wf-input-text-container {
 		overflow: auto;
-
 		justify-content: center; /* 水平居中对齐 */
-
-		margin: 0 12rpx;
-		min-height: 100rpx;
+		margin-right: 24rpx;
+		min-height: 80rpx;
 		border-radius: 24rpx;
 		max-height: 225rpx;
 		box-sizing: border-box;
@@ -796,5 +793,11 @@ import appServerApi from "../../api/appServerApi";
 
 	.sticker-item:active {
 		background: lightgrey;
+	}
+
+	.send-icon {
+		width: 80rpx;
+		height: 80rpx;
+		display: block;
 	}
 </style>
