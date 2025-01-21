@@ -27,6 +27,13 @@
         "im": "I am",
         "intro": "Hello"
     },
+	"chatroom": {
+		"icon": "Chat room avatar",
+		"chatroom": "chat room",
+		"chatroom_desc": "Chat room description",
+		"chatroom_num": "Number of people in the chat room",
+		"mute_all_members": "Ban all members"
+	},
     "group": {
         "name": "Group name {0}",
         "chat": "Start group chat",

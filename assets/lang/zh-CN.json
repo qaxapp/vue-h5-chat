@@ -27,6 +27,13 @@
         "im": "我是",
         "intro": "你好"
     },
+	"chatroom": {
+		"icon": "聊天室头像",
+		"chatroom": "聊天室",
+		"chatroom_desc": "聊天室描述",
+		"chatroom_num": "聊天室人数",
+		"mute_all_members": "全员禁言"
+	},
     "group": {
         "name": "群名称{0}",
         "chat": "进入群聊",

@@ -18,6 +18,13 @@
 	"chatroom": "聊天室",
     "channel": "频道"
   },
+  "chatroom": {
+  	"icon": "聊天室头像",
+  	"chatroom": "聊天室",
+  	"chatroom_desc": "聊天室描述",
+  	"chatroom_num": "聊天室人数",
+  	"mute_all_members": "全员禁言"
+  },
   "friend_request": {
     "request": "好友請求",
     "send_request_tip": "向{0}發送好球請求",
