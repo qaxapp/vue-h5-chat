@@ -13,7 +13,7 @@ export class AppServerApi {
         return this._post('/send_code', {mobile})
     }
 
-    loinWithPassword(mobile, password) {
+    loginWithPassword(mobile, password) {
         return new Promise((resolve, reject) => {
             let responsePromise = this._post('/login_pwd', {
                 mobile,

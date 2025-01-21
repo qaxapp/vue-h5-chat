@@ -1,6 +1,6 @@
 <template>
     <view class="page-body">
-        <view class="login-type-title">验证码登录</view>
+        <view class="login-type-title">{{ isPasswordLogin ? '密码登录' : '验证码登录' }}</view>
         <view class="mobile-container">
             <view>请输入手机号</view>
             <view>
@@ -10,7 +10,7 @@
             </view>
         </view>
 
-            <view class="auth-code-container">
+        <view v-if="!isPasswordLogin" class="auth-code-container">
             <view>请输入验证码</view>
             <view class="auth-code-input-container">
                 <input @input="bindCodeInput" type="number" placeholder="验证码"/>
@@ -18,8 +18,17 @@
             </view>
         </view>
 
-        <button :disabled="!(phone && code)" class="confirm-button" @tap="bindLoginTap">登录</button>
+        <view v-else class="password-container">
+            <view>请输入密码</view>
+            <view class="password-input-container">
+                <input @input="bindPasswordInput" type="password" placeholder="密码"/>
+            </view>
+        </view>
 
+        <view class="switch-type" @tap="switchLoginType">
+            {{ isPasswordLogin ? '使用验证码登录' : '使用密码登录' }}
+        </view>
+        <button :disabled="!canLogin" class="confirm-button" @tap="bindLoginTap">登录</button>
     </view>
 </template>
 
@@ -36,10 +45,20 @@ export default {
         return {
             focus: false,
             phone: '',
-            code: ''
+            code: '',
+            password: '',
+            isPasswordLogin: false
         };
     },
-
+    computed: {
+        canLogin() {
+            if (this.isPasswordLogin) {
+                return this.phone && this.password;
+            } else {
+                return this.phone && this.code;
+            }
+        }
+    },
     components: {},
     props: {},
 
@@ -55,6 +74,12 @@ export default {
         }
     },
     methods: {
+        switchLoginType() {
+            this.isPasswordLogin = !this.isPasswordLogin;
+        },
+        bindPasswordInput(e) {
+            this.password = e.detail.value;
+        },
         bindPhoneInput: function (e) {
             this.phone = e.detail.value;
         },
@@ -62,13 +87,37 @@ export default {
             this.code = e.detail.value;
         },
         bindLoginTap: function (e) {
-            console.log(this.phone); // console.log(this.data.code)
-            this.login(this.phone, this.code);
+            if (this.isPasswordLogin) {
+                this.loginWithPassword(this.phone, this.password);
+            } else {
+                this.login(this.phone, this.code);
+            }
         },
 
         login(phone, code) {
             console.log('login', wfc.getClientId(), Config.getWFCPlatform());
             appServerApi.loginWithAuthCode(phone, code)
+                .then(result => {
+                    console.log('login result', result);
+                    let userId = result.userId;
+                    let token = result.token;
+                    wfc.connect(userId, token);
+                    setItem('userId', userId);
+                    setItem('token', token)
+
+                    this.go2ConversationList();
+                })
+                .catch(r => {
+                    console.log('login failed', r)
+                    uni.showToast({
+                        title: r,
+                        icon: 'none',
+                    });
+                });
+        },
+
+        loginWithPassword(phone, password) {
+            appServerApi.loginWithPassword(phone, password)
                 .then(result => {
                     console.log('login result', result);
                     let userId = result.userId;
@@ -182,8 +231,36 @@ export default {
     border-bottom: 1px solid #3f64e4;
 }
 
+.password-container {
+    margin-top: 30rpx;
+}
+
+.password-input-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 40px;
+}
+
+.password-input-container input {
+    font-size: 14px;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.password-input-container input:focus {
+    border-bottom: 1px solid #3f64e4;
+}
+
+.switch-type {
+    text-align: left;
+    color: #3f64e4;
+    font-size: 14px;
+    margin-top: 40rpx;
+    cursor: pointer;
+}
+
 .confirm-button {
-    margin-top: 40px;
+    margin-top: 20px;
 }
 
 </style>
