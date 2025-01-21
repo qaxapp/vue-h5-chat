@@ -3,8 +3,7 @@
     <div>
         <TextMessageContentView :message="message"
                                 v-if="message.messageContent.type === 1"
-                                :style="{'--out-arrow-color':'#98ea70', '--in-arrow-color':'white'}"
-                                v-bind:class="{leftarrow:message.direction === 1, rightarrow: message.direction === 0}"/>
+                              />
         <StreamingTextMessageContentView :message="message"
                                          v-else-if="message.messageContent.type === 14 || message.messageContent.type === 15"
                                          :style="{'--out-arrow-color':'#98ea70', '--in-arrow-color':'white'}"

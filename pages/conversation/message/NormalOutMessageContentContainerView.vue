@@ -234,7 +234,7 @@ export default {
     text-align: center;
     color: #b4b4b4;
     font-size: 10px;
-    background-color: #f3f3f3;
+    /* background-color: #f3f3f3; */
 }
 
 .message-time-container .receipt {

@@ -58,15 +58,17 @@ export default {
 }
 </script>
 
-<style lang="css" scoped>
+<style lang="scss" scoped>
 .text-message-container {
     margin: 0 10px;
     padding: 10px;
-    background-color: white;
+    // background-color: white;
     position: relative;
-    border-radius: 5px;
+    border-radius: 0 8px 8px 8px; /* 设置圆角 */
     display: flex;
     align-items: center;
+    background-color: $cm-received-message-bg-color;
+
 }
 
 .text-message-container p {
@@ -75,12 +77,15 @@ export default {
 }
 
 .text-message-container.out {
-    background-color: #98ea70;
+    background-color: $cm-received-message-bg-color;
+    border-radius: 8px 0 8px 8px; /* 设置圆角 */
+
+
 }
 
 .text-message-container .text {
-    color: #050505;
-    font-size: 16px;
+    font-size: 12px;
+    font-weight:500;
     line-height: 25px;
     /*max-width: 600px;*/
     max-height: 1000px;
@@ -89,6 +94,8 @@ export default {
     display: inline-block;
     user-select: none;
     text-overflow: ellipsis;
+    color: white;
+
 }
 
 /*style for v-html */

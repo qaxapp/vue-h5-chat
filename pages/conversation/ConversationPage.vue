@@ -797,7 +797,7 @@ export default {
 };
 </script>
 
-<style lang="css" scoped>
+<style lang="scss" scoped>
 .conversation-empty-container {
     height: 100%;
     width: 100%;
@@ -813,7 +813,7 @@ export default {
     height: var(--page-full-height-without-header);
     overflow: hidden;
     flex-direction: column;
-    background-color: #f3f3f3;
+    background-color: $cm-bg-color;
     /*padding: 0 12px;*/
 }
 

@@ -2,21 +2,32 @@
 	<view>
 		<view class="wf-message-input-container">
 			<view class="wf-message-input-toolbar">
-				<view class="wf-input-button-icon wxfont" @click="toggleVoice"
-					:class="showVoice ? 'keyboard' : 'voice'"></view>
-				<view class="wf-input-button-icon wxfont" v-if="isPttEnable" @click="togglePtt"
-					:class="showPtt ? 'keyboard' : 'voice_playing'"></view>
-				<view class="wf-input-voice-container" v-if="showVoice">
+				<!-- <view class="wf-input-button-icon wxfont" @click="toggleVoice"
+					:class="showVoice ? 'keyboard' : 'voice'"></view> -->
+				<!-- <view class="wf-input-button-icon wxfont" v-if="isPttEnable" @click="togglePtt"
+					:class="showPtt ? 'keyboard' : 'voice_playing'"></view> -->
+				<!-- <view class="wf-input-voice-container" v-if="showVoice">
 					<AudioInputView :conversation-info="conversationInfo"></AudioInputView>
 				</view>
 				<view class="wf-input-voice-container" v-else-if="showPtt">
 					<PttAudioInputView :conversation-info="conversationInfo"></PttAudioInputView>
-				</view>
-				<view v-else style="width: 100%">
+				</view> -->
+				<view  style="width: 100%">
 					<view class="wf-input-text-container">
-						<textarea ref="textarea" @focus="onInputFocus" :focus="inputFocus" class="wf-input-textarea"
-							@input="onInput" :value="text" placeholder="" hold-keyboard confirm-type="send"
+						<textarea ref="textarea" @focus="onInputFocus" :focus="inputFocus"
+						 class="wf-input-textarea"
+						 :class="{ 'wf-input-empty-textarea': text.length === 0 }" 
+
+							@input="onInput" :value="text" placeholder="请输入信息..." hold-keyboard confirm-type="send"
 							@confirm="send(text)" :maxlength="-1" auto-height />
+						<view @click.prevent="toggleGif" class="wf-input-button-icon">
+							<image src="@/assets/images/gif-icon.png" mode="aspectFit" style=" width: 30px; height: 30px; display: block;" /> 
+						</view>
+						<view @click.prevent="toggleEmoji" class="wf-input-button-icon">
+							<image src="@/assets/images/emoji-icon.png" mode="aspectFit" style="margin-right: 12px;width: 30px; height: 30px; display: block;" /> 
+						</view>
+					
+					
 					</view>
 					<view v-if="sharedConversationState.quotedMessage" class="quote-message-container">
 						<view class="quoted-message single-line">
@@ -25,14 +36,13 @@
 						<view class="cancel icon-ion-close" @click="cancelQuote"></view>
 					</view>
 				</view>
-				<view @click.prevent="toggleEmoji" class="wf-input-button-icon wxfont emoji"></view>
-				<view v-if="!hideSendButton && text !== ''" class="wf-input-text-send-button" @touchstart.prevent=""
-					@touchmove.prevent="" @touchend.prevent="send(text)"
-					:style="{ background: text !== '' ? '#4168e0' : '#F7F7F7', color: text !== '' ? '#fff' : '#ddd', 'border-color': text !== '' ? '#1BC418' : '#ddd' }">
-					发送
+				<view  class="wf-input-text-send-button" @touchstart.prevent=""
+					@touchmove.prevent="" @touchend.prevent="send(text)">
+					<image src="@/assets/images/send-icon.png" mode="aspectFit" style="width: 45px; height: 45px; display: block;" /> 
+
 				</view>
-				<view v-if="hideSendButton || text === ''" @click="toggleExt" class="wf-input-button-icon wxfont add2">
-				</view>
+				<!-- <view v-if="hideSendButton || text === ''" @click="toggleExt" class="wf-input-button-icon wxfont add2">
+				</view> -->
 			</view>
 			<view v-if="showExt" class="wf-ext-container" :style="'height: ' + keyboardHeight + 'px'">
 				<view class="wf-ext-item" v-for="(v, i) in extList" @click="onClickExt(v)" :key="i">
@@ -306,6 +316,25 @@ import appServerApi from "../../api/appServerApi";
 			toggleEmoji() {
 				console.log('------------- toggleEmoji')
 				this.showEmoji = !this.showEmoji;
+				if (this.showEmoji) {
+					this.currentEmojiStickerIndex = 0;
+				}
+				this.showExt = false;
+				this.showVoice = false;
+				this.showPtt = false;
+
+			},
+
+			toggleGif() {
+				console.log('------------- toggleEmoji')
+				this.showEmoji = !this.showEmoji;
+				if (this.showEmoji) {
+					if (this.currentEmojiStickerIndex == 0) {
+						this.currentEmojiStickerIndex = 1;
+					}
+				} 
+				
+			
 				this.showExt = false;
 				this.showVoice = false;
 				this.showPtt = false;
@@ -478,7 +507,7 @@ import appServerApi from "../../api/appServerApi";
 	}
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 	/*.message-input-container {*/
 	/*    display: flex;*/
 	/*    align-items: center;*/
@@ -499,6 +528,7 @@ import appServerApi from "../../api/appServerApi";
 		z-index: 9999;
 		transition: all 0.1s;
 		/*background: red;*/
+		background: #10212F;
 	}
 
 	.wf-ext-container {
@@ -549,7 +579,7 @@ import appServerApi from "../../api/appServerApi";
 		flex-direction: row;
 		align-items: flex-end;
 		justify-content: space-around;
-		border: 1rpx #ddd solid;
+		// border: 1rpx #ddd solid;
 		border-left: none;
 		border-right: none;
 	}
@@ -560,13 +590,18 @@ import appServerApi from "../../api/appServerApi";
 
 	.wf-input-text-container {
 		overflow: auto;
+
+		justify-content: center; /* 水平居中对齐 */
+
 		margin: 0 12rpx;
-		min-height: 75rpx;
-		background-color: #fff;
+		min-height: 100rpx;
 		border-radius: 24rpx;
-		padding-top: 18rpx;
 		max-height: 225rpx;
 		box-sizing: border-box;
+		background: #1A3143;
+		display: flex; /* 使用 Flexbox 布局 */
+  		align-items: center; /* 垂直居中对齐 */
+  		gap: 10px; /* 子组件之间的间距 */
 	}
 
 	.quote-message-container {
@@ -597,8 +632,21 @@ import appServerApi from "../../api/appServerApi";
 		padding: 0 24rpx;
 		box-sizing: border-box !important;
 		width: 100%;
-		background: #fff;
+		color: white;
+		height: 100px;
+
 	}
+
+
+
+	.wf-message-input-container .wf-input-empty-textarea {
+		padding: 2px 24rpx;
+  		font-size: 12px; /* 设置占位符字体大小 */
+		color: #90A4B6;
+  		opacity: 1; /* 确保占位符不透明 */
+	}
+
+
 
 	.wf-input-voice-container {
 		box-sizing: border-box;
@@ -626,16 +674,13 @@ import appServerApi from "../../api/appServerApi";
 
 	.wf-input-text-send-button {
 		white-space: nowrap;
-		padding: 10rpx 24rpx;
-		border-radius: 12rpx;
-		border: 1rpx #ddd solid;
-		background: #f7f7f7;
 		color: #ddd;
+
 	}
 
 	.wf-input-button-icon {
-		font-size: 64rpx;
-		color: #333;
+		// font-size: 64rpx;
+		// color: white;
 	}
 
 	.wf-voice-recorder {
