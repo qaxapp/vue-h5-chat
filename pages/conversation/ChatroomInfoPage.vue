@@ -39,8 +39,8 @@
                         <span class="title">{{ $t('chatroom.mute_all_members') }}</span>
                         
                         <div class="switch-box">
-                            <input id="switch" v-if="isManager" type="checkbox" v-model="check" @change="setMuteAll(conversationInfo.conversation.target, $event.target.checked)">
-                            <input id="switch" v-else type="checkbox" v-model="check" disabled>
+                            <!-- <input id="switch" v-if="isManager" type="checkbox" v-model="check" @change="setMuteAll(conversationInfo.conversation.target, $event.target.checked)"> -->
+                            <input id="switch"  type="checkbox" v-model="check" disabled>
                             <label></label>
                         </div>
                     </div>
@@ -58,20 +58,14 @@ import wfc from "../../wfc/client/wfc";
 import appServerApi from "../../api/appServerApi";
 export default {
     name: "ChatroomInfoView",
-    props: {
-        conversationInfo: {
-            type: ConversationInfo,
-            required: true,
-        },
-        isManager:{
-            type: Boolean
-        }
-    },
+    props:{},
     data() {
         return {
-            defaultPortraitUrl: '',
+			sharedContactState: store.state.contact,
+            defaultPortraitUrl: '/assets/images/portrait.png',
             chatroom: {},
-            check: false
+            check: false,
+			conversationInfo: null,
         }
     },
     components: {},
@@ -80,13 +74,30 @@ export default {
     },
     mounted() {
         // this.chatroom=this.conversationInfo.conversation._target
-        // console.log('this.chatroom',this.chatroom)
-        this.getCurrentChatroomInfo()
+        // console.log('this.chatroom',this.conversationInfo)
+        
         
     },
+	onLoad(option) {
+	    console.log('ChatroomInfoView  onLoad')
+	    // #ifdef APP-NVUE
+	    const eventChannel = this.$scope.eventChannel; // 兼容APP-NVUE
+	    // #endif
+	    // #ifndef APP-NVUE
+	    const eventChannel = this.getOpenerEventChannel();
+	    // #endif
+	    eventChannel.on('conversationInfo', (options) => {
+	        this.conversationInfo = options.conversationInfo;
+	        console.log('this.chatroom',this.conversationInfo)
+	        uni.setNavigationBarTitle({
+	            title: this.conversationInfo.conversation._target.title+'的聊天室详情',
+	        });
+			this.getCurrentChatroomInfo()
+	    })
+	},
     methods: {
         getCurrentChatroomInfo() {
-			console.log('this.conversationInfo.conversation',this.conversationInfo.conversation)
+			console.log('this.conversationInfo',this.conversationInfo)
             let chatroomId = this.conversationInfo.conversation.target;
             wfc.getChatroomInfo(chatroomId, 0, info => {
                 this.chatroom = info;
