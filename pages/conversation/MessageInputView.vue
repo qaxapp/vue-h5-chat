@@ -36,8 +36,11 @@
 						<view class="cancel icon-ion-close" @click="cancelQuote"></view>
 					</view>
 				</view>
-				<view  class="wf-input-text-send-button" @touchstart.prevent=""
-					@touchmove.prevent="" @touchend.prevent="send(text)">
+				<view  class="wf-input-text-send-button"
+				:style="{ opacity: text.length > 0 ? 1 : 0.5 }"
+
+				@touchstart.prevent=""
+				@touchmove.prevent="" @touchend.prevent="send(text)">
 					<image src="@/assets/images/send-icon.png" mode="aspectFit" style="width: 45px; height: 45px; display: block;" /> 
 
 				</view>
@@ -333,8 +336,6 @@ import appServerApi from "../../api/appServerApi";
 						this.currentEmojiStickerIndex = 1;
 					}
 				} 
-				
-			
 				this.showExt = false;
 				this.showVoice = false;
 				this.showPtt = false;
@@ -577,7 +578,7 @@ import appServerApi from "../../api/appServerApi";
 		display: flex;
 		width: 100%;
 		flex-direction: row;
-		align-items: flex-end;
+		align-items: center;
 		justify-content: space-around;
 		// border: 1rpx #ddd solid;
 		border-left: none;
