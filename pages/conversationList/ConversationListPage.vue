@@ -229,11 +229,11 @@ export default {
 .conversation-list {
     height: var(--page-full-height-without-header-and-tabbar);
     overflow: auto;
-    background: #f3f3f3;
+    background: #212332;
 }
 
 .conversation-list .top {
-    background-color: #f1f1f1;
+    background-color: #212332;
 }
 
 .conversation-item {
@@ -246,7 +246,7 @@ export default {
     left: 65px; /* 偏移量 */
     right: 0;
     bottom: 0;
-    border-bottom: 1px solid #f4f4f4; /* 定义边框样式 */
+    border-bottom: 1px solid #909AB6; /* 定义边框样式 */
 }
 
 </style>

@@ -39,6 +39,7 @@ import {pstore} from "./pstore";
 import {imageThumbnail, videoDuration, videoThumbnail} from "./pages/util/imageUtil";
 import avenginekitproxy from "./wfc/av/engine/avenginekitproxy";
 import ModifyGroupSettingNotification from "./wfc/messages/notification/modifyGroupSettingNotification";
+import appServerApi from "./api/appServerApi";
 
 /**
  * 一些说明
@@ -1791,17 +1792,16 @@ let store = {
 
         }
         groupName = groupName.substr(0, groupName.length - 1);
-
-        wfc.createGroup(null, GroupType.Restricted, groupName, null, null, groupMemberIds, null, [0], null,
-            (groupId) => {
-
-                let conversation = new Conversation(ConversationType.Group, groupId, 0)
-                this.setCurrentConversation(conversation);
-                successCB && successCB(conversation);
-            }, (error) => {
-                console.log('create group error', error)
-                failCB && failCB(error);
-            });
+		
+		appServerApi.createGroup(groupMemberIds, groupName).then((result) => {
+			console.log(result);
+			let conversation = new Conversation(ConversationType.Group, result.group_id, 0)
+			this.setCurrentConversation(conversation);
+			successCB && successCB(conversation);
+		}).catch(error => {
+			console.log('create group error', error);
+			failCB && failCB(error);
+		});
     },
 
     _loadUserLocalSettings() {

@@ -18,6 +18,7 @@
 import UserListView from "../user/UserListView.vue";
 import wfc from "../../wfc/client/wfc";
 import SearchType from "../../wfc/model/searchType";
+import appServerApi from "../../api/appServerApi";
 
 export default {
     name: "SearchUserPage",
@@ -35,12 +36,14 @@ export default {
                 return;
             }
             console.log('search user', this.keyword);
-            wfc.searchUser(this.keyword, SearchType.General, 0, (keyword, users) => {
-                console.log('searchUser success', keyword, users)
-                this.users = users;
-            }, err => {
-                console.log(' searchUser err', err)
-            });
+			appServerApi.searchUser(this.keyword).then((result) => {
+				console.log('searchUser success', result.list)
+				if (result.list) {
+					this.users = result.list;
+				}
+			}).catch(err => {
+				console.log(' searchUser err', err)
+			});
         }
     }
 }

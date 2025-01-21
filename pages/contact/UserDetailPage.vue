@@ -58,6 +58,7 @@ import ConversationType from "../../wfc/model/conversationType";
 import Conversation from "../../wfc/model/conversation";
 import wfc from "../../wfc/client/wfc";
 import avenginekitproxy from "../../wfc/av/engine/avenginekitproxy";
+import appServerApi from "../../api/appServerApi";
 
 export default {
     name: "UserDetailPage",
@@ -101,22 +102,22 @@ export default {
         addFriend() {
             let userInfo = wfc.getUserInfo(wfc.getUserId());
             let reason = '你好，我是' + userInfo.displayName;
-            wfc.sendFriendRequest(this.user.uid, reason, '', () => {
-                uni.showToast({
-                    title: '好友请求发送成 ',
-                    icon: 'none'
-                });
-                setTimeout(() => {
-                    uni.navigateBack({
-                        delta: 1
-                    })
-                }, 1000)
-            }, err => {
-                uni.showToast({
-                    title: '好友请求发送失败 ' + err,
-                    icon: 'none'
-                });
-            })
+			appServerApi.sendAddFriend(reason, this.user.uid).then(() => {
+				uni.showToast({
+				    title: '好友请求发送成功',
+				    icon: 'none'
+				});
+				setTimeout(() => {
+				    uni.navigateBack({
+				        delta: 1
+				    })
+				}, 1000)
+			}).catch(error => {
+				uni.showToast({
+				    title: error.message ? error.message : '好友请求发送失败',
+				    icon: 'none'
+				});
+			})
         },
         startAudioCall() {
             const conversation = new Conversation(ConversationType.Single, this.user.uid, 0);

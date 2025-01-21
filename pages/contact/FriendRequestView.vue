@@ -21,6 +21,7 @@
 <script>
 import wfc from "../../wfc/client/wfc";
 import store from "../../store";
+import appServerApi from "../../api/appServerApi";
 
 export default {
     name: "FriendRequestView",
@@ -41,12 +42,25 @@ export default {
             this.$modal.hide('friend-request-modal')
         },
         invite() {
-            wfc.sendFriendRequest(this.userInfo.uid, this.reason, null, () => {
-                // TODO
-                console.log('send friendRequest success', this.userInfo.uid)
-            }, (err) => {
-                // TODO
-            });
+            // wfc.sendFriendRequest(this.userInfo.uid, this.reason, null, () => {
+            //     // TODO
+            //     console.log('send friendRequest success', this.userInfo.uid)
+            // }, (err) => {
+            //     // TODO
+            // });
+			
+			appServerApi.sendAddFriend(this.reason, this.userInfo.uid).then(() => {
+				uni.showToast({
+				    title: '发送好友请求成功',
+				    icon: 'none',
+				});
+			}).catch(error => {
+				uni.showToast({
+				    title: error.message ? error.message : '发送好友请求失败',
+				    icon: 'none'
+				});
+			})
+			
             this.$modal.hide('friend-request-modal')
         }
     },

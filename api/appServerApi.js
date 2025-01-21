@@ -130,6 +130,25 @@ export class AppServerApi {
 	setChatroomBlack(obj) {
 		return this._post("/chatroom/set_black", obj);
 	}
+	
+	notifyChatUser(targetId, code) {
+		return this._post('/user-chat-notify', {targetId, code}, false, true)
+	}
+	
+	searchUser(keyword) {
+		return this._post('/user/search', {keyword, page: 0, size: 200})
+	}
+	
+	createGroup(members, groupName) {
+		return this._post('/group/create', {members, groupName})
+		
+	}
+	
+	sendAddFriend(reason, targetId) {
+		return this._post('/friend/send-request', {reason, targetId})
+		
+	}
+
     _interceptLoginResponse(responsePromise, resolve, reject) {
         responsePromise
             .then(response => {
@@ -189,7 +208,8 @@ export class AppServerApi {
                         if (res.data.code === 0) {
                             resolve(res.data.result);
                         } else {
-                            throw new AppServerError(res.data.code, res.data.message)
+							console.log('request error: ' + res.data.message);
+                            reject(new AppServerError(res.data.code, res.data.message))
                         }
                     } else {
                         throw new Error('request error, status code: ' + res.status)
