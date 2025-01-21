@@ -1,10 +1,10 @@
 <template>
     <div class="discovery-container">
-        <div class="item" @click="showChatroomList">
+        <!-- <div class="item" @click="showChatroomList">
             <image src="/static/image/icon/ic_chatroom.png"/>
             <text>聊天室</text>
             <i class="icon-ion-ios-arrow-right"></i>
-        </div>
+        </div> -->
         <div class="item" @click="showRobotConversation">
             <image src="/static/image/icon/ic_robot.png"/>
             <text>机器人</text>

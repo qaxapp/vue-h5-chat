@@ -1,13 +1,8 @@
 <template>
     <div class="chatroom-container">
-        <div class="item" @click="go2Chatroom(1)">
-            <text>聊天室1</text>
-        </div>
-        <div class="item" @click="go2Chatroom(2)">
-            <text>聊天室1</text>
-        </div>
-        <div class="item" @click="go2Chatroom(3)">
-            <text>聊天室2</text>
+        <div class="item" @click="go2Chatroom(item.cid)" v-for="(item,index) in chatroomList">
+			<image :src="item.portrait ? item.portrait:'/assets/images/portrait.png'"/>
+			<text>{{item.title}}</text>
         </div>
     </div>
 
@@ -17,20 +12,40 @@
 import store from "../../store";
 import Conversation from "../../wfc/model/conversation";
 import ConversationType from "../../wfc/model/conversationType";
-
+import appServerApi from "../../api/appServerApi";
 export default {
     name: "ChatroomListPage",
     data() {
         return {
             user: store.state.contact.selfUserInfo,
+			chatroomList:[]
         }
     },
+	created() {
+		this.getChatroomList();
+		
+	},
     methods: {
         go2Chatroom(index) {
-            let conversation = new Conversation(ConversationType.ChatRoom, `chatroom${index}`, 0);
+            let conversation = new Conversation(ConversationType.ChatRoom,index , 0);
             store.setCurrentConversation(conversation);
             this.$go2ConversationPage();
         },
+		async getChatroomList() {
+			appServerApi.getChatroomList({status:0})
+				.then(response => {
+					console.log('sss',response)
+					// response.map(item=>{
+					// 	item.chatRoomId=item.cid
+					// })
+					this.chatroomList = response;
+					
+				})
+				.catch(err => {
+					console.log('getChatroomList', err)
+					
+				})
+		},
     }
 }
 </script>
@@ -49,18 +64,19 @@ export default {
 .item {
     width: 100%;
     height: 50px;
-    padding: 10px 10px;
+    padding: 30px 10px;
     background: white;
     display: flex;
     align-items: center;
+	/* margin: 10px 0px; */
 }
-
 .item image {
-    max-width: 15px;
-    max-height: 15px;
-    margin-right: 10px;
+    max-width: 40px;
+    max-height: 40px;
+    margin-right:30px;
+	border-radius: 4px;
+	
 }
-
 .item text {
     flex: 1;
 }

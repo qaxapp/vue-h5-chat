@@ -72,6 +72,12 @@
                 "navigationBarTitleText": "单人会话信息"
             }
         },
+		{
+		    "path": "pages/conversation/ChatroomInfoPage",
+		    "style": {
+		        "navigationBarTitleText": "聊天室信息"
+		    }
+		},
         {
             "path": "pages/conversation/message/forward/ForwardMessagePage",
             "style": {

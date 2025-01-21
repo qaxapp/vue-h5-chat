@@ -92,7 +92,44 @@ export class AppServerApi {
     delFav(favItemId) {
         return this._post('/fav/del/' + favItemId, '')
     }
-
+	 // 聊天室列表
+	getChatroomList(status) {
+		return this._post("/chatroom/list");
+	}
+	// 查询用户在聊天室的状态
+	// {
+	//     "chatroomId": "abc",
+	//     "userId": "bdsfk"
+	// }
+	getChatroomUserStatus(obj) {
+		return this._post("/chatroom/get_user_status", obj);
+	}
+	// 设置/取消聊天室全员禁言： 0 取消全员禁言；1 设置全员禁言
+	// {
+	//     "chatroomId": "abc",
+	//     "mute": 1
+	// }
+	getChatroomMuteAll(obj) {
+		return this._post("/chatroom/mute_all", obj);
+	}
+	// 设置/取消聊天室管理员：0 取消管理员；1 设置管理员
+	// {
+	//     "chatroomId": "abc",
+	//     "userId": "abc",
+	//     "status": 0
+	// }
+	setChatroomManage(obj) {
+		return this._post("/chatroom/set_manager", obj);
+	}
+	// 设置/取消聊天室黑名单：0 取消拉黑；1 禁言；2 禁止进入
+	// {
+	//     "chatroomId": "abc",
+	//     "userId": "abc",
+	//     "status": 0
+	// }
+	setChatroomBlack(obj) {
+		return this._post("/chatroom/set_black", obj);
+	}
     _interceptLoginResponse(responsePromise, resolve, reject) {
         responsePromise
             .then(response => {

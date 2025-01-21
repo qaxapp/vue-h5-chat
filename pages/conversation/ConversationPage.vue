@@ -190,10 +190,21 @@ export default {
                 }
             });
         } else {
-            uni.showToast({
-                title: 'TODO 暂不支持该会话类型',
-                icon: 'none'
-            })
+            // uni.showToast({
+            //     title: 'TODO 暂不支持该会话类型',
+            //     icon: 'none'
+            // })
+			uni.navigateTo({
+			    url: '/pages/conversation/ChatroomInfoPage',
+			    success: (res) => {
+			        res.eventChannel.emit('conversationInfo', {
+			            conversationInfo: this.conversationInfo
+			        });
+			    },
+			    fail: (err) => {
+			        console.log('nav to GroupConversationInfoPage err', err);
+			    }
+			});
         }
     },
 
