@@ -30,7 +30,7 @@
                         class="avatar"
                         @click="onClickUserPortrait(message.from)"
                         draggable="false"
-                        :src="wechat?userInfo.portrait:message._from.portrait" alt="">
+                        :src="message._from.portrait" alt="">
                 </div>
             </div>
             <p v-if="shouldShowMessageReceipt" class="receipt" @click="showMessageReceiptDetail">
