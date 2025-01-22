@@ -4,13 +4,14 @@
             <image class="portrait" :src="user.portrait"></image>
             <text class="name">{{ user.displayName }}</text>
         </div>
+        <div class="item" @click="showLanguage">
+		    <text>{{ $t('chat_im_i18n.language') }}</text>
+		</div>
         <div class="item" @click="showAbout">
             <text>{{ $t('chat_im_i18n.about') }}</text>
         </div>
 		
-		<div class="item" @click="showLanguage">
-		    <text>{{ $t('chat_im_i18n.language') }}</text>
-		</div>
+		
         <button class="logout-button" @click="logout">{{ $t('chat_im_i18n.user_logout') }}</button>
     </div>
 
@@ -109,11 +110,11 @@ export default {
     align-items: center;
     flex-direction: row;
     position: relative; // 添加此行
-    background: $cm-bg-bar-color;
+	background-color: $uni-bg-color;
 }
 
 .user-info:active {
-    background: $cm-bg-bar-color;
+	background-color: $uni-bg-color;
 }
 
 .user-info::after {
@@ -139,11 +140,12 @@ export default {
     width: 100%;
     padding: 15px 10px;
     position: relative; // 添加此行
-    background: $cm-bg-bar-color;
+	background-color: $uni-bg-color;
 }
 
 .item:active {
-    background: $cm-bg-bar-color;}
+	background-color: $uni-bg-color;
+}
 
 .item::after {
     content: ""; /* 使伪元素可见 */

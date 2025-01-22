@@ -63,11 +63,11 @@ export default {
 }
 </script>
 
-<style lang="css" scoped>
+<style lang="scss" scoped>
 .image-content-container {
     margin: 0 10px;
     position: relative;
-    border: 1px solid #efefef;
+    border: 1px solid $cm-border-gray-color;
     border-radius: 5px;
 }
 
