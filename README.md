@@ -24,14 +24,23 @@ static IM_SERVER_HOST = 'chattest.qaxim.top'/** 请仔细看上面的注释，�
 1. 运行```npm install```命令
 2. HBuilderX，运行到浏览器，Chrome
 
-## 打包
+## 注册
+DCloud为支持海外开发者，特推出“国际区”注册服务，注册在“国际区”的账号，仅需验证邮箱，即可使用云端打包服务。
+[注册“国际区”账号](https://zh.uniapp.dcloud.io/tutorial/internationalization.html)
+
+### 修改 App ID
+点击 manifest.json
+
+### 打包
 
 1. 如果需要配置`publicPath`，可修改`vite.config.js`文件里面的`base`字段
-1. HBuilderX，发行，网站-PC Web或手机H5
+1. 使用 HBuilderX,顶部工具栏 -> 发行 -> 网站-PC Web或手机H5
 
-## 命令行打包
+### 命令行打包
 #### 安装 HBuilderX
 [HBuilderX](https://www.dcloud.io/hbuilderx.html)
+
+
 #### 全局安装 vue-cli
 ```shell
 npm install -g @vue/cli
