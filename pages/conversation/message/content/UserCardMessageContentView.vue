@@ -13,7 +13,7 @@
             :animate-fill="false"
             placement="left"
             distant="7"
-            theme="light"
+            theme="dark"
             animation="fade"
             trigger="click"
         >

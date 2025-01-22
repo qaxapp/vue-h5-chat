@@ -28,7 +28,8 @@
 		"group": "群聊",
 		"contact": "聯系人",
 		"chatroom": "聊天室",
-		"channel": "频道"
+		"channel": "频道",
+		"add_friend": "添加好友"
 	},
 	"chatroom": {
 		"icon": "聊天室头像",
@@ -184,7 +185,8 @@
 		"month_10": "十月",
 		"month_11": "十一月",
 		"month_12": "十二月",
-		"wfc_id": "账号"
+		"wfc_id": "账号",
+		"enter_message": "请输入信息..."
 	},
 	"misc": {
 		"beijing": "北京",
@@ -198,6 +200,9 @@
 		"chat_im_scan": "掃一掃",
 		"qr_not_supported": "不支援該二維碼: ",
 		"user_logout":"退出登錄",
-		"about":"關於"
+		"about":"關於",
+		"connecting": "正在連接...",
+		"syncing": "正在同步...",
+		"connection_failed": "連接失敗"
 	}
 }

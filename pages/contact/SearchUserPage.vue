@@ -49,7 +49,7 @@ export default {
 }
 </script>
 
-<style lang="css" scoped>
+<style lang="scss" scoped>
 .search-user-container {
     width: 100%;
     height: 100%;
@@ -61,7 +61,7 @@ export default {
     height: 40px;
     padding: 0 10px;
     width: 100%;
-    border-bottom: 1px solid lightgrey;
+    border-bottom: 1px solid $cm-split-line-color;
 }
 
 .category{

@@ -32,8 +32,6 @@ export default {
         }
     },
     mounted() {
-        console.log("获取链接",store.state.contact);
-
         if (avengineKit.startConference) {
             this.info += '高级版音视频\n'
         } else {
@@ -100,8 +98,7 @@ export default {
     width: 100%;
     height: var(--page-full-height-without-header-and-tabbar);
 	background-color: $uni-bg-color;
-	color: white;
-
+    color: $cm-text-color;
 }
 
 .user-info {
@@ -112,10 +109,11 @@ export default {
     align-items: center;
     flex-direction: row;
     position: relative; // 添加此行
+    background: $cm-bg-bar-color;
 }
 
 .user-info:active {
-    background: #d6d6d6;
+    background: $cm-bg-bar-color;
 }
 
 .user-info::after {
@@ -141,11 +139,11 @@ export default {
     width: 100%;
     padding: 15px 10px;
     position: relative; // 添加此行
+    background: $cm-bg-bar-color;
 }
 
 .item:active {
-    background: #d6d6d6;
-}
+    background: $cm-bg-bar-color;}
 
 .item::after {
     content: ""; /* 使伪元素可见 */

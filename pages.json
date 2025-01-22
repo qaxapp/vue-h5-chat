@@ -236,12 +236,12 @@
                 "selectedIconPath": "static/image/tabbar/me_press.png"
             }
         ],
-        "backgroundColor": "#0F162B"
+        "backgroundColor": "#0C1822"
     },
     "sitemapLocation": "sitemap.json",
     "globalStyle": {
         "backgroundTextStyle": "dark",
-        "navigationBarBackgroundColor": "#0F162B",
+        "navigationBarBackgroundColor": "#14293A",
         "navigationBarTitleText": "ChatIM",
         "navigationBarTextStyle": "#FFFFFF"
     },

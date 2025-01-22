@@ -67,6 +67,6 @@ cli publish --platform h5 --project vue-h5-chat
 ## 常见问题说明
 
 ## 颜色值
-导航栏背景色: #0F162B
-内容背景色:#212332, 比如列表背景
-分割线: #1A3143，还不确定
+导航栏背景色: $cm-bg-bar-color;
+内容背景色: $cm-bg-color;
+分割线: $cm-split-line-color;

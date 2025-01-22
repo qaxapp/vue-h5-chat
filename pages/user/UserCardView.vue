@@ -142,15 +142,15 @@ export default {
 };
 </script>
 
-<style lang="css" scoped>
+<style lang="scss" scoped>
 .user-info-container {
     width: 300px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    color: #292a2c;
-    background-color: #fcfcfc;
+    color: $cm-text-color;
+    background: $cm-bg-color;
 }
 
 .user-info-container .avatar {
@@ -165,7 +165,7 @@ export default {
     padding-bottom: 20px;
     display: flex;
     justify-content: space-between;
-    border-bottom: 1px solid lightgray;
+    border-bottom: 1px solid $cm-border-color;
 }
 
 
