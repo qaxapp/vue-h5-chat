@@ -728,12 +728,14 @@ export default {
 .quote-message-container {
   overflow: auto;
   display: flex;
-  background: #ebefef;
+  background: $cm-quote-message-bg-color;
   align-content: center;
   position: relative;
   margin: 0 12rpx;
   padding: 5px;
   border-radius: 24rpx;
+  color:$cm-text-color-grey;
+  font-size: 24rpx;
 }
 
 .quote-message-container .quoted-message {

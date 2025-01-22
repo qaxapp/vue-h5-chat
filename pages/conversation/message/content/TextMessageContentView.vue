@@ -77,7 +77,8 @@ export default {
 }
 
 .text-message-container.out {
-    background-color: $cm-received-message-bg-color;
+    background-color: $cm-sent-message-bg-color;
+	
     border-radius: 8px 0 8px 8px; /* 设置圆角 */
 
 

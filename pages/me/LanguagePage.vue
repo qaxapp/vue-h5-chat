@@ -45,7 +45,7 @@ const switchLanguage = (code) => {
 .language-page {
     padding: 16px;
 	background-color: $uni-bg-color;	
-	height: 100vh; /* 占满整个视窗高度 */
+    height: var(--page-full-height-without-header);
 
 }
 

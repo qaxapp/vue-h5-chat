@@ -132,7 +132,7 @@ export default {
 
 </script>
 
-<style lang="css" scoped>
+<style lang="scss" scoped>
 .quoted-message-container {
     display: flex;
     align-items: center;
@@ -141,10 +141,12 @@ export default {
 .quoted-message {
     display: flex;
     max-width: 100%;
-    background-color: #e9e9e9;
+    background-color: $cm-quote-message-bg-color;
     border-radius: 5px;
     padding: 5px 10px;
     margin-right: 10px;
+	font-size: 10px;
+	color: $cm-text-color-grey;
 }
 
 .quoted-message > p {
