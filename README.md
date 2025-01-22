@@ -2,6 +2,23 @@
 
 支持Android 和 iOS 手机浏览器，支持微信浏览器
 
+## 服务端地址配置
+config.js
+```javascript
+// APP SERVER的地址，不能省略http(s)前缀。
+// 默认的app server使用端口是8888，注意端口号别忘记了。
+static APP_SERVER = 'https://chattest.qaxapp.top';
+
+// 组织结构服务地址，如果没有部署组织结构服务，或者不需要组织结构的话，可置为 null
+// 组织结构项目：https://github.com/wildfirechat/organization-platform 或 https://gitee.com/wfchat/organization-platform
+static ORGANIZATION_SERVER = null;
+
+// 请仔细看注释
+// 仅仅是 HOST，没有 http 前缀，后面也没有端口
+// IM SERVER 的 host 地址，一定要和 APP_SERVER 对应起来，即 APP_SERVER 上配置的 im-server 和下面所配置的im-server 是同一个
+static IM_SERVER_HOST = 'chattest.qaxim.top'/** 请仔细看上面的注释，仅仅是 HOST，没有 http 前缀，后面也没有端口 **/;
+
+```
 ## 开发
 
 1. 运行```npm install```命令
