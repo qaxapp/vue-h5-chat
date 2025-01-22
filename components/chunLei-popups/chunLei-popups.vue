@@ -45,7 +45,7 @@
 			},
 			theme:{
 				type:String,
-				default:'light' //light dark
+				default:'dark' //light dark
 			},
 			dynamic:{
 				type:Boolean,
@@ -231,7 +231,7 @@
 		}
 	}
 	.dark{
-		background-color: #4C4C4C;
+		background-color: #0C1822;
 		color: #fff;
 		.top-start:after {
 			content: "";
@@ -240,7 +240,7 @@
 			left: 10rpx;
 			border-width: 0 20rpx 20rpx;
 			border-style: solid;
-			border-color: transparent transparent #4C4C4C;
+			border-color: transparent transparent #27292F;
 		}
 		.top-end:after {
 			content: "";
@@ -249,7 +249,7 @@
 			right: 10rpx;
 			border-width: 0 20rpx 20rpx;
 			border-style: solid;
-			border-color: transparent transparent #4C4C4C;
+			border-color: transparent transparent #27292F;
 		}
 		.bottom-start:after {
 			content: "";
@@ -258,7 +258,7 @@
 			left: 10rpx;
 			border-width: 20rpx 20rpx 0 ;
 			border-style: solid;
-			border-color: #4C4C4C transparent transparent ;
+			border-color: #27292F transparent transparent ;
 			
 		}
 		.bottom-end:after {
@@ -268,10 +268,10 @@
 			right: 10rpx;
 			border-width: 20rpx 20rpx 0 ;
 			border-style: solid;
-			border-color: #4C4C4C transparent transparent ;
+			border-color: #27292F transparent transparent ;
 		}
 		.disabledColor{
-			color: #c5c8ce;
+			color: #F0F5FF;
 		}
 	}
 	.light{

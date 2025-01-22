@@ -28,7 +28,8 @@
 		"group": "群聊",
 		"contact": "联系人",
 		"chatroom": "聊天室",
-		"channel": "频道"
+		"channel": "频道",
+		"add_friend": "添加好友"
 	},
 	"friend_request": {
 		"request": "好友请求",

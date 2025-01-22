@@ -3,7 +3,7 @@
         <div class="header">
             <div>
                 <h2>{{ name }}</h2>
-                <p>你好</p>
+                <p>{{ $t('friend_request.intro')}}</p>
             </div>
             <div>
                 <img class="avatar" :src="sharedStateContact.currentFriend.portrait">
@@ -21,14 +21,14 @@
                     <label>{{ $t('common.wfc_id') }}</label>
                     <p class="single-line">{{ user.name }}</p>
                 </li>
-                <li>
+<!--                <li>
                     <label>{{ $t('common.area') }}</label>
                     <p>{{ $t('common.unknown') }}</p>
-                </li>
-                <li>
+                </li> -->
+<!--                <li>
                     <label>{{ $t('common.label') }}</label>
                     <p>{{ $t('misc.test_user') }}</p>
-                </li>
+                </li> -->
             </ul>
         </div>
         <div class="footer">
@@ -36,17 +36,17 @@
                     <i class="icon-ion-ios-chatboxes-outline"></i>
                     <a>{{ $t('message.send_message') }}</a>
                 </div>
-                <div class="action" @click="startAudioCall">
+<!--                <div class="action" @click="startAudioCall">
                     <i class="icon-ion-ios-telephone-outline"></i>
                     <a>语音通话</a>
                 </div>
                 <div class="action" @click="startVideoCall">
                     <i class="icon-ion-ios-videocam-outline"></i>
                     <a>视频通话</a>
-                </div>
+                </div> -->
                 <div v-if="!isFriend && !isSelf" class="action" @click="addFriend">
                     <i class="icon-ion-person-add"></i>
-                    <a>添加好友</a>
+                    <a>{{ $t('add_friend') }}</a>
                 </div>
             </div>
     </div>
@@ -152,13 +152,19 @@ export default {
 }
 </script>
 
-<style lang="css" scoped>
+<style lang="scss" scoped>
 
 .user-detail-container {
     margin-left: 30px;
     margin-right: 30px;
     border-top-right-radius: var(--main-border-radius);
     border-bottom-right-radius: var(--main-border-radius);
+    color: $cm-text-color;
+}
+
+// 添加页面背景色
+:deep(page) {
+    background: $cm-bg-color;
 }
 
 .header {
@@ -167,7 +173,7 @@ export default {
     justify-content: space-between;
     align-items: center;
     padding-bottom: 15px;
-    border-bottom: 1px solid #e6e6e6;
+    border-bottom: 1px solid $cm-split-line-color;
 }
 
 .header .avatar {
@@ -202,15 +208,21 @@ export default {
 
 .content ul li label {
     margin-right: 20px;
-    width: 50px;
-    text-align: justify;
-    text-align-last: justify;
+    width: 96px;
+    text-align: left;
+}
+
+.content ul li .alias {
+    display: flex;
+    align-items: center;
+    height: 100%;
 }
 
 .content ul li .alias > input {
     width: 100%;
     border: none;
-    height: 20px;
+    height: 28px;
+    line-height: 28px;
 }
 
 .content ul li > div {
@@ -223,11 +235,11 @@ export default {
     flex-direction: row;
     justify-content: center;
     padding-top: 30px;
-    border-top: 1px solid #e6e6e6;
+    border-top: 1px solid  $cm-split-line-color;
 }
 
 .footer a:active {
-    background-color: #4168e0;
+    background-color: $cm-accent-color;
 }
 
 .footer .action {
@@ -236,7 +248,7 @@ export default {
     flex-direction: column;
     justify-content: space-around;
     align-items: center;
-    color: #5d7ce8;
+    color: $cm-accent-color;
 }
 
 .footer .action a {

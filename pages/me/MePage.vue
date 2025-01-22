@@ -93,6 +93,11 @@ export default {
 
 <style lang="scss" scoped>
 
+// 添加页面背景色
+:deep(page) {
+    background: $cm-bg-color;
+}
+
 .me-container {
     display: flex;
     flex-direction: column;
@@ -100,7 +105,6 @@ export default {
     width: 100%;
     height: var(--page-full-height-without-header-and-tabbar);
     color: $cm-text-color;
-    background: $cm-bg-bar-color;
 }
 
 .user-info {
@@ -114,9 +118,6 @@ export default {
     margin-bottom: 10px;
 }
 
-.user-info:active {
-    background: $cm-bg-bar-color;
-}
 
 .user-info .portrait {
     width: 60px;
@@ -131,10 +132,6 @@ export default {
 .about {
     width: 100%;
     padding: 15px 10px;
-    background: $cm-bg-bar-color;
-}
-
-.about:active {
     background: $cm-bg-bar-color;
 }
 
