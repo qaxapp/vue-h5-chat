@@ -177,6 +177,7 @@ export default {
 .contact-item .label {
     width: 100%;
     color: $cm-text-color;
+	background-color: $cm-bg-bar-color;
 }
 
 .contact-item .label p {
