@@ -1274,7 +1274,7 @@ export default {
 }
 
 .avatar.highlight {
-    //border: 2px solid #1FCA6A;
+    border: 2px solid #1FCA6A;
 }
 
 .action-img {
