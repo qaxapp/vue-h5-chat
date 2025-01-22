@@ -93,7 +93,7 @@
         {
             "path": "pages/contact/SearchUserPage",
             "style": {
-                "navigationBarTitleText": "%搜索用户%"
+                "navigationBarTitleText": "%chat_search_user%"
             }
         },
         {

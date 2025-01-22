@@ -7,19 +7,19 @@
                     <view class="menu-item-icon">
                         <view class="wxfont message2"></view>
                     </view>
-                    <view class="text">发起群聊</view>
+                    <view class="text">{{ $t('chat_im_i18n.chat_im_create_group') }}</view>
                 </view>
                 <view class="menu-item" @click="go2SearchFriend">
                     <view class="menu-item-icon">
                         <view class="wxfont add2"></view>
                     </view>
-                    <view class="text">添加朋友</view>
+                    <view class="text">{{ $t('chat_im_i18n.chat_im_add_friend') }}</view>
                 </view>
                 <view class="menu-item" @click="go2ScanQrCode">
                     <view class="menu-item-icon">
                         <view class="wxfont qr_code"></view>
                     </view>
-                    <view class="text">扫一扫</view>
+                    <view class="text">{{ $t('chat_im_i18n.chat_im_scan') }}</view>
                 </view>
             </view>
         </view>
