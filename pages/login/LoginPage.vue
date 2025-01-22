@@ -1,34 +1,34 @@
 <template>
     <view class="page-body">
-        <view class="login-type-title">{{ isPasswordLogin ? '密码登录' : '验证码登录' }}</view>
+        <view class="login-type-title">{{ isPasswordLogin ? $t('login.password_login') : $t('login.verification_code_login') }}</view>
         <view class="mobile-container">
-            <view>请输入手机号</view>
+            <view>{{ $t('login.enter_phone_number') }}</view>
             <view>
                 <view class="mobile-input-container">
-                    <input class="input" @input="bindPhoneInput" type="number" placeholder="手机号"/>
+                    <input class="input" @input="bindPhoneInput" type="number" :placeholder="$t('login.phone_number')"/>
                 </view>
             </view>
         </view>
 
         <view v-if="!isPasswordLogin" class="auth-code-container">
-            <view>请输入验证码</view>
+            <view>{{ $t('login.enter_verification_code') }}</view>
             <view class="auth-code-input-container">
-                <input @input="bindCodeInput" type="number" placeholder="验证码"/>
-                <button size="mini" :disabled="phone.length !== 11" @tap="bindAuthCodeTap">获取验证码</button>
+                <input @input="bindCodeInput" type="number" :placeholder="$t('login.verification_code')"/>
+                <button size="mini" :disabled="phone.length !== 11" @tap="bindAuthCodeTap">{{ $t('login.get_verification_code') }}</button>
             </view>
         </view>
 
         <view v-else class="password-container">
-            <view>请输入密码</view>
+            <view>{{ $t('login.enter_password') }}</view>
             <view class="password-input-container">
-                <input @input="bindPasswordInput" type="password" placeholder="密码"/>
+                <input @input="bindPasswordInput" type="password" :placeholder="$t('login.password')"/>
             </view>
         </view>
 
         <view class="switch-type" @tap="switchLoginType">
-            {{ isPasswordLogin ? '使用验证码登录' : '使用密码登录' }}
+            {{ isPasswordLogin ? $t('login.use_verification_code_login') : $t('login.use_password_login') }}
         </view>
-        <button :disabled="!canLogin" class="confirm-button" @tap="bindLoginTap">登录</button>
+        <button :disabled="!canLogin" class="confirm-button" @tap="bindLoginTap">{{ $t('login.login') }}</button>
     </view>
 </template>
 

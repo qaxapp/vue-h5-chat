@@ -9,7 +9,18 @@
 		"cancel_login": "取消登录",
 		"login": "登录",
 		"switch_user": "切换用户",
-		"auto_login_tip": "自动登录中..."
+		"auto_login_tip": "自动登录中...",
+		"password_login": "密码登录",
+		"verification_code_login": "验证码登录",
+		"enter_phone_number": "请输入手机号",
+		"phone_number": "手机号",
+		"enter_verification_code": "请输入验证码",
+		"get_verification_code": "获取验证码",
+		"verification_code": "验证码",
+		"enter_password": "请输入密码",
+		"password": "密码",
+		"use_verification_code_login": "使用验证码登录",
+		"use_password_login": "使用密码登录"
 	},
 	"contact": {
 		"new_friend": "新的朋友",
@@ -184,6 +195,7 @@
 		"chat_im_add_friend": "添加朋友",
 		"chat_im_scan": "扫一扫",
 		"qr_not_supported": "不支持该二维码: ",
-		"user_logout":"退出登录"
+		"user_logout":"退出登录",
+		"about":"关于"
 	}
 }

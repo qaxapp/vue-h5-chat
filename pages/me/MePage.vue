@@ -5,7 +5,7 @@
             <text class="name">{{ user.displayName }}</text>
         </div>
         <div class="about" @click="showAbout">
-            <text>关于</text>
+            <text>{{ $t('chat_im_i18n.about') }}</text>
         </div>
 <!--        <div class="about" @click="showApiTest">
             <text>API测试</text>
@@ -63,11 +63,12 @@ export default {
         logout() {
             wfc.disconnect(true, false);
             clear();
-            uni.reLaunch(
-                {
-                    url: '/pages/login/login'
+            try {
+                    uni.reLaunch({
+                        url: '/pages/login/LoginPage'
+                    });
+                } catch (error) {
                 }
-            );
         },
         showAbout() {
             uni.navigateTo({

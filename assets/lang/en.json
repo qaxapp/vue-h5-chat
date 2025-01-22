@@ -9,7 +9,18 @@
 		"cancel_login": "Cancel Login",
 		"login": "Login",
 		"switch_user": "Switch User",
-		"auto_login_tip": "Automatically logging in..."
+		"auto_login_tip": "Auto logging in...",
+		"password_login": "Password Login",
+		"verification_code_login": "SMS Code Login",
+		"enter_phone_number": "Please enter phone number",
+		"phone_number": "Phone number",
+		"enter_verification_code": "Please enter SMS code",
+		"get_verification_code": "SMS Code",
+		"verification_code": "SMS Code",
+		"enter_password": "Please enter password",
+		"password": "Password",
+		"use_verification_code_login": "Use SMS Code to Login",
+		"use_password_login": "Use Password to Login"
 	},
 	"contact": {
 		"new_friend": "New friend",
@@ -184,6 +195,7 @@
 		"chat_im_add_friend": "Add Friend",
 		"chat_im_scan": "Scan",
 		"qr_not_supported": "QR Code not supported: ",
-		"user_logout":"Log Out"
+		"user_logout":"Log Out",
+		"about":"About"
 	}
 }
