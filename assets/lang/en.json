@@ -184,7 +184,8 @@
 		"month_10": "October",
 		"month_11": "November",
 		"month_12": "December",
-		"wfc_id": "Account"
+		"wfc_id": "Account",
+		"enter_message": "Send Message..."
 	},
 	"misc": {
 		"beijing": "Beijing",

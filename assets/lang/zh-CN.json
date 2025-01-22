@@ -185,7 +185,8 @@
 		"month_10": "十月",
 		"month_11": "十一月",
 		"month_12": "十二月",
-		"wfc_id": "账号"
+		"wfc_id": "账号",
+		"enter_message": "请输入信息..."
 	},
 	"misc": {
 		"beijing": "北京",

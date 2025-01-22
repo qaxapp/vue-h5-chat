@@ -22,7 +22,7 @@
               :class="{ 'wf-input-empty-textarea': text.length === 0 }"
               @input="onInput"
               :value="text"
-              placeholder="请输入信息..."
+              :placeholder="$t('common.enter_message')"
               hold-keyboard
               confirm-type="send"
               @confirm="send(text)"
@@ -191,7 +191,7 @@ export default {
       showRecorder: false,
       showVoice: false,
       showPtt: false,
-      isPttEnable: pttClient.isPttClientEnable(),
+      isPttEnable: false,
       extList: [
         {
           title: "照片",
