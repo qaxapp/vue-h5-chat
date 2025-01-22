@@ -14,7 +14,7 @@
                 <view class="content">
                     <p class="draft single-line" v-if="shouldShowDraft" v-html="draft"></p>
                     <p class="last-message-desc single-line" v-else>
-                        <i v-if="unreadMention > 0">[有人@我]</i>
+                        <i v-if="unreadMention > 0">{{ $t('message.mentioned_me') }}</i>
                         {{ lastMessageContent }}
                     </p>
                     <i v-if="conversationInfo.isSilent" class="icon-ion-android-notifications-off"></i>
@@ -122,13 +122,14 @@ export default {
 };
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 .conversation-item-container {
     padding-left: 10px;
+    background: $cm-bg-color;
 }
 
 .conversation-item-container:active {
-    background: #d6d6d6;
+    background: $cm-bg-color;
 }
 
 .conversation-item {
@@ -152,7 +153,7 @@ export default {
     height: 45px;
     min-width: 45px;
     min-height: 45px;
-    background: #d6d6d6;
+    background: $cm-bg-color;
     top: 50%;
     transform: translateY(-50%);
     border-radius: 3px;
@@ -198,7 +199,7 @@ export default {
 .content-container .title-time-container .title {
     display: inline-block;
     font-size: 14px;
-    color: #262626;
+    color: $cm-text-color;
     font-style: normal;
     font-weight: normal;
     padding-right: 10px;
@@ -207,7 +208,7 @@ export default {
 
 .content-container .title-time-container .time {
     display: inline-block;
-    color: gray;
+    color: $cm-text-color-grey;
     font-size: 10px;
 }
 
@@ -222,14 +223,14 @@ export default {
 }
 
 /*refer to: https://blog.csdn.net/weixin_42412046/article/details/80804285*/
->>> .content .draft em {
+.content .draft em {
     color: red;
     font-style: normal;
     padding-right: 5px;
 }
 
 .content .last-message-desc {
-    color: #b8b8b8;
+    color: $cm-text-color-grey;
     font-size: 13px;
 }
 
@@ -239,7 +240,7 @@ export default {
 }
 
 .content i {
-    color: #b8b8b8;
+    color: $cm-text-color-grey
 }
 
 

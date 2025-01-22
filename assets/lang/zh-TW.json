@@ -61,7 +61,8 @@
 		"receipt_received_users": "已送達",
 		"receipt_unreceived_users": "未送達",
 		"sender": "消息發送者",
-		"content": "消息內容"
+		"content": "消息內容",
+		"mentioned_me": "[有人@我]"
 	},
 	"conversation": {
 		"forward_title": "分別發送給",

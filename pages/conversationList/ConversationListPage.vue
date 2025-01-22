@@ -224,16 +224,16 @@ export default {
 };
 </script>
 
-<style lang="css" scoped>
+<style lang="scss" scoped>
 
 .conversation-list {
     height: var(--page-full-height-without-header-and-tabbar);
     overflow: auto;
-    background: #212332;
+    background: $cm-bg-color;
 }
 
 .conversation-list .top {
-    background-color: #212332;
+    background-color: $cm-bg-color;
 }
 
 .conversation-item {
@@ -246,7 +246,7 @@ export default {
     left: 65px; /* 偏移量 */
     right: 0;
     bottom: 0;
-    border-bottom: 1px solid #909AB6; /* 定义边框样式 */
+    border-bottom: 1px solid $cm-split-line-color; /* 定义边框样式 */
 }
 
 </style>

@@ -61,7 +61,8 @@
 		"receipt_received_users": "Delivered",
 		"receipt_unreceived_users": "Undelivered",
 		"sender": "Message Sender",
-		"content": "Message content"
+		"content": "Message content",
+		"mentioned_me": "[Someone@me]"
 	},
 	"conversation": {
 		"forward_title": "Send separately",
