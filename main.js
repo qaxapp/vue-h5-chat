@@ -28,7 +28,7 @@ app.use(forward)
 
 const i18n = createI18n({
     // 使用localStorage存储语言状态是为了保证页面刷新之后还是保持原来选择的语言状态
-    locale: getItem('lang') ? getItem('lang') : 'zh-CN', // 定义默认语言为中文
+    locale: getItem('lang') ? getItem('lang') : 'en', // 定义默认语言为英文
     allowComposition: true,
     messages: {
         'zh-CN': zhCNLang,
