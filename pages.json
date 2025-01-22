@@ -1,5 +1,6 @@
 {
     "pages": [
+		
         {
             "path": "pages/SplashPage",
             "style": {
@@ -11,6 +12,7 @@
                 }
             }
         },
+		
         {
             "path": "pages/login/LoginPage",
             "style": {
@@ -39,6 +41,17 @@
                 }
             }
         },
+		{
+		    "path": "pages/conversation/Customer",
+		    "style": {
+		        "navigationBarTitleText": "",
+		        "navigationStyle": "custom",
+		        "app-plus": {
+		            "animationType": "none",
+		            "animationDuration": 100
+		        }
+		    }
+		},
         {
             "path": "pages/conversation/ConversationPage",
             "style": {
@@ -72,6 +85,7 @@
                 "navigationBarTitleText": "单人会话信息"
             }
         },
+		
 		{
 		    "path": "pages/conversation/ChatroomInfoPage",
 		    "style": {

@@ -44,6 +44,7 @@ import QuoteMessageView from "@/pages/conversation/message/QuoteMessageView";
 import LoadingView from "@/pages/common/LoadingView";
 import store from "@/store";
 import wfc from "@/wfc/client/wfc";
+import { getItem } from "../../util/storageHelper";
 
 export default {
     name: "NormalInMessageContentView",
@@ -61,16 +62,25 @@ export default {
     methods: {
         onClickUserPortrait(userId) {
             store.setCurrentFriend(this.message._from);
-            uni.navigateTo({
-                url: '/pages/contact/UserDetailPage',
-                success: () => {
-                    console.log('nav to UserDetailPage success');
-
-                },
-                fail: (err) => {
-                    console.log('nav to UserDetailPage err', err);
-                }
-            })
+			if(getItem('wechat')){
+				// TODO 点击头像事件
+				uni.showToast({
+					title: 'TODO 点击头像事件',
+					icon: 'none'
+				})
+			}else{
+				uni.navigateTo({
+				    url: '/pages/contact/UserDetailPage',
+				    success: () => {
+				        console.log('nav to UserDetailPage success');
+				
+				    },
+				    fail: (err) => {
+				        console.log('nav to UserDetailPage err', err);
+				    }
+				})
+			}
+            
         },
         openMessageContextMenu(event, message) {
             this.$eventBus.$emit('openMessageContextMenu', [event, message])
