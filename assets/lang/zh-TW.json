@@ -198,6 +198,9 @@
 		"chat_im_scan": "掃一掃",
 		"qr_not_supported": "不支援該二維碼: ",
 		"user_logout":"退出登錄",
-		"about":"關於"
+		"about":"關於",
+		"connecting": "正在連接...",
+		"syncing": "正在同步...",
+		"connection_failed": "連接失敗"
 	}
 }

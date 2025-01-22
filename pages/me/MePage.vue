@@ -91,7 +91,7 @@ export default {
 }
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 
 .me-container {
     display: flex;
@@ -99,7 +99,8 @@ export default {
     align-items: center;
     width: 100%;
     height: var(--page-full-height-without-header-and-tabbar);
-    background: #212332;
+    color: $cm-text-color;
+    background: $cm-bg-bar-color;
 }
 
 .user-info {
@@ -107,14 +108,14 @@ export default {
     padding: 10px;
     height: 80px;
     display: flex;
-    background: #212332;
+    background: $cm-bg-bar-color;
     align-items: center;
     flex-direction: row;
     margin-bottom: 10px;
 }
 
 .user-info:active {
-    background: #d6d6d6;
+    background: $cm-bg-bar-color;
 }
 
 .user-info .portrait {
@@ -130,11 +131,11 @@ export default {
 .about {
     width: 100%;
     padding: 15px 10px;
-    background: #212332;
+    background: $cm-bg-bar-color;
 }
 
 .about:active {
-    background: #d6d6d6;
+    background: $cm-bg-bar-color;
 }
 
 .info {

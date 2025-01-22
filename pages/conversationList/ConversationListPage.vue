@@ -187,17 +187,17 @@ export default {
             let desc = '';
             switch (this.sharedMiscState.connectionStatus) {
                 case ConnectionStatus.ConnectionStatusConnecting:
-                    desc = '正在连接...';
+                    desc = this.$t('chat_im_i18n.connecting');
                     break;
                 case ConnectionStatus.ConnectionStatusReceiveing:
-                    desc = '正在同步...';
+                    desc = this.$t('chat_im_i18n.syncing');
                     break;
                 case ConnectionStatus.ConnectionStatusConnected:
-                    organizationServerApi.login().then(r => console.log('org login result', r)).catch(reason => console.log('org login fail ', reason));
+                    //organizationServerApi.login().then(r => console.log('org login result', r)).catch(reason => console.log('org login fail ', reason));
                     desc = '';
                     break;
                 case ConnectionStatus.ConnectionStatusUnconnected:
-                    desc = '连接失败';
+                    desc = this.$t('chat_im_i18n.connection_failed');
                     break;
             }
             return desc;
@@ -230,6 +230,7 @@ export default {
     height: var(--page-full-height-without-header-and-tabbar);
     overflow: auto;
     background: $cm-bg-color;
+	color: $cm-text-color;
 }
 
 .conversation-list .top {

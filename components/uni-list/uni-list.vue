@@ -57,13 +57,12 @@ export default {
 };
 </script>
 <style lang="scss" scoped>
-$uni-bg-color: #212332;
-$uni-border-color: #1A3143;
+
 .uni-list {
   /* #ifndef APP-NVUE */
   display: flex;
   /* #endif */
-  background-color: $uni-bg-color;
+  background-color: $cm-bg-color;
   position: relative;
   flex-direction: column;
 }
@@ -71,10 +70,10 @@ $uni-border-color: #1A3143;
 .uni-list--border {
   position: relative;
   /* #ifdef APP-NVUE */
-  border-top-color: $uni-border-color;
+  border-top-color: $cm-split-line-color;
   border-top-style: solid;
   border-top-width: 0.5px;
-  border-bottom-color: $uni-border-color;
+  border-bottom-color: $cm-split-line-color;
   border-bottom-style: solid;
   border-bottom-width: 0.5px;
   /* #endif */
@@ -91,7 +90,7 @@ $uni-border-color: #1A3143;
   height: 1px;
   -webkit-transform: scaleY(0.5);
   transform: scaleY(0.5);
-  background-color: $uni-border-color;
+  background-color: $cm-split-line-color;
   z-index: 1;
 }
 
@@ -103,7 +102,7 @@ $uni-border-color: #1A3143;
   height: 1px;
   -webkit-transform: scaleY(0.5);
   transform: scaleY(0.5);
-  background-color: $uni-border-color;
+  background-color: $cm-split-line-color;
 }
 
 /* #endif */
