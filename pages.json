@@ -194,6 +194,12 @@
                 "navigationBarTitleText": "%chat_index_my%"
             }
         },
+		{
+		    "path": "pages/me/LanguagePage",
+		    "style": {
+		        "navigationBarTitleText": "%chat_index_language%"
+		    }
+		},
         {
             "path": "pages/misc/WebViewPage",
             "style": {

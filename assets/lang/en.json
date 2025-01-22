@@ -198,6 +198,8 @@
 		"chat_im_scan": "Scan",
 		"qr_not_supported": "QR Code not supported: ",
 		"user_logout":"Log Out",
-		"about":"About"
+		"about":"About",
+		"language": "Language"
+
 	}
 }

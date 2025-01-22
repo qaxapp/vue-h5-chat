@@ -1,20 +1,16 @@
 <template>
     <div class="me-container">
-        <div class="user-info" @click="showUserInfo">
+        <div v-if="user" class="user-info" @click="showUserInfo">
             <image class="portrait" :src="user.portrait"></image>
             <text class="name">{{ user.displayName }}</text>
         </div>
-        <div class="about" @click="showAbout">
+        <div class="item" @click="showAbout">
             <text>{{ $t('chat_im_i18n.about') }}</text>
         </div>
-<!--        <div class="about" @click="showApiTest">
-            <text>API测试</text>
-        </div>
-        <div class="info">
-            <text>
-                {{ info }}
-            </text>
-        </div> -->
+		
+		<div class="item" @click="showLanguage">
+		    <text>{{ $t('chat_im_i18n.language') }}</text>
+		</div>
         <button class="logout-button" @click="logout">{{ $t('chat_im_i18n.user_logout') }}</button>
     </div>
 
@@ -31,11 +27,13 @@ export default {
     name: "MePage",
     data() {
         return {
-            user: store.state.contact.selfUserInfo,
+            user: null,
             info: ''
         }
     },
     mounted() {
+        console.log("获取链接",store.state.contact);
+
         if (avengineKit.startConference) {
             this.info += '高级版音视频\n'
         } else {
@@ -44,6 +42,9 @@ export default {
                 this.info += obj[0] + ' ' + obj[1] + ' ' + obj[2];
             })
         }
+    },
+    onShow() {
+        this.user = store.state.contact.selfUserInfo;
     },
     methods: {
         showUserInfo() {
@@ -78,20 +79,19 @@ export default {
                 }
             });
         },
-        showApiTest() {
-            // uni.navigateTo({
-            //     url: '/pages/misc/ApiTestPage',
-            //     fail: (e) => {
-            //         console.log(e)
-            //     }
-            // });
-
+        showLanguage() {
+           uni.navigateTo({
+               url: '/pages/me/LanguagePage',
+               fail: (e) => {
+                   console.log(e)
+               }
+           });
         },
     }
 }
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 
 .me-container {
     display: flex;
@@ -99,7 +99,9 @@ export default {
     align-items: center;
     width: 100%;
     height: var(--page-full-height-without-header-and-tabbar);
-    background: #212332;
+	background-color: $uni-bg-color;
+	color: white;
+
 }
 
 .user-info {
@@ -107,14 +109,22 @@ export default {
     padding: 10px;
     height: 80px;
     display: flex;
-    background: #212332;
     align-items: center;
     flex-direction: row;
-    margin-bottom: 10px;
+    position: relative; // 添加此行
 }
 
 .user-info:active {
     background: #d6d6d6;
+}
+
+.user-info::after {
+    content: ""; /* 使伪元素可见 */
+    position: absolute;
+    left: 0; /* 偏移量 */
+    right: 0;
+    bottom: 0;
+    border-bottom: 1px solid $cm-split-line-color; /* 定义边框样式 */
 }
 
 .user-info .portrait {
@@ -127,15 +137,25 @@ export default {
     margin-left: 10px;
 }
 
-.about {
+.item {
     width: 100%;
     padding: 15px 10px;
-    background: #212332;
+    position: relative; // 添加此行
 }
 
-.about:active {
+.item:active {
     background: #d6d6d6;
 }
+
+.item::after {
+    content: ""; /* 使伪元素可见 */
+    position: absolute;
+    left: 0; /* 偏移量 */
+    right: 0;
+    bottom: 0;
+    border-bottom: 1px solid $cm-split-line-color; /* 定义边框样式 */
+}
+
 
 .info {
     width: 100%;
@@ -143,7 +163,12 @@ export default {
 }
 
 .logout-button {
-    margin-top: 20px;
+    margin-top: 440rpx;
+    width: 80%;
+    background:#373949;
+	margin-left: 24rpx;
+	margin-right: 24rpx;
+    color: white;
 }
 
 </style>

@@ -198,6 +198,7 @@
 		"chat_im_scan": "扫一扫",
 		"qr_not_supported": "不支持该二维码: ",
 		"user_logout":"退出登录",
-		"about":"关于"
+		"about":"关于",
+		"language":"语言"
 	}
 }
