@@ -7,6 +7,7 @@ import ConferenceInviteMessageContent from "./wfc/av/messages/conferenceInviteMe
 import Message from "./wfc/messages/message";
 import ForwardType from "./pages/conversation/message/forward/ForwardType";
 import ConnectionStatus from "./wfc/client/connectionStatus";
+import appServerApi from "./api/appServerApi";
 
 export default {
     data() {
@@ -49,6 +50,8 @@ export default {
                 url: '/pages/login/LoginPage',
             })
         }
+        this.getOperateConfig();
+        
         // #endif
     },
 
@@ -62,6 +65,14 @@ export default {
         store.state.misc.isAppHidden = true;
     },
     methods: {
+
+        getOperateConfig() {
+            appServerApi.getOperateConfig().then((result) => {
+                const messageRecallTimeLimit = result.messageRecallTimeLimit;
+                localStorage.setItem('messageRecallTimeLimit', messageRecallTimeLimit);
+            });
+
+        },
         go2ConversationList() {
             uni.switchTab({
                 url: '/pages/conversationList/ConversationListPage',

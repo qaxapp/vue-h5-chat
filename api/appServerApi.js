@@ -37,6 +37,10 @@ export class AppServerApi {
         })
     }
 
+    getOperateConfig() {
+        return this._post('/operate_config')
+    }
+
 
     changePassword(oldPassword, newPassword) {
         return this._post('/change_pwd', {

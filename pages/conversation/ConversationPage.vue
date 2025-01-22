@@ -314,7 +314,8 @@ export default {
                 }
                 let delta = wfc.getServerDeltaTime();
                 let now = new Date().getTime();
-                if (message.direction === 0 && now - (numberValue(message.timestamp) - delta) < 60 * 1000) {
+                const messageRecallTimeLimit = localStorage.getItem('messageRecallTimeLimit') ?? 60;
+                if (message.direction === 0 && now - (numberValue(message.timestamp) - delta) < messageRecallTimeLimit * 1000) {
                     return true;
                 }
             }
