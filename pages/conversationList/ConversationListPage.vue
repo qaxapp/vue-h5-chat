@@ -1,5 +1,6 @@
 <template>
-    <view class="conversation-list" @scroll="onScroll">
+	
+    <view class="conversation-list" @scroll="onScroll" >
         <view v-if="connectionStatusDesc || unread === undefined" style="text-align: center; padding: 5px 0">{{ connectionStatusDesc }}</view>
         <uni-list :border="true" @scroll="onScroll">
             <view
@@ -34,7 +35,7 @@ export default {
         return {
             sharedConversationState: store.state.conversation,
             sharedMiscState: store.state.misc,
-
+			wechat: false,
             showContextMenu: false,
             contextMenuX: 0,
             contextMenuY: 0,
@@ -52,29 +53,7 @@ export default {
         this.updateTabBarBadge();
     },
 	created(){
-		console.log('conversationList onShow', this.sharedConversationState.conversationInfoList.length)
-		let userId = getItem('userId');
-		let wechat = getItem('wechat');
-		if (!userId) {
-		    // 被踢等，需要退到登录页面
-		    // 本来应当在启动应用，连接状态变化时处理，但可能会切换失败
-		    // Waiting to navigate to: /pages/conversationList/ConversationListPage, do not operate continuously: /pages/login/LoginPage.
-		    uni.reLaunch(
-		        {
-		            url: '/pages/login/LoginPage'
-		        }
-		    );
-		}else{
-			if(wechat===true){
-		        wfc.connect(userId, getItem('token'));
-				
-				// console.log('77',this.sharedConversationState)
-				uni.showLoading({
-		            title:'loading'
-		        })
-				this.chat()
-			}
-		}
+		
 		
 	},
     onReady() {
@@ -87,7 +66,10 @@ export default {
     },
     onHide() {
         console.log('conversationList onHide');
-        this.$refs.mainActionMenu.hide();
+		
+		this.$refs.mainActionMenu.hide();
+		
+        
     },
 
     onNavigationBarButtonTap(e) {
@@ -107,32 +89,55 @@ export default {
         }
     },
 	mounted() {
+		console.log('conversationList onShow', this.sharedConversationState.conversationInfoList.length)
+		let userId = getItem('userId');
+		this.wechat = getItem('wechat');
 		
+		if (!userId) {
+		    // 被踢等，需要退到登录页面
+		    // 本来应当在启动应用，连接状态变化时处理，但可能会切换失败
+		    // Waiting to navigate to: /pages/conversationList/ConversationListPage, do not operate continuously: /pages/login/LoginPage.
+		    uni.reLaunch(
+		        {
+		            url: '/pages/login/LoginPage'
+		        }
+		    );
+		}else{
+			if(this.wechat){
+				uni.showLoading({
+					title:'loading'
+					
+				})
+			}
+		}
         
 	},
 	
     methods: {
 		chat() {
 			let conversation = new Conversation(getItem('type')==0?ConversationType.Single:getItem('type')==1?ConversationType.Group:getItem('type')==2?ConversationType.ChatRoom:getItem('type')==3?ConversationType.Channel:ConversationType.SecretChat, getItem("chatId"), 0);
-			// let conversation = new Conversation(ConversationType.Single, getItem("chatId"), 0);
-            store.setCurrentConversation(conversation);
-			// 不加延时的话，不能正常切换页面，会报莫名其妙的错误
-			setTimeout(() => {
-					uni.redirectTo({
-						url:'/pages/conversation/Customer',
-						success: () => {
-						   
-							console.log('to conversation list success');
-						},
-						fail: e => {
-							console.log('to conversation list error', e);
-						},
-						complete: () => {
-							console.log('switch tab complete')
-						}
-					})
+			store.setCurrentConversation(conversation);
+			uni.hideLoading()
+			
+				// 不加延时的话，不能正常切换页面，会报莫名其妙的错误
 				
-			}, 50)
+					// this.$go2ConversationPage();
+						uni.redirectTo({
+							url:'/pages/conversation/Customer',
+							success: () => {
+							   
+								console.log('to conversation list success');
+							},
+							fail: e => {
+								console.log('to conversation list error', e);
+							},
+							complete: () => {
+								console.log('switch tab complete')
+							}
+						})
+					
+				
+			
 			
 		
 			
@@ -251,7 +256,10 @@ export default {
                 case ConnectionStatus.ConnectionStatusConnected:
                     //organizationServerApi.login().then(r => console.log('org login result', r)).catch(reason => console.log('org login fail ', reason));
                     desc = '';
-                   
+					if(this.wechat===true){
+					   
+						this.chat()
+					}
                     break;
                 case ConnectionStatus.ConnectionStatusUnconnected:
                     desc = this.$t('chat_im_i18n.connection_failed');
