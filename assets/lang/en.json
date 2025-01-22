@@ -28,7 +28,8 @@
 		"group": "Group Chat",
 		"contact": "Contact",
 		"chatroom": "Chatroom",
-		"channel": "Channel"
+		"channel": "Channel",
+		"add_friend": "Add Friend"
 	},
 	"friend_request": {
 		"request": "Friend Request",
@@ -183,7 +184,8 @@
 		"month_10": "October",
 		"month_11": "November",
 		"month_12": "December",
-		"wfc_id": "ID"
+		"wfc_id": "Account",
+		"enter_message": "Send Message..."
 	},
 	"misc": {
 		"beijing": "Beijing",
@@ -199,7 +201,9 @@
 		"qr_not_supported": "QR Code not supported: ",
 		"user_logout":"Log Out",
 		"about":"About",
-		"language": "Language"
-
+		"language": "Language",
+		"connecting": "Connecting...",
+		"syncing": "Syncing...",
+		"connection_failed": "Connection Failed"
 	}
 }

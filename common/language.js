@@ -25,6 +25,7 @@ function setLanguage(language) {
 
 // 每次初始化时设置语言
 function initializeLanguage() {
+    console.log("initializeLanguage");
   const cachedLanguage = getCachedLanguage();
   const systemLanguage = getSystemLanguage();
   
