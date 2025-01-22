@@ -99,7 +99,7 @@ export default {
 }
 </script>
 
-<style lang="css" scoped>
+<style lang="scss" scoped>
 .new-friend-item-container {
     padding-left: 10px;
 }
@@ -125,12 +125,12 @@ export default {
     left: 50px; /* 偏移量 */
     right: 0;
     bottom: 0;
-    border-bottom: 1px solid #f3f3f3; /* 定义边框样式 */
+    border-bottom: 1px solid $cm-split-line-color; /* 定义边框样式 */
 }
 
 
 .new-friend-item:active {
-    background-color: #d6d6d6;
+    background-color: $cm-bg-color;
 }
 
 .new-friend-item .info {

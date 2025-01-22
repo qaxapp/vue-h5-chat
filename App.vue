@@ -1,26 +1,24 @@
 <script>
 import store from "./store";
-import {getItem} from "./pages/util/storageHelper";
+import {getItem, setItem} from "./pages/util/storageHelper";
 import wfc from "./wfc/client/wfc";
-import conferenceManager from "./pages/voip/conference/conferenceManager";
 import ConferenceInviteMessageContent from "./wfc/av/messages/conferenceInviteMessageContent";
 import Message from "./wfc/messages/message";
 import ForwardType from "./pages/conversation/message/forward/ForwardType";
 import ConnectionStatus from "./wfc/client/connectionStatus";
+import appServerApi from "./api/appServerApi";
 
 export default {
     data() {
         return {
             wfc: null,
             store: null,
-            conferenceManager: null,
         }
     },
     onLaunch: function () {
-        console.log("App Launch");
+        console.log("App Launch1");
         this.wfc = wfc;
         this.store = store;
-        this.conferenceManager = conferenceManager;
         // #ifdef APP-PLUS
         plus.push.getClientInfoAsync((info) => {
             let cid = info["clientid"];
@@ -49,6 +47,8 @@ export default {
                 url: '/pages/login/LoginPage',
             })
         }
+        this.getOperateConfig();
+        
         // #endif
     },
 
@@ -62,6 +62,14 @@ export default {
         store.state.misc.isAppHidden = true;
     },
     methods: {
+
+        getOperateConfig() {
+            appServerApi.getOperateConfig().then((result) => {
+                const messageRecallTimeLimit = result.messageRecallTimeLimit;
+                setItem('messageRecallTimeLimit', messageRecallTimeLimit);
+            });
+
+        },
         go2ConversationList() {
             uni.switchTab({
                 url: '/pages/conversationList/ConversationListPage',

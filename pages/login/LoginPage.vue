@@ -1,34 +1,34 @@
 <template>
     <view class="page-body">
-        <view class="login-type-title">{{ isPasswordLogin ? '密码登录' : '验证码登录' }}</view>
+        <view class="login-type-title">{{ isPasswordLogin ? $t('login.password_login') : $t('login.verification_code_login') }}</view>
         <view class="mobile-container">
-            <view>请输入手机号</view>
+            <view>{{ $t('login.enter_phone_number') }}</view>
             <view>
                 <view class="mobile-input-container">
-                    <input class="input" @input="bindPhoneInput" type="number" placeholder="手机号"/>
+                    <input class="input" @input="bindPhoneInput" type="number" :placeholder="$t('login.phone_number')"/>
                 </view>
             </view>
         </view>
 
         <view v-if="!isPasswordLogin" class="auth-code-container">
-            <view>请输入验证码</view>
+            <view>{{ $t('login.enter_verification_code') }}</view>
             <view class="auth-code-input-container">
-                <input @input="bindCodeInput" type="number" placeholder="验证码"/>
-                <button size="mini" :disabled="phone.length !== 11" @tap="bindAuthCodeTap">获取验证码</button>
+                <input @input="bindCodeInput" type="number" :placeholder="$t('login.verification_code')"/>
+                <button size="mini" :disabled="phone.length !== 11" @tap="bindAuthCodeTap">{{ $t('login.get_verification_code') }}</button>
             </view>
         </view>
 
         <view v-else class="password-container">
-            <view>请输入密码</view>
+            <view>{{ $t('login.enter_password') }}</view>
             <view class="password-input-container">
-                <input @input="bindPasswordInput" type="password" placeholder="密码"/>
+                <input @input="bindPasswordInput" type="password" :placeholder="$t('login.password')"/>
             </view>
         </view>
 
         <view class="switch-type" @tap="switchLoginType">
-            {{ isPasswordLogin ? '使用验证码登录' : '使用密码登录' }}
+            {{ isPasswordLogin ? $t('login.use_verification_code_login') : $t('login.use_password_login') }}
         </view>
-        <button :disabled="!canLogin" class="confirm-button" @tap="bindLoginTap">登录</button>
+        <button :disabled="!canLogin" class="confirm-button" @tap="bindLoginTap">{{ $t('login.login') }}</button>
     </view>
 </template>
 
@@ -146,7 +146,7 @@ export default {
             appServerApi.requestAuthCode(phone)
                 .then(result => {
                     uni.showToast({
-                        title: '发送验证码成功',
+                        title: this.$t('login.sms_code_sent_success'),
                         icon: 'none',
                     });
                 })
@@ -175,20 +175,23 @@ export default {
     }
 };
 </script>
-<style>
+<style lang="scss">
 .page-body {
     padding: 20rpx;
     height: 100vh;
+    background-color: $cm-bg-color; 
 }
 
 .login-type-title {
     margin-top: 120rpx;
     font-size: 24px;
     margin-bottom: 50rpx;
+    color: $cm-text-color;
 }
 
 .mobile-container {
     margin-top: 20rpx;
+    color: $cm-text-color-grey;
 }
 
 .mobile-input-container {
@@ -196,19 +199,21 @@ export default {
     flex-direction: column;
     justify-content: center;
     height: 40px;
+    color: $cm-text-color;
 }
 
 .mobile-input-container input {
     font-size: 14px;
-    border-bottom: 1px solid #e0e0e0;
+    border-bottom: 1px solid $cm-border-color;
 }
 
 .mobile-input-container .uni-input-input:focus {
-    border-bottom: 1px solid #3f64e4;
+    border-bottom: 1px solid $cm-border-color;
 }
 
 .auth-code-container {
     margin-top: 30rpx;
+    color: $cm-text-color;
 }
 
 .auth-code-input-container {
@@ -224,15 +229,16 @@ export default {
     flex: 1;
     margin-right: 5px;
     font-size: 14px;
-    border-bottom: 1px solid #e0e0e0;
+    border-bottom: 1px solid $cm-border-color;
 }
 
 .auth-code-input-container .uni-input-input:focus {
-    border-bottom: 1px solid #3f64e4;
+    border-bottom: 1px solid $cm-border-color;
 }
 
 .password-container {
     margin-top: 30rpx;
+    color: $cm-text-color-grey;
 }
 
 .password-input-container {
@@ -240,20 +246,21 @@ export default {
     flex-direction: column;
     justify-content: center;
     height: 40px;
+    color: $cm-text-color;
 }
 
 .password-input-container input {
     font-size: 14px;
-    border-bottom: 1px solid #e0e0e0;
+    border-bottom: 1px solid $cm-border-color;
 }
 
 .password-input-container input:focus {
-    border-bottom: 1px solid #3f64e4;
+    border-bottom: 1px solid $cm-border-color;
 }
 
 .switch-type {
     text-align: left;
-    color: #3f64e4;
+    color: $cm-border-color;
     font-size: 14px;
     margin-top: 40rpx;
     cursor: pointer;

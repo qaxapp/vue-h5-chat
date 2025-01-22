@@ -243,18 +243,18 @@ export default {
             let desc = '';
             switch (this.sharedMiscState.connectionStatus) {
                 case ConnectionStatus.ConnectionStatusConnecting:
-                    desc = '正在连接...';
+                    desc = this.$t('chat_im_i18n.connecting');
                     break;
                 case ConnectionStatus.ConnectionStatusReceiveing:
-                    desc = '正在同步...';
+                    desc = this.$t('chat_im_i18n.syncing');
                     break;
                 case ConnectionStatus.ConnectionStatusConnected:
-                    organizationServerApi.login().then(r => console.log('org login result', r)).catch(reason => console.log('org login fail ', reason));
+                    //organizationServerApi.login().then(r => console.log('org login result', r)).catch(reason => console.log('org login fail ', reason));
                     desc = '';
                    
                     break;
                 case ConnectionStatus.ConnectionStatusUnconnected:
-                    desc = '连接失败';
+                    desc = this.$t('chat_im_i18n.connection_failed');
                     break;
             }
             return desc;
@@ -281,16 +281,17 @@ export default {
 };
 </script>
 
-<style lang="css" scoped>
+<style lang="scss" scoped>
 
 .conversation-list {
     height: var(--page-full-height-without-header-and-tabbar);
     overflow: auto;
-    background: #212332;
+    background: $cm-bg-color;
+	color: $cm-text-color;
 }
 
 .conversation-list .top {
-    background-color: #212332;
+    background-color: $cm-bg-color;
 }
 
 .conversation-item {
@@ -303,7 +304,7 @@ export default {
     left: 65px; /* 偏移量 */
     right: 0;
     bottom: 0;
-    border-bottom: 1px solid #909AB6; /* 定义边框样式 */
+    border-bottom: 1px solid $cm-split-line-color; /* 定义边框样式 */
 }
 
 </style>

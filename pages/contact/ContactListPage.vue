@@ -17,13 +17,7 @@
 						<span class="desc">{{ sharedContactState.favGroupList.length }}</span>
 					</div>
 				</div>
-				<!--                <div @click="showChannels" class="category-item-container">
-                    <image src="/static/image/icon/ic_channel_1.png"/>
-                    <div class="category-item">
-                        <span class="title">{{ $t('contact.channel') }}</span>
-                        <span class="desc">{{ sharedContactState.channelList.length }}</span>
-                    </div>
-                </div> -->
+
 				<div @click="showChatroomList" class="category-item-container">
 					<image src="/static/image/icon/ic_chatroom.png" />
 					<div class="category-item">
@@ -32,7 +26,6 @@
 					</div>
 				</div>
 
-				<OrganizationListView />
 				<UserListView :enable-pick="false"
 					:users="sharedContactState.favContactList.concat(sharedContactState.friendList)"
 					:click-user-item-func="setCurrentUser" :padding-left="'10px'"
@@ -46,12 +39,10 @@
 	import store from "../../store";
 	import UserListView from "../user/UserListView.vue";
 	import UniList from "../../components/uni-list/uni-list.vue";
-	import OrganizationListView from "./OrganizationListView.vue";
 
 	export default {
 		name: "ContactListPage",
 		components: {
-			OrganizationListView,
 			UniList,
 			UserListView
 		},
@@ -148,10 +139,11 @@
 	}
 </script>
 
-<style lang="css" scoped>
+<style lang="scss" scoped>
 	.contact-list {
 		height: var(--page-full-height-without-header-and-tabbar);
 		overflow: auto;
+		background-color: $cm-bg-color;
 	}
 
 	.category-item-container {
@@ -161,10 +153,9 @@
 		align-items: center;
 		z-index: 1000;
 		padding-left: 10px;
-		color: #FFFFFF;
+		color: $cm-text-color;
 		font-size: 14px;
 		position: sticky;
-		background-color: #212332;
 	}
 
 	.category-item-container image {
@@ -177,6 +168,7 @@
 		display: flex;
 		width: 100%;
 		justify-content: space-between;
+		color: $cm-text-color;
 	}
 
 	.category-item span:last-of-type {

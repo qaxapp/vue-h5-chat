@@ -73,7 +73,7 @@ export default {
 }
 </script>
 
-<style lang="css" scoped>
+<style lang="scss" scoped>
 .friend-request-container {
     display: flex;
     flex-direction: row;
@@ -131,7 +131,7 @@ export default {
 }
 
 .info-action-container .action-container .cancel {
-    border: 1px solid #cccccc;
+    border: 1px solid $cm-split-line-color;
 }
 
 .info-action-container .action-container .cancel:active {
@@ -141,7 +141,7 @@ export default {
 .info-action-container .action-container .confirm {
     background-color: #20bf64;
     color: white;
-    border: 1px solid white;
+    border: 1px solid $cm-split-line-color;
 }
 
 .info-action-container .action-container .confirm:active {

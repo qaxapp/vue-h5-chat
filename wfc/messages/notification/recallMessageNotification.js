@@ -7,6 +7,7 @@ import wfc from '../../client/wfc'
 import MessageContentType from '../messageContentType';
 import Long from 'long';
 import ConversationType from "../../model/conversationType";
+import GroupMemberType from "../../model/groupMemberType";
 
 export default class RecallMessageNotification extends NotificationMessageContent {
     operatorId = '';
@@ -30,6 +31,13 @@ export default class RecallMessageNotification extends NotificationMessageConten
             return "你撤回了一条消息";
         }
         if (message.conversation.type === ConversationType.Group) {
+            if (this.operatorId === this.originalSender) {
+                return wfc.getGroupMemberDisplayName(message.conversation.target, this.operatorId) + "撤回了一条消息";
+            }
+            const groupMember = wfc.getGroupMember(message.conversation.target, this.operatorId);
+            if ([GroupMemberType.Manager, GroupMemberType.Owner].indexOf(groupMember.type) >= 0) {
+                return "管理员撤回了一条消息";
+            }
             return wfc.getGroupMemberDisplayName(message.conversation.target, this.operatorId) + "撤回了一条消息";
         } else {
             return wfc.getUserDisplayName(this.operatorId) + "撤回了一条消息";

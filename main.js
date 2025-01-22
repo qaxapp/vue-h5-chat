@@ -13,6 +13,7 @@ import zhCNLang from './assets/lang/zh-CN.json'
 import zhTWLang from './assets/lang/zh-TW.json'
 import enLang from './assets/lang/en.json'
 import mitt from "mitt";
+import { initializeLanguage, getCachedLanguage } from './common/language'; // 导入 initializeLanguage 方法
 
 import VConsole from 'vconsole';
 
@@ -25,10 +26,11 @@ app.use(pinia)
 
 app.use(picker)
 app.use(forward)
-
+const currentLanguage = initializeLanguage();
+console.log(getCachedLanguage() ? getCachedLanguage() : "zh-CN");
 const i18n = createI18n({
     // 使用localStorage存储语言状态是为了保证页面刷新之后还是保持原来选择的语言状态
-    locale: getItem('lang') ? getItem('lang') : 'zh-CN', // 定义默认语言为中文
+    locale: getCachedLanguage() ? getCachedLanguage() : "zh-CN", // 定义默认语言为简体中文
     allowComposition: true,
     messages: {
         'zh-CN': zhCNLang,

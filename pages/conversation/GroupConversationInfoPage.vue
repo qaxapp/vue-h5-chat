@@ -289,7 +289,7 @@ export default {
 };
 </script>
 
-<style lang="css" scoped>
+<style lang="scss" scoped>
 .conversation-info {
     display: flex;
     flex-direction: column;
@@ -397,7 +397,7 @@ header label input {
 }
 
 .action-item:active {
-    background-color: #d6d6d6;
+    background-color: $cm-bg-color;
 }
 
 .quit-group-item {
@@ -411,7 +411,7 @@ header label input {
 }
 
 .quit-group-item:active {
-    background: #d6d6d6;
+    background-color: $cm-bg-color;
 }
 
 .switch {

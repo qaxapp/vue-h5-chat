@@ -142,12 +142,12 @@ export default {
 }
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 
 .composite-page {
     width: var(--composite-message-page-width);
     height: var(--composite-message-page-height);
-    background: #f7f7f7;
+    background: $cm-bg-color;
     overflow: scroll;
 }
 
@@ -159,7 +159,7 @@ export default {
 }
 
 .close-button-container:active {
-    background: lightgrey;
+    background: $cm-bg-color;
 }
 
 .composite-page ul {
@@ -180,7 +180,7 @@ export default {
     position: absolute;
     margin-left: 55px;
     padding: 5px 0;
-    border-bottom: 1px solid #f1f1f1;
+    border-bottom: 1px solid $cm-split-line-color;
 }
 
 .message-container {

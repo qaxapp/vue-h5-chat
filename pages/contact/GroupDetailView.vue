@@ -32,7 +32,7 @@ export default {
 }
 </script>
 
-<style lang="css" scoped>
+<style lang="scss" scoped>
 
 .group-info-container {
     display: flex;
@@ -47,14 +47,14 @@ export default {
 .group-info-container a {
     color: white;
     padding: 10px 40px;
-    background-color: #3497f1;
+    background-color: $cm-theme-color;
     border-radius: 5px;
     font-size: 14px;
     border: 1px solid transparent;
 }
 
 .group-info-container a:active {
-    background-color: #4168e0;
+    background-color: $cm-theme-color-hover;
 }
 
 .group-info {
