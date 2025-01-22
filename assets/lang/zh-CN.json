@@ -182,6 +182,8 @@
 	"chat_im_i18n": {
 		"chat_im_create_group": "创建群聊",
 		"chat_im_add_friend": "添加朋友",
-		"chat_im_scan": "扫一扫"
+		"chat_im_scan": "扫一扫",
+		"qr_not_supported": "不支持该二维码: ",
+		"user_logout":"退出登录"
 	}
 }

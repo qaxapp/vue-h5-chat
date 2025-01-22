@@ -164,7 +164,7 @@ export default {
                     break;
                 default:
                     uni.showToast({
-                        title: '不支持该二维码: ' + qrcode,
+                        title: this.$t('chat_im_i18n.qr_not_supported') + qrcode,
                         icon: 'none',
                     });
                     break;
@@ -175,7 +175,7 @@ export default {
 </script>
 <style scoped>
 .main-action-menu {
-    width: 300rpx;
+    width: 330rpx;
     position: fixed;
     z-index: 9999;
     top: -10px;

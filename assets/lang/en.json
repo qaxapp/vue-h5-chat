@@ -182,6 +182,8 @@
 	"chat_im_i18n": {
 		"chat_im_create_group": "Create Group",
 		"chat_im_add_friend": "Add Friend",
-		"chat_im_scan": "Scan"
+		"chat_im_scan": "Scan",
+		"qr_not_supported": "QR Code not supported: ",
+		"user_logout":"Log Out"
 	}
 }

@@ -15,7 +15,7 @@
                 {{ info }}
             </text>
         </div> -->
-        <button class="logout-button" @click="logout">退出登录</button>
+        <button class="logout-button" @click="logout">{{ $t('chat_im_i18n.user_logout') }}</button>
     </div>
 
 </template>
