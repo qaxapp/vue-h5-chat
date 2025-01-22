@@ -20,7 +20,8 @@
 		"enter_password": "Please enter password",
 		"password": "Password",
 		"use_verification_code_login": "Use SMS Code to Login",
-		"use_password_login": "Use Password to Login"
+		"use_password_login": "Use Password to Login",
+		"sms_code_sent_success": "Verification Code Sent Successfully"
 	},
 	"contact": {
 		"new_friend": "New friend",

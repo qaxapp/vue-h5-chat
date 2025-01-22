@@ -20,7 +20,8 @@
 		"enter_password": "请输入密码",
 		"password": "密码",
 		"use_verification_code_login": "使用验证码登录",
-		"use_password_login": "使用密码登录"
+		"use_password_login": "使用密码登录",
+		"sms_code_sent_success": "发送验证码成功"
 	},
 	"contact": {
 		"new_friend": "新的朋友",

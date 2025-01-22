@@ -146,7 +146,7 @@ export default {
             appServerApi.requestAuthCode(phone)
                 .then(result => {
                     uni.showToast({
-                        title: '发送验证码成功',
+                        title: this.$t('login.sms_code_sent_success'),
                         icon: 'none',
                     });
                 })
@@ -175,20 +175,23 @@ export default {
     }
 };
 </script>
-<style>
+<style lang="scss">
 .page-body {
     padding: 20rpx;
     height: 100vh;
+    background-color: $cm-bg-color; 
 }
 
 .login-type-title {
     margin-top: 120rpx;
     font-size: 24px;
     margin-bottom: 50rpx;
+    color: $cm-text-color;
 }
 
 .mobile-container {
     margin-top: 20rpx;
+    color: $cm-text-color-grey;
 }
 
 .mobile-input-container {
@@ -196,19 +199,21 @@ export default {
     flex-direction: column;
     justify-content: center;
     height: 40px;
+    color: $cm-text-color;
 }
 
 .mobile-input-container input {
     font-size: 14px;
-    border-bottom: 1px solid #e0e0e0;
+    border-bottom: 1px solid $cm-border-color;
 }
 
 .mobile-input-container .uni-input-input:focus {
-    border-bottom: 1px solid #3f64e4;
+    border-bottom: 1px solid $cm-border-color;
 }
 
 .auth-code-container {
     margin-top: 30rpx;
+    color: $cm-text-color;
 }
 
 .auth-code-input-container {
@@ -224,15 +229,16 @@ export default {
     flex: 1;
     margin-right: 5px;
     font-size: 14px;
-    border-bottom: 1px solid #e0e0e0;
+    border-bottom: 1px solid $cm-border-color;
 }
 
 .auth-code-input-container .uni-input-input:focus {
-    border-bottom: 1px solid #3f64e4;
+    border-bottom: 1px solid $cm-border-color;
 }
 
 .password-container {
     margin-top: 30rpx;
+    color: $cm-text-color-grey;
 }
 
 .password-input-container {
@@ -240,20 +246,21 @@ export default {
     flex-direction: column;
     justify-content: center;
     height: 40px;
+    color: $cm-text-color;
 }
 
 .password-input-container input {
     font-size: 14px;
-    border-bottom: 1px solid #e0e0e0;
+    border-bottom: 1px solid $cm-border-color;
 }
 
 .password-input-container input:focus {
-    border-bottom: 1px solid #3f64e4;
+    border-bottom: 1px solid $cm-border-color;
 }
 
 .switch-type {
     text-align: left;
-    color: #3f64e4;
+    color: $cm-border-color;
     font-size: 14px;
     margin-top: 40rpx;
     cursor: pointer;

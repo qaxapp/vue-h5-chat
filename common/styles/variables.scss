@@ -1,3 +1,13 @@
 $cm-bg-color: #0C1822;
 $cm-received-message-bg-color: #25303A;
 $cm-sent-message-bg-color: #0B5D5E;
+
+/* 边框颜色 */
+$cm-border-color:#1EFFE4;
+
+/* 文字基本颜色 */
+$cm-text-color:#fff;//基本色
+$cm-text-color-inverse:#333;//反色
+$cm-text-color-grey:#969696;//辅助灰色，如加载更多的提示信息
+$cm-text-color-placeholder: #F0F5FF;
+$cm-text-color-disable:#F0F5FF;
