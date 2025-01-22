@@ -33,7 +33,7 @@ export default {
 }
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 
 .channel-item {
     height: 50px;
@@ -45,7 +45,7 @@ export default {
 
 
 .channel-item:active {
-    background: #d6d6d6;
+    background: $cm-bg-color;
 }
 
 .channel-item span {

@@ -148,7 +148,7 @@ export default {
 }
 </script>
 
-<style lang="css" scoped>
+<style lang="scss" scoped>
 
 .contact-item {
     --user-item-padding-left: 30px;
@@ -204,11 +204,11 @@ ul {
 }
 
 .contact-item .content.active {
-    background-color: #d6d6d6;
+    background-color: $cm-bg-color;
 }
 
 .contact-item .content:active {
-    background-color: #d6d6d6;
+    background-color: $cm-bg-color;
 }
 
 .disabled {

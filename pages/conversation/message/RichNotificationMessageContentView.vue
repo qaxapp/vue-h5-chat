@@ -40,7 +40,7 @@ export default {
 }
 </script>
 
-<style lang="css" scoped>
+<style lang="scss" scoped>
 .notification-container {
     background-color: white;
     width: 600rpx;
@@ -79,7 +79,7 @@ export default {
 }
 
 .ex-info-container {
-    border-top: 1px solid lightgrey;
+    border-top: 1px solid $cm-split-line-color;
     padding-top: 5px;
     margin: 5px 0;
     font-size: 14px;

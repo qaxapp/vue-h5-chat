@@ -139,10 +139,11 @@
 	}
 </script>
 
-<style lang="css" scoped>
+<style lang="scss" scoped>
 	.contact-list {
 		height: var(--page-full-height-without-header-and-tabbar);
 		overflow: auto;
+		background-color: $cm-bg-color;
 	}
 
 	.category-item-container {
@@ -152,10 +153,9 @@
 		align-items: center;
 		z-index: 1000;
 		padding-left: 10px;
-		color: #FFFFFF;
+		color: $cm-text-color;
 		font-size: 14px;
 		position: sticky;
-		background-color: #212332;
 	}
 
 	.category-item-container image {
@@ -168,6 +168,7 @@
 		display: flex;
 		width: 100%;
 		justify-content: space-between;
+		color: $cm-text-color;
 	}
 
 	.category-item span:last-of-type {

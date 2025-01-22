@@ -70,7 +70,7 @@ export default {
 };
 </script>
 
-<style lang="css" scoped>
+<style lang="scss" scoped>
 .conversation-info {
     display: flex;
     flex-direction: column;
@@ -108,7 +108,7 @@ export default {
 }
 
 .action-item:active {
-    background-color: #d6d6d6;
+    background-color: $cm-bg-color;
 }
 
 </style>

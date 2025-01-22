@@ -72,7 +72,7 @@ export default {
 }
 </script>
 
-<style lang="css" scoped>
+<style lang="scss" scoped>
 
 .user-detail-container {
     margin-left: 90px;
@@ -87,7 +87,7 @@ export default {
     justify-content: space-between;
     align-items: center;
     padding-bottom: 15px;
-    border-bottom: 1px solid #e6e6e6;
+    border-bottom: 1px solid $cm-split-line-color;
 }
 
 .header .avatar {

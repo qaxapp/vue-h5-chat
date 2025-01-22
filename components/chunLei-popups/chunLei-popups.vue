@@ -320,11 +320,11 @@
 		}
 	}
 	.solid-bottom{
-		border-bottom: 1px solid #ccc;
+		border-bottom: 1px solid $cm-split-line-color;
 	}
 	.solid-right{
 		
-		border-right: 1px solid #ccc;
+		border-right: 1px solid $cm-split-line-color;
 	}
 	.popups .itemChild:last-child{
 		border: none;

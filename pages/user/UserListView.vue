@@ -150,7 +150,7 @@ export default {
 }
 </script>
 
-<style lang="css" scoped>
+<style lang="scss" scoped>
 
 .contact-item {
     --user-item-padding-left: 30px;
@@ -176,7 +176,7 @@ export default {
 
 .contact-item .label {
     width: 100%;
-    background-color: #fafafa;
+    color: $cm-text-color;
 }
 
 .contact-item .label p {
@@ -194,6 +194,7 @@ export default {
     width: 100%;
     align-items: center;
     position: relative;
+    color: $cm-text-color;
 }
 
 .contact-item .content::after {
@@ -202,7 +203,7 @@ export default {
     left: 60px; /* 偏移量 */
     right: 0;
     bottom: 0;
-    border-bottom: 1px solid #f4f4f4; /* 定义边框样式 */
+    border-bottom: 1px solid $cm-split-line-color; /* 定义边框样式 */
 }
 
 .contact-item .content span {
@@ -210,11 +211,11 @@ export default {
 }
 
 .contact-item .content.active {
-    background-color: #d6d6d6;
+    background-color: $cm-bg-color;
 }
 
 .contact-item .content:active {
-    background-color: #d6d6d6;
+    background-color: $cm-bg-color;
 }
 
 .user-online-status {

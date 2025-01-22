@@ -31,7 +31,7 @@ export default {
 }
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 .avatar {
     width: 40px;
     height: 40px;
@@ -47,7 +47,7 @@ export default {
 }
 
 .group-item:active {
-    background-color: #d6d6d6;
+    background-color: $cm-bg-color;
 }
 
 .group-item span {
