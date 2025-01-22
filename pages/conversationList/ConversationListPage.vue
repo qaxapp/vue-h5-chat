@@ -24,9 +24,10 @@ import ConversationItemView from "./ConversationItemView";
 import store from "../../store";
 import wfc from "../../wfc/client/wfc";
 import ConnectionStatus from "../../wfc/client/connectionStatus";
-import {getItem} from "../util/storageHelper";
+import {getItem, removeItem} from "../util/storageHelper";
 import organizationServerApi from "../../api/organizationServerApi";
-
+import Conversation from "@/wfc/model/conversation";
+import ConversationType from "@/wfc/model/conversationType";
 export default {
     name: 'ConversationListPage',
     data() {
@@ -38,26 +39,52 @@ export default {
             contextMenuX: 0,
             contextMenuY: 0,
             contextMenuItems: [],
+			sharedContactState: store.state.contact,
+			type: 0,
+			conversationInfo: null,
         };
     },
 
     onShow() {
-        console.log('conversationList onShow', this.sharedConversationState.conversationInfoList.length)
-        let userId = getItem('userId');
-        if (!userId) {
-            // 被踢等，需要退到登录页面
-            // 本来应当在启动应用，连接状态变化时处理，但可能会切换失败
-            // Waiting to navigate to: /pages/conversationList/ConversationListPage, do not operate continuously: /pages/login/LoginPage.
-            uni.reLaunch(
-                {
-                    url: '/pages/login/LoginPage'
-                }
-            );
-        }
+  
 
+        
         this.updateTabBarBadge();
     },
-
+	created(){
+		console.log('conversationList onShow', this.sharedConversationState.conversationInfoList.length)
+		let userId = getItem('userId');
+		let wechat = getItem('wechat');
+		if (!userId) {
+		    // 被踢等，需要退到登录页面
+		    // 本来应当在启动应用，连接状态变化时处理，但可能会切换失败
+		    // Waiting to navigate to: /pages/conversationList/ConversationListPage, do not operate continuously: /pages/login/LoginPage.
+		    uni.reLaunch(
+		        {
+		            url: '/pages/login/LoginPage'
+		        }
+		    );
+		}else{
+			if(wechat===true){
+		        wfc.connect(userId, getItem('token'));
+				
+				// console.log('77',this.sharedConversationState)
+				uni.showLoading({
+		            title:'loading'
+		        })
+				this.chat()
+			}
+		}
+		
+	},
+    onReady() {
+        
+        // wfc.connect(getItem('userId'), getItem('token'));
+		// this.chat()	
+    },
+    onLoad(){
+       
+    },
     onHide() {
         console.log('conversationList onHide');
         this.$refs.mainActionMenu.hide();
@@ -79,8 +106,37 @@ export default {
                 break;
         }
     },
-
+	mounted() {
+		
+        
+	},
+	
     methods: {
+		chat() {
+			let conversation = new Conversation(getItem('type')==0?ConversationType.Single:getItem('type')==1?ConversationType.Group:getItem('type')==2?ConversationType.ChatRoom:getItem('type')==3?ConversationType.Channel:ConversationType.SecretChat, getItem("chatId"), 0);
+			// let conversation = new Conversation(ConversationType.Single, getItem("chatId"), 0);
+            store.setCurrentConversation(conversation);
+			// 不加延时的话，不能正常切换页面，会报莫名其妙的错误
+			setTimeout(() => {
+					uni.redirectTo({
+						url:'/pages/conversation/Customer',
+						success: () => {
+						   
+							console.log('to conversation list success');
+						},
+						fail: e => {
+							console.log('to conversation list error', e);
+						},
+						complete: () => {
+							console.log('switch tab complete')
+						}
+					})
+				
+			}, 50)
+			
+		
+			
+		},
         showConversation(conversationInfo) {
             store.setCurrentConversationInfo(conversationInfo);
             this.$go2ConversationPage();
@@ -195,6 +251,7 @@ export default {
                 case ConnectionStatus.ConnectionStatusConnected:
                     //organizationServerApi.login().then(r => console.log('org login result', r)).catch(reason => console.log('org login fail ', reason));
                     desc = '';
+                   
                     break;
                 case ConnectionStatus.ConnectionStatusUnconnected:
                     desc = this.$t('chat_im_i18n.connection_failed');

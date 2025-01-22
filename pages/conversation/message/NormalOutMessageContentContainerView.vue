@@ -51,7 +51,7 @@ import {gte} from "@/wfc/util/longUtil";
 import MessageReceiptDetailView from "@/pages/conversation/message/MessageReceiptDetailView";
 import QuoteMessageView from "@/pages/conversation/message/QuoteMessageView";
 import Config from "@/config";
-
+import { getItem } from "../../util/storageHelper";
 export default {
     name: "NormalOutMessageContentView",
     props: {
@@ -62,6 +62,8 @@ export default {
     },
     data() {
         return {
+			userInfo:null,
+			wechat:false,
             sharedConversationState: store.state.conversation,
             sharedPickState: store.state.pick,
             highLight: false,
@@ -76,6 +78,11 @@ export default {
 
     },
     mounted() {
+		if(getItem('wechat')){
+			
+			this.userInfo=  wfc.getUserInfo(getItem('userId'), true);
+			this.wechat = getItem('wechat')
+		}
         if (this.message.messageContent.quoteInfo) {
             let messageUid = this.message.messageContent.quoteInfo.messageUid;
             let msg = store.getMessageByUid(messageUid);
@@ -94,16 +101,25 @@ export default {
     methods: {
         onClickUserPortrait(userId) {
             store.setCurrentFriend(this.message._from);
-            uni.navigateTo({
-                url: '/pages/contact/UserDetailPage',
-                success: () => {
-                    console.log('nav to UserDetailPage success');
+			if(getItem('wechat')){
+				// TODO 点击头像事件
+				uni.showToast({
+					title: 'TODO 点击头像事件',
+					icon: 'none'
+				})
+			}else{
+				
+				uni.navigateTo({
+					url: '/pages/contact/UserDetailPage',
+					success: () => {
+						console.log('nav to UserDetailPage success');
 
-                },
-                fail: (err) => {
-                    console.log('nav to UserDetailPage err', err);
-                }
-            })
+					},
+					fail: (err) => {
+						console.log('nav to UserDetailPage err', err);
+					}
+				})
+			}
         },
         resend() {
             wfc.deleteMessage(this.message.messageId);
