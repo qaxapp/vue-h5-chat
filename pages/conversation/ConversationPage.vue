@@ -706,7 +706,7 @@ export default {
               );
             },
             onClose: () => {
-              this.alertDialogOptions = {};
+				// this.$refs.alertDialog.close();
             },
           };
           this.$refs.alertDialog.open();
