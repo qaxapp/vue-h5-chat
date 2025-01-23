@@ -102,12 +102,15 @@ export default {
 }
 </script>
 
-<style lang="css" scoped>
+<style lang="scss" scoped>
 
 .organization-tree-container {
     display: flex;
     height: 100%;
     flex-direction: column;
+	
+	color: $cm-text-color;
+	background-color: $cm-bg-color;
 }
 
 .member-list-container {
@@ -127,7 +130,7 @@ export default {
 }
 
 .organization-item:hover {
-    background: #d6d6d6;
+    background: $cm-bg-color;
 }
 
 .organization-item img {

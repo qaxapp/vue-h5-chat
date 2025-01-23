@@ -64,6 +64,11 @@ export default {
 }
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
+	
+// 添加页面背景色
+:deep(page) {
+    background: $cm-bg-color;
+}
 
 </style>

@@ -153,7 +153,8 @@ export default {
 }
 </script>
 
-<style lang="css" scoped>
+<style lang="scss" scoped>
+	
 .pick-contact-container {
     display: flex;
     flex-direction: column;
@@ -161,6 +162,8 @@ export default {
     height: var(--page-full-height-without-header);
     width: 100%;
     overflow: hidden;
+	color: $cm-text-color;
+	background-color: $cm-bg-bar-color;
 }
 
 .contact-list-container {

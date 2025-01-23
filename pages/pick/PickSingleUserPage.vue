@@ -95,7 +95,8 @@ export default {
 }
 </script>
 
-<style lang="css" scoped>
+<style lang="scss" scoped>
+
 .pick-contact-container {
     display: flex;
     flex-direction: column;
@@ -103,6 +104,9 @@ export default {
     height: 100vh;
     width: 100%;
     overflow: hidden;
+	
+	color: $cm-text-color;
+	background-color: $cm-bg-color;
 }
 
 .contact-list-container {
@@ -110,7 +114,7 @@ export default {
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
-    background-color: #f7f7f7;
+    background-color: $cm-bg-bar-color;
     overflow: auto;
 }
 
@@ -125,8 +129,8 @@ export default {
     height: 35px;
     flex: 1;
     border-radius: 3px;
-    border: 1px solid #ededed;
-    background-color: white;
+    border: 1px solid $cm-split-line-color;
+    background-color: $cm-bg-bar-color;
     margin: 0 15px;
     padding-left: 20px;
     text-align: left;

@@ -44,24 +44,32 @@ export default {
 }
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
+
+// 添加页面背景色
+:deep(page) {
+    background: $cm-bg-color;
+}
 
 .search-portal-container {
     height: var(--page-full-height-without-header);
     overflow: auto;
     position: relative;
+	color: $cm-text-color;
+	background: $cm-bg-color;
 }
 
 .search-portal-container input {
     padding: 5px 10px;
     height: 35px;
     box-sizing: border-box;
-    border-bottom: 1px solid lightgrey;
+    border-bottom: 1px solid $cm-split-line-color;
     position: fixed;
     width: 100%;
     top: var(--uni-page-header-height);
     left: 0;
-    background-color: white;
+	color: $cm-text-color;
+	background: $cm-bg-color;
     z-index: 99;
 }
 

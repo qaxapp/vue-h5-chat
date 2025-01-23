@@ -1,12 +1,26 @@
 <template>
     <view>
+		
         <view v-if="sharedConversationState.currentConversationInfo == null" class="conversation-empty-container">
             <text>^~^</text>
         </view>
         <view v-else ref="conversationContentContainer" class="conversation-content-container"
               :dummy_just_for_reactive="currentVoiceMessage"
         >
+			<view class="nav" v-if="conversationInfo.conversation.type==2" >
+				<view class="nav-lag" @click="open">
+					<span>{{currentLable}} </span>
+					<image src='/assets/images/dwon.png'></image>
+				</view>
+				<view @click="ruletost" class='rule'>
+					<image src='/assets/images/error.png'></image>
+				</view>
+				
+				
+				
+			</view>
             <view class="message-list-container">
+				
                 <scroll-view ref="conversationMessageList" class="message-list" scroll-y="true" :scroll-top="scrollTop"
                              refresher-enabled="true" :refresher-triggered="triggered"
                              :refresher-threshold="45" @refresherpulling="onPulling"
@@ -59,8 +73,17 @@
             />
             <MultiSelectActionView v-show="sharedConversationState.enableMessageMultiSelection"/>
         </view>
-       
+   
     </view>
+	<uni-popup ref="popup" :mask-click="false" >
+		<view class="languageWarp">
+			<ul>
+				<li v-for="(item,index) in languageList" @click="checkLanguage(item)"  @mouseover="handleMouseOver(item)" :class="item.cid==currentCid?'current':item.cid==checkCid?'check':''">{{ item.label }}</li>
+				
+			</ul>
+		</view>
+		<!-- <button @click="close">关闭</button> -->
+	</uni-popup>
     <uni-popup ref="alertDialog" type="dialog">
             <uni-popup-dialog 
             :cancelText="alertDialogOptions.cancelText" 
@@ -104,7 +127,7 @@ import Config from "../../config";
 import RichNotificationMessageContent from "../../wfc/messages/notification/richNotificationMessageContent";
 import ArticlesMessageContent from "../../wfc/messages/articlesMessageContent";
 import ContextableNotificationMessageContentContainerView from "./message/ContextableNotificationMessageContentContainerView.vue";
-
+import Conversation from "@/wfc/model/conversation";
 var innerAudioContext;
 export default {
   name: "ConversationPage",
@@ -125,12 +148,37 @@ export default {
       sharedContactState: store.state.contact,
       sharedPickState: store.state.pick,
       sharedMiscState: store.state.misc,
-
+	  // 切换语言list
+	  languageList:[{
+		  cid:'chatroom1',
+		  label:'Globe'
+	  },{
+		  cid:'chatroom2',
+		  label:'English'
+	  },{
+		  cid:'chatroom3',
+		  label:'繁體中文'
+	  },{
+		  cid:'chatroom007',
+		  label:'Italiana'
+	  },{
+		  cid:'0050a6e853024033bba5d5cd506d1bb8',
+		  label:'Français'
+	  },{
+		  cid:'82e0884de3e7433f9176771fc3d1583c',
+		  label:'Português'
+	  },{
+		  cid:'chatroom[object Object]',
+		  label:'日本語'
+	  }],
+	  currentCid:'',// 切换语言选中的chatroomId
+	  currentLable:'',// 切换语言选中的描述
+	  checkCid:'',
       savedMessageListViewHeight: -1,
       saveMessageListViewFlexGrow: -1,
-
+	  
       dragAndDropEnterCount: 0,
-
+	  isHovered:false,	
       showContextMenu: false,
       isScroll: false,
       touchStartX: 0,
@@ -174,6 +222,7 @@ export default {
   },
 
   onShow() {
+	 
     // this.updateConversationTitle();
   },
 
@@ -228,6 +277,54 @@ export default {
   },
 
   methods: {
+	  findlable(){
+		
+		 this.languageList.map(item=>{
+			 if(item.cid==this.currentCid){
+				 this.currentLable=item.label 
+			 }
+			
+		 })
+		 
+	  },
+	checkLanguage(item) {
+		// 切换语言
+		this.currentCid=item.cid
+		this.findlable()
+		wfc.quitChatroom(getItem('chatId'), succ => {
+		    this.chat(this.currentCid)
+			
+			this.close()
+			
+		}, err => {
+		    // console.error('getChatroomInfo error', chatroomId, err)
+		})
+  
+	},
+	chat(currentCid) {
+		let conversation = new Conversation(getItem('type')==0?ConversationType.Single:getItem('type')==1?ConversationType.Group:getItem('type')==2?ConversationType.ChatRoom:getItem('type')==3?ConversationType.Channel:ConversationType.SecretChat, currentCid, 0);
+		store.setCurrentConversation(conversation);
+	},
+	handleMouseOver(item) {
+  
+		this.checkCid = item.cid
+  
+  
+	},
+	open() {
+		this.$refs.popup.open('left')
+	},
+	close() {
+		this.$refs.popup.close()
+	},
+
+	ruletost() {
+		// 点击右上角的规则
+	    uni.showToast({
+	    	title: '点击规则事件',
+	    	icon: 'none'
+	    })  
+	},
     toggleMessageMultiSelectionActionView(message) {
       store.toggleMessageMultiSelection(message);
     },
@@ -780,7 +877,12 @@ export default {
   },
 
   mounted() {
-    
+     uni.hideLoading();
+	 if(getItem('type')==2){
+		this.currentCid=getItem('chatId')
+		this.findlable()
+	 }
+	 
     this.scrollToBottom();
     store.clearConversationUnreadStatus(this.conversationInfo.conversation);
 
@@ -923,15 +1025,80 @@ export default {
   align-items: center;
   /*border-left: 1px solid #e6e6e6;*/
 }
-
+.nav{
+	position: fixed;
+	width: 100%;
+	top:0px;
+	left: 0px;
+	height: 44px;
+	background-color: #14293A;
+	z-index: 99999;
+}
+.nav-lag{
+	position: relative;
+	left: 10px;
+	top:50%;
+	color: #fff;
+	transform: translate(0,-50%);
+	font-size: 18px;
+	font-weight: bold;
+}
+.nav-lag span{
+	margin-right: 5px;
+}
+.nav .nav-lag image{
+	width: 10px;
+	height: 10px;
+	// margin-left: 30px;
+}
+.nav .rule{
+	position: absolute;
+	right: 40px;
+	top:50%;
+	transform: translate(0,-50%);
+}
+.nav .rule image{
+	width: 20px;
+	height: 20px;
+	
+}
+.languageWarp{
+	padding:45px 0px 0px 10px;
+	color:#fff;
+}
+.languageWarp ul{
+	padding: 5px;
+	background-color: #14293A;
+}
+.languageWarp ul li{
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	padding: 0px 12px;
+	box-sizing: border-box;
+	width: 127px;
+	height: 28px;
+	margin-top:5px;
+	font-size: 14px;
+}
+.current{
+	border: 1px solid #1EFFE4;
+	background: #1A3143;
+	border-radius: 4px;
+}
+.check{
+	background: #1A3143;
+	border-radius: 4px;
+}
 .conversation-content-container {
   position: relative;
   display: flex;
   height: 100vh;
+  // height: var(--page-full-height-without-header);
   overflow: hidden;
   flex-direction: column;
   background-color: $cm-bg-color;
-  padding-top:40px;
+  // padding-top:40px;
   /*padding: 0 12px;*/
 }
 

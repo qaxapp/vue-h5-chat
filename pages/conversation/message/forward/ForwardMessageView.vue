@@ -80,10 +80,12 @@ export default {
 }
 </script>
 
-<style lang="css" scoped>
+<style lang="scss" scoped>
 .forward-message-container {
     width: 100%;
     padding: 0 30px;
+	color: $cm-text-color;
+	background-color: $cm-bg-color;
 }
 
 .forward-message {
@@ -93,6 +95,7 @@ export default {
     justify-content: center;
     max-height: 100px;
     overflow: hidden;
+	background-color: $cm-bg-color;
 }
 
 .forward-message p {
@@ -100,10 +103,9 @@ export default {
     border-radius: 5px;
     word-wrap: break-word;
     word-break: break-all;
-    color: #aaaaaa;
     font-size: 13px;
     overflow: hidden;
-    background-color: #e7e7e7;
+	color: $cm-text-color;
     text-overflow: ellipsis;
     display: -webkit-box;
     -webkit-line-clamp: 2;
