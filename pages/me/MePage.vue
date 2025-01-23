@@ -4,15 +4,27 @@
             <image class="portrait" :src="user.portrait"></image>
             <text class="name">{{ user.displayName }}</text>
         </div>
-        <div class="item" @click="showLanguage">
-		    <text>{{ $t('chat_im_i18n.language') }}</text>
-		</div>
         <div class="item" @click="showAbout">
             <text>{{ $t('chat_im_i18n.about') }}</text>
         </div>
 		
+		<div class="item" @click="showLanguage">
+		    <text>{{ $t('chat_im_i18n.language') }}</text>
+		</div>
+		
 		
         <button class="logout-button" @click="logout">{{ $t('chat_im_i18n.user_logout') }}</button>
+		
+		<uni-popup ref="alertDialog" type="dialog">
+		        <uni-popup-dialog 
+		        :cancelText="alertDialogOptions.cancelText" 
+		        :confirmText="alertDialogOptions.confirmText" 
+		        :title="alertDialogOptions.title"
+		        :content="alertDialogOptions.content"
+		        @confirm="alertDialogOptions.onConfirm"               
+		        @close="alertDialogOptions.onClose">
+				</uni-popup-dialog>
+		</uni-popup>
     </div>
 
 </template>
@@ -29,7 +41,8 @@ export default {
     data() {
         return {
             user: null,
-            info: ''
+            info: '',
+			alertDialogOptions: {},
         }
     },
     mounted() {
@@ -61,14 +74,28 @@ export default {
 
         },
         logout() {
-            wfc.disconnect(true, false);
-            clear();
-            try {
-                    uni.reLaunch({
-                        url: '/pages/login/LoginPage'
-                    });
-                } catch (error) {
-                }
+			
+			this.alertDialogOptions = {
+			  cancelText: "取消",
+			  confirmText: "确认",
+			  title: "提示",
+			  content: "退出登录？",
+			  onConfirm: () => {
+			    wfc.disconnect(true, false);
+			    clear();
+			    try {
+			            uni.reLaunch({
+			                url: '/pages/login/LoginPage'
+			            });
+			        } catch (error) {    
+			    }
+			  },
+			  onClose: () => {
+			    this.alertDialogOptions = {};
+			  },
+			};
+			this.$refs.alertDialog.open();
+            
         },
         showAbout() {
             uni.navigateTo({
@@ -110,11 +137,11 @@ export default {
     align-items: center;
     flex-direction: row;
     position: relative; // 添加此行
-	background-color: $uni-bg-color;
+    background: $cm-bg-bar-color;
 }
 
 .user-info:active {
-	background-color: $uni-bg-color;
+    background: $cm-bg-bar-color;
 }
 
 .user-info::after {
@@ -140,12 +167,11 @@ export default {
     width: 100%;
     padding: 15px 10px;
     position: relative; // 添加此行
-	background-color: $uni-bg-color;
+    background: $cm-bg-bar-color;
 }
 
 .item:active {
-	background-color: $uni-bg-color;
-}
+    background: $cm-bg-bar-color;}
 
 .item::after {
     content: ""; /* 使伪元素可见 */

@@ -6,7 +6,7 @@
                 <view class="language-item" @click="switchLanguage(language.code)">
                     {{ language.name }}
                     <checkbox 
-                        :checked="currentLanguage === language.code" 
+                        :checked="currentLanguage === language.code"
                         @change="switchLanguage(language.code)" 
                         class="checkbox" 
                     />
@@ -35,9 +35,11 @@ const languages = ref([
 const currentLanguage = ref(getCachedLanguage() ? getCachedLanguage() : "zh-CN"); // 默认语言
 
 
-const switchLanguage = (code) => {
-	currentLanguage.value = code;
-	setLanguage(code);
+const switchLanguage = (code) => {	
+	if (currentLanguage.value !== code) {
+	    currentLanguage.value = code;
+		setLanguage(code);
+	}
 };
 </script>
 
