@@ -257,13 +257,13 @@ export default {
 }
 </script>
 
-<style lang="css" scoped>
+<style lang="scss" scoped>
 
 .search-result-container {
     margin-top: 35px;
     height: calc(100% - 35px);
     /*background-color: red;*/
-    background-color: #f3f3f3e5;
+    background-color: $cm-bg-color;
 }
 
 .search-result-container .empty-container {
@@ -276,7 +276,7 @@ export default {
 
 .search-result-container ul {
     list-style: none;
-    background-color: white;
+    background-color: $cm-bg-color;
 }
 
 .search-result-category-container {
@@ -292,23 +292,23 @@ export default {
 
 .search-result-category-container label {
     color: #828282;
-    background: #EDEDED;
+    background: $cm-bg-color;
     display: block;
     padding-top: 10px;
     padding-bottom: 2px;
     padding-left: 12px;
-    border-bottom: 1px solid #eeeeee;
+    border-bottom: 1px solid $cm-split-line-color;
 }
 
 .search-result-item {
-    background-color: white;
+    background-color: $cm-bg-color;
     padding: 10px 12px;
     display: flex;
     align-items: center;
 }
 
 .search-result-item:active {
-    background-color: #d9d9d9;
+    background-color: $cm-bg-color;
 }
 
 .search-result-item img {
@@ -340,12 +340,12 @@ export default {
     margin-left: auto;
     padding: 3px 10px;
     border-radius: 3px;
-    border: 1px solid #cccccc;
+    border: 1px solid $cm-split-line-color;
     outline: none;
 }
 
 .search-result-item.contact button:active {
-    background: #cccccc;
+    background: $cm-bg-color;
 }
 
 .search-result-item.message {
@@ -356,7 +356,7 @@ export default {
 
 .show-all {
     padding-left: 12px;
-    color: #66789d;
+    color: $cm-bg-color;
     font-size: 12px;
 }
 

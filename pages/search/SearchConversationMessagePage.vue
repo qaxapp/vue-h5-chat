@@ -60,14 +60,14 @@ export default {
 }
 </script>
 
-<style lang="css" scoped>
+<style lang="scss" scoped>
 
 .search-conversation-message-container {
     z-index: 100;
-    /*background-color: #f3f3f3e5;*/
-    background-color: white;
     position: relative;
     overflow: auto;
+	color: $cm-text-color;
+    background-color: $cm-bg-color;
 }
 
 .search-conversation-message-container .input {
@@ -75,8 +75,9 @@ export default {
     width: 100%;
     padding: 5px 10px;
     margin-bottom: 5px;
-    background-color: white;
-    border-bottom: 1px solid lightgrey;
+	color: $cm-text-color;
+    background-color: $cm-bg-color;
+    border-bottom: 1px solid $cm-split-line-color;
     position: fixed;
     left: 0;
     top: 0;
@@ -86,34 +87,34 @@ export default {
     display: block;
     margin-top: 40px;
     margin-left: 10px;
-    color: #b2b2b2;
-    /*border-bottom: 1px solid #eeeeee;*/
+    color: $cm-text-color;
+    border-bottom: 1px solid $cm-split-line-color;
 }
 
 .search-conversation-message-container ul {
     list-style: none;
-    background-color: white;
+    background-color: $cm-bg-color;
     overflow: auto;
 }
 
 .category-item label {
-    color: #b2b2b2;
+    color: $cm-text-color;
     display: block;
     padding-top: 10px;
     padding-bottom: 2px;
     margin-left: 12px;
-    border-bottom: 1px solid #eeeeee;
+    border-bottom: 1px solid $cm-split-line-color;
 }
 
 .search-result-item {
-    background-color: white;
+    background-color: $cm-bg-color;
     padding: 10px 12px;
     display: flex;
     align-items: center;
 }
 
 .search-result-item:active {
-    background-color: #d9d9d9;
+    background-color: $cm-bg-color;
 }
 
 .search-result-item img {

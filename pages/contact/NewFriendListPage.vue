@@ -46,7 +46,12 @@ export default {
 }
 </script>
 
-<style lang="css" scoped>
+<style lang="scss" scoped>
+
+// 添加页面背景色
+:deep(page) {
+    background: $cm-bg-color;
+}
 
 .friend-request-list {
     height: var(--page-full-height-without-header);

@@ -50,7 +50,7 @@ export default {
 }
 </script>
 
-<style scoped>
+<style lang="scss" lscoped>
 
 .chatroom-container {
     display: flex;
@@ -58,16 +58,18 @@ export default {
     align-items: center;
     width: 100%;
     height: 100vh;
-    background: #fafafa;
+    background: $cm-bg-color; 
 }
 
 .item {
     width: 100%;
     height: 50px;
     padding: 30px 10px;
-    background: white;
     display: flex;
     align-items: center;
+	color: $cm-text-color;
+    background: $cm-bg-color; 
+	
 	/* margin: 10px 0px; */
 }
 .item image {
@@ -82,11 +84,11 @@ export default {
 }
 
 .item i {
-    color: #d6d6d6;
+    color: $cm-bg-color; 
 }
 
 .item:active {
-    background: #d6d6d6;
+    background: $cm-bg-color; 
 }
 
 

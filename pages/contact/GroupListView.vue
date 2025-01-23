@@ -44,6 +44,7 @@ export default {
     display: flex;
     font-size: 13px;
     align-items: center;
+	color: $cm-text-color;
 }
 
 .group-item:active {

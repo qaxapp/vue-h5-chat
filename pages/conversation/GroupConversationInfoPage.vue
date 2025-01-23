@@ -290,6 +290,11 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+// 添加页面背景色
+:deep(page) {
+	background: $cm-bg-color;
+}
+
 .conversation-info {
     display: flex;
     flex-direction: column;
@@ -297,6 +302,7 @@ export default {
     justify-content: flex-start;
     height: 100%;
     overflow: hidden;
+	background-color: $cm-bg-color; 
 }
 
 header {
@@ -321,7 +327,7 @@ header label {
 
 header label:last-of-type {
     padding-bottom: 15px;
-    border-bottom: 1px solid #ececec;
+    border-bottom: 1px solid $cm-split-line-color;
 }
 
 header label input {
@@ -337,6 +343,7 @@ header label input {
 .member-container {
     flex: 1;
     overflow: auto;
+	color: $cm-text-color;
 }
 
 .search-item {
@@ -349,18 +356,18 @@ header label input {
     padding: 0 10px 0 20px;
     height: 25px;
     border-radius: 3px;
-    border: 1px solid #ededed;
-    background-color: white;
+    border: 1px solid $cm-split-line-color;
+    background-color: $cm-bg-color;
     text-align: left;
     outline: none;
 }
 
 .search-item input:active {
-    border: 1px solid #4168e0;
+    border: 1px solid $cm-split-line-color;
 }
 
 .search-item input:focus {
-    border: 1px solid #4168e0;
+    border: 1px solid $cm-split-line-color;
 }
 
 .search-item i {
@@ -383,7 +390,7 @@ header label input {
     justify-content: center;
     align-items: center;
     border-radius: 3px;
-    border: 1px dashed #d6d6d6;
+    border: 1px dashed $cm-split-line-color;
 }
 
 .action-item img {
@@ -407,7 +414,7 @@ header label input {
     justify-content: center;
     height: 50px;
     max-height: 50px;
-    border-top: 1px solid #ececec;
+    border-top: 1px solid $cm-split-line-color;
 }
 
 .quit-group-item:active {
@@ -422,6 +429,10 @@ header label input {
 
 .switch checkbox {
     margin-left: 20px;
+}
+
+.icon {
+	color: $cm-text-color;
 }
 
 </style>

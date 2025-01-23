@@ -133,7 +133,11 @@ export default {
     computed: {}
 };
 </script>
-<style lang="css" scoped>
+<style lang="scss" scoped>
+// 添加页面背景色
+:deep(page) {
+    background: $cm-bg-color;
+}
 
 .chatroom-info {
     display: flex;
@@ -153,7 +157,7 @@ export default {
 .chatroom-info li{
     margin: 0 15px;
     padding: 10px 0;
-    border-bottom: 1px solid #ccc;
+    border-bottom: 1px solid $cm-split-line-color;
     font-size: 12px;
 }
 .category-item-container {
