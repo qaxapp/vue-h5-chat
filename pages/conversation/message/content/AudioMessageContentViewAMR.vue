@@ -1,7 +1,7 @@
 <template>
     <div ref="container" class="audio-message-container" :style="widthStyle" @click.prevent="playVoice">
         <p v-if="message.direction === 0" class="duration">{{ duration }}"</p>
-        <div class="volume-container">
+        <div class="volume-container" :class="{'volume-container-sent':message.direction === 0}">
             <i v-show="!message._isPlaying" class="icon-ion-android-volume-up"></i>
             <i v-show="message._isPlaying" class="icon-ion-pause"></i>
         </div>
@@ -70,7 +70,7 @@ export default {
 }
 </script>
 
-<style lang="css" scoped>
+<style lang="scss" scoped>
 
 .audio-message-container {
     margin: 0 10px;
@@ -90,10 +90,15 @@ export default {
     display: flex;
     height: 40px;
     min-width: 55px;
-    background: white;
+    background-color: $cm-received-message-bg-color;
     border-radius: 5px;
     padding: 5px 10px;
     align-items: center;
+}
+
+.volume-container-sent {
+	background-color: $cm-sent-message-bg-color;
+	
 }
 
 .volume-container i {
