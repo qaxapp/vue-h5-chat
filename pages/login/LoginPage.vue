@@ -108,9 +108,9 @@ export default {
                     this.go2ConversationList();
                 })
                 .catch(r => {
-                    console.log('login failed', r)
+                    console.log('login failed', r);
                     uni.showToast({
-                        title: r,
+                        title: r.message,
                         icon: 'none',
                     });
                 });
@@ -129,9 +129,9 @@ export default {
                     this.go2ConversationList();
                 })
                 .catch(r => {
-                    console.log('login failed', r)
+                    console.log('login failed', r);
                     uni.showToast({
-                        title: r,
+                        title: r.message,
                         icon: 'none',
                     });
                 });
@@ -150,9 +150,9 @@ export default {
                         icon: 'none',
                     });
                 })
-                .catch(reason => {
+                .catch(r => {
                     uni.showToast({
-                        title: reason,
+                        title: r.message,
                         icon: 'none',
                     });
                 })

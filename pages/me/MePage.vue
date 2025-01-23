@@ -74,7 +74,6 @@ export default {
 
         },
         logout() {
-			
 			this.alertDialogOptions = {
 			  cancelText: "取消",
 			  confirmText: "确认",
@@ -91,7 +90,7 @@ export default {
 			    }
 			  },
 			  onClose: () => {
-			    this.alertDialogOptions = {};
+					// this.$refs.alertDialog.close();
 			  },
 			};
 			this.$refs.alertDialog.open();
