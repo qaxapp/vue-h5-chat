@@ -1,6 +1,7 @@
 <template>
     <div ref="userCardTippy"
          :name="'userCardInfoTrigger' + message.messageId"
+		 @click="showUserDetail"
          class="user-card-content-container">
         <div class="portrait-name-container">
             <img :src="message.messageContent.portrait">
@@ -26,6 +27,7 @@
 import Message from "@/wfc/messages/message";
 import UserCardView from "@/pages/user/UserCardView";
 import wfc from "@/wfc/client/wfc";
+import store from "../../../../store";
 
 export default {
     name: "UserCardMessageContentView",
@@ -49,7 +51,22 @@ export default {
             if (userCard.cardType === 0) {
                 return wfc.getUserInfo(userCard.target)
             }
-        }
+        },
+		
+		showUserDetail() {
+			let userCard = this.message.messageContent;
+			let userInfo = wfc.getUserInfo(userCard.target);
+			store.setCurrentFriend(userInfo);
+			uni.navigateTo({
+			    url: '/pages/contact/UserDetailPage',
+			    success: () => {
+			        console.log('nav to UserDetailPage success');
+			    },
+			    fail: (err) => {
+			        console.log('nav to UserDetailPage err', err);
+			    }
+			})
+		}
     }
 }
 </script>

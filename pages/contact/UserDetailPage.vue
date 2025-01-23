@@ -46,7 +46,7 @@
                 </div> -->
                 <div v-if="!isFriend && !isSelf" class="action" @click="addFriend">
                     <i class="icon-ion-person-add"></i>
-                    <a>{{ $t('add_friend') }}</a>
+                    <a>{{ $t('contact.add_friend') }}</a>
                 </div>
             </div>
     </div>
