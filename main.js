@@ -26,6 +26,7 @@ app.use(pinia)
 
 app.use(picker)
 app.use(forward)
+
 const currentLanguage = initializeLanguage();
 console.log(getCachedLanguage() ? getCachedLanguage() : "zh-CN");
 const i18n = createI18n({

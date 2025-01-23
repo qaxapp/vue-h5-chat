@@ -6,7 +6,6 @@
                               />
         <StreamingTextMessageContentView :message="message"
                                          v-else-if="message.messageContent.type === 14 || message.messageContent.type === 15"
-                                         :style="{'--out-arrow-color':'#98ea70', '--in-arrow-color':'white'}"
                                          v-bind:class="{leftarrow:message.direction === 1, rightarrow: message.direction === 0}"/>
         <AudioMessageContentView :message="message"
                                  v-else-if="message.messageContent.type === 2"/>
@@ -17,7 +16,6 @@
         <!--                           v-bind:class="{leftarrow:message.direction === 1, rightarrow: message.direction === 0}"/>-->
         <FileMessageContentView :message="message"
                                 v-else-if="message.messageContent.type === 5"
-                                :style="{'--out-arrow-color':'white', '--in-arrow-color':'white'}"
                                 v-bind:class="{leftarrow:message.direction === 1, rightarrow: message.direction === 0}"/>
         <VideoMessageContentView :message="message"
                                  v-else-if="message.messageContent.type === 6"/>
@@ -32,7 +30,6 @@
                                             v-else-if="message.messageContent.type === 408"/>
         <UserCardMessageContentView :message="message"
                                     v-else-if="message.messageContent.type === 10"
-                                    :style="{'--out-arrow-color':'white', '--in-arrow-color':'white'}"
                                     v-bind:class="{leftarrow:message.direction === 1, rightarrow: message.direction === 0}"/>
         <UnsupportMessageContentView :message="message"
                                      v-else-if="[/* todo un support message types */].indexOf(message.messageContent.type) >= 0"/>
@@ -89,11 +86,12 @@ export default {
 }
 </script>
 
-<style lang="css">
+<style lang="scss">
 
 :root {
-    --in-arrow-color: white;
-    --out-arrow-color: #98ea70;
+    // 这里是 CSS 变量
+    --in-arrow-color: #{$cm-received-message-bg-color};
+    --out-arrow-color: #{$cm-sent-message-bg-color};
 }
 
 .leftarrow:before {

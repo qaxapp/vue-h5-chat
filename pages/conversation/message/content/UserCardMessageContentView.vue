@@ -7,7 +7,7 @@
             <p>{{ message.messageContent.displayName }}</p>
         </div>
         <p class="desc single-line">个人名片</p>
-        <tippy
+   <!--     <tippy
             :to="'userCardInfoTrigger' + message.messageId"
             interactive
             :animate-fill="false"
@@ -18,7 +18,7 @@
             trigger="click"
         >
             <UserCardView v-on:close="closeUserCard" :user-info="userInfo()"/>
-        </tippy>
+        </tippy> -->
     </div>
 </template>
 
@@ -54,22 +54,23 @@ export default {
 }
 </script>
 
-<style scoped lang="css">
+<style scoped lang="scss">
 .user-card-content-container {
     width: 230px;
     height: 100px;
     margin: 0 10px;
     padding: 10px;
-    background-color: white;
+    background-color:$cm-received-message-bg-color;
     position: relative;
     border-radius: 5px;
+	color: $cm-text-color;
 }
 
 .portrait-name-container {
     display: flex;
     align-items: center;
     padding-bottom: 10px;
-    border-bottom: 1px solid #eeeeee;
+    border-bottom: 1px solid $cm-split-line-color;
 }
 
 .portrait-name-container img {
