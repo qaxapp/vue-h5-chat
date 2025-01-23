@@ -152,11 +152,13 @@ export default {
 
 .contact-item {
     --user-item-padding-left: 30px;
+	background-color: $cm-bg-color;
 }
 
 ul {
     list-style: none;
     width: 100%;
+	background-color: $cm-bg-color;
 }
 
 .avatar {
@@ -174,11 +176,12 @@ ul {
     flex-direction: column;
     font-size: 13px;
     align-items: flex-start;
+	background-color: $cm-bg-color;
 }
 
 .contact-item .label {
     width: 100%;
-    background-color: #fafafa;
+	background-color: $cm-bg-color;
     z-index: 9999;
 }
 
@@ -197,6 +200,7 @@ ul {
     display: flex;
     width: 100%;
     align-items: center;
+	background-color: $cm-bg-color;
 }
 
 .contact-item .content span {

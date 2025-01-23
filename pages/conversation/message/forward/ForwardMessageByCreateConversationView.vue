@@ -107,12 +107,13 @@ export default {
 }
 </script>
 
-<style lang="css" scoped>
+<style lang="scss" scoped>
 .pick-user-container {
     display: flex;
     flex-direction: column;
     height: 100vh;
     width: 100%;
+	color: $cm-text-color;
 }
 
 .user-list-panel {
@@ -120,13 +121,15 @@ export default {
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
-    background-color: #f7f7f7;
+	background-color: $cm-bg-color;
+	color: $cm-text-color;
     overflow: hidden;
 }
 
 .user-list-panel .input-container {
     display: flex;
     width: 100%;
+	background-color: $cm-bg-color;
 }
 
 .user-list-panel input {
@@ -146,7 +149,7 @@ export default {
 }
 
 .user-list-container .back {
-    background-color: #f7f7f7;
+background-color: $cm-bg-color;
     height: 40px;
     font-size: 13px;
     padding-left: 15px;
@@ -155,7 +158,7 @@ export default {
 }
 
 .user-list-container .back:active {
-    background-color: #e5e5e5;
+background-color: $cm-bg-color;
 }
 
 .checked-user-list-container {

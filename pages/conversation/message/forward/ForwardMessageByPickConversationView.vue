@@ -132,6 +132,7 @@ export default {
     flex-direction: column;
     height: 100vh;
     width: 100%;
+	color: $cm-text-color;
 }
 
 .conversation-list-panel {
@@ -139,8 +140,8 @@ export default {
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
-    background-color: #f7f7f7;
     overflow: hidden;
+	color: $cm-text-color;
 }
 
 .conversation-list-panel .input-container {
@@ -153,14 +154,12 @@ export default {
     margin: 15px 20px 0 15px;
     flex: 1;
     border-radius: 3px;
-    border: 1px solid #ededed;
-    background-color: white;
+    border: 1px solid $cm-border-gray-color;
     padding-left: 10px;
     text-align: left;
 }
 
 .conversation-list-panel .create-group {
-    background-color: #f7f7f7;
     height: 40px;
     font-size: 13px;
     padding-left: 15px;
@@ -169,7 +168,7 @@ export default {
 }
 
 .conversation-list-panel .create-group:active {
-    background-color: #e5e5e5;
+	background-color: $cm-bg-color;
 }
 
 .conversation-list-container {
@@ -178,9 +177,8 @@ export default {
 
 .conversation-list-container > p {
     position: sticky;
-    background-color: #f7f7f7;
     font-size: 12px;
-    color: #888888;
+	color: $cm-text-color;
     z-index: 1;
     top: 0;
     padding-left: 15px;
@@ -191,10 +189,11 @@ export default {
     height: 70px;
     display: flex;
     flex-direction: row;
-    border-bottom: 1px solid #eeeeee;
+    border-bottom: 1px solid cm-split-line-color;
     align-items: center;
     justify-content: flex-start;
     padding-left: 15px;
+	color: $cm-text-color;
 }
 
 .conversation-item:active {
@@ -212,14 +211,14 @@ export default {
     height: 45px;
     display: inline-block;
     top: 50%;
-    background: #d6d6d6;
+	background-color: $cm-bg-color;
     transform: translateY(-50%);
     border-radius: 3px;
 }
 
 .conversation-item .title {
     font-size: 14px;
-    color: #262626;
+	color: $cm-text-color;
     font-style: normal;
     font-weight: normal;
     padding-right: 10px;
@@ -297,7 +296,7 @@ export default {
     height: 45px;
     margin: 10px 10px;
     display: inline-block;
-    background: #d6d6d6;
+	background-color: $cm-bg-color;
     border-radius: 3px;
 }
 
@@ -305,14 +304,14 @@ export default {
     position: absolute;
     width: 20px;
     height: 20px;
-    border: 1px solid #e5e5e5;
+    border: 1px solid cm-split-line-color;
     border-radius: 10px;
     top: 0;
     right: 0;
 }
 
 .checked-conversation-list-container .content .unpick-button:active {
-    background-color: #e5e5e5;
+	background-color: $cm-bg-color;
 }
 
 .checked-conversation-list-container footer {
@@ -326,7 +325,7 @@ export default {
 .checked-conversation-list-container footer button {
     padding: 5px 30px;
     border-radius: 4px;
-    border: 1px solid #cccccc;
+    border: 1px solid cm-split-line-color;
 }
 
 .checked-conversation-list-container footer button.confirm {

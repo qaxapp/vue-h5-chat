@@ -223,6 +223,16 @@ export default {
     justify-content: space-between;
     width: 100%;
     height: 40px;
+
+    button {
+        background-color: $cm-bg-button-color !important;
+        color: white;
+        
+        &[disabled] {
+            background-color: rgba($cm-bg-button-color, 0.3) !important;
+            color: white !important;
+        }
+    }
 }
 
 .auth-code-input-container input {
@@ -268,6 +278,13 @@ export default {
 
 .confirm-button {
     margin-top: 20px;
+    background-color: $cm-bg-button-color !important;
+    color: white;
+}
+
+.confirm-button[disabled] {
+    background-color: rgba($cm-bg-button-color, 0.3) !important;
+    color: white !important;
 }
 
 </style>
