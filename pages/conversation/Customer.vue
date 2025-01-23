@@ -148,6 +148,7 @@ export default {
       sharedContactState: store.state.contact,
       sharedPickState: store.state.pick,
       sharedMiscState: store.state.misc,
+	  // 切换语言list
 	  languageList:[{
 		  cid:'chatroom1',
 		  label:'Globe'
@@ -170,8 +171,8 @@ export default {
 		  cid:'chatroom[object Object]',
 		  label:'日本語'
 	  }],
-	  currentCid:'',
-	  currentLable:'',
+	  currentCid:'',// 切换语言选中的chatroomId
+	  currentLable:'',// 切换语言选中的描述
 	  checkCid:'',
       savedMessageListViewHeight: -1,
       saveMessageListViewFlexGrow: -1,
@@ -277,7 +278,7 @@ export default {
 
   methods: {
 	  findlable(){
-		  
+		
 		 this.languageList.map(item=>{
 			 if(item.cid==this.currentCid){
 				 this.currentLable=item.label 
@@ -287,7 +288,7 @@ export default {
 		 
 	  },
 	checkLanguage(item) {
-  
+		// 切换语言
 		this.currentCid=item.cid
 		this.findlable()
 		wfc.quitChatroom(getItem('chatId'), succ => {
@@ -318,6 +319,7 @@ export default {
 	},
 
 	ruletost() {
+		// 点击右上角的规则
 	    uni.showToast({
 	    	title: '点击规则事件',
 	    	icon: 'none'
