@@ -4,13 +4,14 @@
             <image class="portrait" :src="user.portrait"></image>
             <text class="name">{{ user.displayName }}</text>
         </div>
-        <div class="item" @click="showAbout">
-            <text>{{ $t('chat_im_i18n.about') }}</text>
-        </div>
 		
 		<div class="item" @click="showLanguage">
 		    <text>{{ $t('chat_im_i18n.language') }}</text>
 		</div>
+		
+        <div class="item" @click="showAbout">
+            <text>{{ $t('chat_im_i18n.about') }}</text>
+        </div>
 		
 		
         <button class="logout-button" @click="logout">{{ $t('chat_im_i18n.user_logout') }}</button>
@@ -117,6 +118,11 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+// 添加页面背景色
+:deep(page) {
+    background: $cm-bg-color;
+}
+
 
 .me-container {
     display: flex;
@@ -124,7 +130,7 @@ export default {
     align-items: center;
     width: 100%;
     height: var(--page-full-height-without-header-and-tabbar);
-	background-color: $uni-bg-color;
+	background-color: $cm-bg-color;
     color: $cm-text-color;
 }
 

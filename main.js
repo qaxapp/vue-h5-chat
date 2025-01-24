@@ -17,7 +17,10 @@ import { initializeLanguage, getCachedLanguage } from './common/language'; // �
 
 import VConsole from 'vconsole';
 
-const vConsole = new VConsole();
+// 只在开发环境下启用 vConsole
+if (process.env.NODE_ENV === 'development') {
+    const vConsole = new VConsole();
+}
 
 const app = createSSRApp(App)
 
