@@ -1,7 +1,7 @@
 <template>
     <div class="chatroom-container">
         <div class="item" @click="go2Chatroom(item.cid)" v-for="(item,index) in chatroomList">
-			<image :src="item.portrait ? item.portrait:'/assets/images/portrait.png'"/>
+			<image :src="item.portrait!='' ? item.portrait:'/assets/images/portrait.png'"/>
 			<text>{{item.title}}</text>
         </div>
     </div>

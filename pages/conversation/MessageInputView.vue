@@ -69,6 +69,7 @@
           @touchstart.prevent=""
           @touchmove.prevent=""
           @touchend.prevent="send(text)"
+		      @click.prevent="send(text)"
         >
           <image
             src="@/assets/images/send-icon.png"
@@ -168,7 +169,7 @@ import Draft from "../util/draft";
 import pttClient from "../../wfc/ptt/pttClient";
 import avenginekitproxy from "../../wfc/av/engine/avenginekitproxy";
 import appServerApi from "../../api/appServerApi";
-
+import { setItem } from "../util/storageHelper";
 export default {
   name: "MessageInputView",
   components: {
@@ -420,6 +421,7 @@ export default {
     toggleEmoji() {
       console.log("------------- toggleEmoji");
       this.showEmoji = !this.showEmoji;
+	  setItem('showEmoji',this.showEmoji)
       if (this.showEmoji) {
         this.currentEmojiStickerIndex = 0;
       }
@@ -431,6 +433,7 @@ export default {
     toggleGif() {
       console.log("------------- toggleEmoji");
       this.showEmoji = !this.showEmoji;
+	  setItem('showEmoji',this.showEmoji)
       if (this.showEmoji) {
         if (this.currentEmojiStickerIndex == 0) {
           this.currentEmojiStickerIndex = 1;
