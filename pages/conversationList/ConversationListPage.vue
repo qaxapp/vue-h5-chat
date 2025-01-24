@@ -117,11 +117,11 @@ export default {
 		chat() {
 			let conversation = new Conversation(getItem('type')==0?ConversationType.Single:getItem('type')==1?ConversationType.Group:getItem('type')==2?ConversationType.ChatRoom:getItem('type')==3?ConversationType.Channel:ConversationType.SecretChat, getItem("chatId"), 0);
 			store.setCurrentConversation(conversation);
-			uni.hideLoading()
+            // uni.hideLoading()
 			
 				// 不加延时的话，不能正常切换页面，会报莫名其妙的错误
 				
-					// this.$go2ConversationPage();
+					setTimeout(() => {
 						uni.redirectTo({
 							url:'/pages/conversation/Customer',
 							success: () => {
@@ -135,6 +135,8 @@ export default {
 								console.log('switch tab complete')
 							}
 						})
+					},100)
+						
 					
 				
 			

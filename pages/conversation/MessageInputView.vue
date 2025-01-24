@@ -69,6 +69,7 @@
           @touchstart.prevent=""
           @touchmove.prevent=""
           @touchend.prevent="send(text)"
+		      @click.prevent="send(text)"
         >
           <image
             src="@/assets/images/send-icon.png"

@@ -1,5 +1,5 @@
 <template>
-    <view>
+    <view >
 		
         <view v-if="sharedConversationState.currentConversationInfo == null" class="conversation-empty-container">
             <text>^~^</text>
@@ -19,7 +19,7 @@
 				
 				
 			</view>
-            <view class="message-list-container">
+            <view class="message-list-container" @click="fatherClick">
 				
                 <scroll-view ref="conversationMessageList" class="message-list" scroll-y="true" :scroll-top="scrollTop"
                              refresher-enabled="true" :refresher-triggered="triggered"
@@ -67,6 +67,7 @@
             <!--                  class="viewider-handler"></view>-->
             <chunLei-popups v-model="showContextMenu" :popData="contextMenuItems" @tapPopup="onContextMenuItemSelect" :x="contextMenuX" :y="contextMenuY" direction="column" theme="dark" :triangle="false" dynamic/>
             <MessageInputView :conversationInfo="sharedConversationState.currentConversationInfo"
+							
                               v-show="!sharedConversationState.enableMessageMultiSelection"
                               class="message-input-container"
                               ref="messageInputView"
@@ -277,6 +278,9 @@ export default {
   },
 
   methods: {
+	   fatherClick() {
+		  this.$refs.messageInputView.toggleEmoji();
+		},
 	  findlable(){
 		
 		 this.languageList.map(item=>{
