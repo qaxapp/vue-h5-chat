@@ -194,7 +194,7 @@ export default {
 }
 
 .logout-button {
-    margin-top: 440rpx;
+    margin-top: 240rpx;
     width: 80%;
     background:#373949;
 	margin-left: 24rpx;
