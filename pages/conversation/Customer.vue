@@ -278,9 +278,12 @@ export default {
   },
 
   methods: {
-	   fatherClick() {
-		  this.$refs.messageInputView.toggleEmoji();
-		},
+	  fatherClick() {
+		if(getItem('showEmoji')){
+		  this.$refs.messageInputView.toggleEmoji();   
+		}
+		  
+	  },
 	  findlable(){
 		
 		 this.languageList.map(item=>{

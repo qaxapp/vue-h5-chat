@@ -6,7 +6,7 @@
         <view v-else ref="conversationContentContainer" class="conversation-content-container"
               :dummy_just_for_reactive="currentVoiceMessage"
         >
-            <view class="message-list-container">
+            <view class="message-list-container" @click="fatherClick">
                 <scroll-view ref="conversationMessageList" class="message-list" scroll-y="true" :scroll-top="scrollTop"
                              refresher-enabled="true" :refresher-triggered="triggered"
                              :refresher-threshold="45" @refresherpulling="onPulling"
@@ -228,6 +228,11 @@ export default {
   },
 
   methods: {
+    fatherClick() {
+	  if(getItem('showEmoji')){
+		this.$refs.messageInputView.toggleEmoji();   
+	  }
+	},
     toggleMessageMultiSelectionActionView(message) {
       store.toggleMessageMultiSelection(message);
     },
