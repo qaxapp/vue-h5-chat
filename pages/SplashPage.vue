@@ -26,12 +26,18 @@ export default {
 		
 		if(option.wechat === 'true'){
 			setItem("wechat", true);
-				
-			setItem("userId", option.userId);
-			setItem("clientId", option.clientId);
-			setItem("token", option.token);
-			setItem("authToken-app",option.authTokenapp)  
-			
+			if(option.clientId){
+				setItem("clientId", option.clientId);
+			}
+			if(option.userId){
+				setItem("userId", option.userId);
+			}
+			if(option.token){
+				setItem("token", option.token);
+			}
+			if(option.authTokenapp){
+				setItem("authToken-app",option.authTokenapp)  
+			}
 			setItem("chatId", option.chatId);
 			this.type=option.type
 			setItem("type", option.type);
