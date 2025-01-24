@@ -120,13 +120,12 @@ export default {
 }
 </script>
 
-<style lang="css" scoped>
+<style lang="scss" scoped>
 
 .container {
     display: flex;
     align-items: flex-start;
 }
-
 .message-time-container {
     width: 100%;
     display: flex;
@@ -144,7 +143,7 @@ export default {
 }
 
 .message-time-container.checked {
-    background-color: #e7e7e7;
+    background-color: $cm-selected-message-bg-color;
 }
 
 .message-avatar-content-container {

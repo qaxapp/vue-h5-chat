@@ -231,7 +231,7 @@ export default {
 }
 </script>
 
-<style lang="css" scoped>
+<style lang="scss" scoped>
 
 .message-time-container {
     width: 100%;
@@ -241,7 +241,7 @@ export default {
 }
 
 .message-time-container.checked {
-    background-color: #e7e7e7;
+    background-color: $cm-selected-message-bg-color;
 }
 
 .message-time-container .time {

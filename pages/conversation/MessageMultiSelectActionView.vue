@@ -33,12 +33,11 @@
                     <p>{{ $t('common.delete') }}</p>
                 </div>
             </li>
-            <li>
-                <div class="action">
-                    <i @click="hideMultiSelectionActionView" class="icon-ion-close"></i>
-                </div>
-            </li>
+            
         </ul>
+		<div class="close">
+		    <i @click="hideMultiSelectionActionView" class="icon-ion-close"></i>
+		</div>
     </div>
 </template>
 
@@ -90,7 +89,7 @@ export default {
 }
 </script>
 
-<style lang="css" scoped>
+<style lang="scss" scoped>
 
 .multi-selection-action-container {
     width: 100%;
@@ -100,7 +99,8 @@ export default {
     display: flex;
     justify-content: center;
     align-items: center;
-    border-top: 1px solid #e2e2e2;
+    border-top: 1px solid #222222;
+	position: relative;
 }
 
 ul {
@@ -119,10 +119,18 @@ ul li {
     justify-content: center;
     align-items: center;
 }
+p {
+	color: $cm-text-color;
+}
+.close {
+	position: absolute;
+	top: 20px;
+	right: 20px;
+}
 
 .action .icon {
-    width: 60px;
-    height: 60px;
+    width: 120rpx;
+    height: 120rpx;
     background-color: white;
     border-radius: 30px;
     display: flex;
@@ -143,5 +151,8 @@ ul li {
     font-size: 20px;
 }
 
+.icon-ion-close:before {
+	color: white;
+}
 
 </style>
