@@ -88,7 +88,7 @@ import MultiSelectActionView from "@/pages/conversation/MessageMultiSelectAction
 import ForwardType from "@/pages/conversation/message/forward/ForwardType";
 import FileMessageContent from "@/wfc/messages/fileMessageContent";
 import ImageMessageContent from "@/wfc/messages/imageMessageContent";
-// import {copyImg, copyText} from "@/pages/util/clipboard";
+import {copyImg, copyText} from "@/pages/util/clipboard";
 import Message from "@/wfc/messages/message";
 import VideoMessageContent from "@/wfc/messages/videoMessageContent";
 import SoundMessageContent from "@/wfc/messages/soundMessageContent";
@@ -724,6 +724,9 @@ export default {
         case "multiSelection":
           this.multiSelect(t.message);
           break;
+		case "copy":
+		  this.copy(t.message);
+		  break;
         default:
           uni.showToast({
             title: "TODO " + t.title,

@@ -4,6 +4,7 @@ import {stringValue} from "../wfc/util/longUtil";
 import AppServerError from "./appServerError";
 import wfc from "../wfc/client/wfc";
 import {getItem, setItem} from "../pages/util/storageHelper";
+import { getCachedLanguage } from "../common/language";
 
 export class AppServerApi {
     constructor() {
@@ -195,6 +196,7 @@ export class AppServerApi {
                 header: {
                     'content-type': 'application/json', // 默认值
                     'authToken': getItem('authToken-app'),
+					'i18n': getCachedLanguage() ? getCachedLanguage() : "zh-CN",
                 },
                 method: 'POST',
 
