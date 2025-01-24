@@ -140,6 +140,11 @@
 </script>
 
 <style lang="scss" scoped>
+	// 添加页面背景色
+	:deep(page) {
+	    background: $cm-bg-color;
+	}
+	
 	.contact-list {
 		height: var(--page-full-height-without-header-and-tabbar);
 		overflow: auto;
