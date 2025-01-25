@@ -196,7 +196,7 @@ export class AppServerApi {
                 header: {
                     'content-type': 'application/json', // 默认值
                     'authToken': getItem('authToken-app'),
-					//'i18n': getCachedLanguage() ? getCachedLanguage() : "zh-CN",
+					'i18n': getCachedLanguage() ? getCachedLanguage() : "zh-CN",
                 },
                 method: 'POST',
 
