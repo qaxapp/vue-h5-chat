@@ -210,6 +210,19 @@
 		"connecting": "正在连接...",
 		"syncing": "正在同步...",
 		"connection_failed": "连接失败",
-		"operation_failed": "操作失败"
+		"operation_failed": "操作失败",
+		"open_document_failed": "打开文档失败",
+		"chat_page_loading": "加载中...",
+		"contact_card": "个人名片",
+		"business_card": "[名片]",
+		"personal_card": "[个人名片]",
+		"group_card": "[群组名片]",
+		"chat_room_card": "[聊天室名片]",
+		"channel_card": "[频道名片]",
+		"quoted_content_recalled": "引用内容已撤回",
+		"delete_conversation": "删除会话",
+		"you_recalled_a_message": "你撤回了一条消息",
+		"admin_recalled_a_message": "管理员撤回了一条消息",
+		"user_recalled_a_message": " 撤回了一条消息"
 	}
 }

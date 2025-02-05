@@ -25,7 +25,7 @@
                                 <img class="avatar" :src="user.portrait" alt="">
                                 <span
                                     class="single-line"> {{
-                                        user._displayName || (user.groupAlias ? user.groupAlias : (user.friendAlias ? user.friendAlias : (user.displayName ? user.displayName : '用户')))
+                                        user._displayName || (user.groupAlias ? user.groupAlias : (user.friendAlias ? user.friendAlias : (user.displayName ? user.displayName : 'User')))
                                     }}</span>
                             </div>
                         </li>

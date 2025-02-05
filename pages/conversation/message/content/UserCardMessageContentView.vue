@@ -7,7 +7,7 @@
             <img :src="message.messageContent.portrait">
             <p>{{ message.messageContent.displayName }}</p>
         </div>
-        <p class="desc single-line">个人名片</p>
+        <p class="desc single-line">{{ $t('chat_im_i18n.contact_card') }}</p>
    <!--     <tippy
             :to="'userCardInfoTrigger' + message.messageId"
             interactive

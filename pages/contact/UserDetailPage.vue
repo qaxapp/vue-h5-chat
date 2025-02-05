@@ -14,7 +14,7 @@
                 <li>
                     <label>{{ $t('common.alias') }}</label>
                     <div class="alias">
-                        <input type="text" ref="input" :value="sharedStateContact.currentFriend.friendAlias" placeholder="备注名" @keyup.enter="updateFriendAlias"/>
+                        <input type="text" ref="input" :value="sharedStateContact.currentFriend.friendAlias" :placeholder="$t('common.alias')" @keyup.enter="updateFriendAlias"/>
                     </div>
                 </li>
                 <li>

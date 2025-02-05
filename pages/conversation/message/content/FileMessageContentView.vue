@@ -42,12 +42,12 @@ export default {
                         filePath: filePath,
                         showMenu: true,
                         success: (res) => {
-                            console.log('打开文档成功');
+                            console.log('open file success');
                         },
                         fail: (res) => {
-                            console.log('打开文档失败', res);
+                            console.log('open file fail', res);
                             uni.showToast({
-                                title: '打开文档失败',
+                                title: this.$t('chat_im_i18n.open_document_failed'),
                                 icon: 'none',
                             });
                         }

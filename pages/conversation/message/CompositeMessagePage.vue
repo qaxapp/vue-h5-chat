@@ -1,7 +1,7 @@
 <template>
     <section class="composite-page">
         <div v-if="!compositeMessage" style="display: flex; justify-content: center; align-items: center">
-            加载中...
+            {{ $t('chat_im_i18n.chat_page_loading') }}
         </div>
         <ul v-else>
             <li v-for="(message, index) in compositeMessage.messageContent.messages"
