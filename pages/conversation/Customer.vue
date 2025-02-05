@@ -13,7 +13,7 @@
 					<image src='/assets/images/dwon.png'></image>
 				</view>
 				<view @click="ruletost" class='rule'>
-					<image src='/assets/images/ic_error.svg'></image>
+					<image src='/assets/images/ic_error.svg' style="display: block;"></image>
 				</view>
 				
 				

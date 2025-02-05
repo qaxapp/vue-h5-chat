@@ -10,14 +10,17 @@
                           :value="message" placeholder=""/>
 
                 <div class="message-avatar-content-container">
-                    <!-- 文件的进度条有点特殊，有进度的消息的进度条有点特殊 -->
-                    <!--          <button>progress...</button>-->
                     <LoadingView v-if="message.status === 0 || isDownloading"/>
-                    <i v-if="message.status === 2" class="icon-ion-close-circled" style="color: red" @click="resend"/>
                     <div class="flex-column flex-align-end">
-                        <MessageContentContainerView :message="message"
+                        <div class="message-content-wrapper">
+                            <view class="receipt-status">
+                                <i v-if="message.status === 2" class="icon-ion-close-circled" style="color: red" @click="resend"/>
+                                <image v-else-if="shouldShowMessageReceipt" :src="receiptIcon" mode="aspectFit" class="receipt-icon" @click="showMessageReceiptDetail"/>
+                            </view>
+                            <MessageContentContainerView :message="message"
                                                      class="message-content-container-view"
                                                      @longpress.native.prevent="openMessageContextMenu($event, message)"/>
+                        </div>
                         <QuoteMessageView v-if="quotedMessage"
                                           style="padding: 5px 0; max-width: 80%"
                                           :message="message"
@@ -33,8 +36,6 @@
                         :src="message._from.portrait" alt="">
                 </div>
             </div>
-            <p v-if="shouldShowMessageReceipt" class="receipt" @click="showMessageReceiptDetail">
-                {{ messageReceipt }}</p>
         </div>
     </div>
 
@@ -175,44 +176,43 @@ export default {
     },
 
     computed: {
-        messageReceipt() {
+        receiptIcon() {
             let conversation = this.message.conversation;
             let timestamp = this.message.timestamp;
-            let receiptDesc = ''
             let readEntries = this.sharedConversationState.currentConversationRead;
 
             if (conversation.type === ConversationType.Single) {
                 let readDt = readEntries ? readEntries.get(conversation.target) : 0
                 readDt = readDt ? readDt : 0;
-
                 if (gte(readDt, timestamp)) {
-                    receiptDesc = "已读";
+                    return '/assets/images/read.png';
                 } else {
-                    receiptDesc = "未读";
+                    return '/assets/images/unread.png';
                 }
             } else {
                 let groupMembers = wfc.getGroupMemberIds(conversation.target, false);
                 if (!groupMembers || groupMembers.length === 0) {
-                    receiptDesc = '';
+                    return '/assets/images/unread.png';
                 } else {
                     let memberCount = groupMembers.length;
                     let readCount = 0;
 
-                    let readUserIds = [];
-                    let unreadUserIds = [];
                     groupMembers.forEach(memberId => {
                         let readDt = readEntries ? readEntries.get(memberId) : 0;
                         if (readDt && gte(readDt, timestamp)) {
                             readCount++;
-                            readUserIds.push(memberId);
-                        } else {
-                            unreadUserIds.push(memberId)
                         }
                     });
-                    receiptDesc = `已读 ${readCount}/${memberCount}`
+                    
+                    if (readCount === 0) {
+                        return '/assets/images/unread.png';
+                    } else if (readCount === memberCount) {
+                        return '/assets/images/read.png';
+                    } else {
+                        return '/assets/images/half-read.png';
+                    }
                 }
             }
-            return receiptDesc;
         },
 
         isDownloading() {
@@ -269,15 +269,31 @@ export default {
     position: relative;
 }
 
+.receipt-status {
+    margin-right: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.receipt-icon {
+    width: 32rpx;
+    height: 32rpx;
+    opacity: 0.6;
+}
+
+.icon-ion-close-circled {
+    font-size: 32rpx;
+}
 
 .message-avatar-content-container {
     display: flex;
     max-width: calc(100% - 60px);
     overflow: hidden;
-    /*max-height: 800px;*/
     margin-left: auto;
     text-overflow: ellipsis;
     align-items: flex-start;
+    position: relative;
 }
 
 .message-avatar-content-container .avatar {
@@ -290,6 +306,12 @@ export default {
     background-color: #dadada;
     opacity: 0.5;
     --out-arrow-color: #dadada !important;
+}
+
+.message-content-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
 }
 
 </style>
