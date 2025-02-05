@@ -102,15 +102,14 @@
             userId:'',  // 用户的userId
             clientId:'', // 野火中校验的clientId
             token:'',
-            chatId:'dc010c59d74e405382b62d8cac609bf8',  // 跟type一起搭配使用，如果type为0 chatId则为单聊的客服的uid，如果type为2，则为聊天室的idid
-            type: 0,  // 聊天类型 0是私聊 2是聊天室
+            chatId:'chatroom1',  // 跟type一起搭配使用，如果type为0 chatId则为单聊的客服的uid，如果type为2，则为聊天室的idid
+            type: 2,  // 聊天类型 0是私聊 2是聊天室
         }
         // 将JSON对象转换为查询字符串
             var queryString = Object.keys(obj).map(function(key) {
                 return encodeURIComponent(key) + '=' + encodeURIComponent(obj[key]);
             }).join('&');
-        //document.getElementById('link').src= 'https://h5.ad-gone.com/#/pages/SplashPage?'+queryString;
-        document.getElementById('link').src= 'http://localhost:5173/#/pages/SplashPage?'+queryString;
+         document.getElementById('link').src= 'https://h5.ad-gone.com/#/pages/SplashPage?'+queryString;
     </script>
 </body>
 </html>
