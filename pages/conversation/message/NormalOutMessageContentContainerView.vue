@@ -33,6 +33,7 @@
                         class="avatar"
                         @click="onClickUserPortrait(message.from)"
                         draggable="false"
+						@error="onImageError"
                         :src="message._from.portrait" alt="">
                 </div>
             </div>
@@ -100,6 +101,10 @@ export default {
         }
     },
     methods: {
+		onImageError(event) {
+		      // 图片加载失败时，设置为默认图片
+		      event.target.src = Config.DEFAULT_PORTRAIT_URL;
+		},
         onClickUserPortrait(userId) {
             store.setCurrentFriend(this.message._from);
 			if(getItem('wechat')){
