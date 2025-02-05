@@ -47,14 +47,14 @@ export default {
         }
     },
     mounted() {
-        if (avengineKit.startConference) {
-            this.info += '高级版音视频\n'
-        } else {
-            this.info += '多人版音视频\n'
-            Config.ICE_SERVERS.forEach(obj => {
-                this.info += obj[0] + ' ' + obj[1] + ' ' + obj[2];
-            })
-        }
+        // if (avengineKit.startConference) {
+        //     this.info += '高级版音视频\n'
+        // } else {
+        //     this.info += '多人版音视频\n'
+        //     Config.ICE_SERVERS.forEach(obj => {
+        //         this.info += obj[0] + ' ' + obj[1] + ' ' + obj[2];
+        //     })
+        // }
     },
     onShow() {
         this.user = store.state.contact.selfUserInfo;
@@ -76,10 +76,10 @@ export default {
         },
         logout() {
 			this.alertDialogOptions = {
-			  cancelText: "取消",
-			  confirmText: "确认",
-			  title: "提示",
-			  content: "退出登录？",
+			  cancelText: this.$t('login.cancel'),
+			  confirmText: this.$t('login.confirm'),
+			  title: this.$t('login.prompt'),
+			  content: this.$t('login.logout'),
 			  onConfirm: () => {
 			    wfc.disconnect(true, false);
 			    clear();
@@ -142,11 +142,11 @@ export default {
     align-items: center;
     flex-direction: row;
     position: relative; // 添加此行
-    background: $cm-bg-bar-color;
+    background: $cm-bg-color;
 }
 
 .user-info:active {
-    background: $cm-bg-bar-color;
+    background: $cm-bg-color;
 }
 
 .user-info::after {
@@ -172,11 +172,11 @@ export default {
     width: 100%;
     padding: 15px 10px;
     position: relative; // 添加此行
-    background: $cm-bg-bar-color;
+    background: $cm-bg-color;
 }
 
 .item:active {
-    background: $cm-bg-bar-color;}
+    background: $cm-bg-color;}
 
 .item::after {
     content: ""; /* 使伪元素可见 */

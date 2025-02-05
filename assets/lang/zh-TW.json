@@ -21,7 +21,11 @@
 		"password": "密码",
 		"use_verification_code_login": "使用验证码登录",
 		"use_password_login": "使用密码登录",
-		"sms_code_sent_success": "发送验证码成功"
+		"sms_code_sent_success": "发送验证码成功",
+		"cancel": "取消",
+		"confirm": "確認",
+		"prompt": "提示",
+		"logout": "退出登錄？"
 	},
 	"contact": {
 		"new_friend": "新的朋友",
@@ -199,9 +203,9 @@
 		"chat_im_add_friend": "添加朋友",
 		"chat_im_scan": "掃一掃",
 		"qr_not_supported": "不支援該二維碼: ",
-		"user_logout":"退出登錄",
-		"about":"關於",
-		"language":"語言",
+		"user_logout": "退出登錄",
+		"about": "關於",
+		"language": "語言",
 		"connecting": "正在連接...",
 		"syncing": "正在同步...",
 		"connection_failed": "連接失敗"

@@ -21,7 +21,11 @@
 		"password": "Password",
 		"use_verification_code_login": "Use SMS Code to Login",
 		"use_password_login": "Use Password to Login",
-		"sms_code_sent_success": "Verification Code Sent Successfully"
+		"sms_code_sent_success": "Verification Code Sent Successfully",
+		"cancel": "Cancel",
+		"confirm": "Confirm",
+		"prompt": "Prompt",
+		"logout": "Logout?"
 	},
 	"contact": {
 		"new_friend": "New friend",
