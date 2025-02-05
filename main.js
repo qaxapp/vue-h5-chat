@@ -124,7 +124,7 @@ app.config.globalProperties.$set = (obj, key, value) => obj[key] = value
 wfc.init();
 // web 端音视频初始化
 // 如果不进行初始化，则无法弹出音视频通话界面，不能进行音视频通话。
-avengineKit.setup();
+//avengineKit.setup();
 // if (pttClient.isPttClientEnable()) {
 //     pttClient.init();
 // }

@@ -23,22 +23,6 @@
             "path": "pages/conversationList/ConversationListPage",
             "style": {
                 "navigationBarTitleText": "%chat_conversation_list%",
-                "app-plus": {
-                    "titleNView": {
-                        "buttons": [
-                            {
-                                "text": "\ue657",
-                                "fontSrc": "/static/iconfonts/wx_iconfont.ttf",
-                                "fontSize": "28px"
-                            },
-                            {
-                                "text": "\ue636",
-                                "fontSrc": "/static/iconfonts/wx_iconfont.ttf",
-                                "fontSize": "26px"
-                            }
-                        ]
-                    }
-                }
             }
         },
 		{
