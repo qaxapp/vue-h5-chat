@@ -121,45 +121,13 @@
         {
             "path": "pages/contact/ContactListPage",
             "style": {
-                "navigationBarTitleText": "%chat_friend%",
-                "app-plus": {
-                    "titleNView": {
-                        "buttons": [
-                            {
-                                "text": "\ue657",
-                                "fontSrc": "/static/iconfonts/wx_iconfont.ttf",
-                                "fontSize": "28px"
-                            },
-                            {
-                                "text": "\ue636",
-                                "fontSrc": "/static/iconfonts/wx_iconfont.ttf",
-                                "fontSize": "26px"
-                            }
-                        ]
-                    }
-                }
+                "navigationBarTitleText": "%chat_friend%"
             }
         },
         {
             "path": "pages/contact/NewFriendListPage",
             "style": {
-                "navigationBarTitleText": "%chat_new_friend%",
-                "app-plus": {
-                    "titleNView": {
-                        "buttons": [
-                            {
-                                "text": "\ue63f",
-                                "fontSrc": "/static/iconfonts/wx_iconfont.ttf",
-                                "fontSize": "20px"
-                            },
-                            {
-                                "text": "\uE611",
-                                "fontSrc": "/static/iconfonts/wx_iconfont.ttf",
-                                "fontSize": "26px"
-                            }
-                        ]
-                    }
-                }
+                "navigationBarTitleText": "%chat_new_friend%"
             }
         },
         {
