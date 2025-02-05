@@ -8,6 +8,9 @@ import ForwardType from "./pages/conversation/message/forward/ForwardType";
 import ConnectionStatus from "./wfc/client/connectionStatus";
 import appServerApi from "./api/appServerApi";
 import { getCachedLanguage } from "./common/language";
+import Conversation from "./wfc/model/conversation";
+import ConversationType from "./wfc/model/conversationType";
+import EventType from "./wfc/client/wfcEvent";
 export default {
   data() {
     return {
@@ -15,8 +18,8 @@ export default {
       store: null,
     };
   },
-  onLaunch: function () {
-    console.log("App Launch1");
+  onLaunch: function (option) {
+    console.log("App Launch");
     this.wfc = wfc;
     this.store = store;
     // #ifdef APP-PLUS
@@ -28,6 +31,27 @@ export default {
       }
     });
     // #endif
+	console.log(option);
+	const {query, path} = option;
+	if(query.wechat === 'true' && path==='pages/SplashPage'){
+		console.log("设置chatId", option.chatId)
+		
+		setItem("wechat", true);
+		if(query.clientId){
+			setItem("clientId", query.clientId);
+		}
+		if(query.userId){
+			setItem("userId", query.userId);
+		}
+		if(query.token){
+			setItem("token", query.token);
+		}
+		if(query.authTokenapp){
+			setItem("authToken-app",query.authTokenapp)  
+		}
+		setItem("chatId", query.chatId);
+		setItem("type", query.type);
+	}
   },
   onShow: function () {
     console.log("App Show");
@@ -43,7 +67,11 @@ export default {
         return;
       }
       wfc.connect(userId, token);
-      this.go2ConversationList();
+	  if (getItem("wechat")) {
+		  this.chat();
+	  } else {
+		  this.go2ConversationList();
+	  }
     } else {
       uni.redirectTo({
         url: "/pages/login/LoginPage",
@@ -89,6 +117,33 @@ export default {
         },
       });
     },
+	chat() {
+		console.log("获取chatId",getItem("chatId"))
+		console.log(getItem("type"))
+	
+		let conversation = new Conversation(getItem('type') == 0 ? ConversationType.Single : getItem('type') == 1 ?
+			ConversationType.Group : getItem('type') == 2 ? ConversationType.ChatRoom : getItem('type') == 3 ?
+			ConversationType.Channel : ConversationType.SecretChat, getItem("chatId"), 0);
+		console.log(conversation);
+		wfc.eventEmitter.on(EventType.ConnectionStatusChanged, (status) => {
+			if (status === ConnectionStatus.ConnectionStatusConnected) {
+				store.setCurrentConversation(conversation);
+				// 不加延时的话，不能正常切换页面，会报莫名其妙的错误
+				setTimeout(() => {
+					uni.redirectTo({
+						url: '/pages/conversation/Customer',
+						success: () => {
+						},
+						fail: e => {
+						},
+						complete: () => {
+						}
+					})
+				}, 100)
+			}
+		})
+	
+	},
 
     forwardConferenceInviteMessage(
       callId,
