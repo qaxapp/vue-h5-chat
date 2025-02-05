@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>客服演示</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 20px;
+            font-family: Arial, sans-serif;
+        }
+
+        .content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        .customer-service-btn,
+        .chatroom-btn {
+            position: fixed;
+            bottom: 30px;
+            background-color: #007bff;
+            color: white;
+            padding: 12px 24px;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .customer-service-btn {
+            right: 30px;
+        }
+
+        .chatroom-btn {
+            right: 200px;
+        }
+
+        .customer-service-btn:hover,
+        .chatroom-btn:hover {
+            background-color: #0056b3;
+        }
+
+        .chat-modal {
+            display: none;
+            position: fixed;
+            bottom: 100px;
+            right: 30px;
+            width: 350px;
+            height: 500px;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+            z-index: 1000;
+            overflow: hidden;
+        }
+
+        .chat-modal iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 0;
+        }
+        
+        .close-btn img {
+            width: 20px;
+            height: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="content">
+        <h1>欢迎访问我们的网站</h1>
+        <p>这是一个演示客服功能的示例网站。点击右下角的按钮即可开始对话。</p>
+    </div>
+
+    <!-- 在线客服按钮 -->
+    <button id="customerServiceBtn" class="customer-service-btn" onclick="toggleChat()">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M20 2H4C2.9 2 2 2.9 2 4V22L6 18H20C21.1 18 22 17.1 22 16V4C22 2.9 21.1 2 20 2ZM20 16H5.17L4 17.17V4H20V16Z" fill="white"/>
+        </svg>
+        在线客服
+    </button>
+
+    <!-- 在线聊天室按钮 -->
+    <button id="chatroomBtn" class="chatroom-btn" onclick="toggleChatroom()">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M20 2H4C2.9 2 2 2.9 2 4V22L6 18H20C21.1 18 22 17.1 22 16V4C22 2.9 21.1 2 20 2ZM20 16H5.17L4 17.17V4H20V16Z" fill="white"/>
+        </svg>
+        在线聊天室
+    </button>
+
+    <!-- 在线客服弹窗 -->
+    <div id="chatModal" class="chat-modal">
+        <button class="close-btn" onclick="toggleChat()">
+            <img src="ic_close.svg" alt="关闭">
+        </button>
+        <iframe src="" id="chatIframe" allow="cross-origin-isolated"></iframe>
+    </div>
+
+    <!-- 在线聊天室弹窗 -->
+    <div id="chatroomModal" class="chat-modal">
+        <button class="close-btn" onclick="toggleChatroom()">
+            <img src="ic_close.svg" alt="关闭">
+        </button>
+        <iframe src="" id="chatroomIframe" allow="cross-origin-isolated"></iframe>
+    </div>
+
+    <script>
+        // 定义在线客服和聊天室需要传递的参数对象
+        const obj = {
+            wechat: true,     // 官网客服标志
+            userId: '',       // 用户的userId
+            clientId: '',     // 校验的clientId
+            token: '',
+            chatId: 'dc010c59d74e405382b62d8cac609bf8',  // 单聊客服的uid
+            type: 0         // 聊天类型 0为私聊
+        };
+
+        const chatroomObj = {
+            wechat: true,     // 官网客服标志
+            userId: '',       // 用户的userId
+            clientId: '',     // 校验的clientId
+            token: '',
+            chatId: 'chatroom1', // 聊天室id
+            type: 2         // 聊天类型 2为聊天室
+        };
+
+        // 基础页面地址（可根据需要切换至其他地址）
+        const baseUrl = "http://localhost:5173/#/pages/SplashPage?";
+
+        // 根据对象生成查询字符串
+        function generateQuery(obj) {
+            return Object.keys(obj).map(function(key) {
+                return encodeURIComponent(key) + '=' + encodeURIComponent(obj[key]);
+            }).join('&');
+        }
+
+        // 隐藏按钮函数
+        function hideButtons() {
+            document.getElementById('customerServiceBtn').style.display = 'none';
+            document.getElementById('chatroomBtn').style.display = 'none';
+        }
+
+        // 显示按钮函数
+        function showButtons() {
+            document.getElementById('customerServiceBtn').style.display = 'flex';
+            document.getElementById('chatroomBtn').style.display = 'flex';
+        }
+
+        // 切换在线客服弹窗
+        function toggleChat() {
+            const modal = document.getElementById('chatModal');
+            if (modal.style.display === 'block') {
+                modal.style.display = 'none';
+                showButtons();
+            } else {
+                // 设置iframe的src以加载聊天页面
+                const iframe = document.getElementById('chatIframe');
+                iframe.src = baseUrl + generateQuery(obj);
+                modal.style.display = 'block';
+                hideButtons();
+            }
+        }
+
+        // 切换在线聊天室弹窗
+        function toggleChatroom() {
+            const modal = document.getElementById('chatroomModal');
+            if (modal.style.display === 'block') {
+                modal.style.display = 'none';
+                showButtons();
+            } else {
+                // 设置iframe的src以加载聊天室页面
+                const iframe = document.getElementById('chatroomIframe');
+                iframe.src = baseUrl + generateQuery(chatroomObj);
+                modal.style.display = 'block';
+                hideButtons();
+            }
+        }
+    </script>
+</body>
+</html>
