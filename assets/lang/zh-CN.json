@@ -98,7 +98,8 @@
 		"enable_notification": "允许通知",
 		"disable_notification": "消息免打扰",
 		"mark_as_unread": "标记为未读",
-		"mark_as_read": "标记为已读"
+		"mark_as_read": "标记为已读",
+		"delete_message": "将从所有设备删除消息，不可恢复，确认删除？"
 	},
 	"fav": {
 		"fav": "收藏",

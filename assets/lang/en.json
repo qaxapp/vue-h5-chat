@@ -98,7 +98,8 @@
 		"enable_notification": "Allow notification",
 		"disable_notification": "Not disturb",
 		"mark_as_unread": "Mark as unread",
-		"mark_as_read": "Mark as read"
+		"mark_as_read": "Mark as read",
+		"delete_message": "This action will delete messages from all devices and cannot be recovered. Confirm deletion?"
 	},
 	"fav": {
 		"fav": "Collection",
