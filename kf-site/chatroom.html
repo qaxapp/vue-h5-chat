@@ -109,7 +109,8 @@
             var queryString = Object.keys(obj).map(function(key) {
                 return encodeURIComponent(key) + '=' + encodeURIComponent(obj[key]);
             }).join('&');
-         document.getElementById('link').src= 'https://h5.ad-gone.com/#/pages/SplashPage?'+queryString;
+        //document.getElementById('link').src= 'https://h5.ad-gone.com/#/pages/SplashPage?'+queryString;
+        document.getElementById('link').src= 'http://localhost:5173/#/pages/SplashPage?'+queryString;
     </script>
 </body>
 </html>
