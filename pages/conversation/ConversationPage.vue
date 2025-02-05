@@ -625,13 +625,13 @@ export default {
         message: message,
         tag: "deleteRemote",
       });
-      if (this.isForwardable(message)) {
-        this.contextMenuItems.push({
-          title: "转发",
-          message: message,
-          tag: "forward",
-        });
-      }
+      // if (this.isForwardable(message)) {
+      //   this.contextMenuItems.push({
+      //     title: "转发",
+      //     message: message,
+      //     tag: "forward",
+      //   });
+      // }
       if (this.isRecallable(message)) {
         this.contextMenuItems.push({
           title: "撤回",
@@ -646,11 +646,11 @@ export default {
           tag: "quote",
         });
       }
-      this.contextMenuItems.push({
-        title: "多选",
-        message: message,
-        tag: "multiSelection",
-      });
+      // this.contextMenuItems.push({
+      //   title: "多选",
+      //   message: message,
+      //   tag: "multiSelection",
+      // });
       this.showContextMenu = true;
 
       // <!--                    <li v-if="isCopyable(message)">-->
@@ -695,10 +695,10 @@ export default {
         //   console.log("wfc delete message", t.message.messageId);
 
           this.alertDialogOptions = {
-            cancelText: "取消",
-            confirmText: "确认",
-            title: "提示",
-            content: "将从所有设备删除消息，不可恢复，确认删除？",
+			cancelText: this.$t('login.cancel'),
+			confirmText: this.$t('login.confirm'),
+			title: this.$t('login.prompt'),
+            content: this.$t('conversation.delete_message'),
             onConfirm: () => {
               wfc.deleteRemoteMessageByUid(
                 t.message.messageUid,
