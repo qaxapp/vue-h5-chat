@@ -3,14 +3,11 @@
  */
 
 
-/*
- * Copyright © 2020 WildFireChat. All rights reserved.
- */
-
 import MessageContent from './messageContent'
 import MessageContentType from './messageContentType'
 import wfc from '../client/wfc'
 import Config from '../../config'
+import { i18n } from '../../main.js'
 
 export default class CardMessageContent extends MessageContent {
     /**
@@ -61,23 +58,23 @@ export default class CardMessageContent extends MessageContent {
     }
 
     digest() {
-        let msg = '[名片]';
+        let msg = i18n.global.t('chat_im_i18n.business_card');
         switch (this.cardType) {
             case 0:
-                msg = '[个人名片]'
+                msg = i18n.global.t('chat_im_i18n.personal_card')
                 break;
             case 1:
-                msg = '[群组名片]'
+                msg = i18n.global.t('chat_im_i18n.group_card')
                 break;
             case 2:
-                msg = '[聊天室名]'
+                msg = i18n.global.t('chat_im_i18n.chat_room_card')
                 break;
             case 3:
-                msg = '[频道名片]'
+                msg = i18n.global.t('chat_im_i18n.channel_card')
                 break;
             default:
                 break;
         }
-        return msg + this.displayName;
+        return msg + ' ' + this.displayName;
     }
 }

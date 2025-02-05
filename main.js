@@ -42,6 +42,9 @@ const i18n = createI18n({
 })
 app.use(i18n)
 
+// 添加导出
+export { i18n }
+
 /**
  *
  * @param url

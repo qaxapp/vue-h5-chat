@@ -15,7 +15,7 @@
                     <label>{{ $t('common.alias') }}</label>
                     <div class="alias">
                         <input type="text" :value="sharedStateContact.currentFriendRequest._target.alias"
-                               placeholder="备注名"/>
+                               :placeholder="$t('common.alias')"/>
                     </div>
                 </li>
                 <li>

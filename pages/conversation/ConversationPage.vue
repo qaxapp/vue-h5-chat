@@ -456,79 +456,6 @@ export default {
     },
 
     // call from child
-    favMessages(messages) {
-      console.log("fav messages");
-      let compositeMessageContent = new CompositeMessageContent();
-      let title = "";
-      let msgConversation = messages[0].conversation;
-      if (msgConversation.type === ConversationType.Single) {
-        let users = store.getUserInfos(
-          [wfc.getUserId(), msgConversation.target],
-          ""
-        );
-        title =
-          users[0]._displayName + "和" + users[1]._displayName + "的聊天记录";
-      } else {
-        title = "群的聊天记录";
-      }
-      compositeMessageContent.title = title;
-      compositeMessageContent.messages = messages;
-
-      let message = new Message(msgConversation, compositeMessageContent);
-      message.from = wfc.getUserId();
-      this.favMessage(message);
-    },
-
-    favMessage(message) {
-      // fixme 收藏
-      // TODO 收藏
-      uni.showToast({
-        title: "TODO ",
-        icon: "none",
-      });
-      return;
-      let favItem = FavItem.fromMessage(message);
-      axios
-        .post(
-          "/fav/add",
-          {
-            messageUid: stringValue(favItem.messageUid),
-            type: favItem.favType,
-            convType: favItem.conversation.type,
-            convTarget: favItem.conversation.target,
-            convLine: favItem.conversation.line,
-            origin: favItem.origin,
-            sender: favItem.sender,
-            title: favItem.title,
-            url: favItem.url,
-            thumbUrl: favItem.thumbUrl,
-            data: favItem.data,
-          },
-          { withCredentials: true }
-        )
-        .then((response) => {
-          if (response && response.data && response.data.code === 0) {
-            this.$notify({
-              // title: '收藏成功',
-              text: "收藏成功",
-              type: "info",
-            });
-          } else {
-            this.$notify({
-              // title: '收藏成功',
-              text: "收藏失败",
-              type: "error",
-            });
-          }
-        })
-        .catch((err) => {
-          this.$notify({
-            // title: '收藏失败',
-            text: "收藏失败",
-            type: "error",
-          });
-        });
-    },
 
     multiSelect(message) {
       this.toggleMessageMultiSelectionActionView(message);
@@ -603,25 +530,25 @@ export default {
       this.contextMenuItems = [];
       if (this.isCopyable(message)) {
         this.contextMenuItems.push({
-          title: "复制",
+          title: this.$t('common.copy'),
           message: message,
           tag: "copy",
         });
       }
-      if (this.isDownloadAble(message)) {
-        this.contextMenuItems.push({
-          title: "下载",
-          message: message,
-          tag: "copy",
-        });
-      }
+      // if (this.isDownloadAble(message)) {
+      //   this.contextMenuItems.push({
+      //     title: this.$t('common.save'),
+      //     message: message,
+      //     tag: "save",
+      //   });
+      // }
       // this.contextMenuItems.push({
       //     title: '本地删除',
       //     message: message,
       //     tag: 'delete',
       // })
       this.contextMenuItems.push({
-        title: "删除",
+        title: this.$t('common.delete'),
         message: message,
         tag: "deleteRemote",
       });
@@ -634,14 +561,14 @@ export default {
       // }
       if (this.isRecallable(message)) {
         this.contextMenuItems.push({
-          title: "撤回",
+          title: this.$t('common.recall'),
           message: message,
           tag: "recall",
         });
       }
       if (this.isQuotable(message)) {
         this.contextMenuItems.push({
-          title: "引用",
+          title: this.$t('common.quote'),
           message: message,
           tag: "quote",
         });

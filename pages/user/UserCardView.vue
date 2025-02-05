@@ -20,7 +20,7 @@
                         <input @click.stop="" type="text"
                                v-model="friendAlias"
                                @keyup.enter="updateFriendAlias"
-                               placeholder="备注名"/>
+                               :placeholder="$t('common.alias')"/>
                     </div>
                 </li>
                 <li>

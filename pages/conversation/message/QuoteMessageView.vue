@@ -111,7 +111,7 @@ export default {
                     str += this.quotedMessage.messageContent.digest(this.quotedMessage);
                 }
                 if(MessageContentType.RecallMessage_Notification === this.quotedMessage.messageContent.type){
-                    str = "引用内容已撤回"
+                    str = this.$t('chat_im_i18n.quoted_content_recalled')
                 }
             } else {
                 str = this.quotedMessageDigest;

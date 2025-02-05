@@ -172,26 +172,8 @@ export default {
             this.contextMenuItems = [];
 
             this.contextMenuItems.push({
-                title: conversationInfo.top ? '取消置顶' : '置顶',
-                tag: 'top',
-                conversationInfo: conversationInfo,
-            })
-
-            this.contextMenuItems.push({
-                title: conversationInfo.isSilent ? '取消静音' : '静音',
-                tag: 'silent',
-                conversationInfo: conversationInfo,
-            })
-
-            this.contextMenuItems.push({
-                title: '删除会话',
+                title: this.$t('chat_im_i18n.delete_conversation'),
                 tag: 'delete',
-                conversationInfo: conversationInfo,
-            })
-
-            this.contextMenuItems.push({
-                title: conversationInfo._unread === 0 ? '标记为未读' : '标记为已读',
-                tag: 'mark',
                 conversationInfo: conversationInfo,
             })
             this.showContextMenu = true;
@@ -203,27 +185,6 @@ export default {
                 case 'delete':
                     store.removeConversation(t.conversationInfo.conversation);
                     break;
-                case 'top':
-                    store.setConversationTop(t.conversationInfo.conversation, t.conversationInfo.top > 0 ? 0 : 1);
-                    break;
-                case 'silent':
-                    store.setConversationSilent(t.conversationInfo.conversation, !t.conversationInfo.isSilent);
-                    break;
-                case 'mark':
-                    let conversation = t.conversationInfo.conversation;
-                    if (t.conversationInfo._unread === 0) {
-                        wfc.markConversationAsUnread(conversation, true);
-                    } else {
-                        wfc.clearConversationUnreadStatus(conversation);
-                    }
-                    break;
-                default:
-                    uni.showToast({
-                        title: 'TODO ' + t.title,
-                        icon: 'none'
-                    })
-                    break;
-
             }
         },
 

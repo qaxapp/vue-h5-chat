@@ -8,6 +8,7 @@ import MessageContentType from '../messageContentType';
 import Long from 'long';
 import ConversationType from "../../model/conversationType";
 import GroupMemberType from "../../model/groupMemberType";
+import { i18n } from '../../../main.js'
 
 export default class RecallMessageNotification extends NotificationMessageContent {
     operatorId = '';
@@ -28,19 +29,19 @@ export default class RecallMessageNotification extends NotificationMessageConten
 
     formatNotification(message) {
         if (this.operatorId === wfc.getUserId()){
-            return "你撤回了一条消息";
+            return i18n.global.t('chat_im_i18n.you_recalled_a_message');
         }
         if (message.conversation.type === ConversationType.Group) {
             if (this.operatorId === this.originalSender) {
-                return wfc.getGroupMemberDisplayName(message.conversation.target, this.operatorId) + "撤回了一条消息";
+                return wfc.getGroupMemberDisplayName(message.conversation.target, this.operatorId) + i18n.global.t('chat_im_i18n.user_recalled_a_message');
             }
             const groupMember = wfc.getGroupMember(message.conversation.target, this.operatorId);
             if ([GroupMemberType.Manager, GroupMemberType.Owner].indexOf(groupMember.type) >= 0) {
-                return "管理员撤回了一条消息";
+                return i18n.global.t('chat_im_i18n.admin_recalled_a_message');
             }
-            return wfc.getGroupMemberDisplayName(message.conversation.target, this.operatorId) + "撤回了一条消息";
+            return wfc.getGroupMemberDisplayName(message.conversation.target, this.operatorId) + i18n.global.t('chat_im_i18n.user_recalled_a_message');
         } else {
-            return wfc.getUserDisplayName(this.operatorId) + "撤回了一条消息";
+            return wfc.getUserDisplayName(this.operatorId) + i18n.global.t('chat_im_i18n.user_recalled_a_message');
         }
     }
 

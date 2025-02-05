@@ -210,6 +210,20 @@
 		"connecting": "正在連接...",
 		"syncing": "正在同步...",
 		"connection_failed": "連接失敗",
-		"operation_failed": "操作失敗"
+		"operation_failed": "操作失敗",
+		"open_document_failed": "打開文檔失敗",
+		"chat_page_loading": "加載中...",
+		"contact_card": "個人名片",
+		"business_card": "[名片]",
+		"personal_card": "[個人名片]",
+		"group_card": "[群組名片]",
+		"chat_room_card": "[聊天室名片]",
+		"channel_card": "[頻道名片]",
+		"quoted_content_recalled": "引用内容已撤回",
+		"delete_conversation": "刪除會話",
+		"you_recalled_a_message": "你撤回了一條訊息",
+		"admin_recalled_a_message": "管理員撤回了一條訊息",
+		"user_recalled_a_message": " 撤回了一條訊息",
+		"re_edit": "重新編輯"
 	}
 }

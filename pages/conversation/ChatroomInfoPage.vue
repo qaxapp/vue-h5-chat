@@ -90,7 +90,7 @@ export default {
 	        this.conversationInfo = options.conversationInfo;
 	        console.log('this.chatroom',this.conversationInfo)
 	        uni.setNavigationBarTitle({
-	            title: this.conversationInfo.conversation._target.title+'的聊天室详情',
+	            title: this.conversationInfo.conversation._target.title,
 	        });
 			this.getCurrentChatroomInfo()
 	    })
