@@ -71,6 +71,11 @@
             cursor: pointer;
             color: #666;
         }
+
+        .close-btn img {
+            width: 20px;
+            height: 20px;
+        }
     </style>
 </head>
 <body>
@@ -87,7 +92,9 @@
     </button>
 
     <div id="chatModal" class="chat-modal">
-        <button class="close-btn" onclick="toggleChat()">×</button>
+        <button class="close-btn" onclick="toggleChat()">
+             <img src="ic_close.svg" alt="关闭">
+        </button>
         <iframe src="" id="link" allow="cross-origin-isolated"></iframe>
     </div>
 

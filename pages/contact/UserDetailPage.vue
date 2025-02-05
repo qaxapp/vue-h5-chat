@@ -32,10 +32,10 @@
             </ul>
         </div>
         <div class="footer">
-                <div class="action" @click="chat">
+<!--                <div class="action" @click="chat">
                     <i class="icon-ion-ios-chatboxes-outline"></i>
                     <a>{{ $t('message.send_message') }}</a>
-                </div>
+                </div> -->
 <!--                <div class="action" @click="startAudioCall">
                     <i class="icon-ion-ios-telephone-outline"></i>
                     <a>语音通话</a>
@@ -44,10 +44,10 @@
                     <i class="icon-ion-ios-videocam-outline"></i>
                     <a>视频通话</a>
                 </div> -->
-                <div v-if="!isFriend && !isSelf" class="action" @click="addFriend">
+<!--                <div v-if="!isFriend && !isSelf" class="action" @click="addFriend">
                     <i class="icon-ion-person-add"></i>
                     <a>{{ $t('contact.add_friend') }}</a>
-                </div>
+                </div> -->
             </div>
     </div>
 </template>
