@@ -223,6 +223,7 @@
 		"delete_conversation": "删除会话",
 		"you_recalled_a_message": "你撤回了一条消息",
 		"admin_recalled_a_message": "管理员撤回了一条消息",
-		"user_recalled_a_message": " 撤回了一条消息"
+		"user_recalled_a_message": " 撤回了一条消息",
+		"re_edit": "重新编辑"
 	}
 }

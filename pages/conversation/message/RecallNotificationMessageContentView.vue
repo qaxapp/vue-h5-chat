@@ -1,7 +1,7 @@
 <template>
     <div class="notification-container">
         <p class="notification">{{ message.messageContent.digest(message) }}</p>
-        <a v-if="isReeditable(message)" href="#" @click="reedit">重新编辑</a>
+        <a v-if="isReeditable(message)" href="#" @click="reedit">{{ $t('chat_im_i18n.re_edit') }}</a>
     </div>
 </template>
 
@@ -55,6 +55,7 @@ export default {
 }
 
 .notification-container a {
+    color: #1EFFE4;
     text-decoration: none;
     margin-left: 10px;
     font-size: 14px;

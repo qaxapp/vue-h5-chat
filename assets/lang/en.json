@@ -223,6 +223,7 @@
 		"delete_conversation": "Delete Conversation",
 		"you_recalled_a_message": "You recalled a message",
 		"admin_recalled_a_message": "Admin recalled a message",
-		"user_recalled_a_message": " recalled a message"
+		"user_recalled_a_message": " recalled a message",
+		"re_edit": "Re-edit"
 	}
 }
