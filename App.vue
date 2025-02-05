@@ -7,7 +7,7 @@ import Message from "./wfc/messages/message";
 import ForwardType from "./pages/conversation/message/forward/ForwardType";
 import ConnectionStatus from "./wfc/client/connectionStatus";
 import appServerApi from "./api/appServerApi";
-
+import { getCachedLanguage } from "./common/language";
 export default {
   data() {
     return {
@@ -55,6 +55,11 @@ export default {
   },
 
   mounted() {
+	uni.setLocale(getCachedLanguage());
+	// uni.onLocaleChange(() => {
+	// 	console.log("语言改变");
+	// 	this.$forceUpdate();
+	// })
     //屏蔽默认的contextmenu事件
     document.oncontextmenu = (e) => e.preventDefault();
   },

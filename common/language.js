@@ -1,7 +1,8 @@
 import { getItem, setItem } from "../pages/util/storageHelper";
-
+import { locale } from "../manifest.json"
+console.log("默认设置",locale);
 const supportedLanguages = ['zh-CN', 'zh-TW', 'en']; 
-const defaultLanguage = 'zh-CN'; // 默认语言
+const defaultLanguage = locale; // 默认语言
 
 // 获取系统语言
 function getSystemLanguage() {

@@ -28,6 +28,7 @@
 		getCachedLanguage,
 		setLanguage
 	} from '../../common/language';
+	import { useI18n } from 'vue-i18n'
 
 	const languages = ref([{
 			code: 'zh-CN',
@@ -45,12 +46,15 @@
 
 	const currentLanguage = ref(getCachedLanguage() ? getCachedLanguage() : "zh-CN"); // 默认语言
 
+	const {  locale } = useI18n() // 获取 i18n 实例中的翻译函数和当前语言
 
 	const switchLanguage = (code) => {
 		console.log("switchLanguage");
 		if (currentLanguage.value !== code) {
 			currentLanguage.value = code;
 			setLanguage(code);
+			locale.value = code;
+			uni.setLocale(code);
 			console.log("switchLanguage");
 		}
 	};

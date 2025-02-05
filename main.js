@@ -31,10 +31,8 @@ app.use(picker)
 app.use(forward)
 
 const currentLanguage = initializeLanguage();
-console.log(getCachedLanguage() ? getCachedLanguage() : "zh-CN");
 const i18n = createI18n({
-    // 使用localStorage存储语言状态是为了保证页面刷新之后还是保持原来选择的语言状态
-    locale: getCachedLanguage() ? getCachedLanguage() : "zh-CN", // 定义默认语言为简体中文
+    locale: getCachedLanguage(), 
     allowComposition: true,
     messages: {
         'zh-CN': zhCNLang,
