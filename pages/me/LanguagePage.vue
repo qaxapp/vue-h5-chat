@@ -44,7 +44,7 @@
 		}
 	]);
 
-	const currentLanguage = ref(getCachedLanguage() ? getCachedLanguage() : "zh-CN"); // 默认语言
+	const currentLanguage = ref(getCachedLanguage()); // 默认语言
 
 	const {  locale } = useI18n() // 获取 i18n 实例中的翻译函数和当前语言
 
