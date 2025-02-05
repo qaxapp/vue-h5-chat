@@ -209,6 +209,7 @@
 		"language": "Language",
 		"connecting": "Connecting...",
 		"syncing": "Syncing...",
-		"connection_failed": "Connection Failed"
+		"connection_failed": "Connection Failed",
+		"operation_failed": "Operation failed"
 	}
 }

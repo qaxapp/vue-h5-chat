@@ -209,6 +209,7 @@
 		"language": "语言",
 		"connecting": "正在连接...",
 		"syncing": "正在同步...",
-		"connection_failed": "连接失败"
+		"connection_failed": "连接失败",
+		"operation_failed": "操作失败"
 	}
 }

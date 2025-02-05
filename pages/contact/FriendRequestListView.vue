@@ -47,24 +47,24 @@ export default {
     },
     methods: {
         showFriendRequest(friendRequest) {
-            store.setCurrentFriendRequest(friendRequest);
-            uni.navigateTo({
-                url: '/pages/contact/FriendRequestDetailPage',
-                success: () => {
-                    console.log('nav to FriendRequestDetailPage success');
+            // store.setCurrentFriendRequest(friendRequest);
+            // uni.navigateTo({
+            //     url: '/pages/contact/FriendRequestDetailPage',
+            //     success: () => {
+            //         console.log('nav to FriendRequestDetailPage success');
 
-                },
-                fail: (err) => {
-                    console.log('nav to FriendRequestDetailPage err', err);
-                }
-            });
+            //     },
+            //     fail: (err) => {
+            //         console.log('nav to FriendRequestDetailPage err', err);
+            //     }
+            // });
         },
         accept(friendRequest) {
             wfc.handleFriendRequest(friendRequest.target, true, "", () => {
                 friendRequest.status = 1;
             }, (err) => {
                 uni.showToast({
-                    title: '添加好友失败 ' + err,
+                    title: this.$t('chat_im_i18n.operation_failed') + ' ' + err,
                     icon: 'none',
                 });
                 console.log('accept friend request error', err)
@@ -139,6 +139,7 @@ export default {
     display: flex;
     justify-content: space-between;
     align-items: center;
+	color: $cm-text-color;
 }
 
 .new-friend-item .info .name {
