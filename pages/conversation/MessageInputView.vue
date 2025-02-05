@@ -722,7 +722,7 @@ import { setItem } from "../util/storageHelper";
 		border-radius: 24rpx;
 		max-height: 225rpx;
 		box-sizing: border-box;
-  background: #1a3143;
+		background: #1a3143;
 		display: flex; /* 使用 Flexbox 布局 */
   		align-items: center; /* 垂直居中对齐 */
   		gap: 10px; /* 子组件之间的间距 */
@@ -731,14 +731,14 @@ import { setItem } from "../util/storageHelper";
 	.quote-message-container {
 		overflow: auto;
 		display: flex;
-  background: $cm-quote-message-bg-color;
+		background: $cm-quote-message-bg-color;
 		align-content: center;
 		position: relative;
-		margin: 0 12rpx;
-		padding: 5px;
+		margin-right: 24rpx;
+		padding: 10rpx 20rpx;
 		border-radius: 24rpx;
-  color:$cm-text-color-grey;
-  font-size: 24rpx;
+		color:$cm-text-color-grey;
+		font-size: 24rpx;
 	}
 
 	.quote-message-container .quoted-message {
@@ -749,7 +749,7 @@ import { setItem } from "../util/storageHelper";
 		position: absolute;
 		right: 0;
 		top: 0;
-		padding: 0 5px;
+		padding: 0 20rpx;
 		color: grey;
 		transform: translate(0, 50%);
 	}
