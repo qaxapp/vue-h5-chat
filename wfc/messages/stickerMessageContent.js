@@ -7,7 +7,7 @@ import MediaMessageContent from "./mediaMessageContent";
 import MessageContentType from "./messageContentType";
 
 import wfc from "../client/wfc"
-
+import { i18n } from '../../main.js'
 
 export default class StickerMessageContent extends MediaMessageContent {
     width = 200;
@@ -20,7 +20,7 @@ export default class StickerMessageContent extends MediaMessageContent {
     }
 
     digest() {
-        return '[表情]';
+        return i18n.global.t('message.chat_dynamic_sticker');
     }
 
     encode() {

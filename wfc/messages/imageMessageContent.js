@@ -5,6 +5,7 @@
 import MediaMessageContent from './mediaMessageContent';
 import MessageContentMediaType from './messageContentMediaType';
 import MessageContentType from './messageContentType';
+import { i18n } from '../../main.js'
 
 export default class ImageMessageContent extends MediaMessageContent {
     // base64 encoded, 不包含头部:data:image/png;base64,
@@ -19,7 +20,7 @@ export default class ImageMessageContent extends MediaMessageContent {
     }
 
     digest() {
-        return '[图片]';
+        return i18n.global.t('message.chat_picture');
     }
 
     encode() {

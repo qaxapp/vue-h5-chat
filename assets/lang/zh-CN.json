@@ -67,7 +67,21 @@
 		"receipt_unreceived_users": "未送达",
 		"sender": "消息发送者",
 		"content": "消息内容",
-		"mentioned_me": "[有人@我]"
+		"mentioned_me": "[有人@我]",
+		"chat_meeting": "[会议]",
+		"chat_picture": "[图片]",
+		"chat_location": "[位置]",
+		"chat_walkie_talkie_voice": "[对讲语音]",
+		"chat_voice": "[语音]",
+		"chat_dynamic_sticker": "[表情]",
+		"chat_unknown_message_type": "[未知类型消息]",
+		"chat_video": "[视频]",
+		"pc_login_request": "[PC请求登录]",
+		"already_friends": "你们已经是好友了，可以开始聊天了。",
+		"greeting_content": "以上是打招呼的内容",
+		"message_deleted": "消息已删除",
+		"chat_history": "[聊天记录]",
+		"file": "[文件]"
 	},
 	"conversation": {
 		"forward_title": "分别发送给",

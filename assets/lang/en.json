@@ -67,7 +67,21 @@
 		"receipt_unreceived_users": "Undelivered",
 		"sender": "Message Sender",
 		"content": "Message content",
-		"mentioned_me": "[Someone@me]"
+		"mentioned_me": "[Someone@me]",
+		"chat_meeting": "[Meeting]",
+		"chat_picture": "[Picture]",
+		"chat_location": "[Location]",
+		"chat_walkie_talkie_voice": "[Walkie-Talkie Voice]",
+		"chat_voice": "[Voice]",
+		"chat_dynamic_sticker": "[Dynamic Sticker]",
+		"chat_unknown_message_type": "[Unknown Message Type]",
+		"chat_video": "[Video]",
+		"pc_login_request": "[PC Login Request]",
+		"already_friends": "You are already friends and can start chatting.",
+		"greeting_content": "The above is the greeting content.",
+		"message_deleted": "Message deleted",
+		"chat_history": "[Chat History]",
+		"file": "[File]"
 	},
 	"conversation": {
 		"forward_title": "Send separately",

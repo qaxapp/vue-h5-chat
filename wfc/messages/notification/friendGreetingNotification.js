@@ -4,6 +4,7 @@
 
 import NotificationMessageContent from "./notificationMessageContent";
 import MessageContentType from "../messageContentType";
+import { i18n } from '../../../main.js'
 
 export default class FriendGreetingNotification extends NotificationMessageContent {
     constructor() {
@@ -11,6 +12,6 @@ export default class FriendGreetingNotification extends NotificationMessageConte
     }
 
     formatNotification(message) {
-        return "以上是打招呼的内容";
+        return i18n.global.t('message.greeting_content');
     }
 }

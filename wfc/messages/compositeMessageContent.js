@@ -9,6 +9,7 @@ import {compare} from "../util/longUtil";
 import MessagePayload from "../messages/messagePayload";
 import ArticlesMessageContent from "./articlesMessageContent";
 import MessageContentMediaType from "./messageContentMediaType";
+import { i18n } from '../../main.js'
 
 export default class CompositeMessageContent extends MediaMessageContent {
     title = '';
@@ -40,7 +41,7 @@ export default class CompositeMessageContent extends MediaMessageContent {
     }
 
     digest(message) {
-        return '[聊天记录]' + this.title;
+        return i18n.global.t('message.chat_history') + this.title;
     }
 
     encode() {

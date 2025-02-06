@@ -4,6 +4,7 @@
 
 import MessageContent from "./messageContent";
 import MessageContentType from "./messageContentType";
+import { i18n } from '../../main.js'
 
 export default class UnknownMessageContent extends MessageContent {
     originalPayload;
@@ -22,6 +23,6 @@ export default class UnknownMessageContent extends MessageContent {
     }
 
     digest() {
-        return '未知类型消息';
+        return i18n.global.t('message.chat_unknown_message_type');
     }
 }
