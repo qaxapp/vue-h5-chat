@@ -5,6 +5,7 @@
 import MessageContentMediaType from "./messageContentMediaType";
 import MediaMessageContent from "./mediaMessageContent";
 import MessageContentType from "./messageContentType";
+import { i18n } from '../../main.js'
 
 export default class FileMessageContent extends MediaMessageContent {
     name = '';
@@ -22,7 +23,7 @@ export default class FileMessageContent extends MediaMessageContent {
     }
 
     digest() {
-        return '[文件]' + this.name;
+        return i18n.global.t('message.file') + this.name;
     }
 
     encode() {

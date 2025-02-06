@@ -5,6 +5,7 @@
 import MediaMessageContent from './mediaMessageContent'
 import MessageContentMediaType from './messageContentMediaType';
 import MessageContentType from './messageContentType';
+import { i18n } from '../../main.js'
 
 export default class SoundMessageContent extends MediaMessageContent {
     duration;
@@ -15,7 +16,7 @@ export default class SoundMessageContent extends MediaMessageContent {
     }
 
     digest() {
-        return '[语音]';
+        return i18n.global.t('message.chat_voice');
     }
 
     encode() {

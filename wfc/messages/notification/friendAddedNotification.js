@@ -4,6 +4,7 @@
 
 import NotificationMessageContent from "./notificationMessageContent";
 import MessageContentType from "../messageContentType";
+import { i18n } from '../../../main.js'
 
 export default class FriendAddedNotification extends NotificationMessageContent {
 
@@ -12,6 +13,6 @@ export default class FriendAddedNotification extends NotificationMessageContent 
     }
 
     formatNotification() {
-        return "你们已经是好友了，可以开始聊天了。";
+        return i18n.global.t('message.already_friends');
     }
 }

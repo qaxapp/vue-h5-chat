@@ -3,10 +3,11 @@
  */
 
 import MessageContent from "./messageContent";
+import { i18n } from '../../main.js'
 
 export default class UnsupportMessageContent extends MessageContent {
 
     digest() {
-        return '尚不支持该类型消息, 请手机查看 : ' + this.type;
+        return i18n.global.t('message.chat_unknown_message_type') + ' ' + this.type;
     }
 }

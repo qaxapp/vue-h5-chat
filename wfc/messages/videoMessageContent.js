@@ -5,6 +5,7 @@
 import MediaMessageContent from './mediaMessageContent'
 import MessageContentMediaType from './messageContentMediaType';
 import MessageContentType from './messageContentType';
+import { i18n } from '../../main.js'
 
 export default class VideoMessageContent extends MediaMessageContent {
     // base64 encoded
@@ -18,7 +19,7 @@ export default class VideoMessageContent extends MediaMessageContent {
     }
 
     digest() {
-        return '[视频]';
+        return i18n.global.t('message.chat_video');
     }
 
     encode() {

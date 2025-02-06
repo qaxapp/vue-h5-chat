@@ -2,6 +2,7 @@ import MessageContent from "./messageContent";
 import MessageContentType from "./messageContentType";
 import MessageContentMediaType from "./messageContentMediaType";
 import wfc from "../client/wfc";
+import { i18n } from '../../main.js'
 
 export default class PcLoginRequestMessageContent extends MessageContent{
     platform;
@@ -13,7 +14,7 @@ export default class PcLoginRequestMessageContent extends MessageContent{
     }
 
     digest() {
-        return '[PC请求登录]';
+        return i18n.global.t('message.pc_login_request');
     }
 
     encode() {

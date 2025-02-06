@@ -4,6 +4,7 @@
 
 import MessageContent from './messageContent'
 import MessageContentType from "./messageContentType";
+import { i18n } from '../../main.js'
 
 export default class LocationMessageContent extends MessageContent {
     title;
@@ -21,7 +22,7 @@ export default class LocationMessageContent extends MessageContent {
     }
 
     digest() {
-        return '位置'
+        return i18n.global.t('message.chat_location');
     }
 
     encode() {

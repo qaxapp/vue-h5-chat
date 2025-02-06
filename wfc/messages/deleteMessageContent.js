@@ -6,6 +6,7 @@ import MessageContent from './messageContent'
 import MessageContentType from './messageContentType';
 import wfc from '../client/wfc'
 import Long from 'long'
+import { i18n } from '../../main.js'
 
 // 本消息由调用server api删除消息触发，请勿直接发送本消息
 export default class DeleteMessageContent extends MessageContent {
@@ -19,7 +20,7 @@ export default class DeleteMessageContent extends MessageContent {
     }
 
     formatNotification(message) {
-        return "消息已删除";
+        return i18n.global.t('message.message_deleted');
     }
 
     encode() {
