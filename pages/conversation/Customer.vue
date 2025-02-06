@@ -226,6 +226,9 @@ export default {
 	 
     // this.updateConversationTitle();
   },
+  
+  
+  
 
   onNavigationBarButtonTap(e) {
     if (this.conversationInfo.conversation.type === ConversationType.Single) {
@@ -274,7 +277,7 @@ export default {
   },
 
   onUnload() {
-    store.setCurrentConversationInfo(null);
+  //   store.setCurrentConversationInfo(null);
   },
 
   methods: {
