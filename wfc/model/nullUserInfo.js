@@ -9,7 +9,7 @@ export default class NullUserInfo extends UserInfo {
         super();
         this.uid = userId;
         //this.name = '<' + userId + '>';
-        this.name = '用户';
+        this.name = 'User';
         this.displayName = this.name;
         this.portrait = '';
     }

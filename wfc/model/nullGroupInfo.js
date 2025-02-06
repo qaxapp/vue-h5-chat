@@ -9,6 +9,6 @@ export default class NullGroupInfo extends GroupInfo {
         super();
         this.target = groupId;
         // this.name = '<' + groupId+ '>';
-        this.name = '群聊';
+        this.name = 'Group';
     }
 }
