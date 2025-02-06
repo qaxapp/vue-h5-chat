@@ -130,7 +130,7 @@ export default {
     width: 100%;
     display: flex;
     flex-direction: column;
-    padding: 10px 20px;
+    padding: 5px 12px;
     align-items: flex-start;
 }
 

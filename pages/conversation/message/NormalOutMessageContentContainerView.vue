@@ -242,8 +242,8 @@ export default {
 .message-time-container {
     width: 100%;
     display: flex;
-    flex-direction: column;
-    align-items: flex-end;
+    flex-direction: column;	
+	
 }
 
 .message-time-container.checked {
@@ -269,7 +269,7 @@ export default {
 .message-content-container {
     width: 100%;
     display: flex;
-    padding: 10px 20px;
+	padding: 5px 12px;
     justify-content: space-between;
     align-items: center;
     position: relative;
