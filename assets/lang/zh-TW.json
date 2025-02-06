@@ -224,6 +224,7 @@
 		"you_recalled_a_message": "你撤回了一條訊息",
 		"admin_recalled_a_message": "管理員撤回了一條訊息",
 		"user_recalled_a_message": " 撤回了一條訊息",
-		"re_edit": "重新編輯"
+		"re_edit": "重新編輯",
+        "voice_duration": "時長: "
 	}
 }

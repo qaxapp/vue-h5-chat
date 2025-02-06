@@ -215,13 +215,15 @@ const helper = {
             if (Y === nowY && M === nowM && (nowD - D <= 7)) {
                 // 昨天
                 if ((nowD - D) === 1) {
-                    newtime = '昨天' + ' ' + H + ':' + Min
+                    //newtime = '昨天' + ' ' + H + ':' + Min
+					newtime = M + '-' + D + ' ' + H + ':' + Min
                 } else if (nowD === D) {
                     // 当天
                     newtime = H + ':' + Min
                 } else {
                     // 一周内
-                    newtime = helper.weekFormat(W) + ' ' + H + ':' + Min
+                    //newtime = helper.weekFormat(W) + ' ' + H + ':' + Min
+					newtime = M + '-' + D + ' ' + H + ':' + Min
                 }
             } else {
                 // 一年内
