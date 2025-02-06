@@ -185,8 +185,9 @@ export default {
             let conversation = this.message.conversation;
             let timestamp = this.message.timestamp;
             let readEntries = this.sharedConversationState.currentConversationRead;
-
-            if (conversation.type === ConversationType.Single) {
+			if (conversation.type == ConversationType.ChatRoom) {
+				return '';
+			} else if (conversation.type === ConversationType.Single) {
                 let readDt = readEntries ? readEntries.get(conversation.target) : 0
                 readDt = readDt ? readDt : 0;
                 if (gte(readDt, timestamp)) {
