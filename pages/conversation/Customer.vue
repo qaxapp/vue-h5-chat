@@ -920,9 +920,12 @@ export default {
     },
 
     lastMessageId() {
-      return this.conversationInfo && this.conversationInfo.lastMessage
-        ? this.conversationInfo.lastMessage.messageId
-        : "";
+      if (this.conversationInfo && this.conversationInfo.lastMessage && this.conversationInfo.lastMessage.messageId) {
+        return this.conversationInfo.lastMessage.messageId;
+      } else {
+        const messages = this.sharedConversationState.currentConversationMessageList;
+        return messages.length > 0 ? messages[messages.length - 1].messageId : "";
+      }
     },
   },
 

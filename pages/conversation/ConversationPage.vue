@@ -788,7 +788,14 @@ export default {
   computed: {
     conversationTitle() {
       let info = this.sharedConversationState.currentConversationInfo;
-      return !info ? "" : info.conversation._target._displayName;
+      if (info) {
+        if (info.conversation._target && info.conversation._target._displayName) {
+          return info.conversation._target._displayName;
+        } else if (info.conversation.target) {
+          return info.conversation.target;
+        } 
+      }
+      return "";
     },
     targetUserOnlineStateDesc() {
       let info = this.sharedConversationState.currentConversationInfo;
@@ -815,9 +822,12 @@ export default {
     },
 
     lastMessageId() {
-      return this.conversationInfo && this.conversationInfo.lastMessage
-        ? this.conversationInfo.lastMessage.messageId
-        : "";
+      if (this.conversationInfo && this.conversationInfo.lastMessage && this.conversationInfo.lastMessage.messageId) {
+        return this.conversationInfo.lastMessage.messageId;
+      } else {
+        const messages = this.sharedConversationState.currentConversationMessageList;
+        return messages.length > 0 ? messages[messages.length - 1].messageId : "";
+      }
     },
   },
 
