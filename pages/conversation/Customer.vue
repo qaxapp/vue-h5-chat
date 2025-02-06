@@ -19,6 +19,12 @@
 				
 				
 			</view>
+			
+			<view class="nav" v-if="conversationInfo.conversation.type==0" >
+				<view class="nav-title">
+					<span>VIP service </span>	
+				</view>
+			</view>
             <view class="message-list-container" @click="fatherClick">
 				
                 <scroll-view ref="conversationMessageList" class="message-list" scroll-y="true" :scroll-top="scrollTop"
@@ -129,6 +135,7 @@ import RichNotificationMessageContent from "../../wfc/messages/notification/rich
 import ArticlesMessageContent from "../../wfc/messages/articlesMessageContent";
 import ContextableNotificationMessageContentContainerView from "./message/ContextableNotificationMessageContentContainerView.vue";
 import Conversation from "@/wfc/model/conversation";
+
 var innerAudioContext;
 export default {
   name: "ConversationPage",
@@ -968,6 +975,16 @@ export default {
 	height: 44px;
 	background-color: #14293A;
 	z-index: 99999;
+	
+}
+.nav-title {
+	position: absolute;
+	font-size: 14px;
+	font-weight: 600;
+	color: white;
+	top: 50%;
+    left: 50%;
+	transform: translate(-50%, -50%);	
 }
 .nav-lag{
 	position: relative;
@@ -977,6 +994,7 @@ export default {
 	transform: translate(0,-50%);
 	font-size: 18px;
 	font-weight: bold;
+	
 }
 .nav-lag span{
 	margin-right: 5px;
