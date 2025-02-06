@@ -22,7 +22,7 @@ static IM_SERVER_HOST = 'chattest.qaxim.top'/** 请仔细看上面的注释，�
 ## 开发
 
 1. 运行```npm install```命令
-2. HBuilderX，运行到浏览器，Chrome
+2. 下载、安装HBuilderX，运行到浏览器，Chrome
 
 ## 注册
 DCloud为支持海外开发者，特推出“国际区”注册服务，注册在“国际区”的账号，仅需验证邮箱，即可使用云端打包服务。
@@ -70,3 +70,16 @@ cli publish --platform h5 --project vue-h5-chat
 导航栏背景色: $cm-bg-bar-color;
 内容背景色: $cm-bg-color;
 分割线: $cm-split-line-color;
+
+### 添加头像点击事件
+```js
+NormalInMessageContentView.vue
+NormalOutMessageContentView.vue
+
+onClickUserPortrait(userId) {
+	
+}
+```
+
+### 网站接入
+通过 iframe 的方式接入，参考 kf-site/index.html

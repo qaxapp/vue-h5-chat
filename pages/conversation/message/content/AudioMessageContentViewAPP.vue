@@ -62,7 +62,7 @@ export default {
             } else {
                 seconds = 60;
             }
-            return '时长：' + seconds;
+            return this.$t('chat_im_i18n.voice_duration') + seconds;
         },
     }
 }
