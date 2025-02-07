@@ -20,6 +20,15 @@ export default {
   },
   onLaunch: function (option) {
     console.log("App Launch");
+	uni.preloadPage({
+		  url: "/pages/SplashPage"
+	})
+	uni.preloadPage({
+		  url: "/pages/login/LoginPage"
+	})
+	uni.preloadPage({
+		  url: "/pages/conversation/Customer"
+	})
     this.wfc = wfc;
     this.store = store;
     // #ifdef APP-PLUS
@@ -67,7 +76,7 @@ export default {
       }
       wfc.connect(userId, token);
 	  if (getItem("wechat")) {
-		  this.chat();
+		  this.$go2CustomerPage();
 	  } else {
 		  this.go2ConversationList();
 	  }
@@ -116,29 +125,6 @@ export default {
         },
       });
     },
-	chat() {
-		let conversation = new Conversation(getItem('type') == 0 ? ConversationType.Single : getItem('type') == 1 ?
-			ConversationType.Group : getItem('type') == 2 ? ConversationType.ChatRoom : getItem('type') == 3 ?
-			ConversationType.Channel : ConversationType.SecretChat, getItem("chatId"), 0);
-		console.log(conversation);
-		wfc.eventEmitter.on(EventType.ConnectionStatusChanged, (status) => {
-			if (status === ConnectionStatus.ConnectionStatusConnected) {
-				store.setCurrentConversation(conversation);
-				// 不加延时的话，不能正常切换页面，会报莫名其妙的错误
-				setTimeout(() => {
-					uni.redirectTo({
-						url: '/pages/conversation/Customer',
-						success: () => {
-						},
-						fail: e => {
-						},
-						complete: () => {
-						}
-					})
-				}, 100)
-			}
-		})
-	},
 
     forwardConferenceInviteMessage(
       callId,
