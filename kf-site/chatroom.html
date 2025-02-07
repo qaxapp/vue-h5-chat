@@ -104,6 +104,8 @@
             const modal = document.getElementById('chatModal');
             const currentDisplay = modal.style.display;
             modal.style.display = currentDisplay === 'block' ? 'none' : 'block';
+			document.getElementById('link').contentWindow.postMessage({ action: 'show' }, '*');
+
         }
         const obj={
             wechat: true, //官网客服标志
