@@ -3,7 +3,7 @@
     "appid" : "__UNI__C1B0D7A",
     "description" : "ChatIM",
     "versionName" : "1.0.0",
-    "versionCode" : 101,
+    "versionCode" : 102,
     "transformPx" : false,
     "quickapp" : {},
     "mp-weixin" : {
@@ -33,6 +33,6 @@
         "template" : "template.h5.html",
         "title" : "ChatIM"
     },
-    "vueVersion" : "3",
+    "vueVersion" : "5",
     "locale" : "en"
 }
