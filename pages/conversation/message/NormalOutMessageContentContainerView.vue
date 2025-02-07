@@ -308,6 +308,10 @@ export default {
     border-radius: 3px;
 }
 
+.message-avatar-content-container :deep(.loading-container) {
+    align-self: center;
+}
+
 .message-content-container-view.highlight {
     background-color: #dadada;
     opacity: 0.5;
