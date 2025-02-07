@@ -892,12 +892,9 @@ export default {
 
 		lastMessageId() {
 			if (this.conversationInfo && this.conversationInfo.lastMessage && this.conversationInfo.lastMessage.messageId) {
-				console.log(this.conversationInfo.lastMessage.messageId);
 				return this.conversationInfo.lastMessage.messageId;
 			} else {
 				const messages = this.sharedConversationState.currentConversationMessageList;
-				console.log(messages[messages.length - 1].messageId);
-
 				return messages.length > 0 ? messages[messages.length - 1].messageId : '';
 			}
 		}
