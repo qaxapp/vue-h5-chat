@@ -34,8 +34,7 @@ export default {
 	console.log(option);
 	const {query, path} = option;
 	if(query.wechat === 'true' && path==='pages/SplashPage'){
-		console.log("设置chatId", option.chatId)
-		
+		console.log("设置chatId", query.chatId)
 		setItem("wechat", true);
 		if(query.clientId){
 			setItem("clientId", query.clientId);
@@ -118,9 +117,6 @@ export default {
       });
     },
 	chat() {
-		console.log("获取chatId",getItem("chatId"))
-		console.log(getItem("type"))
-	
 		let conversation = new Conversation(getItem('type') == 0 ? ConversationType.Single : getItem('type') == 1 ?
 			ConversationType.Group : getItem('type') == 2 ? ConversationType.ChatRoom : getItem('type') == 3 ?
 			ConversationType.Channel : ConversationType.SecretChat, getItem("chatId"), 0);
@@ -142,7 +138,6 @@ export default {
 				}, 100)
 			}
 		})
-	
 	},
 
     forwardConferenceInviteMessage(

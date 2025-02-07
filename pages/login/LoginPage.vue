@@ -1,35 +1,35 @@
 <template>
-    <view class="page-body">
-        <view class="login-type-title">{{ isPasswordLogin ? $t('login.password_login') : $t('login.verification_code_login') }}</view>
-        <view class="mobile-container">
-            <view>{{ $t('login.enter_phone_number') }}</view>
-            <view>
-                <view class="mobile-input-container">
-                    <input class="input" @input="bindPhoneInput" type="number" :placeholder="$t('login.phone_number')"/>
-                </view>
-            </view>
-        </view>
+	<view class="page-body">
+		<view class="login-type-title">{{ isPasswordLogin ? $t('login.password_login') : $t('login.verification_code_login') }}</view>
+		<view class="mobile-container">
+			<view>{{ $t('login.enter_phone_number') }}</view>
+			<view>
+				<view class="mobile-input-container">
+					<input class="input" @input="bindPhoneInput" type="number" :placeholder="$t('login.phone_number')" />
+				</view>
+			</view>
+		</view>
 
-        <view v-if="!isPasswordLogin" class="auth-code-container">
-            <view>{{ $t('login.enter_verification_code') }}</view>
-            <view class="auth-code-input-container">
-                <input @input="bindCodeInput" type="number" :placeholder="$t('login.verification_code')"/>
-                <button size="mini" :disabled="phone.length !== 11" @tap="bindAuthCodeTap">{{ $t('login.get_verification_code') }}</button>
-            </view>
-        </view>
+		<view v-if="!isPasswordLogin" class="auth-code-container">
+			<view>{{ $t('login.enter_verification_code') }}</view>
+			<view class="auth-code-input-container">
+				<input @input="bindCodeInput" type="number" :placeholder="$t('login.verification_code')" />
+				<button size="mini" :disabled="phone.length !== 11" @tap="bindAuthCodeTap">{{ $t('login.get_verification_code') }}</button>
+			</view>
+		</view>
 
-        <view v-else class="password-container">
-            <view>{{ $t('login.enter_password') }}</view>
-            <view class="password-input-container">
-                <input @input="bindPasswordInput" type="password" :placeholder="$t('login.password')"/>
-            </view>
-        </view>
+		<view v-else class="password-container">
+			<view>{{ $t('login.enter_password') }}</view>
+			<view class="password-input-container">
+				<input @input="bindPasswordInput" type="password" :placeholder="$t('login.password')" />
+			</view>
+		</view>
 
-        <view class="switch-type" @tap="switchLoginType">
-            {{ isPasswordLogin ? $t('login.use_verification_code_login') : $t('login.use_password_login') }}
-        </view>
-        <button :disabled="!canLogin" class="confirm-button" @tap="bindLoginTap">{{ $t('login.login') }}</button>
-    </view>
+		<view class="switch-type" @tap="switchLoginType">
+			{{ isPasswordLogin ? $t('login.use_verification_code_login') : $t('login.use_password_login') }}
+		</view>
+		<button :disabled="!canLogin" class="confirm-button" @tap="bindLoginTap">{{ $t('login.login') }}</button>
+	</view>
 </template>
 
 <script>
@@ -103,9 +103,13 @@ export default {
                     let token = result.token;
                     wfc.connect(userId, token);
                     setItem('userId', userId);
-                    setItem('token', token)
+                    setItem('token', token);
+					if (getItem("wechat")) {
+						this.$go2CustomerPage()
+					} else {
+						this.go2ConversationList();
+					}
 
-                    this.go2ConversationList();
                 })
                 .catch(r => {
                     console.log('login failed', r);
@@ -124,9 +128,12 @@ export default {
                     let token = result.token;
                     wfc.connect(userId, token);
                     setItem('userId', userId);
-                    setItem('token', token)
-
-                    this.go2ConversationList();
+                    setItem('token', token);
+					if (getItem("wechat")) {
+						this.$go2CustomerPage()
+					} else {
+						this.go2ConversationList();
+					}
                 })
                 .catch(r => {
                     console.log('login failed', r);
@@ -177,114 +184,113 @@ export default {
 </script>
 <style lang="scss">
 .page-body {
-    padding: 20rpx;
-    height: 100vh;
-    background-color: $cm-bg-color; 
+	padding: 20rpx;
+	height: 100vh;
+	background-color: $cm-bg-color;
 }
 
 .login-type-title {
-    margin-top: 120rpx;
-    font-size: 24px;
-    margin-bottom: 50rpx;
-    color: $cm-text-color;
+	margin-top: 120rpx;
+	font-size: 24px;
+	margin-bottom: 50rpx;
+	color: $cm-text-color;
 }
 
 .mobile-container {
-    margin-top: 20rpx;
-    color: $cm-text-color-grey;
+	margin-top: 20rpx;
+	color: $cm-text-color-grey;
 }
 
 .mobile-input-container {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    height: 40px;
-    color: $cm-text-color;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	height: 40px;
+	color: $cm-text-color;
 }
 
 .mobile-input-container input {
-    font-size: 14px;
-    border-bottom: 1px solid $cm-border-color;
+	font-size: 14px;
+	border-bottom: 1px solid $cm-border-color;
 }
 
 .mobile-input-container .uni-input-input:focus {
-    border-bottom: 1px solid $cm-border-color;
+	border-bottom: 1px solid $cm-border-color;
 }
 
 .auth-code-container {
-    margin-top: 30rpx;
-    color: $cm-text-color;
+	margin-top: 30rpx;
+	color: $cm-text-color;
 }
 
 .auth-code-input-container {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-    width: 100%;
-    height: 40px;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: space-between;
+	width: 100%;
+	height: 40px;
 
-    button {
-        background-color: $cm-bg-button-color !important;
-        color: white;
-        
-        &[disabled] {
-            background-color: rgba($cm-bg-button-color, 0.3) !important;
-            color: white !important;
-        }
-    }
+	button {
+		background-color: $cm-bg-button-color !important;
+		color: white;
+
+		&[disabled] {
+			background-color: rgba($cm-bg-button-color, 0.3) !important;
+			color: white !important;
+		}
+	}
 }
 
 .auth-code-input-container input {
-    flex: 1;
-    margin-right: 5px;
-    font-size: 14px;
-    border-bottom: 1px solid $cm-border-color;
+	flex: 1;
+	margin-right: 5px;
+	font-size: 14px;
+	border-bottom: 1px solid $cm-border-color;
 }
 
 .auth-code-input-container .uni-input-input:focus {
-    border-bottom: 1px solid $cm-border-color;
+	border-bottom: 1px solid $cm-border-color;
 }
 
 .password-container {
-    margin-top: 30rpx;
-    color: $cm-text-color-grey;
+	margin-top: 30rpx;
+	color: $cm-text-color-grey;
 }
 
 .password-input-container {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    height: 40px;
-    color: $cm-text-color;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	height: 40px;
+	color: $cm-text-color;
 }
 
 .password-input-container input {
-    font-size: 14px;
-    border-bottom: 1px solid $cm-border-color;
+	font-size: 14px;
+	border-bottom: 1px solid $cm-border-color;
 }
 
 .password-input-container input:focus {
-    border-bottom: 1px solid $cm-border-color;
+	border-bottom: 1px solid $cm-border-color;
 }
 
 .switch-type {
-    text-align: left;
-    color: $cm-border-color;
-    font-size: 14px;
-    margin-top: 40rpx;
-    cursor: pointer;
+	text-align: left;
+	color: $cm-border-color;
+	font-size: 14px;
+	margin-top: 40rpx;
+	cursor: pointer;
 }
 
 .confirm-button {
-    margin-top: 20px;
-    background-color: $cm-bg-button-color !important;
-    color: white;
+	margin-top: 20px;
+	background-color: $cm-bg-button-color !important;
+	color: white;
 }
 
 .confirm-button[disabled] {
-    background-color: rgba($cm-bg-button-color, 0.3) !important;
-    color: white !important;
+	background-color: rgba($cm-bg-button-color, 0.3) !important;
+	color: white !important;
 }
-
 </style>

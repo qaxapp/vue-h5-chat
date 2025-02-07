@@ -16,7 +16,10 @@ import mitt from "mitt";
 import { initializeLanguage, getCachedLanguage } from './common/language'; // 导入 initializeLanguage 方法
 
 import VConsole from 'vconsole';
-
+import Conversation from "./wfc/model/conversation";
+import ConversationType from "./wfc/model/conversationType";
+import EventType from "./wfc/client/wfcEvent";
+import ConnectionStatus from './wfc/client/connectionStatus';
 // 只在开发环境下启用 vConsole
 if (process.env.NODE_ENV === 'development') {
     const vConsole = new VConsole();
@@ -62,6 +65,30 @@ app.config.globalProperties.$navigateToPage = (url, options) => {
             console.log('navigate to WebViewPage error', e)
         }
     });
+}
+
+app.config.globalProperties.$go2CustomerPage = () => {
+	let conversation = new Conversation(getItem('type') == 0 ? ConversationType.Single : getItem('type') == 1 ?
+		ConversationType.Group : getItem('type') == 2 ? ConversationType.ChatRoom : getItem('type') == 3 ?
+		ConversationType.Channel : ConversationType.SecretChat, getItem("chatId"), 0);
+	console.log("测试123",conversation);
+	wfc.eventEmitter.on(EventType.ConnectionStatusChanged, (status) => {
+		if (status === ConnectionStatus.ConnectionStatusConnected) {
+			store.setCurrentConversation(conversation);
+			// 不加延时的话，不能正常切换页面，会报莫名其妙的错误
+			setTimeout(() => {
+				uni.redirectTo({
+					url: '/pages/conversation/Customer',
+					success: () => {
+					},
+					fail: e => {
+					},
+					complete: () => {
+					}
+				})
+			}, 100)
+		}
+	})
 }
 
 // 如果不存在会话页面，则入栈，如果已经存在会话页面，则返回到该页面
