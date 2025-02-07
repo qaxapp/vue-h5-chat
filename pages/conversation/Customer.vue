@@ -10,7 +10,7 @@
 			<view class="nav" v-if="conversationInfo.conversation.type==2" >
 				<view class="nav-lag" @click="open">
 					<span>{{currentLable}} </span>
-					<image src='/assets/images/dwon.png'></image>
+					<image src='/assets/images/ic_down.png'></image>
 				</view>
 				<view @click="ruletost" class='rule'>
 					<image src='/assets/images/ic_error.svg' style="display: block;"></image>
