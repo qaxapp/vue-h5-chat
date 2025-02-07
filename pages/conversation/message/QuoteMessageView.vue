@@ -5,7 +5,8 @@
             <div class="media-content" v-if="[3, 6, 7].indexOf(this.quotedMessage.messageContent.type) >= 0">
                 <p> {{ this.quotedMessage._from._displayName + ':' }} </p>
                 <img :src="mediaSrc" alt=""
-                     @click="onMessageClick">
+                     @click="onMessageClick"
+										 @error="onImageThumbnailError">
             </div>
             <p v-else @click="onMessageClick">
                 {{ this.quotedMessageStr }}
@@ -20,6 +21,7 @@ import store from "@/store";
 import MessageContentType from "@/wfc/messages/messageContentType";
 import Message from "@/wfc/messages/message";
 import PreviewQuotedMessageView from "@/pages/conversation/message/PreviewQuotedMessageView";
+import Config from "../../../config";
 
 export default {
     name: "QuoteMessageView",
@@ -52,6 +54,11 @@ export default {
         }
     },
     methods: {
+			onImageThumbnailError(event) {
+				// 图片加载失败时，设置为默认图片
+				event.target.src = Config.DEFAULT_THUMBNAIL_URL;
+			},
+
         cancelQuoteMessage() {
             this.$emit('cancelQuoteMessage')
         },

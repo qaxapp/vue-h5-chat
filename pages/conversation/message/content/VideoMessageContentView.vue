@@ -3,6 +3,7 @@
         <image controls
                @click="preview"
                :src="thumbnailUri()"
+							 @error="onImageThumbnailError"
                />
         <view class="wxfont play play-button"
               @click="preview"
@@ -33,10 +34,16 @@ export default {
         thumbnailUri(){
             if (this.message.status === MessageStatus.Sending){
                 return Config.DEFAULT_VIDEO_POSTER;
-            }else {
+            } else if (this.message.messageContent.thumbnail) {
                 return 'data:video/jpeg;base64,' + this.message.messageContent.thumbnail;
-            }
+            } else {
+							return Config.DEFAULT_THUMBNAIL_URL;
+						}
         },
+				onImageThumbnailError(event) {
+					// 图片加载失败时，设置为默认图片
+					event.target.src = Config.DEFAULT_THUMBNAIL_URL;
+				},
         preview() {
             let message = this.message;
             if (this.isInCompositeView) {

@@ -51,7 +51,7 @@ export default class Config {
     static ICE_SERVERS = [[]];
     // 下面这种是 app 端的配置格式
     //static ICE_SERVERS = [{uri: 'turn:turn.wildfirechat.net:3478', userName: 'wfchat', password: 'wfchat1'}];
-    static LANGUAGE = 'zh_CN';
+    static LANGUAGE = 'en';
 
     // 配置clientId的生成策略，可选0，1，2；默认0
     // 0 clientId存储于内存，每次刷新网页，都会随机生成新的clientId

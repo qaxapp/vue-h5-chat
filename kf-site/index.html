@@ -113,6 +113,7 @@
             token:'',
             chatId:'dc010c59d74e405382b62d8cac609bf8',  // 跟type一起搭配使用，如果type为0 chatId则为单聊的客服的uid，如果type为2，则为聊天室的idid
             type: 0,  // 聊天类型 0是私聊 2是聊天室
+            cacheBuster: Math.floor(new Date().getTime() / 1000) // 添加当前时间戳作为cacheBuster，以秒为单位
         }
         // 将JSON对象转换为查询字符串
             var queryString = Object.keys(obj).map(function(key) {
