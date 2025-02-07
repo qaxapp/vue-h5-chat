@@ -89,11 +89,11 @@ export default {
 }
 </script>
 
-<style lang="css" scoped>
+<style lang="scss" scoped>
 .file-message-container {
     margin: 0 10px;
     padding: 10px;
-    background-color: white;
+    background-color: $cm-border-gray-color;
     position: relative;
     border-radius: 5px;
     display: flex;
@@ -120,7 +120,7 @@ export default {
 }
 
 .file-message-container .file-size {
-    color: #888888;
+    color: $cm-text-color-inverse;
     font-size: 13px;
 }
 
@@ -130,7 +130,7 @@ export default {
 }
 
 .rightarrow:before {
-    border-left-color: white;
+    border-left-color: $cm-border-gray-color;
 }
 
 </style>

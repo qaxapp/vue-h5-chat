@@ -88,7 +88,7 @@ export default {
 .volume-container {
     flex: 1;
     display: flex;
-    height: 40px;
+    height: 36px;
     min-width: 55px;
     background-color: $cm-received-message-bg-color;
     border-radius: 5px;

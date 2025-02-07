@@ -33,7 +33,7 @@
                         class="avatar"
                         @click="onClickUserPortrait(message.from)"
                         draggable="false"
-						@error="onImageError"
+												@error="onImageError"
                         :src="message._from.portrait" alt="">
                 </div>
             </div>
@@ -50,7 +50,6 @@ import LoadingView from "@/pages/common/LoadingView";
 import wfc from "@/wfc/client/wfc";
 import ConversationType from "@/wfc/model/conversationType";
 import {gte} from "@/wfc/util/longUtil";
-import MessageReceiptDetailView from "@/pages/conversation/message/MessageReceiptDetailView";
 import QuoteMessageView from "@/pages/conversation/message/QuoteMessageView";
 import Config from "@/config";
 import { getItem } from "../../util/storageHelper";
@@ -101,10 +100,10 @@ export default {
         }
     },
     methods: {
-		onImageError(event) {
-		      // 图片加载失败时，设置为默认图片
-		      event.target.src = Config.DEFAULT_PORTRAIT_URL;
-		},
+			onImageError(event) {
+						// 图片加载失败时，设置为默认图片
+						event.target.src = Config.DEFAULT_PORTRAIT_URL;
+			},
         onClickUserPortrait(userId) {
             store.setCurrentFriend(this.message._from);
 			if(getItem('wechat')){
@@ -313,9 +312,9 @@ export default {
 }
 
 .message-content-container-view.highlight {
-    background-color: #dadada;
+    background-color: $cm-split-line-color;
     opacity: 0.5;
-    --out-arrow-color: #dadada !important;
+    --out-arrow-color: $cm-split-line-color !important;
 }
 
 .message-content-wrapper {

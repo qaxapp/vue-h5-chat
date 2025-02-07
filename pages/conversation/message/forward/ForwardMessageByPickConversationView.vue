@@ -154,7 +154,7 @@ export default {
     margin: 15px 20px 0 15px;
     flex: 1;
     border-radius: 3px;
-    border: 1px solid $cm-border-gray-color;
+    border: 1px solid $cm-split-line-color;
     padding-left: 10px;
     text-align: left;
 }

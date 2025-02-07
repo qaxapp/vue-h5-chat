@@ -61,7 +61,7 @@ export default {
 <style lang="scss" scoped>
 .text-message-container {
     margin: 0 10px;
-    padding: 10px;
+    padding: 4px 10px;
     // background-color: white;
     position: relative;
     border-radius: 0 8px 8px 8px; /* 设置圆角 */

@@ -66,11 +66,11 @@ export default {
 }
 </script>
 
-<style lang="css" scoped>
+<style lang="scss" scoped>
 .composite-message-container {
     margin: 0 10px;
     padding: 10px;
-    background-color: white;
+    background-color: $cm-border-gray-color;
     position: relative;
     border-radius: 5px;
 }
@@ -88,11 +88,11 @@ export default {
 .composite-message-container .content, .desc {
     padding: 5px 0;
     font-size: 14px;
-    color: #b2b2b2;
+    color: $cm-text-color-inverse;
 }
 
 .composite-message-container .desc {
-    border-top: 1px solid #f2f2f2;
+    border-top: 1px solid $cm-border-gray-color;
     padding: 5px 0 0 0;
 }
 

@@ -90,8 +90,8 @@ export default {
 
 :root {
     // 这里是 CSS 变量
-    --in-arrow-color: #{$cm-received-message-bg-color};
-    --out-arrow-color: #{$cm-sent-message-bg-color};
+    --in-arrow-color: #{$cm-split-line-color};
+    --out-arrow-color: #{$cm-split-line-color};
 }
 
 .leftarrow:before {
@@ -108,7 +108,7 @@ export default {
 
 .leftarrow:before {
     border-color: transparent;
-    border-right-color: var(--in-arrow-color);
+    border-right-color: $cm-split-line-color;
     border-width: 5px;
 }
 
@@ -127,7 +127,7 @@ export default {
 
 .rightarrow:before {
     border-color: transparent;
-    border-left-color: var(--out-arrow-color);
+    border-left-color: $cm-split-line-color;
     border-width: 5px;
 }
 </style>

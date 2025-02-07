@@ -55,11 +55,11 @@ export default {
 }
 </script>
 
-<style lang="css" scoped>
+<style lang="scss" scoped>
 .video-content-container {
     margin: 0 10px;
     position: relative;
-    border: 1px solid #efefef;
+    border: 1px solid $cm-split-line-color;
     border-radius: 5px;
 }
 
@@ -80,11 +80,11 @@ export default {
 }
 
 .right-arrow:before {
-    border-left-color: white;
+    border-left-color: $cm-border-gray-color;
 }
 
 .left-arrow:before {
-    border-left-color: white;
+    border-left-color: $cm-border-gray-color;
 }
 
 </style>

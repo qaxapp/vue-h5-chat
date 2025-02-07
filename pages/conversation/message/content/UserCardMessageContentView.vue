@@ -1,10 +1,10 @@
 <template>
     <div ref="userCardTippy"
          :name="'userCardInfoTrigger' + message.messageId"
-		 @click="showUserDetail"
+				 @click="showUserDetail"
          class="user-card-content-container">
         <div class="portrait-name-container">
-            <img :src="message.messageContent.portrait">
+            <img :src="message.messageContent.portrait" @error="onImageError" >
             <p>{{ message.messageContent.displayName }}</p>
         </div>
         <p class="desc single-line">{{ $t('chat_im_i18n.contact_card') }}</p>
@@ -28,6 +28,7 @@ import Message from "@/wfc/messages/message";
 import UserCardView from "@/pages/user/UserCardView";
 import wfc from "@/wfc/client/wfc";
 import store from "../../../../store";
+import Config from "../../../../config";
 
 export default {
     name: "UserCardMessageContentView",
@@ -42,7 +43,12 @@ export default {
     },
 
     methods: {
-        closeUserCard() {
+			onImageError(event) {
+				// 图片加载失败时，设置为默认图片
+				event.target.src = Config.DEFAULT_PORTRAIT_URL;
+			},
+
+			closeUserCard() {
             console.log('closeUserCard')
             this.$refs["userCardTippy"]._tippy.hide();
         },
@@ -80,7 +86,7 @@ export default {
     background-color:$cm-received-message-bg-color;
     position: relative;
     border-radius: 5px;
-	color: $cm-text-color;
+	  color: $cm-text-color;
 }
 
 .portrait-name-container {

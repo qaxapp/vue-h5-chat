@@ -67,7 +67,7 @@ export default {
 .image-content-container {
     margin: 0 10px;
     position: relative;
-    border: 1px solid $cm-border-gray-color;
+    border: 1px solid $cm-split-line-color;
     border-radius: 5px;
 }
 
@@ -80,11 +80,11 @@ export default {
 }
 
 .right-arrow:before {
-    border-left-color: white;
+    border-left-color: $cm-border-gray-color;
 }
 
 .left-arrow:before {
-    border-left-color: white;
+    border-left-color: $cm-border-gray-color;
 }
 
 </style>

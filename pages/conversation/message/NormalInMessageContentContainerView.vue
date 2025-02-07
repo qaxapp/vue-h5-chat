@@ -186,9 +186,9 @@ export default {
 }
 
 .message-content-container.highlight {
-    background-color: #dadada;
+    background-color: $cm-split-line-color;
     opacity: 0.5;
-    --in-arrow-color: #dadada !important;
+    --in-arrow-color: $cm-split-line-color !important;
 }
 
 </style>

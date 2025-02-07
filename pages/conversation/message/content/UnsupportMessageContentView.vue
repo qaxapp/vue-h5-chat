@@ -23,11 +23,11 @@ export default {
 }
 </script>
 
-<style lang="css" scoped>
+<style lang="scss" scoped>
 .text-message-container {
     margin: 0 10px;
     padding: 10px;
-    background-color: white;
+    background-color: $cm-border-gray-color;
     position: relative;
     border-radius: 5px;
 }
