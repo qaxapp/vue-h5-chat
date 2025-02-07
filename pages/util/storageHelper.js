@@ -1,15 +1,15 @@
 export function removeItem(key) {
-    uni.removeStorageSync(key)
+	sessionStorage.removeItem(key)
 }
 
 export function getItem(key) {
-    return uni.getStorageSync(key);
+    return sessionStorage.getItem(key);
 }
 
 export function setItem(key, value) {
-    uni.setStorageSync(key, value);
+	sessionStorage.setItem(key, value);
 }
 
 export function clear() {
-    uni.clearStorageSync();
+	sessionStorage.clear();
 }
