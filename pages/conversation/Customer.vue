@@ -260,7 +260,7 @@ export default {
 	},
 
 	onUnload() {
-		  store.setCurrentConversationInfo(null);
+	// 	store.setCurrentConversationInfo(null);
 	},
 
 	onNavigationBarButtonTap(e) {
