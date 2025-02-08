@@ -100,31 +100,28 @@ export default {
         }
     },
     methods: {
-			onImageError(event) {
-						// 图片加载失败时，设置为默认图片
-						event.target.src = Config.DEFAULT_PORTRAIT_URL;
-			},
+		onImageError(event) {
+			// 图片加载失败时，设置为默认图片
+			event.target.src = Config.DEFAULT_PORTRAIT_URL;
+		},
         onClickUserPortrait(userId) {
             store.setCurrentFriend(this.message._from);
-			if(getItem('wechat')){
-				// TODO 点击头像事件
-				uni.showToast({
-					title: 'TODO 点击头像事件',
-					icon: 'none'
-				})
-			}else{
-				
-				uni.navigateTo({
-					url: '/pages/contact/UserDetailPage',
-					success: () => {
-						console.log('nav to UserDetailPage success');
+			// TODO 点击头像事件
+			uni.showToast({
+				title: 'TODO 点击头像事件',
+				icon: 'none'
+			})
 
-					},
-					fail: (err) => {
-						console.log('nav to UserDetailPage err', err);
-					}
-				})
-			}
+			// uni.navigateTo({
+			// 	url: '/pages/contact/UserDetailPage',
+			// 	success: () => {
+			// 		console.log('nav to UserDetailPage success');
+
+			// 	},
+			// 	fail: (err) => {
+			// 		console.log('nav to UserDetailPage err', err);
+			// 	}
+			// })
         },
         resend() {
             wfc.deleteMessage(this.message.messageId);

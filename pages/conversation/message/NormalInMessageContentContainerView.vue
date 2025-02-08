@@ -12,7 +12,8 @@
                         @click="onClickUserPortrait(message.from)"
                         class="avatar"
                         draggable="false"
-                        :src="message._from.portrait" alt="">
+                        :src="message._from.portrait" alt=""
+												@error="onImageAvatarError">
                 </div>
                 <!--消息内容 根据情况，if-else-->
                 <div class="message-name-content-container">
@@ -45,6 +46,7 @@ import LoadingView from "@/pages/common/LoadingView";
 import store from "@/store";
 import wfc from "@/wfc/client/wfc";
 import { getItem } from "../../util/storageHelper";
+import Config from "../../../config";
 
 export default {
     name: "NormalInMessageContentView",
@@ -60,27 +62,30 @@ export default {
         }
     },
     methods: {
-        onClickUserPortrait(userId) {
+		onImageAvatarError(event) {
+			// 图片加载失败时，设置为默认图片
+			event.target.src = Config.DEFAULT_PORTRAIT_URL;
+		},
+
+		onClickUserPortrait(userId) {
             store.setCurrentFriend(this.message._from);
-			if(getItem('wechat')){
-				// TODO 点击头像事件
-				uni.showToast({
-					title: 'TODO 点击头像事件',
-					icon: 'none'
-				})
-			}else{
-				uni.navigateTo({
-				    url: '/pages/contact/UserDetailPage',
-				    success: () => {
-				        console.log('nav to UserDetailPage success');
-				
-				    },
-				    fail: (err) => {
-				        console.log('nav to UserDetailPage err', err);
-				    }
-				})
-			}
-            
+            store.setCurrentFriend(this.message._from);
+			// TODO 点击头像事件
+			uni.showToast({
+				title: 'TODO 点击头像事件',
+				icon: 'none'
+			})
+
+			// uni.navigateTo({
+			// 	url: '/pages/contact/UserDetailPage',
+			// 	success: () => {
+			// 		console.log('nav to UserDetailPage success');
+
+			// 	},
+			// 	fail: (err) => {
+			// 		console.log('nav to UserDetailPage err', err);
+			// 	}
+			// })
         },
         openMessageContextMenu(event, message) {
             this.$eventBus.$emit('openMessageContextMenu', [event, message])

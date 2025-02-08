@@ -170,23 +170,23 @@
         "selectedColor": "#548DFF",
         "color": "#FFFFFF",
         "list": [
+			// {
+			//     "pagePath": "pages/contact/ContactListPage",
+			//     "text": "%chat_index_contacts%",
+			//     "iconPath": "static/image/tabbar/contact_normal.png",
+			//     "selectedIconPath": "static/image/tabbar/contact_press.png"
+			// },
+			// {
+			//     "pagePath": "pages/me/MePage",
+			//     "text": "%chat_index_my%",
+			//     "iconPath": "static/image/tabbar/me_normal.png",
+			//     "selectedIconPath": "static/image/tabbar/me_press.png"
+			// },
             {
                 "pagePath": "pages/conversationList/ConversationListPage",
                 "text": "%chat_index_msg%",
                 "iconPath": "static/image/tabbar/message_normal.png",
                 "selectedIconPath": "static/image/tabbar/message_press.png"
-            },
-            {
-                "pagePath": "pages/contact/ContactListPage",
-                "text": "%chat_index_contacts%",
-                "iconPath": "static/image/tabbar/contact_normal.png",
-                "selectedIconPath": "static/image/tabbar/contact_press.png"
-            },
-            {
-                "pagePath": "pages/me/MePage",
-                "text": "%chat_index_my%",
-                "iconPath": "static/image/tabbar/me_normal.png",
-                "selectedIconPath": "static/image/tabbar/me_press.png"
             }
         ],
         "backgroundColor": "#0C1822"

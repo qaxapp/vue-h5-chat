@@ -4,14 +4,10 @@
 			<view class="wf-message-input-toolbar">
 				<!-- <view class="wf-input-button-icon wxfont" @click="toggleVoice"
 					:class="showVoice ? 'keyboard' : 'voice'"></view> -->
-				<!-- <view class="wf-input-button-icon wxfont" v-if="isPttEnable" @click="togglePtt"
-					:class="showPtt ? 'keyboard' : 'voice_playing'"></view> -->
 				<!-- <view class="wf-input-voice-container" v-if="showVoice">
 					<AudioInputView :conversation-info="conversationInfo"></AudioInputView>
 				</view>
-				<view class="wf-input-voice-container" v-else-if="showPtt">
-					<PttAudioInputView :conversation-info="conversationInfo"></PttAudioInputView>
-				</view> -->
+				-->
         <view style="width: 100%">
 					<view class="wf-input-text-container">
             <textarea
@@ -164,9 +160,7 @@
 	import Config from "../../config";
 	import QuoteInfo from "../../wfc/model/quoteInfo";
 	import AudioInputView from "./message/AudioInputView.vue";
-	import PttAudioInputView from "./message/PttAudioInputView.vue";
 	import Draft from "../util/draft";
-	import pttClient from "../../wfc/ptt/pttClient";
 	import avenginekitproxy from "../../wfc/av/engine/avenginekitproxy";
 import appServerApi from "../../api/appServerApi";
 import { setItem } from "../util/storageHelper";
@@ -174,7 +168,6 @@ import { setItem } from "../util/storageHelper";
 		name: "MessageInputView",
 		components: {
 			AudioInputView,
-    PttAudioInputView,
 		},
 		props: {
 			conversationInfo: {
