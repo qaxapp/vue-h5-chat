@@ -7,6 +7,7 @@
 				<!-- <view class="wf-input-voice-container" v-if="showVoice">
 					<AudioInputView :conversation-info="conversationInfo"></AudioInputView>
 				</view>
+				-->
         <view style="width: 100%">
 					<view class="wf-input-text-container">
             <textarea
