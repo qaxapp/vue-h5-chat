@@ -90,7 +90,7 @@
 			<MultiSelectActionView v-show="sharedConversationState.enableMessageMultiSelection" />
 		</view>
 	</view>
-	<uni-popup ref="popup" :mask-click="false">
+	<uni-popup ref="popup" :mask-click="true" >
 		<view class="languageWarp">
 			<ul>
 				<li
@@ -940,7 +940,8 @@ export default {
 	top: 0px;
 	left: 0px;
 	height: 44px;
-	background-color: #14293a;
+	background-color: #10212F;
+	
 	z-index: 99999;
 }
 .nav-title {
@@ -954,7 +955,7 @@ export default {
 }
 .nav-lag {
 	position: relative;
-	left: 10px;
+	left: 12px;
 	top: 50%;
 	color: #fff;
 	transform: translate(0, -50%);
@@ -992,14 +993,24 @@ export default {
 	flex-direction: column;
 	justify-content: center;
 	padding: 0px 12px;
+	margin-top: 2.5px;
+	margin-bottom: 2.5px;
 	box-sizing: border-box;
 	width: 127px;
 	height: 28px;
 	margin-top: 5px;
 	font-size: 14px;
+
+}
+.languageWarp ul:last-child {
+	border-radius: 0 0 8px 8px;
 }
 .current {
 	border: 1px solid #1effe4;
+	background: #1a3143;
+	border-radius: 4px;
+}
+.current:active {
 	background: #1a3143;
 	border-radius: 4px;
 }
