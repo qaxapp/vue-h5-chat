@@ -20,15 +20,15 @@ export default {
   },
   onLaunch: function (option) {
     console.log("App Launch");
-	uni.preloadPage({
-		  url: "/pages/SplashPage"
-	})
-	uni.preloadPage({
-		  url: "/pages/login/LoginPage"
-	})
-	uni.preloadPage({
-		  url: "/pages/conversation/Customer"
-	})
+	// uni.preloadPage({
+	// 	  url: "/pages/SplashPage"
+	// })
+	// uni.preloadPage({
+	// 	  url: "/pages/login/LoginPage"
+	// })
+	// uni.preloadPage({
+	// 	  url: "/pages/conversation/Customer"
+	// })
     this.wfc = wfc;
     this.store = store;
     // #ifdef APP-PLUS
