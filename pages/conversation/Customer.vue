@@ -200,6 +200,7 @@ export default {
 					label: '日本語'
 				}
 			],
+			isOpenLanguage: false,
 			currentCid: '', // 切换语言选中的chatroomId
 			currentLable: '', // 切换语言选中的描述
 			checkCid: '',
@@ -356,7 +357,14 @@ export default {
 			this.checkCid = item.cid;
 		},
 		open() {
-			this.$refs.popup.open('left');
+			if(!this.isOpenLanguage) {
+				this.isOpenLanguage = true;
+				this.$refs.popup.open('left');
+			} else {
+				this.isOpenLanguage = false;
+				
+				this.close();
+			}
 		},
 		close() {
 			this.$refs.popup.close();

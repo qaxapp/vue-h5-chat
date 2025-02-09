@@ -2,7 +2,6 @@
     <div class="container">
         <div class="message-time-container"
              v-bind:class="{checked:sharedPickState.messages.indexOf(message) >= 0}">
-            <p v-if="this.message._showTime" class="time">{{ message._timeStr }}</p>
             <div class="message-avatar-content-container">
                 <div class="avatar-container">
                     <checkbox id="checkbox" v-if="sharedConversationState.enableMessageMultiSelection" type="checkbox"
@@ -17,7 +16,10 @@
                 </div>
                 <!--消息内容 根据情况，if-else-->
                 <div class="message-name-content-container">
-                    <p class="name">{{ message._from._displayName }}</p>
+                    <div class="name-time-container">
+                        <p class="name">{{ message._from._displayName }}</p>
+                        <p class="time">{{ message._timeStr }}</p>
+                    </div>
                     <div class="flex-column flex-align-start">
                         <div class="flex-row">
                             <MessageContentContainerView class="message-content-container"
@@ -141,7 +143,6 @@ export default {
 
 .message-time-container .time {
     align-self: center;
-    margin-bottom: 20px;
     color: #b4b4b4;
     height: 20px;
     font-size: 10px;
@@ -163,7 +164,7 @@ export default {
 .avatar-container .avatar {
     width: 40px;
     height: 40px;
-    border-radius: 3px;
+    border-radius: 20px;
 }
 
 .avatar-container {
@@ -188,6 +189,32 @@ export default {
     color: #bdbdbd;
     font-size: 12px;
     margin-bottom: 2px;
+}
+
+.name-time-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 5px;
+    margin-left: 10px;
+    margin-bottom: 2px;
+    white-space: nowrap; /* 不换行 */
+}
+
+.name-time-container .name {
+    color: #bdbdbd;
+    font-size: 12px;
+    margin: 0;
+    height: 16px;
+    line-height: 16px;
+}
+
+.name-time-container .time {
+    color: #b4b4b4;
+    font-size: 10px;
+    margin: 0;
+    height: 16px;
+    line-height: 16px;
 }
 
 .message-content-container.highlight {

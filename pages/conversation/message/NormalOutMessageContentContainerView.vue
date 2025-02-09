@@ -11,7 +11,12 @@
 
                 <div class="message-avatar-content-container">
                     <LoadingView v-if="message.status === 0 || isDownloading"/>
+                 
                     <div class="flex-column flex-align-end">
+                        <div class="name-time-container">
+                            <p class="time">{{ message._timeStr }}</p>
+                            <p class="name">我</p>
+                    </div>
                         <div class="message-content-wrapper">
                             <view class="receipt-status">
                                 <i v-if="message.status === 2" class="icon-ion-close-circled" style="color: red" @click="resend"/>
@@ -28,13 +33,6 @@
                                           :message-digest="this.message.messageContent.quoteInfo.messageDigest"
                                           :show-close-button="false"/>
                     </div>
-
-                    <img
-                        class="avatar"
-                        @click="onClickUserPortrait(message.from)"
-                        draggable="false"
-												@error="onImageError"
-                        :src="message._from.portrait" alt="">
                 </div>
             </div>
         </div>
@@ -318,6 +316,33 @@ export default {
     position: relative;
     display: flex;
     align-items: center;
+}
+
+.name-time-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 5px;
+    margin-right: 10px;
+    margin-bottom: 2px;
+   
+    white-space: nowrap; /* 不换行 */
+}
+
+.name-time-container .name {
+    color: #bdbdbd;
+    font-size: 12px;
+    margin: 0;
+    height: 16px;
+    line-height: 16px;
+}
+
+.name-time-container .time {
+    color: #b4b4b4;
+    font-size: 10px;
+    margin: 0;
+    height: 16px;
+    line-height: 16px;
 }
 
 </style>
