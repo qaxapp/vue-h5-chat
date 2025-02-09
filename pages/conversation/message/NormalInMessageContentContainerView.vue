@@ -8,6 +8,7 @@
                               :value="message"
                               :checked="isMessageChecked"/>
                     <img
+                        :style="{ visibility: message.showAvatar ? 'visible' : 'hidden' }"
                         @click="onClickUserPortrait(message.from)"
                         class="avatar"
                         draggable="false"
@@ -16,7 +17,7 @@
                 </div>
                 <!--消息内容 根据情况，if-else-->
                 <div class="message-name-content-container">
-                    <div class="name-time-container">
+                    <div class="name-time-container" v-if="message.showAvatar">
                         <p class="name">{{ message._from._displayName }}</p>
                         <p class="time">{{ message._timeStr }}</p>
                     </div>

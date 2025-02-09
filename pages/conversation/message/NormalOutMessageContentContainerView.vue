@@ -1,7 +1,7 @@
 <template>
     <div>
         <div class="message-time-container" v-bind:class="{checked:sharedPickState.messages.indexOf(message) >= 0}">
-            <p v-if="this.message._showTime" class="time">{{ message._timeStr }}</p>
+            <!-- <p v-if="this.message._showTime" class="time">{{ message._timeStr }}</p> -->
             <div class="message-content-container"
                  v-bind:class="{checked:sharedPickState.messages.indexOf(message) >= 0}">
                 <checkbox id="checkbox" v-if="sharedConversationState.enableMessageMultiSelection" type="checkbox"
@@ -13,10 +13,10 @@
                     <LoadingView v-if="message.status === 0 || isDownloading"/>
                  
                     <div class="flex-column flex-align-end">
-                        <div class="name-time-container">
+                        <div class="name-time-container" v-if="message.showAvatar">
                             <p class="time">{{ message._timeStr }}</p>
                             <p class="name">我</p>
-                    </div>
+                         </div>
                         <div class="message-content-wrapper">
                             <view class="receipt-status">
                                 <i v-if="message.status === 2" class="icon-ion-close-circled" style="color: red" @click="resend"/>
