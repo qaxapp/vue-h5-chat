@@ -194,10 +194,6 @@ export default {
 				{
 					cid: '82e0884de3e7433f9176771fc3d1583c',
 					label: 'Português'
-				},
-				{
-					cid: 'chatroom[object Object]',
-					label: '日本語'
 				}
 			],
 			isOpenLanguage: false,
