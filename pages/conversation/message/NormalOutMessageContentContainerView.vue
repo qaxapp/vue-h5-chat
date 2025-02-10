@@ -291,6 +291,7 @@ export default {
 	width: 32rpx;
 	height: 32rpx;
 	opacity: 0.6;
+	margin-right: -5px;
 }
 
 .icon-ion-close-circled {
