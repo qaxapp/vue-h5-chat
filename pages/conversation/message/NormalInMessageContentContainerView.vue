@@ -2,6 +2,7 @@
     <div class="container">
         <div class="message-time-container"
              v-bind:class="{checked:sharedPickState.messages.indexOf(message) >= 0}">
+			<p v-if="this.message._showTime && isSingle" class="time">{{ message._timeStr }}</p>
             <div class="message-avatar-content-container">
                 <div class="avatar-container">
                     <checkbox id="checkbox" v-if="sharedConversationState.enableMessageMultiSelection" type="checkbox"
@@ -17,7 +18,7 @@
                 </div>
                 <!--消息内容 根据情况，if-else-->
                 <div class="message-name-content-container">
-                    <div class="name-time-container" v-if="message.showAvatar">
+                    <div class="name-time-container" v-if="message.showAvatar && !isSingle">
                         <p class="name">{{ message._from._displayName }}</p>
                         <p class="time">{{ message._timeStr }}</p>
                     </div>
@@ -50,6 +51,7 @@ import store from "@/store";
 import wfc from "@/wfc/client/wfc";
 import { getItem } from "../../util/storageHelper";
 import Config from "../../../config";
+import ConversationType from "../../../wfc/model/conversationType";
 
 export default {
     name: "NormalInMessageContentView",
@@ -118,7 +120,10 @@ export default {
 
         isMessageChecked() {
             return this.sharedPickState.messages.findIndex(m => m.messageId === this.message.messageId) >= 0;
-        }
+        },
+		isSingle () {
+			return this.message.conversation.type == ConversationType.Single;
+		}
     },
     components: {
         MessageContentContainerView,
@@ -211,8 +216,8 @@ export default {
 }
 
 .name-time-container .time {
-    color: #b4b4b4;
-    font-size: 10px;
+    color: #90A4B6;
+    font-size: 11px;
     margin: 0;
     height: 16px;
     line-height: 16px;

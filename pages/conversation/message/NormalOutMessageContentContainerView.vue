@@ -1,7 +1,7 @@
 <template>
 	<div>
 		<div class="message-time-container" v-bind:class="{ checked: sharedPickState.messages.indexOf(message) >= 0 }">
-			<!-- <p v-if="this.message._showTime" class="time">{{ message._timeStr }}</p> -->
+			<p v-if="this.message._showTime && isSingle" class="time">{{ message._timeStr }}</p>
 			<div class="message-content-container" v-bind:class="{ checked: sharedPickState.messages.indexOf(message) >= 0 }">
 				<checkbox
 					id="checkbox"
@@ -17,7 +17,7 @@
 					<LoadingView v-if="message.status === 0 || isDownloading" />
 
 					<div class="flex-column flex-align-end">
-						<div class="name-time-container" v-if="message.showAvatar">
+						<div class="name-time-container" v-if="message.showAvatar && !isSingle">
 							<p class="time">{{ message._timeStr }}</p>
 							<p class="name">我</p>
 						</div>
@@ -84,6 +84,7 @@ export default {
 		// TextMessageContentView,
 	},
 	mounted() {
+		console.log(this.message.conversation.type)
 		if (getItem('wechat')) {
 			this.userInfo = wfc.getUserInfo(getItem('userId'), true);
 			this.wechat = getItem('wechat');
@@ -185,6 +186,9 @@ export default {
 	},
 
 	computed: {
+		isSingle () {
+			return this.message.conversation.type === ConversationType.Single;
+		},
 		receiptIcon() {
 			let conversation = this.message.conversation;
 			let timestamp = this.message.timestamp;
@@ -255,8 +259,8 @@ export default {
 	width: 100%;
 	margin-bottom: 20px;
 	text-align: center;
-	color: #b4b4b4;
-	font-size: 10px;
+	color: #90A4B6;
+	font-size: 11px;
 	/* background-color: #f3f3f3; */
 }
 
