@@ -397,6 +397,12 @@ export default {
       this.showVoice = false;
       this.showPtt = false;
     },
+	close() {
+		this.showEmoji = false;
+		this.showExt = false;
+		this.showVoice = false;
+		this.showPtt = false;
+	},
 
     toggleGif() {
       console.log("------------- toggleEmoji");
@@ -887,7 +893,7 @@ export default {
   ); /* 调整三角形的位置，距离右边10px */
   border-left: 10px solid transparent; /* 左边透明 */
   border-right: 10px solid transparent; /* 右边透明 */
-  border-top: 10px solid #10212f; /* 三角形的颜色 */
+  border-top: 10px solid #223A4D; /* 三角形的颜色 */
 }
 
 .wf-stickers-container .category-container {

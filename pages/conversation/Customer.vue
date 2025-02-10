@@ -309,11 +309,7 @@ export default {
 
 	methods: {
 		fatherClick() {
-			if (getItem('showEmoji') === 'true') {
-				console.log("fatherClick2", getItem('showEmoji'))
-				
-				this.$refs.messageInputView.toggleEmoji();
-			}
+			this.$refs.messageInputView.close();
 		},
 		findlable() {
 			this.languageList.map((item) => {
