@@ -61,6 +61,7 @@ export default class Message {
     timestamp = 0;
     to = '';
     localExtra = '';
+    showAvatar = true;
 
     constructor(conversation, messageContent) {
         this.conversation = conversation;

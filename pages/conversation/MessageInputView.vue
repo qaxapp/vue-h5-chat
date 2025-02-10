@@ -808,8 +808,8 @@ export default {
 }
 
 .emoji-item {
-  font-size: 44rpx;
   width: 12.5%;
+  font-size: 24px;
   aspect-ratio: 1;
   display: flex;
   flex-direction: row;
@@ -836,12 +836,12 @@ export default {
 
 .wf-stickers-container {
   flex-direction: column;
-  width: calc(100% - 92px);
-  height: calc((100vw - 92px) / 8 * 5);
+  width: 280px;
+  aspect-ratio: 8 / 5;
   padding: 5px;
-  margin-left: 80px;
   margin-bottom: 12px;
   margin-right: 12px;
+  margin-left: auto;
   background: #10212f;
   border-radius: 8px;
   position: relative; /* 使伪元素相对于容器定位 */
@@ -852,7 +852,8 @@ export default {
   content: "";
   position: absolute;
   bottom: -10px; /* 将三角形放在容器底部 */
-  right: 60px; /* 调整三角形的位置，距离右边10px */
+  right: calc(32rpx + 80rpx + 24rpx + 24rpx + 50rpx - 12px - 25rpx - 10px); /* 调整三角形的位置，距离右边10px */
+  
   border-left: 10px solid transparent; /* 左边透明 */
   border-right: 10px solid transparent; /* 右边透明 */
   border-top: 10px solid #10212f; /* 三角形的颜色 */
