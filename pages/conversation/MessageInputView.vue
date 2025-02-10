@@ -662,7 +662,7 @@ export default {
   // border: 1rpx #ddd solid;
   border-left: none;
   border-right: none;
-  background: #10212f;
+  background: #10212F;
 }
 
 .wf-message-input-toolbar .wf-tk-send-tool-btn {
@@ -674,7 +674,7 @@ export default {
   justify-content: center; /* 水平居中对齐 */
   margin-right: 24rpx;
   min-height: 80rpx;
-  border-radius: 24rpx;
+  border-radius: 16rpx;
   max-height: 225rpx;
   box-sizing: border-box;
   background: #1a3143;
@@ -691,7 +691,7 @@ export default {
   position: relative;
   margin-right: 24rpx;
   padding: 10rpx 20rpx;
-  border-radius: 24rpx;
+  border-radius: 16rpx;
   color: $cm-text-color-grey;
   font-size: 24rpx;
 }
@@ -719,8 +719,8 @@ export default {
 
 .wf-message-input-container .wf-input-empty-textarea {
   padding: 2px 24rpx;
-  font-size: 12px; /* 设置占位符字体大小 */
-  color: #90a4b6;
+  font-size: 10px; /* 设置占位符字体大小 */
+  color: #6D8295;
   opacity: 1; /* 确保占位符不透明 */
 }
 
@@ -853,7 +853,6 @@ export default {
   position: absolute;
   bottom: -10px; /* 将三角形放在容器底部 */
   right: calc(32rpx + 80rpx + 24rpx + 24rpx + 50rpx - 12px - 25rpx - 10px); /* 调整三角形的位置，距离右边10px */
-  
   border-left: 10px solid transparent; /* 左边透明 */
   border-right: 10px solid transparent; /* 右边透明 */
   border-top: 10px solid #10212f; /* 三角形的颜色 */
