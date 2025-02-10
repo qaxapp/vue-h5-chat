@@ -275,6 +275,7 @@ export default {
 	width: 100%;
 	display: flex;
 	padding: 5px 12px;
+    padding-right: 7px;
 	justify-content: space-between;
 	align-items: center;
 	position: relative;
@@ -306,6 +307,7 @@ export default {
 	text-overflow: ellipsis;
 	align-items: flex-start;
 	position: relative;
+    margin-right: -5px;
 }
 
 .message-avatar-content-container .avatar {

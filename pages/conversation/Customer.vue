@@ -90,7 +90,7 @@
 			<MultiSelectActionView v-show="sharedConversationState.enableMessageMultiSelection" />
 		</view>
 	</view>
-	<uni-popup ref="popup" :mask-click="true" >
+	<uni-popup ref="popup" :mask-click="true">
 		<view class="languageWarp">
 			<ul>
 				<li
@@ -257,11 +257,10 @@ export default {
 		});
 	},
 
-	onShow() {
-	},
+	onShow() {},
 
 	onUnload() {
-	// 	store.setCurrentConversationInfo(null);
+		// 	store.setCurrentConversationInfo(null);
 	},
 
 	onNavigationBarButtonTap(e) {
@@ -310,7 +309,9 @@ export default {
 
 	methods: {
 		fatherClick() {
-			if (getItem('showEmoji')) {
+			if (getItem('showEmoji') === 'true') {
+				console.log("fatherClick2", getItem('showEmoji'))
+				
 				this.$refs.messageInputView.toggleEmoji();
 			}
 		},
@@ -357,7 +358,7 @@ export default {
 			this.checkCid = item.cid;
 		},
 		open() {
-			if(!this.isOpenLanguage) {
+			if (!this.isOpenLanguage) {
 				this.isOpenLanguage = true;
 				this.$refs.popup.open('left');
 			} else {
@@ -947,8 +948,8 @@ export default {
 	top: 0px;
 	left: 0px;
 	height: 44px;
-	background-color: #10212F;
-	
+	background-color: #10212f;
+
 	z-index: 99999;
 }
 .nav-title {
@@ -1006,7 +1007,6 @@ export default {
 	height: 28px;
 	margin-top: 5px;
 	font-size: 14px;
-
 }
 .languageWarp ul:last-child {
 	border-radius: 0 0 8px 8px;
@@ -1032,7 +1032,7 @@ export default {
 	overflow: hidden;
 	flex-direction: column;
 	background-color: #162837;
-	
+
 	// padding-top:40px;
 	/*padding: 0 12px;*/
 }
@@ -1056,8 +1056,25 @@ export default {
 
 .message-list {
 	height: 100%;
-	overflow: auto;
+	overflow:auto;
 }
+
+:deep(.message-list) ::-webkit-scrollbar {
+	width: 6px;
+	background: transparent;
+}
+
+:deep(.message-list) ::-webkit-scrollbar-thumb {
+	background-color: #495E6F; /* 滚动条滑块颜色 */
+	border-radius: 6px; /* 滚动条滑块圆角 */
+	display: none;
+}
+
+:deep(.message-list) :hover ::-webkit-scrollbar-thumb {
+	
+	display: block;
+}
+
 
 >>> .uni-scroll-view-refresher {
 	max-height: 100px; /* 设置下拉刷新区域的最大高度为200像素 */

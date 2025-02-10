@@ -1,8 +1,12 @@
 <template>
   <view>
     <view class="wf-message-input-container">
-      <view v-if="showEmoji" class="wf-stickers-container">
-		<i  @click="toggleEmoji" class="icon-ion-close"></i>
+      <view
+        v-if="showEmoji"
+        class="wf-stickers-container"
+        :style="stickersContainerStyle"
+      >
+        <i @click="toggleEmoji" class="icon-ion-close"></i>
 
         <scroll-view
           v-if="currentEmojiStickerIndex === 0"
@@ -205,6 +209,7 @@ export default {
       groupMemberUserInfos: [],
       currentMessageId: null,
       preMessageId: null,
+      inputBarHeight: 50, // 假设输入框的高度
     };
   },
 
@@ -374,11 +379,18 @@ export default {
       this.showExt = false;
     },
 
+    updateStickersPosition() {
+		const query = uni.createSelectorQuery().in(this);
+		query.select('.wf-message-input-toolbar').boundingClientRect((data) => {
+			const inputBarHeight = data.height; 
+			console.log(inputBarHeight);
+			this.inputBarHeight = inputBarHeight;
+		}).exec();
+    },
     toggleEmoji() {
-      console.log("------------- toggleEmoji");
       this.showEmoji = !this.showEmoji;
-      setItem("showEmoji", this.showEmoji);
       if (this.showEmoji) {
+		this.updateStickersPosition(); // 确保 DOM 更新后再计算位置
         this.currentEmojiStickerIndex = 0;
       }
       this.showExt = false;
@@ -585,6 +597,12 @@ export default {
     inputFocus() {
       return !this.showExt && !this.showEmoji && !this.showVoice;
     },
+
+    stickersContainerStyle() {
+      return {
+        bottom: this.showEmoji ? `${this.inputBarHeight}px` : "auto", // 根据状态设置底部位置
+      };
+    },
   },
 };
 </script>
@@ -662,7 +680,7 @@ export default {
   // border: 1rpx #ddd solid;
   border-left: none;
   border-right: none;
-  background: #10212F;
+  background: #10212f;
 }
 
 .wf-message-input-toolbar .wf-tk-send-tool-btn {
@@ -720,7 +738,7 @@ export default {
 .wf-message-input-container .wf-input-empty-textarea {
   padding: 2px 24rpx;
   font-size: 10px; /* 设置占位符字体大小 */
-  color: #6D8295;
+  color: #6d8295;
   opacity: 1; /* 确保占位符不透明 */
 }
 
@@ -801,6 +819,21 @@ export default {
   height: 100%;
 }
 
+// :deep(.wf-emoji-container) ::-webkit-scrollbar {
+//   width: 6px;
+//   background: transparent;
+// }
+
+// :deep(.wf-emoji-container) ::-webkit-scrollbar-thumb {
+//   background-color: #495e6f; /* 滚动条滑块颜色 */
+//   border-radius: 6px; /* 滚动条滑块圆角 */
+//   display: none;
+// }
+
+// :deep(.wf-emoji-container) :hover ::-webkit-scrollbar-thumb {
+//   display: block;
+// }
+
 .wf-emoji-content {
   display: flex;
   flex-direction: row;
@@ -822,17 +855,13 @@ export default {
   position: absolute; /* 绝对定位 */
   top: -15px; /* 距离顶部10px */
   right: 5px; /* 距离右边10px */
-  color: #C5DDF0;
-
+  color: #c5ddf0;
 }
 
 .wf-message-input-container i::before {
   font-size: 12px;
   font-weight: 200;
-
 }
-
-
 
 .wf-stickers-container {
   flex-direction: column;
@@ -842,9 +871,10 @@ export default {
   margin-bottom: 12px;
   margin-right: 12px;
   margin-left: auto;
-  background: #10212f;
+  background: #223A4D;
   border-radius: 8px;
-  position: relative; /* 使伪元素相对于容器定位 */
+  position: fixed;
+  right: 0; /* 绝对定位 */
 }
 
 /* 创建三角形 */
@@ -852,7 +882,9 @@ export default {
   content: "";
   position: absolute;
   bottom: -10px; /* 将三角形放在容器底部 */
-  right: calc(32rpx + 80rpx + 24rpx + 24rpx + 50rpx - 12px - 25rpx - 10px); /* 调整三角形的位置，距离右边10px */
+  right: calc(
+    32rpx + 80rpx + 24rpx + 24rpx + 50rpx - 12px - 25rpx - 10px
+  ); /* 调整三角形的位置，距离右边10px */
   border-left: 10px solid transparent; /* 左边透明 */
   border-right: 10px solid transparent; /* 右边透明 */
   border-top: 10px solid #10212f; /* 三角形的颜色 */
