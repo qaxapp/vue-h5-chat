@@ -317,6 +317,24 @@
       "modify_group_alias": "{operator} modified group nickname to {alias}",
       "modify_group_member_alias": "{operator} modified {member}'s group nickname to {alias}",
       "modify_group_member_info": "{operator} modified group member info to {extra}",
-      "modify_group_member_info_for": "{operator} modified {member}'s group member info to {extra}"
+      "modify_group_member_info_for": "{operator} modified {member}'s group member info to {extra}",
+      "modify_group_extra": "{operator} modified the group extra info to {extra}",
+      "remove_group_members": "{operator} removed {members} from the group",
+      "not_set": "Not Set",
+      "busy": "Busy",
+      "away_active": "Away (Active)",
+      "away_inactive": "Away (Inactive)",
+      "invisible": "Invisible",
+      "online": "Online",
+      "recently_online": "Recently Online",
+      "mini_program": "Mini Program",
+      "yesterday": "Yesterday",
+      "monday": "Mon",
+      "tuesday": "Tue",
+      "wednesday": "Wed",
+      "thursday": "Thu",
+      "friday": "Fri",
+      "saturday": "Sat",
+      "sunday": "Sun"
     }
 }

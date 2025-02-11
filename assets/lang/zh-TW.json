@@ -317,6 +317,24 @@
       "modify_group_alias": "{operator} 修改群暱稱爲{alias}",
       "modify_group_member_alias": "{operator} 修改 {member} 的群暱稱爲{alias}",
       "modify_group_member_info": "{operator} 修改群成員信息爲{extra}",
-      "modify_group_member_info_for": "{operator} 修改 {member} 的群成員信息爲{extra}"
+      "modify_group_member_info_for": "{operator} 修改 {member} 的群成員信息爲{extra}",
+      "modify_group_extra": "{operator} 修改了群附加信息爲 {extra}",
+      "remove_group_members": "{operator} 把 {members} 移出了群組",
+      "not_set": "未設置",
+      "busy": "忙碌",
+      "away_active": "離開(主動離開)",
+      "away_inactive": "離開(長時間未操作)",
+      "invisible": "隱身",
+      "online": "在線",
+      "recently_online": "不久前在線",
+      "mini_program": "小程序",
+      "yesterday": "昨天",
+      "monday": "星期一",
+      "tuesday": "星期二",
+      "wednesday": "星期三",
+      "thursday": "星期四",
+      "friday": "星期五",
+      "saturday": "星期六",
+      "sunday": "星期天"
     }
 }

@@ -18,24 +18,24 @@ export default class KickoffGroupMemberNotification extends GroupNotificationCon
     }
 
     formatNotification() {
-        let notifyStr;
-        if (this.fromSelf) {
-            notifyStr = '您把 ';
-        } else {
-            notifyStr = wfc.getGroupMemberDisplayName(this.groupId, this.operator) + '把 ';
-        }
+			// 获取操作人名称
+			const operatorName = this.fromSelf
+				? i18n.global.t('chat.you')
+				: wfc.getGroupMemberDisplayName(this.groupId, this.operator);
 
-        let kickedMembersStr = '';
-        let userInfos = wfc.getUserInfos(this.kickedMembers, this.groupId);
-        userInfos.forEach(userInfo => {
-            if (userInfo.uid === wfc.getUserId()) {
-                kickedMembersStr += ' ' + i18n.global.t('chat.you')
-            } else {
-                kickedMembersStr += ' ' + userInfo.displayName;
-            }
-        });
+			// 获取被移除成员的名称列表
+			const userInfos = wfc.getUserInfos(this.kickedMembers, this.groupId);
+			const kickedMembersStr = userInfos.map(userInfo =>
+				userInfo.uid === wfc.getUserId()
+					? i18n.global.t('chat.you')
+					: userInfo.displayName
+			).join(', '); // 多个成员名之间用逗号分隔
 
-        return notifyStr + kickedMembersStr + ' 移除了群组';
+			// 使用国际化文案格式化最终通知字符串
+			return i18n.global.t('chat.remove_group_members', {
+				operator: operatorName,
+				members: kickedMembersStr
+			});
     }
 
     encode() {

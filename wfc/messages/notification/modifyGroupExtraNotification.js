@@ -18,24 +18,19 @@ export default class ModifyGroupExtraNotification extends GroupNotificationConte
     }
 
     formatNotification() {
-        let notificationStr = '';
-        if (this.fromSelf) {
-            notificationStr += i18n.global.t('chat.you')
-        } else {
-            let userInfo = wfc.getUserInfo(this.operator, false, this.groupId)
-            if (userInfo.friendAlias) {
-                notificationStr += userInfo.friendAlias;
-            } else if (userInfo.displayName) {
-                notificationStr += userInfo.displayName;
-            } else {
-                notificationStr += this.operator;
-            }
-        }
-        notificationStr += '修改';
-        notificationStr += '群附加信息为';
-        notificationStr += this.groupExtra;
+			// 获取操作人名称
+			const operatorName = this.fromSelf
+				? i18n.global.t('chat.you')
+				: (() => {
+					let userInfo = wfc.getUserInfo(this.operator, false, this.groupId);
+					return userInfo.friendAlias || userInfo.displayName || this.operator;
+				})();
 
-        return notificationStr;
+			// 使用国际化文案格式化最终通知字符串
+			return i18n.global.t('chat.modify_group_extra', {
+				operator: operatorName,
+				extra: this.groupExtra
+			});
     }
 
     encode() {

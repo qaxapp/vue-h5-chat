@@ -22,7 +22,7 @@ export default class GroupPrivateChatNotificationContent extends GroupNotificati
     formatNotification(message) {
         // return sb.toString();
         let notifyStr = this.fromSelf ? i18n.global.t('chat.you') + ' ' : wfc.getGroupMemberDisplayName(this.groupId, this.operator) + ' ';
-        notifyStr += this.privateChatType === 0 ? ' 开启了成员私聊' : ' 关闭了成员私聊';
+        notifyStr += this.privateChatType === 0 ? i18n.global.t('chat.enabled_member_private_chat') : i18n.global.t('chat.disabled_member_private_chat');
 
         return notifyStr;
     }

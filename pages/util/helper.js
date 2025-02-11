@@ -1,7 +1,7 @@
 // ie11 not support browser-md5-file
 // import MD5 from 'browser-md5-file';
 import {numberValue} from '../../wfc/util/longUtil'
-
+import { i18n } from '../../main.js'
 
 const helper = {
 
@@ -140,25 +140,25 @@ const helper = {
         let str
         switch (num) {
             case 1:
-                str = '星期一'
+                str = i18n.global.t('chat.monday')
                 break
             case 2:
-                str = '星期二'
+                str = i18n.global.t('chat.tuesday')
                 break
             case 3:
-                str = '星期三'
+                str = i18n.global.t('chat.wednesday')
                 break
             case 4:
-                str = '星期四'
+                str = i18n.global.t('chat.thursday')
                 break
             case 5:
-                str = '星期五'
+                str = i18n.global.t('chat.friday')
                 break
             case 6:
-                str = '星期六'
+                str = i18n.global.t('chat.saturday')
                 break
             default:
-                str = '星期天'
+                str = i18n.global.t('chat.sunday')
         }
         return str
     },
@@ -215,15 +215,13 @@ const helper = {
             if (Y === nowY && M === nowM && (nowD - D <= 7)) {
                 // 昨天
                 if ((nowD - D) === 1) {
-                    //newtime = '昨天' + ' ' + H + ':' + Min
-					newtime = M + '-' + D + ' ' + H + ':' + Min
+                    newtime = i18n.global.t('chat.yesterday') + ' ' + H + ':' + Min
                 } else if (nowD === D) {
                     // 当天
                     newtime = H + ':' + Min
                 } else {
                     // 一周内
-                    //newtime = helper.weekFormat(W) + ' ' + H + ':' + Min
-					newtime = M + '-' + D + ' ' + H + ':' + Min
+                    newtime = helper.weekFormat(W) + ' ' + H + ':' + Min
                 }
             } else {
                 // 一年内

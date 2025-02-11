@@ -2,6 +2,8 @@
  * Copyright (c) 2020 WildFireChat. All rights reserved.
  */
 
+import { i18n } from '../../main.js'
+
 export default class UserOnlineState {
     userId;
     customState;
@@ -11,7 +13,13 @@ export default class UserOnlineState {
     desc() {
         if (this.customState.state > 0) {
             //0，未设置，1 忙碌，2 离开（主动设置），3 离开（长时间不操作），4 隐身，其它可以自主扩展。
-            let cs = ['未设置', '忙碌', '离开(主动离开)', '离开(长时间未操作)', '隐身'];
+            let cs = [
+							i18n.global.t('chat.not_set'),
+							i18n.global.t('chat.busy'),
+							i18n.global.t('chat.away_active'),
+							i18n.global.t('chat.away_inactive'),
+							i18n.global.t('chat.invisible')
+						];
             return this.customState.text + cs[this.customState.state];
         }
 
@@ -39,7 +47,7 @@ export default class UserOnlineState {
             // //最后可见
             // lastSeen;
 
-            let ps = ['', 'iOS', 'Android', 'Windows', 'mac', 'Web', '小程序', 'Linux', 'iPad', 'Android-Pad'];
+            let ps = ['', 'iOS', 'Android', 'Windows', 'mac', 'Web', i18n.global.t('chat.mini_program'), 'Linux', 'iPad', 'Android-Pad'];
             if (s.state === 0) {
                 onlineClientDesc += ps[s.platform] + ' '
             } else if ([1, 2, 8, 9].indexOf(s.platform) >= 0) {
@@ -49,9 +57,9 @@ export default class UserOnlineState {
         });
 
         if (onlineClientDesc.trim()) {
-            return onlineClientDesc + '在线';
+            return onlineClientDesc + i18n.global.t('chat.online');
         } else if (lastSeenDesc.trim()) {
-            return lastSeenDesc + '不久前在线';
+            return lastSeenDesc + i18n.global.t('chat.recently_online');
         }
         //return '不在线';
         return '';
