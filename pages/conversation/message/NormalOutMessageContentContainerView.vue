@@ -18,8 +18,8 @@
 
 					<div class="flex-column flex-align-end">
 						<div class="name-time-container" v-if="message.showAvatar && !isSingle">
-							<p class="time">{{ message._timeStr }}</p>
 							<p class="name">我</p>
+							<p class="time">{{ message._timeStr }}</p>
 						</div>
 						<div class="message-content-wrapper">
 							<view class="receipt-status">

@@ -208,7 +208,7 @@ export default {
 }
 
 .name-time-container .name {
-    color: #bdbdbd;
+	color: #C5DDF0;
     font-size: 12px;
     margin: 0;
     height: 16px;
