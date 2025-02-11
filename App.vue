@@ -192,7 +192,7 @@ export default {
 }
 
 ::-webkit-scrollbar-track {
-  background: #00000000; /* 轨道背景色 */
+  background: #162837; /* 轨道背景色 */
   border-radius: 337px;
 }
 

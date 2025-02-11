@@ -186,7 +186,7 @@ export default {
 .page-body {
 	padding: 20rpx;
 	height: 100vh;
-	background-color: $cm-bg-color;
+	background-color: #162837;
 }
 
 .login-type-title {
