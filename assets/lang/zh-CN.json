@@ -262,6 +262,11 @@
       "enter_keyword_to_search": "请输入关键字进行搜索",
       "no_search_results": "没有搜索结果",
       "hello": "你好",
-      "relevant_chat_records": "条相关聊天记录"
+      "relevant_chat_records": "条相关聊天记录",
+      "save_to_contacts": "保存到通讯录",
+      "me": "我",
+      "meeting_invitation": "会议邀请",
+      "meeting_feature_not_supported": "不支持会议功能",
+      "meeting_invite": "会议邀请"
     }
 }

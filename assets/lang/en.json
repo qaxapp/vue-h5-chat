@@ -262,6 +262,11 @@
       "enter_keyword_to_search": "Please enter a keyword to search",
       "no_search_results": "No search results",
       "hello": "Hello",
-      "relevant_chat_records": "relevant chat records"
+      "relevant_chat_records": "relevant chat records",
+      "save_to_contacts": "Save to Contacts",
+      "me": "Me",
+      "meeting_invitation": "Meeting Invitation",
+      "meeting_feature_not_supported": "Meeting feature not supported",
+      "meeting_invite": "Meeting Invite"
     }
 }

@@ -20,7 +20,7 @@
                        :placeholder="groupAnnouncement">
             </label>
             <label class="switch">
-                保存到通讯录
+                {{$t('chat.save_to_contacts')}}
                 <checkbox-group @change="setFavGroup(conversationInfo.conversation.target, $event.detail.value.length === 1)">
                     <checkbox
                         value="fav"

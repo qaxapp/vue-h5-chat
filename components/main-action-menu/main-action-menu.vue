@@ -92,8 +92,8 @@ export default {
         go2ScanQrCode() {
             uni.scanCode({
                 success: (res) => {
-                    console.log('条码类型：' + res.scanType);
-                    console.log('条码内容：' + res.result);
+                    console.log('qrcode type：' + res.scanType);
+                    console.log('qrcode content：' + res.result);
                     if (res.result) {
                         // TODO
                         // wildfirechat://pcsession/xxxx

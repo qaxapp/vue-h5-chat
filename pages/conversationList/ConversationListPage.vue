@@ -23,10 +23,8 @@
 
 import ConversationItemView from "./ConversationItemView";
 import store from "../../store";
-import wfc from "../../wfc/client/wfc";
 import ConnectionStatus from "../../wfc/client/connectionStatus";
 import {getItem, removeItem} from "../util/storageHelper";
-import organizationServerApi from "../../api/organizationServerApi";
 import Conversation from "@/wfc/model/conversation";
 import ConversationType from "@/wfc/model/conversationType";
 export default {

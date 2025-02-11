@@ -223,7 +223,7 @@ export default {
             if (convSearchResult.matchMessage) {
                 return convSearchResult.matchMessage.messageContent.digest(convSearchResult.matchMessage);
             } else {
-                return convSearchResult.matchCount + '条相关聊天记录';
+                return convSearchResult.matchCount + this.$t('chat.relevant_chat_records');
             }
             // #endif
             // #ifdef H5
