@@ -344,7 +344,7 @@ export default {
 }
 
 .name-time-container .name {
-	color: #bdbdbd;
+	color: #C5DDF0;
 	font-size: 12px;
 	margin: 0;
 	height: 16px;
@@ -352,7 +352,7 @@ export default {
 }
 
 .name-time-container .time {
-	color: #b4b4b4;
+	color: #90A4B6;
 	font-size: 10px;
 	margin: 0;
 	height: 16px;

@@ -148,7 +148,7 @@ import RichNotificationMessageContent from '../../wfc/messages/notification/rich
 import ArticlesMessageContent from '../../wfc/messages/articlesMessageContent';
 import ContextableNotificationMessageContentContainerView from './message/ContextableNotificationMessageContentContainerView.vue';
 import Conversation from '@/wfc/model/conversation';
-
+import appServerApi from '../../api/appServerApi';
 var innerAudioContext;
 export default {
 	name: 'ConversationPage',
@@ -222,7 +222,8 @@ export default {
 			scrollTop: 0,
 
 			triggered: false,
-			alertDialogOptions: {}
+			alertDialogOptions: {},
+			isChatroomManager: false
 		};
 	},
 
@@ -255,6 +256,12 @@ export default {
 				this.scrollTop = this.scrollTop + 1;
 			}
 		});
+		if (this.conversationInfo.conversation.type === ConversationType.ChatRoom) {
+			appServerApi.getChatroomUserStatus({ userId: wfc.getUserId(), chatroomId: this.conversationInfo.conversation.target }).then((data) => {
+				this.isChatroomManager = data.isManager;
+			});
+		}
+		
 	},
 
 	onShow() {},
@@ -464,7 +471,7 @@ export default {
 
 		isRecallable(message) {
 			if (message) {
-				if (message.conversation.type === ConversationType.Group) {
+				if (message.conversation.type === ConversationType.Group && message.direction !== 0) {
 					let groupInfo = wfc.getGroupInfo(message.conversation.target);
 					let selfUserId = wfc.getUserId();
 					if (groupInfo && groupInfo.owner === selfUserId) {
@@ -476,6 +483,13 @@ export default {
 						return true;
 					}
 				}
+
+				if (message.conversation.type === ConversationType.ChatRoom && message.direction !== 0) {
+					if (this.isChatroomManager) {
+						return true;
+					}
+				}
+
 				let delta = wfc.getServerDeltaTime();
 				let now = new Date().getTime();
 				const messageRecallTimeLimit = getItem('messageRecallTimeLimit') ?? 60;
@@ -548,7 +562,12 @@ export default {
 		},
 
 		recallMessage(message) {
-			wfc.recallMessage(message.messageUid, null, null);
+			if (message.conversation.type === ConversationType.ChatRoom && this.isChatroomManager && message.from !== wfc.getUserId()) {
+				appServerApi.recallMessage(message.conversation.target, message.messageUid);
+			} else  {
+				wfc.recallMessage(message.messageUid, null, null);
+			
+			}
 		},
 
 		forward(message) {
@@ -1052,7 +1071,7 @@ export default {
 
 .message-list {
 	height: 100%;
-	overflow:auto;
+	overflow: auto;
 }
 
 :deep(.message-list) ::-webkit-scrollbar {
@@ -1061,16 +1080,14 @@ export default {
 }
 
 :deep(.message-list) ::-webkit-scrollbar-thumb {
-	background-color: #495E6F; /* 滚动条滑块颜色 */
+	background-color: #495e6f; /* 滚动条滑块颜色 */
 	border-radius: 6px; /* 滚动条滑块圆角 */
 	display: none;
 }
 
 :deep(.message-list) :hover ::-webkit-scrollbar-thumb {
-	
 	display: block;
 }
-
 
 >>> .uni-scroll-view-refresher {
 	max-height: 100px; /* 设置下拉刷新区域的最大高度为200像素 */

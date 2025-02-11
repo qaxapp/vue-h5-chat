@@ -104,7 +104,7 @@ import Config from "../../config";
 import RichNotificationMessageContent from "../../wfc/messages/notification/richNotificationMessageContent";
 import ArticlesMessageContent from "../../wfc/messages/articlesMessageContent";
 import ContextableNotificationMessageContentContainerView from "./message/ContextableNotificationMessageContentContainerView.vue";
-
+import appServerApi from "../../api/appServerApi";
 var innerAudioContext;
 export default {
   name: "ConversationPage",
@@ -344,7 +344,7 @@ export default {
 
     isRecallable(message) {
       if (message) {
-        if (message.conversation.type === ConversationType.Group) {
+        if (message.conversation.type === ConversationType.Group && message.direction !== 0) {
           let groupInfo = wfc.getGroupInfo(message.conversation.target);
           let selfUserId = wfc.getUserId();
           if (groupInfo && groupInfo.owner === selfUserId) {

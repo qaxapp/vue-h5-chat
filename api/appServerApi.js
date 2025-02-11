@@ -153,6 +153,11 @@ export class AppServerApi {
 		return this._post('/friend/send-request', {reason, targetId})
 		
 	}
+	
+	recallMessage(chatroomId, messageUid) {
+		return this._post('/message/recall', {chatroomId, messageUid: stringValue(messageUid)})
+		
+	}
 
     _interceptLoginResponse(responsePromise, resolve, reject) {
         responsePromise
