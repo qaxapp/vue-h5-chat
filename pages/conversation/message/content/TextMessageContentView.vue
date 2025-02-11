@@ -95,7 +95,7 @@ export default {
     display: inline-block;
     user-select: none;
     text-overflow: ellipsis;
-    color: white;
+    color: #C5DDF0;
 
 }
 
