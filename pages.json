@@ -43,151 +43,151 @@
                 "enablePullDownRefresh": false,
                 "disableScroll": true
             }
-        }
-        // {
-        //     "path": "pages/conversation/message/CompositeMessagePage",
-        //     "style": {
-        //         "navigationBarTitleText": "%chat_combined_message_preview%"
-        //     }
-        // },
-        // {
-        //     "path": "pages/conversation/SingleConversationInfoPage",
-        //     "style": {
-        //         "navigationBarTitleText": "%chat_im_conversation_info%"
-        //     }
-        // },
+        },
+        {
+            "path": "pages/conversation/message/CompositeMessagePage",
+            "style": {
+                "navigationBarTitleText": "%chat_combined_message_preview%"
+            }
+        },
+        {
+            "path": "pages/conversation/SingleConversationInfoPage",
+            "style": {
+                "navigationBarTitleText": "%chat_im_conversation_info%"
+            }
+        },
 		
-		// {
-		//     "path": "pages/conversation/ChatroomInfoPage",
-		//     "style": {
-		//         "navigationBarTitleText": "%chat_chatroom_info%"
-		//     }
-		// },
-  //       {
-  //           "path": "pages/conversation/message/forward/ForwardMessagePage",
-  //           "style": {
-  //               "navigationBarTitleText": "%chat_message_forward%"
-  //           }
-  //       },
-        // {
-        //     "path": "pages/conversation/GroupConversationInfoPage",
-        //     "style": {
-        //         "navigationBarTitleText": "%chat_group_conversation_info%"
-        //     }
-        // },
-        // {
-        //     "path": "pages/contact/SearchUserPage",
-        //     "style": {
-        //         "navigationBarTitleText": "%chat_search_user%"
-        //     }
-        // },
-  //       {
-  //           "path": "pages/search/SearchPortalPage",
-  //           "style": {
-  //               "navigationBarTitleText": "%chat_search%"
-  //           }
-  //       },
-  //       {
-  //           "path": "pages/search/SearchConversationMessagePage",
-  //           "style": {
-  //               "navigationBarTitleText": "%chat_conversation_message_search%"
-  //           }
-  //       },
-  //       {
-  //           "path": "pages/contact/UserDetailPage",
-  //           "style": {
-  //               "navigationBarTitleText": "%chat_user_info%"
-  //           }
-  //       },
-  //       {
-  //           "path": "pages/contact/FriendRequestDetailPage",
-  //           "style": {
-  //               "navigationBarTitleText": "%chat_friend_request%"
-  //           }
-  //       },
-  //       {
-  //           "path": "pages/contact/ContactListPage",
-  //           "style": {
-  //               "navigationBarTitleText": "%chat_friend%"
-  //           }
-  //       },
-  //       {
-  //           "path": "pages/contact/NewFriendListPage",
-  //           "style": {
-  //               "navigationBarTitleText": "%chat_new_friend%"
-  //           }
-  //       },
-  //       {
-  //           "path": "pages/contact/GroupListPage",
-  //           "style": {
-  //               "navigationBarTitleText": "%chat_my_group%"
-  //           }
-  //       },
-  //       {
-  //           "path": "pages/pick/PickUserPage",
-  //           "style": {
-  //               "navigationBarTitleText": "%chat_select_contact%"
-  //           }
-  //       },
-  //       {
-  //           "path": "pages/pick/PickSingleUserPage",
-  //           "style": {
-  //               "navigationBarTitleText": "%chat_select_contact%"
-  //           }
-  //       },
-  //       {
-  //           "path": "pages/discovery/ChatroomListPage",
-  //           "style": {
-  //               "navigationBarTitleText": "%chat_chatroom_list%"
-  //           }
-  //       },
-  //       {
-  //           "path": "pages/me/MePage",
-  //           "style": {
-  //               "navigationBarTitleText": "%chat_index_my%"
-  //           }
-  //       },
-		// {
-		//     "path": "pages/me/LanguagePage",
-		//     "style": {
-		//         "navigationBarTitleText": "%chat_index_language%"
-		//     }
-		// },
-  //       {
-  //           "path": "pages/misc/WebViewPage",
-  //           "style": {
-  //               "navigationBarTitleText": "%chat_page_loading%"
-  //           }
-  //       },
-  //       {
-  //           "path": "pages/misc/PreviewVideoPage",
-  //           "style": {
-  //               "navigationBarTitleText": "%chat_video_preview%"
-  //           }
-  //       }
+		{
+		    "path": "pages/conversation/ChatroomInfoPage",
+		    "style": {
+		        "navigationBarTitleText": "%chat_chatroom_info%"
+		    }
+		},
+        {
+            "path": "pages/conversation/message/forward/ForwardMessagePage",
+            "style": {
+                "navigationBarTitleText": "%chat_message_forward%"
+            }
+        },
+        {
+            "path": "pages/conversation/GroupConversationInfoPage",
+            "style": {
+                "navigationBarTitleText": "%chat_group_conversation_info%"
+            }
+        },
+        {
+            "path": "pages/contact/SearchUserPage",
+            "style": {
+                "navigationBarTitleText": "%chat_search_user%"
+            }
+        },
+        {
+            "path": "pages/search/SearchPortalPage",
+            "style": {
+                "navigationBarTitleText": "%chat_search%"
+            }
+        },
+        {
+            "path": "pages/search/SearchConversationMessagePage",
+            "style": {
+                "navigationBarTitleText": "%chat_conversation_message_search%"
+            }
+        },
+        {
+            "path": "pages/contact/UserDetailPage",
+            "style": {
+                "navigationBarTitleText": "%chat_user_info%"
+            }
+        },
+        {
+            "path": "pages/contact/FriendRequestDetailPage",
+            "style": {
+                "navigationBarTitleText": "%chat_friend_request%"
+            }
+        },
+        {
+            "path": "pages/contact/ContactListPage",
+            "style": {
+                "navigationBarTitleText": "%chat_friend%"
+            }
+        },
+        {
+            "path": "pages/contact/NewFriendListPage",
+            "style": {
+                "navigationBarTitleText": "%chat_new_friend%"
+            }
+        },
+        {
+            "path": "pages/contact/GroupListPage",
+            "style": {
+                "navigationBarTitleText": "%chat_my_group%"
+            }
+        },
+        {
+            "path": "pages/pick/PickUserPage",
+            "style": {
+                "navigationBarTitleText": "%chat_select_contact%"
+            }
+        },
+        {
+            "path": "pages/pick/PickSingleUserPage",
+            "style": {
+                "navigationBarTitleText": "%chat_select_contact%"
+            }
+        },
+        {
+            "path": "pages/discovery/ChatroomListPage",
+            "style": {
+                "navigationBarTitleText": "%chat_chatroom_list%"
+            }
+        },
+        {
+            "path": "pages/me/MePage",
+            "style": {
+                "navigationBarTitleText": "%chat_index_my%"
+            }
+        },
+		{
+		    "path": "pages/me/LanguagePage",
+		    "style": {
+		        "navigationBarTitleText": "%chat_index_language%"
+		    }
+		},
+        {
+            "path": "pages/misc/WebViewPage",
+            "style": {
+                "navigationBarTitleText": "%chat_page_loading%"
+            }
+        },
+        {
+            "path": "pages/misc/PreviewVideoPage",
+            "style": {
+                "navigationBarTitleText": "%chat_video_preview%"
+            }
+        }
     ],
     "tabBar": {
         "selectedColor": "#548DFF",
         "color": "#FFFFFF",
         "list": [
-			// {
-			//     "pagePath": "pages/contact/ContactListPage",
-			//     "text": "%chat_index_contacts%",
-			//     "iconPath": "static/image/tabbar/contact_normal.png",
-			//     "selectedIconPath": "static/image/tabbar/contact_press.png"
-			// },
-			// {
-			//     "pagePath": "pages/me/MePage",
-			//     "text": "%chat_index_my%",
-			//     "iconPath": "static/image/tabbar/me_normal.png",
-			//     "selectedIconPath": "static/image/tabbar/me_press.png"
-			// },
             {
                 "pagePath": "pages/conversationList/ConversationListPage",
                 "text": "%chat_index_msg%",
                 "iconPath": "static/image/tabbar/message_normal.png",
                 "selectedIconPath": "static/image/tabbar/message_press.png"
-            }
+            },
+			{
+			    "pagePath": "pages/contact/ContactListPage",
+			    "text": "%chat_index_contacts%",
+			    "iconPath": "static/image/tabbar/contact_normal.png",
+			    "selectedIconPath": "static/image/tabbar/contact_press.png"
+			},
+			{
+			    "pagePath": "pages/me/MePage",
+			    "text": "%chat_index_my%",
+			    "iconPath": "static/image/tabbar/me_normal.png",
+			    "selectedIconPath": "static/image/tabbar/me_press.png"
+			}
         ],
         "backgroundColor": "#0C1822"
     },
