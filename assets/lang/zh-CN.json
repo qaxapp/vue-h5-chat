@@ -240,5 +240,23 @@
 		"user_recalled_a_message": " 撤回了一条消息",
 		"re_edit": "重新编辑",
         "voice_duration": "时长: "
-	}
+	},
+    "chat": {
+      "friend_request_sent_success": "发送好友请求成功",
+      "friend_request_sent_failure": "发送好友请求失败",
+      "search_results": "搜索结果",
+      "no_users_found": "没有搜索到用户",
+      "greeting_message": "你好，我是 {name}",
+      "invite_new_member_failed": "邀请新成员失败",
+      "remove_group_member_failed": "踢除群成员失败",
+      "photo": "照片",
+      "video": "视频",
+      "voice_call": "语音通话",
+      "video_call": "视频通话",
+      "file": "文件",
+      "location": "位置",
+      "business_card": "名片",
+      "everyone": "所有人",
+      "at_everyone": "@所有人"
+    }
 }

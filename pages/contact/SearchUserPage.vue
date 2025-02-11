@@ -2,7 +2,7 @@
     <view class="search-user-container">
         <input class="input" type="text" v-model="keyword" :placeholder="$t('common.search')" @input="searchUser">
         <view v-if="users && users.length">
-            <text class="category">搜索结果</text>
+            <text class="category">{{ $t('chat.search_results')}}</text>
             <UserListView
                 class="result"
                 :enable-pick="false"
@@ -10,7 +10,7 @@
                 :show-category-label="false"
                 :padding-left="'10px'"/>
         </view>
-        <text v-if="keyword && !users.length" class="tip">没有搜索到用户</text>
+        <text v-if="keyword && !users.length" class="tip">{{ $t('chat.no_users_found')}}</text>
     </view>
 </template>
 

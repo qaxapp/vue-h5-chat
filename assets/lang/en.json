@@ -106,7 +106,7 @@
 		"remove_member": "Remove member",
 		"quit_group": "Quit group chat",
 		"click_to_edit_group_announcement": "click to edit group announcement",
-		"all_people": "Everyone",
+		"all_people": "All",
 		"sticky_top": "sticky_top",
 		"cancel_sticky_top": "Cancel sticky top",
 		"enable_notification": "Allow notification",
@@ -240,5 +240,23 @@
 		"user_recalled_a_message": " recalled a message",
 		"re_edit": "Re-edit",
         "voice_duration": "Duration "
-	}
+	},
+    "chat": {
+      "friend_request_sent_success": "Friend request sent successfully",
+      "friend_request_sent_failure": "Failed to send friend request",
+      "search_results": "Search Results",
+      "no_users_found": "No users found",
+      "greeting_message": "Hello, I am {name}",
+      "invite_new_member_failed": "Failed to invite new member",
+      "remove_group_member_failed": "Failed to remove group member",
+      "photo": "Photo",
+      "video": "Video",
+      "voice_call": "Voice Call",
+      "video_call": "Video Call",
+      "file": "File",
+      "location": "Location",
+      "business_card": "Contact Card",
+      "everyone": "All",
+      "at_everyone": "@All"
+    }
 }

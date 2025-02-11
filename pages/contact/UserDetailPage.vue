@@ -101,10 +101,10 @@ export default {
         },
         addFriend() {
             let userInfo = wfc.getUserInfo(wfc.getUserId());
-            let reason = '你好，我是' + userInfo.displayName;
+            let reason = this.$t('chat.greeting_message', { name: userInfo.displayName });
 			appServerApi.sendAddFriend(reason, this.user.uid).then(() => {
 				uni.showToast({
-				    title: '好友请求发送成功',
+				    title: this.$t('chat.friend_request_sent_success'),
 				    icon: 'none'
 				});
 				setTimeout(() => {
@@ -114,7 +114,7 @@ export default {
 				}, 1000)
 			}).catch(error => {
 				uni.showToast({
-				    title: error.message ? error.message : '好友请求发送失败',
+				    title: error.message ? error.message : this.$t('chat.friend_request_sent_failure'),
 				    icon: 'none'
 				});
 			})
