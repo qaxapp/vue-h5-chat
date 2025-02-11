@@ -257,6 +257,11 @@
       "location": "Location",
       "business_card": "Contact Card",
       "everyone": "All",
-      "at_everyone": "@All"
+      "at_everyone": "@All",
+      "chat_history": "Chat History",
+      "enter_keyword_to_search": "Please enter a keyword to search",
+      "no_search_results": "No search results",
+      "hello": "Hello",
+      "relevant_chat_records": "relevant chat records"
     }
 }

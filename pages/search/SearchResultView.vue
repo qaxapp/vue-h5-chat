@@ -52,7 +52,7 @@
                     </div>
                 </li>
                 <li class="search-result-category-container" v-if="options.conversation && sharedSearchState.conversationSearchResult.length > 0">
-                    <label>聊天记录</label>
+                    <label> {{$t('chat.chat_history')}} </label>
                     <ul>
                         <li v-for="(convR, index) in toShowConversationList" :key="index">
                             <div class="search-result-item conversation" @click="onClickConversationSearchResultItem(convR)">
@@ -73,7 +73,7 @@
             </ul>
         </div>
         <div v-else class="empty-container">
-            <text>没有搜索结果</text>
+            <text> {{$t('chat.no_search_results')}} </text>
         </div>
     </section>
 </template>
@@ -152,14 +152,14 @@ export default {
     methods: {
         addFriend(user) {
             console.log('add friend', user);
-			appServerApi.sendAddFriend('你好', user.uid).then(() => {
+			appServerApi.sendAddFriend(this.$t('chat.hello'), user.uid).then(() => {
 				uni.showToast({
-				    title: '发送好友请求成功',
+				    title: this.$t('chat.friend_request_sent_success'),
 				    icon: 'none',
 				});
 			}).catch(error => {
 				uni.showToast({
-				    title: error.message ? error.message : '发送好友请求失败',
+				    title: error.message ? error.message : this.$t('chat.friend_request_sent_failure'),
 				    icon: 'none'
 				});
 			})

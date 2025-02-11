@@ -1,7 +1,7 @@
 <template>
     <section class="search-conversation-message-container">
         <input class="input" type="text" v-model="query" :placeholder="$t('common.search')" @input="search">
-        <label class="category">聊天记录</label>
+        <label class="category"> {{$t('chat.chat_history')}} </label>
         <ul>
             <li v-for="(msg, index) in messages" :key="index">
                 <div class="search-result-item" @click="onClickMessage(msg)">
