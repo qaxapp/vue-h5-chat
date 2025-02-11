@@ -184,4 +184,24 @@ export default {
   --page-full-height-without-header: calc(100vh - 44px);
   /* #endif */
 }
+
+/* 适用于 WebKit 内核浏览器（Chrome、Safari、Edge 等） */
+::-webkit-scrollbar {
+  width: 5px;   /* 垂直滚动条宽度 */
+  height: 5px;  /* 水平滚动条高度 */
+}
+
+::-webkit-scrollbar-track {
+  background: #00000000; /* 轨道背景色 */
+  border-radius: 337px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #495E6F;    /* 滑块颜色 */
+  border-radius: 337px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #495E6F;     /* 滑块悬停颜色 */
+}
 </style>
