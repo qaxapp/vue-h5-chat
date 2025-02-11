@@ -562,7 +562,7 @@ export default {
 		},
 
 		recallMessage(message) {
-			if (message.conversation.type === ConversationType.ChatRoom && this.isChatroomManager && message.from !== wfc.getUserId()) {
+			if (message.conversation.type === ConversationType.ChatRoom && this.isChatroomManager && message.direction !== 0) {
 				appServerApi.recallMessage(message.conversation.target, message.messageUid);
 			} else  {
 				wfc.recallMessage(message.messageUid, null, null);
