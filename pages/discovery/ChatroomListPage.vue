@@ -1,6 +1,6 @@
 <template>
     <div class="chatroom-container">
-        <div class="item" @click="go2Chatroom(item.cid)" v-for="(item,index) in chatroomList">
+        <div class="item" @click="go2Chatroom(item)" v-for="(item,index) in chatroomList">
 			<image :src="item.portrait!='' ? item.portrait:'/assets/images/portrait.png'"/>
 			<text>{{item.title}}</text>
         </div>
@@ -18,7 +18,7 @@ export default {
     data() {
         return {
             user: store.state.contact.selfUserInfo,
-			chatroomList:[]
+            chatroomList:[]
         }
     },
 	created() {
@@ -26,24 +26,18 @@ export default {
 		
 	},
     methods: {
-        go2Chatroom(index) {
-            let conversation = new Conversation(ConversationType.ChatRoom,index , 0);
-            store.setCurrentConversation(conversation);
-            this.$go2ConversationPage();
+        go2Chatroom(chatroom) {
+					let conversation = new Conversation(ConversationType.ChatRoom, chatroom.cid, 0);
+					store.setCurrentConversation(conversation);
+					this.$go2ConversationPage();
         },
 		async getChatroomList() {
 			appServerApi.getChatroomList({status:0})
 				.then(response => {
-					console.log('sss',response)
-					// response.map(item=>{
-					// 	item.chatRoomId=item.cid
-					// })
 					this.chatroomList = response;
-					
 				})
 				.catch(err => {
 					console.log('getChatroomList', err)
-					
 				})
 		},
     }
