@@ -51,12 +51,12 @@ export default {
 			
 			appServerApi.sendAddFriend(this.reason, this.userInfo.uid).then(() => {
 				uni.showToast({
-				    title: '发送好友请求成功',
+				    title: this.$t('chat.friend_request_sent_success'),
 				    icon: 'none',
 				});
 			}).catch(error => {
 				uni.showToast({
-				    title: error.message ? error.message : '发送好友请求失败',
+				    title: error.message ? error.message : this.$t('chat.friend_request_sent_failure'),
 				    icon: 'none'
 				});
 			})

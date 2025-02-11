@@ -240,5 +240,33 @@
 		"user_recalled_a_message": " 撤回了一条消息",
 		"re_edit": "重新编辑",
         "voice_duration": "时长: "
-	}
+	},
+    "chat": {
+      "friend_request_sent_success": "发送好友请求成功",
+      "friend_request_sent_failure": "发送好友请求失败",
+      "search_results": "搜索结果",
+      "no_users_found": "没有搜索到用户",
+      "greeting_message": "你好，我是 {name}",
+      "invite_new_member_failed": "邀请新成员失败",
+      "remove_group_member_failed": "踢除群成员失败",
+      "photo": "照片",
+      "video": "视频",
+      "voice_call": "语音通话",
+      "video_call": "视频通话",
+      "file": "文件",
+      "location": "位置",
+      "business_card": "名片",
+      "everyone": "所有人",
+      "at_everyone": "@所有人",
+      "chat_history": "聊天记录",
+      "enter_keyword_to_search": "请输入关键字进行搜索",
+      "no_search_results": "没有搜索结果",
+      "hello": "你好",
+      "relevant_chat_records": "条相关聊天记录",
+      "save_to_contacts": "保存到通讯录",
+      "me": "我",
+      "meeting_invitation": "会议邀请",
+      "meeting_feature_not_supported": "不支持会议功能",
+      "meeting_invite": "会议邀请"
+    }
 }

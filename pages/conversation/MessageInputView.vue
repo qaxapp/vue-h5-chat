@@ -27,10 +27,6 @@
       <view class="wf-message-input-toolbar">
         <!-- <view class="wf-input-button-icon wxfont" @click="toggleVoice"
 					:class="showVoice ? 'keyboard' : 'voice'"></view> -->
-        <!-- <view class="wf-input-voice-container" v-if="showVoice">
-					<AudioInputView :conversation-info="conversationInfo"></AudioInputView>
-				</view>
-				-->
         <view style="width: 100%">
           <view class="wf-input-text-container">
             <textarea
@@ -126,7 +122,6 @@ import emojiStickerConfig from "./emojiStickerConfig";
 import StickerMessageContent from "../../wfc/messages/stickerMessageContent";
 import Config from "../../config";
 import QuoteInfo from "../../wfc/model/quoteInfo";
-import AudioInputView from "./message/AudioInputView.vue";
 import Draft from "../util/draft";
 import avenginekitproxy from "../../wfc/av/engine/avenginekitproxy";
 import appServerApi from "../../api/appServerApi";
@@ -134,7 +129,7 @@ import { setItem } from "../util/storageHelper";
 export default {
   name: "MessageInputView",
   components: {
-    AudioInputView,
+
   },
   props: {
     conversationInfo: {
@@ -155,37 +150,37 @@ export default {
       isPttEnable: false,
       extList: [
         {
-          title: "照片",
+          title: this.$t('chat.photo'),
           tag: "image",
           icon: "image",
         },
         {
-          title: "视频",
+          title: this.$t('chat.video'),
           tag: "shot",
           icon: "camera",
         },
         {
-          title: "语音通话",
+          title: this.$t('chat.voice_call'),
           tag: "voip_a",
           icon: "voip",
         },
         {
-          title: "视频通话",
+          title: this.$t('chat.video_call'),
           tag: "voip_v",
           icon: "voip_v",
         },
         {
-          title: "文件",
+          title: this.$t('chat.file'),
           tag: "file",
           icon: "file",
         },
         {
-          title: "位置",
+          title: this.$t('chat.location'),
           tag: "location",
           icon: "location",
         },
         {
-          title: "名片",
+          title: this.$t('chat.business_card'),
           tag: "userCard",
           icon: "user_card",
         },
@@ -254,7 +249,7 @@ export default {
             };
             let atAll = {
               uid: "@all",
-              displayName: "所有人",
+              displayName: this.$t('chat.everyone'),
               portrait: this.conversationInfo.conversation._target.portrait,
             };
             this.$pickUser({
@@ -288,7 +283,7 @@ export default {
           if (matches.length > 0) {
             for (let i = 0; i < matches.length; i++) {
               const match = matches[i].trim();
-              if (match === "@所有人") {
+              if (match === this.$t('chat.at_everyone')) {
                 let index = this.mentions.findIndex(
                   (user) => user.uid === "@all"
                 );
@@ -337,7 +332,6 @@ export default {
                 return;
               }
               this.preMessageId = this.currentMessageId;
-              console.log("上报请求");
               appServerApi.notifyChatUser(targetId, errorCode);
             }
           }

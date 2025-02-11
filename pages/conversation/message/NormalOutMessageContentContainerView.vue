@@ -18,7 +18,7 @@
 
 					<div class="flex-column flex-align-end">
 						<div class="name-time-container" v-if="message.showAvatar && !isSingle">
-							<p class="name">我</p>
+							<p class="name">{{$t('chat.me')}}</p>
 							<p class="time">{{ message._timeStr }}</p>
 						</div>
 						<div class="message-content-wrapper">

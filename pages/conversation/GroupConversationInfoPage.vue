@@ -20,7 +20,7 @@
                        :placeholder="groupAnnouncement">
             </label>
             <label class="switch">
-                保存到通讯录
+                {{$t('chat.save_to_contacts')}}
                 <checkbox-group @change="setFavGroup(conversationInfo.conversation.target, $event.detail.value.length === 1)">
                     <checkbox
                         value="fav"
@@ -120,7 +120,7 @@ export default {
                     this.groupMemberUserInfos = store.getConversationMemberUsrInfos(this.conversationInfo.conversation);
                 }, err => {
                     uni.showToast({
-                        title: '邀请新成员失败 ' + err,
+                        title: this.$t('chat.invite_new_member_failed') + err,
                     });
                 })
             };
@@ -142,7 +142,7 @@ export default {
                     this.groupMemberUserInfos = store.getConversationMemberUsrInfos(this.conversationInfo.conversation);
                 }, err => {
                     uni.showToast({
-                        title: '踢除群成员失败' + err,
+                        title: this.$t('chat.remove_group_member_failed') + err,
                     });
                 })
             }

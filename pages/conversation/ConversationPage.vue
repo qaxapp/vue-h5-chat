@@ -670,11 +670,27 @@ export default {
     },
 
     updateConversationTitle() {
-      uni.setNavigationBarTitle({
-        title: this.targetUserOnlineStateDesc
-          ? this.conversationTitle + `(${this.targetUserOnlineStateDesc})`
-          : this.conversationTitle,
-      });
+			// 聊天室请求接口
+			if (this.conversationInfo.conversation.type === ConversationType.ChatRoom) {
+				let chatroomId = this.conversationInfo.conversation.target;
+				wfc.getChatroomInfo(chatroomId, 0, info => {
+					console.log('getChatroomInfo success', info);
+					uni.setNavigationBarTitle({
+						title: info.title ? info.title : this.$t('contact.chatroom'),
+					});
+				}, err => {
+					console.error('getChatroomInfo error', chatroomId, err)
+					uni.setNavigationBarTitle({
+						title: this.$t('contact.chatroom'),
+					});
+				})
+			} else {
+				uni.setNavigationBarTitle({
+					title: this.targetUserOnlineStateDesc
+						? this.conversationTitle + `(${this.targetUserOnlineStateDesc})`
+						: this.conversationTitle,
+				});
+			}
     },
 
     onPulling(e) {
@@ -792,8 +808,13 @@ export default {
         if (info.conversation._target && info.conversation._target._displayName) {
           return info.conversation._target._displayName;
         } else if (info.conversation.target) {
-          return info.conversation.target;
-        } 
+					// 聊天室
+					if (this.conversationInfo.conversation.type === ConversationType.ChatRoom) {
+						return this.$t('contact.chatroom');
+					} else {
+          	return info.conversation.target;
+					}
+        }
       }
       return "";
     },

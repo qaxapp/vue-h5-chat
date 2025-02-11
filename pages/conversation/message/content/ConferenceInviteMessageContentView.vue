@@ -9,7 +9,7 @@
                 <p class="single-line desc">{{ message.messageContent.desc }}</p>
             </div>
         </div>
-        <p class="type">会议邀请</p>
+        <p class="type">{{$t('chat.meeting_invitation')}}</p>
     </div>
 </template>
 
@@ -39,7 +39,7 @@ export default {
             } else {
                 console.log('not support conference')
                 uni.showToast({
-                    title: '不支持会议功能',
+                    title: this.$t('chat.meeting_invitation'),
                     icon: 'none',
                 });
             }
@@ -49,7 +49,7 @@ export default {
     computed: {
         textContent() {
             let conferenceInviteMessageContent = this.message.messageContent;
-            return '会议邀请' + ' ' + conferenceInviteMessageContent.title + ' ' + conferenceInviteMessageContent.desc;
+            return this.$t('chat.meeting_invitation') + ' ' + conferenceInviteMessageContent.title + ' ' + conferenceInviteMessageContent.desc;
         },
 
         portrait() {

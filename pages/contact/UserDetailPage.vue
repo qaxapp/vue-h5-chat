@@ -32,23 +32,7 @@
             </ul>
         </div>
         <div class="footer">
-<!--                <div class="action" @click="chat">
-                    <i class="icon-ion-ios-chatboxes-outline"></i>
-                    <a>{{ $t('message.send_message') }}</a>
-                </div> -->
-<!--                <div class="action" @click="startAudioCall">
-                    <i class="icon-ion-ios-telephone-outline"></i>
-                    <a>语音通话</a>
-                </div>
-                <div class="action" @click="startVideoCall">
-                    <i class="icon-ion-ios-videocam-outline"></i>
-                    <a>视频通话</a>
-                </div> -->
-<!--                <div v-if="!isFriend && !isSelf" class="action" @click="addFriend">
-                    <i class="icon-ion-person-add"></i>
-                    <a>{{ $t('contact.add_friend') }}</a>
-                </div> -->
-            </div>
+				</div>
     </div>
 </template>
 
@@ -101,10 +85,10 @@ export default {
         },
         addFriend() {
             let userInfo = wfc.getUserInfo(wfc.getUserId());
-            let reason = '你好，我是' + userInfo.displayName;
+            let reason = this.$t('chat.greeting_message', { name: userInfo.displayName });
 			appServerApi.sendAddFriend(reason, this.user.uid).then(() => {
 				uni.showToast({
-				    title: '好友请求发送成功',
+				    title: this.$t('chat.friend_request_sent_success'),
 				    icon: 'none'
 				});
 				setTimeout(() => {
@@ -114,7 +98,7 @@ export default {
 				}, 1000)
 			}).catch(error => {
 				uni.showToast({
-				    title: error.message ? error.message : '好友请求发送失败',
+				    title: error.message ? error.message : this.$t('chat.friend_request_sent_failure'),
 				    icon: 'none'
 				});
 			})

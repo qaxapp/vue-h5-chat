@@ -240,5 +240,33 @@
 		"user_recalled_a_message": " 撤回了一條訊息",
 		"re_edit": "重新編輯",
         "voice_duration": "時長: "
-	}
+	},
+    "chat": {
+      "friend_request_sent_success": "發送好友請求成功",
+      "friend_request_sent_failure": "發送好友請求失敗",
+      "search_results": "搜索結果",
+      "no_users_found": "沒有搜索到用戶",
+      "greeting_message": "你好，我是 {name}",
+      "invite_new_member_failed": "邀請新成員失敗",
+      "remove_group_member_failed": "踢除群成員失敗",
+      "photo": "照片",
+      "video": "視頻",
+      "voice_call": "語音通話",
+      "video_call": "視頻通話",
+      "file": "文件",
+      "location": "位置",
+      "business_card": "名片",
+      "everyone": "所有人",
+      "at_everyone": "@所有人",
+      "chat_history": "聊天記錄",
+      "enter_keyword_to_search": "請輸入關鍵字進行搜索",
+      "no_search_results": "沒有搜索結果",
+      "hello": "你好",
+      "relevant_chat_records": "條相關聊天記錄",
+      "save_to_contacts": "保存到通訊錄",
+      "me": "我",
+      "meeting_invitation": "會議邀請",
+      "meeting_feature_not_supported": "不支持會議功能",
+      "meeting_invite": "會議邀請"
+    }
 }
