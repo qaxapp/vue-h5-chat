@@ -4,6 +4,7 @@
 import NotificationMessageContent from "../../messages/notification/notificationMessageContent";
 import MessageContentType from "../../messages/messageContentType";
 import wfc from "../../client/wfc"
+import { i18n } from '../../../main.js'
 
 class ParticipantStatus {
     userId;
@@ -29,23 +30,23 @@ export default class AddParticipantsMessageContent extends NotificationMessageCo
     formatNotification(message) {
         let desc = '';
         if (this.fromSelf){
-            desc = '您邀请'
+            desc = i18n.global.t('chat.you_invited')
         }else {
             desc = wfc.getGroupMemberDisplayName(message.conversation.target, this.initiator)
-            desc += "邀请"
+            desc += i18n.global.t('chat.invite')
         }
 
         if (this.participants){
             this.participants.forEach(p => {
                 desc += ' ';
                 if (p === wfc.getUserId()){
-                    desc += '您';
+                    desc += i18n.global.t('chat.you')
                 }else {
                     desc += wfc.getGroupMemberDisplayName(message.conversation.target, p);
                 }
             })
         }
-        desc += ' 加入了通话';
+        desc += i18n.global.t('chat.joined_call')
         return desc;
     }
 

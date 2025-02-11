@@ -5,6 +5,7 @@
 import GroupNotificationContent from './groupNotification'
 import MessageContentType from '../messageContentType'
 import wfc from '../../client/wfc'
+import { i18n } from '../../../main.js'
 
 export default class MuteGroupMemberNotification extends GroupNotificationContent {
     groupId
@@ -23,23 +24,23 @@ export default class MuteGroupMemberNotification extends GroupNotificationConten
     formatNotification(message) {
         let notifyStr = ''
         if (this.fromSelf) {
-            notifyStr += '您'
+            notifyStr += i18n.global.t('chat.you');
         } else {
             notifyStr += wfc.getGroupMemberDisplayName(this.groupId,
                 this.operator)
         }
-        notifyStr += '把'
+        notifyStr += ' '
+        if (this.muteType === 1) {
+            notifyStr += i18n.global.t('chat.muted_member');
+        } else {
+            notifyStr += i18n.global.t('chat.unmuted_member');
+        }
         if (this.memberIds) {
             this.memberIds.forEach((memberId) => {
                 notifyStr += ' '
                 notifyStr += wfc.getGroupMemberDisplayName(this.groupId,
                     memberId)
             })
-        }
-        if (this.muteType === 1) {
-            notifyStr += '设置了禁言'
-        } else {
-            notifyStr += '取消了禁言'
         }
         return notifyStr
     }

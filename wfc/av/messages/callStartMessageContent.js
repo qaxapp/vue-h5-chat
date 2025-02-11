@@ -5,6 +5,7 @@
 import MessageContent from '../../messages/messageContent';
 import MessageContentType from '../../messages/messageContentType';
 import wfc from "../../client/wfc"
+import { i18n } from '../../../main.js'
 
 export default class CallStartMessageContent extends MessageContent {
     callId;
@@ -34,16 +35,16 @@ export default class CallStartMessageContent extends MessageContent {
 
     digest() {
         if (this.audioOnly) {
-            return '[语音通话]';
+            return i18n.global.t('chat.voice_call_label');
         } else {
-            return '[视频通话]';
+            return i18n.global.t('chat.video_call_label');
         }
     }
 
     encode() {
         let payload = super.encode();
         payload.content = this.callId;
-        payload.pushContent = '音视频通话邀请';
+        payload.pushContent = i18n.global.t('chat.audio_video_call_invitation');
 
         let obj = {
             c: this.connectTime,

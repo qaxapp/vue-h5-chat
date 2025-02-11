@@ -1,6 +1,7 @@
 import MessageContent from "../../messages/messageContent";
 import MessageContentType from "../../messages/messageContentType";
 import wfc from "../../client/wfc";
+import { i18n } from '../../../main.js'
 
 export default class ConferenceInviteMessageContent extends MessageContent {
     callId;
@@ -28,14 +29,14 @@ export default class ConferenceInviteMessageContent extends MessageContent {
     }
 
     digest(message) {
-        let str = '[会议邀请]'
-        return str;
+        //let str = '[会议邀请]'
+        return i18n.global.t('chat.meeting_invitation_label');
     }
 
     encode() {
         let payload = super.encode();
         payload.content = this.callId;
-        payload.pushContent = '会议邀请';
+        payload.pushContent = i18n.global.t('chat.meeting_invite');
         let obj = {
             h: this.host,
             s: this.startTime,

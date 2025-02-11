@@ -33,13 +33,13 @@ import LeaveChannelChatMessageContent from "./wfc/messages/leaveChannelChatMessa
 import ArticlesMessageContent from "./wfc/messages/articlesMessageContent";
 import EnterChannelChatMessageContent from "./wfc/messages/enterChannelChatMessageContent";
 import NullChannelInfo from "./wfc/model/NullChannelInfo";
-import CallStartMessageContent from "./wfc/av/messages/callStartMessageContent";
 import {storeToRefs} from "pinia";
 import {pstore} from "./pstore";
 import {imageThumbnail, videoDuration, videoThumbnail} from "./pages/util/imageUtil";
 import avenginekitproxy from "./wfc/av/engine/avenginekitproxy";
 import ModifyGroupSettingNotification from "./wfc/messages/notification/modifyGroupSettingNotification";
 import appServerApi from "./api/appServerApi";
+import { i18n } from './main.js'
 
 /**
  * 一些说明
@@ -779,9 +779,11 @@ let store = {
                 let msgConversation = messages[0].conversation;
                 if (msgConversation.type === ConversationType.Single) {
                     let users = store.getUserInfos([wfc.getUserId(), msgConversation.target], '');
-                    title = users[0]._displayName + '和' + users[1]._displayName + '的聊天记录';
+                    title = users[0]._displayName + i18n.global.t('chat.chat_and') + users[1]._displayName + i18n.global.t('chat.chat_history_with');
+                } else if (msgConversation.type === ConversationType.ChatRoom) {
+                    title = i18n.global.t('chat.chat_room_chat_history');
                 } else {
-                    title = '群的聊天记录';
+                    title = i18n.global.t('chat.group_chat_history');
                 }
                 compositeMessageContent.title = title;
                 compositeMessageContent.setMessages(messages);
@@ -1485,7 +1487,7 @@ let store = {
         if (favUserIds.length > 0) {
             contactState.favContactList = this.getUserInfos(favUserIds, '')
             contactState.favContactList.forEach(u => {
-                u._category = '☆ 星标朋友';
+							u._category = i18n.global.t('chat.starred_friend');
             })
         } else {
             contactState.favContactList = [];
@@ -1906,7 +1908,7 @@ let store = {
             this._patchConversationInfo(conversationInfo, false);
 
             if (fileRecord.conversation.type === 0) {
-                fileRecord._conversationDisplayName = '与' + conversationInfo.conversation._target._displayName + '的聊天';
+                fileRecord._conversationDisplayName = i18n.global.t('chat.chat_and') + conversationInfo.conversation._target._displayName + i18n.global.t('chat.chat_history_with');
             } else {
                 fileRecord._conversationDisplayName = conversationInfo.conversation._target._displayName;
             }
@@ -1958,9 +1960,9 @@ let store = {
                 if (silent) {
                     return;
                 }
-                tip = "新消息来了";
+                tip = i18n.global.t('chat.new_message_arrived');
             } else {
-                tip = "有人@你";
+                tip = i18n.global.t('chat.someone_mentioned_you');
             }
 
             wfc.notify(tip, miscState.enableNotificationMessageDetail ? content.digest(msg) : '')

@@ -71,7 +71,7 @@ app.config.globalProperties.$go2CustomerPage = () => {
 	let conversation = new Conversation(getItem('type') == 0 ? ConversationType.Single : getItem('type') == 1 ?
 		ConversationType.Group : getItem('type') == 2 ? ConversationType.ChatRoom : getItem('type') == 3 ?
 		ConversationType.Channel : ConversationType.SecretChat, getItem("chatId"), 0);
-	console.log("测试123",conversation);
+
 	wfc.eventEmitter.on(EventType.ConnectionStatusChanged, (status) => {
 		if (status === ConnectionStatus.ConnectionStatusConnected) {
 			store.setCurrentConversation(conversation);

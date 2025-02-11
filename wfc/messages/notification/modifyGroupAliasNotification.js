@@ -4,7 +4,7 @@
 
 import wfc from '../../client/wfc'
 import MessageContentType from '../messageContentType';
-
+import { i18n } from '../../../main.js'
 import GroupNotificationContent from './groupNotification';
 
 export default class ModifyGroupAliasNotification extends GroupNotificationContent {
@@ -18,37 +18,42 @@ export default class ModifyGroupAliasNotification extends GroupNotificationConte
         this.alias = alias;
     }
 
-    formatNotification() {
-        let notificationStr = '';
-        if (this.fromSelf) {
-            notificationStr += '你';
-        } else {
-            let userInfo = wfc.getUserInfo(this.operator, false, this.groupId)
-            if (userInfo.friendAlias) {
-                notificationStr += userInfo.friendAlias;
-            } else if (userInfo.displayName) {
-                notificationStr += userInfo.displayName;
-            } else {
-                notificationStr += this.operator;
-            }
-        }
-        notificationStr += '修改';
-        if (this.memberId) {
-            let userInfo = wfc.getUserInfo(this.memberId, false);
-            if (userInfo.friendAlias) {
-                notificationStr += userInfo.friendAlias;
-            } else if (userInfo.displayName) {
-                notificationStr += userInfo.displayName;
-            } else {
-                notificationStr += this.memberId;
-            }
-            notificationStr += '的';
-        }
-        notificationStr += '群昵称为';
-        notificationStr += this.alias;
-
-        return notificationStr;
-    }
+		formatNotification() {
+			let operatorName = ''
+			if (this.fromSelf) {
+				operatorName = i18n.global.t('chat.you')
+			} else {
+				let userInfo = wfc.getUserInfo(this.operator, false, this.groupId)
+				if (userInfo.friendAlias) {
+					operatorName = userInfo.friendAlias;
+				} else if (userInfo.displayName) {
+					operatorName = userInfo.displayName;
+				} else {
+					operatorName = this.operator;
+				}
+			}
+			let memberName = '';
+			if (this.memberId) {
+				let userInfo = wfc.getUserInfo(this.memberId, false);
+				if (userInfo.friendAlias) {
+					memberName = userInfo.friendAlias;
+				} else if (userInfo.displayName) {
+					memberName = userInfo.displayName;
+				} else {
+					memberName = this.memberId;
+				}
+				return i18n.global.t('chat.modify_group_member_alias', {
+					operator: operatorName,
+					member: memberName,
+					alias: this.alias
+				});
+			} else {
+				return i18n.global.t('chat.modify_group_alias', {
+					operator: operatorName,
+					alias: this.alias
+				});
+			}
+		}
 
     encode() {
         let payload = super.encode();

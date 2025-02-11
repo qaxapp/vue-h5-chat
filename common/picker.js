@@ -1,4 +1,5 @@
 import store from "../store";
+import { i18n } from '../main.js'
 
 export default {
     install(app, options) {
@@ -17,7 +18,7 @@ export default {
                         initialCheckedUsers: options.initialCheckedUsers,
                         uncheckableUsers: options.uncheckableUsers,
                         showCategoryLabel: options.showCategoryLabel !== false,
-                        confirmTitle: options.confirmTitle ? options.confirmTitle : '确定',
+                        confirmTitle: options.confirmTitle ? options.confirmTitle : i18n.global.t('common.confirm'),
                     });
                 }
             })
@@ -36,7 +37,7 @@ export default {
                     res.eventChannel.emit('pickOptions', {
                         users: options.users ? options.users : store.state.contact.favContactList.concat(store.state.contact.friendList),
                         showCategoryLabel: options.showCategoryLabel !== false,
-                        confirmTitle: options.confirmTitle ? options.confirmTitle : '确定',
+                        confirmTitle: options.confirmTitle ? options.confirmTitle : i18n.global.t('common.confirm'),
                     });
                 }
             })

@@ -5,6 +5,7 @@
 import GroupNotificationContent from "./groupNotification";
 import MessageContentType from "../messageContentType";
 import wfc from "../../client/wfc";
+import { i18n } from '../../../main.js'
 
 export default class GroupPrivateChatNotificationContent extends GroupNotificationContent {
     operator;
@@ -20,7 +21,7 @@ export default class GroupPrivateChatNotificationContent extends GroupNotificati
 
     formatNotification(message) {
         // return sb.toString();
-        let notifyStr = this.fromSelf ? '您' : wfc.getGroupMemberDisplayName(this.groupId, this.operator);
+        let notifyStr = this.fromSelf ? i18n.global.t('chat.you') + ' ' : wfc.getGroupMemberDisplayName(this.groupId, this.operator) + ' ';
         notifyStr += this.privateChatType === 0 ? ' 开启了成员私聊' : ' 关闭了成员私聊';
 
         return notifyStr;

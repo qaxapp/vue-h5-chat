@@ -4,7 +4,7 @@
 
 import wfc from '../../client/wfc'
 import MessageContentType from "../messageContentType";
-
+import { i18n } from '../../../main.js'
 import GroupNotificationContent from "./groupNotification";
 
 export default class KickoffGroupMemberVisiableNotification extends GroupNotificationContent {
@@ -29,7 +29,7 @@ export default class KickoffGroupMemberVisiableNotification extends GroupNotific
         let userInfos = wfc.getUserInfos(this.kickedMembers, this.groupId);
         userInfos.forEach(userInfo => {
             if (userInfo.uid === wfc.getUserId()) {
-                kickedMembersStr += ' 您';
+                kickedMembersStr += ' ' + i18n.global.t('chat.you')
             } else {
                 kickedMembersStr += ' ' + userInfo.displayName;
             }

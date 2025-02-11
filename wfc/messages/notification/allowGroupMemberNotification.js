@@ -5,6 +5,7 @@
 import GroupNotificationContent from './groupNotification'
 import MessageContentType from '../messageContentType'
 import wfc from '../../client/wfc'
+import { i18n } from '../../../main.js'
 
 export default class AllowGroupMemberNotification extends GroupNotificationContent {
     groupId
@@ -23,12 +24,18 @@ export default class AllowGroupMemberNotification extends GroupNotificationConte
     formatNotification(message) {
         let notifyStr = ''
         if (this.fromSelf) {
-            notifyStr += '您'
+            notifyStr += i18n.global.t('chat.you')
         } else {
             notifyStr += wfc.getGroupMemberDisplayName(this.groupId,
                 this.operator)
         }
-        notifyStr += '把'
+				notifyStr += ' '
+				if (this.type === 0) {
+					notifyStr += i18n.global.t('chat.revoke_speaking_permission')
+				} else {
+					notifyStr += i18n.global.t('chat.grant_speaking_permission')
+				}
+
         if (this.memberIds) {
             this.memberIds.forEach((memberId) => {
                 notifyStr += ' '
@@ -36,11 +43,7 @@ export default class AllowGroupMemberNotification extends GroupNotificationConte
                     memberId)
             })
         }
-        if (this.type === 0) {
-            notifyStr += '取消群禁言时发言权限'
-        } else {
-            notifyStr += '允许群禁言时发言'
-        }
+
         return notifyStr
     }
 

@@ -4,6 +4,7 @@
 import MessageContent from '../../messages/messageContent';
 import wfc from "../../client/wfc"
 import MessageContentType from '../../messages/messageContentType';
+import { i18n } from '../../../main.js'
 
 export default class MultiCallOngoingMessageContent extends MessageContent {
     callId;
@@ -21,7 +22,7 @@ export default class MultiCallOngoingMessageContent extends MessageContent {
 
     digest(message) {
         let displayName = wfc.getGroupMemberDisplayName(message.conversation.target, this.initiator);
-        return displayName + ' 发起的通话';
+        return displayName + ' '  + i18n.global.t('chat.call_initiated_by');
     }
 
     encode() {

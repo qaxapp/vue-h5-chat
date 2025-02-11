@@ -5,6 +5,7 @@
 import GroupNotificationContent from "./groupNotification";
 import MessageContentType from "../messageContentType";
 import wfc from "../../client/wfc";
+import { i18n } from '../../../main.js'
 
 export default class GroupSetManagerNotificationContent extends GroupNotificationContent {
     operator;
@@ -23,14 +24,12 @@ export default class GroupSetManagerNotificationContent extends GroupNotificatio
 
 
     formatNotification(message) {
-        let notifyStr = this.fromSelf ? '您' : wfc.getGroupMemberDisplayName(this.groupId, this.operator)
-        notifyStr += '把 ';
-        this.memberIds.forEach((memberId) => {
-            notifyStr += ' ';
-            notifyStr += wfc.getGroupMemberDisplayName(this.groupId, memberId);
-        })
-        notifyStr += ' ';
-        notifyStr += this.setManagerType === 0 ? '取消了管理员' : '设置为了管理员';
+        let notifyStr = this.fromSelf ? i18n.global.t('chat.you') + ' ' : wfc.getGroupMemberDisplayName(this.groupId, this.operator) + ' '
+        notifyStr += this.setManagerType === 0 ? i18n.global.t('chat.removed_admin') : i18n.global.t('chat.set_as_admin');
+				this.memberIds.forEach((memberId) => {
+					notifyStr += ' ';
+					notifyStr += wfc.getGroupMemberDisplayName(this.groupId, memberId);
+				})
         return notifyStr;
     }
 

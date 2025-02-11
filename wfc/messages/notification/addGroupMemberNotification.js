@@ -4,8 +4,8 @@
 
 import wfc from '../../client/wfc'
 import MessageContentType from '../messageContentType';
-
 import GroupNotificationContent from './groupNotification';
+import { i18n } from '../../../main.js'
 
 export default class AddGroupMemberNotification extends GroupNotificationContent {
     invitor = '';
@@ -21,16 +21,16 @@ export default class AddGroupMemberNotification extends GroupNotificationContent
         let notifyStr;
         if (this.invitees.length === 1 && this.invitees[0] === this.invitor) {
             if (this.fromSelf) {
-                return '您加入了群组';
+                return i18n.global.t('chat.you') + ' ' +  i18n.global.t('chat.joined_group');
             } else {
-                return wfc.getGroupMemberDisplayName(this.groupId, this.invitor) + ' 加入了群组';
+                return wfc.getGroupMemberDisplayName(this.groupId, this.invitor) + ' ' + i18n.global.t('chat.joined_group');
             }
         }
 
         if (this.fromSelf) {
-            notifyStr = '您邀请:';
+            notifyStr = i18n.global.t('chat.you') + ' ' +  i18n.global.t('chat.invited');
         } else {
-            notifyStr = wfc.getGroupMemberDisplayName(this.groupId, this.invitor) + '邀请:';
+            notifyStr = wfc.getGroupMemberDisplayName(this.groupId, this.invitor)  + ' ' +  i18n.global.t('chat.invited');
         }
 
         let membersStr = '';
@@ -39,7 +39,7 @@ export default class AddGroupMemberNotification extends GroupNotificationContent
             membersStr += ' ' + m.displayName;
         });
 
-        return notifyStr + membersStr + '加入了群组';
+        return notifyStr + membersStr + ' ' + i18n.global.t('chat.joined_group');
     }
 
     encode() {

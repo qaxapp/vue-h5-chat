@@ -4,7 +4,7 @@
 
 import wfc from '../../client/wfc'
 import MessageContentType from '../messageContentType';
-
+import { i18n } from '../../../main.js'
 import GroupNotificationContent from './groupNotification';
 
 export default class ModifyGroupExtraNotification extends GroupNotificationContent {
@@ -20,7 +20,7 @@ export default class ModifyGroupExtraNotification extends GroupNotificationConte
     formatNotification() {
         let notificationStr = '';
         if (this.fromSelf) {
-            notificationStr += '你';
+            notificationStr += i18n.global.t('chat.you')
         } else {
             let userInfo = wfc.getUserInfo(this.operator, false, this.groupId)
             if (userInfo.friendAlias) {

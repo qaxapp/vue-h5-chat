@@ -4,7 +4,7 @@
 
 import wfc from '../../client/wfc'
 import MessageContentType from '../messageContentType';
-
+import { i18n } from '../../../main.js'
 import GroupNotificationContent from './groupNotification';
 
 export default class DismissGroupNotification extends GroupNotificationContent {
@@ -17,9 +17,9 @@ export default class DismissGroupNotification extends GroupNotificationContent {
 
     formatNotification() {
         if (this.fromSelf) {
-            return '您解散了群组';
+            return i18n.global.t('chat.you') + ' ' + i18n.global.t('chat.dissolved_group');
         } else {
-            return wfc.getGroupMemberDisplayName(this.groupId, this.operator) + '解散了群组';
+            return wfc.getGroupMemberDisplayName(this.groupId, this.operator) + ' ' + i18n.global.t('chat.dissolved_group');
         }
     }
 

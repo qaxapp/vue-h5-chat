@@ -4,7 +4,7 @@
 
 import wfc from '../../client/wfc'
 import MessageContentType from "../messageContentType";
-
+import { i18n } from '../../../main.js'
 import GroupNotificationContent from "./groupNotification";
 
 export default class ChangeGroupNameNotification extends GroupNotificationContent {
@@ -19,9 +19,9 @@ export default class ChangeGroupNameNotification extends GroupNotificationConten
 
     formatNotification() {
         if (this.fromSelf) {
-            return '您修改群名称为：' + this.name;
+            return i18n.global.t('chat.you') + i18n.global.t('chat.modify_group_name') + this.name;
         } else {
-            return wfc.getGroupMemberDisplayName(this.groupId, this.operator) + '修改群名称为：' + this.name;
+            return wfc.getGroupMemberDisplayName(this.groupId, this.operator) + i18n.global.t('chat.modify_group_name') + this.name;
         }
     }
 

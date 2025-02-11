@@ -4,6 +4,7 @@
 
 import GroupNotificationContent from "./groupNotification";
 import wfc from "../../client/wfc";
+import { i18n } from '../../../main.js'
 import MessageContentType from "../messageContentType";
 
 export default class GroupJoinTypeNotificationContent extends GroupNotificationContent {
@@ -22,19 +23,19 @@ export default class GroupJoinTypeNotificationContent extends GroupNotificationC
     formatNotification(message) {
         let notifyStr;
         if (this.fromSelf) {
-            notifyStr = '您';
+            notifyStr = i18n.global.t('chat.you') + ' ';
         } else {
-            notifyStr = wfc.getGroupMemberDisplayName(this.groupId, this.operator);
+            notifyStr = wfc.getGroupMemberDisplayName(this.groupId, this.operator) + ' ';
         }
         switch (this.joinType) {
             case 0:
-                notifyStr += ' 开放了加入群组功能';
+                notifyStr += i18n.global.t('chat.enabled_join_group');
                 break;
             case 1:
-                notifyStr += ' 仅允许群成员邀请加入群组';
+                notifyStr += i18n.global.t('chat.members_only_invite');
                 break;
             case 2:
-                notifyStr += " 关闭了加入群组功能";
+                notifyStr += i18n.global.t('chat.disabled_join_group');
                 break;
             default:
                 break;

@@ -3,6 +3,7 @@
  */
 
 import wfc from '../../client/wfc'
+import { i18n } from '../../../main.js'
 import MessageContentType from '../messageContentType';
 import GroupNotificationContent from './groupNotification';
 
@@ -18,9 +19,9 @@ export default class TransferGroupOwnerNotification extends GroupNotificationCon
 
     formatNotification() {
         if (this.fromSelf) {
-            return '您把群转让给了 ' + wfc.getGroupMemberDisplayName(this.groupId, this.newOwner);
+            return i18n.global.t('chat.you') + ' ' + i18n.global.t('chat.transferred_group_to') + ' ' + wfc.getGroupMemberDisplayName(this.groupId, this.newOwner);
         } else {
-            return wfc.getGroupMemberDisplayName(this.groupId, this.operator) + '把群转让给了 ' + wfc.getGroupMemberDisplayName(this.groupId, this.newOwner)
+            return wfc.getGroupMemberDisplayName(this.groupId, this.operator) + ' ' + i18n.global.t('chat.transferred_group_to') + ' ' + wfc.getGroupMemberDisplayName(this.groupId, this.newOwner)
         }
     }
 

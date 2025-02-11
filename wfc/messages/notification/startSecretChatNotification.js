@@ -5,6 +5,7 @@
 import NotificationMessageContent from './notificationMessageContent'
 import MessageContentType from "../messageContentType";
 import wfc from "../../client/wfc";
+import { i18n } from '../../../main.js'
 import SecretChatState from "../../model/secretChatState";
 
 export default class StartSecretChatNotification extends NotificationMessageContent {
@@ -16,15 +17,15 @@ export default class StartSecretChatNotification extends NotificationMessageCont
     formatNotification(message) {
         let state = wfc.getSecretChatInfo(message.conversation.target).state;
         if (state === SecretChatState.Starting) {
-            return "等待对方响应";
+            return i18n.global.t('chat.waiting_for_response');
         } else if (state === SecretChatState.Accepting) {
-            return "密聊会话建立中";
+            return i18n.global.t('chat.establishing_private_chat');
         } else if (state === SecretChatState.Established) {
-            return "密聊会话已建立";
+            return i18n.global.t('chat.private_chat_established');
         } else if (state === SecretChatState.Canceled) {
-            return "密聊会话已取消";
+            return i18n.global.t('chat.private_chat_cancelled');
         } else {
-            return "密聊会话不可用";
+            return i18n.global.t('chat.private_chat_unavailable');
         }
     }
 

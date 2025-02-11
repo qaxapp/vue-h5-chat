@@ -5,6 +5,7 @@
 import GroupNotificationContent from "./groupNotification";
 import MessageContentType from "../messageContentType";
 import wfc from "../../client/wfc";
+import { i18n } from '../../../main.js'
 
 export default class GroupMuteNotificationContent extends GroupNotificationContent {
     operator;
@@ -20,8 +21,8 @@ export default class GroupMuteNotificationContent extends GroupNotificationConte
 
     formatNotification(message) {
         // return sb.toString();
-        let notifyStr = this.fromSelf ? '您' : wfc.getGroupMemberDisplayName(this.groupId, this.operator);
-        notifyStr += this.muteType === 0 ? ' 关闭了全员禁言' : ' 开启了全员禁言';
+        let notifyStr = this.fromSelf ? i18n.global.t('chat.you') + ' ' : wfc.getGroupMemberDisplayName(this.groupId, this.operator) + ' ';
+        notifyStr += this.muteType === 0 ? i18n.global.t('chat.disabled_group_mute') : i18n.global.t('chat.enabled_group_mute');
 
         return notifyStr;
     }

@@ -4,7 +4,7 @@
 
 import wfc from '../../client/wfc'
 import MessageContentType from '../messageContentType';
-
+import { i18n } from '../../../main.js'
 import GroupNotificationContent from './groupNotification';
 
 export default class CreateGroupNotification extends GroupNotificationContent {
@@ -19,9 +19,9 @@ export default class CreateGroupNotification extends GroupNotificationContent {
 
     formatNotification() {
         if (this.fromSelf) {
-            return '您创建了群组 ' + this.groupName;
+            return i18n.global.t('chat.you') + ' ' + i18n.global.t('chat.created_group') + ' ' + this.groupName;
         } else {
-            return wfc.getUserDisplayName(this.creator) + '创建了群组 ' + this.groupName;
+            return wfc.getUserDisplayName(this.creator) + ' ' + i18n.global.t('chat.created_group') + ' ' + this.groupName;
         }
     }
 

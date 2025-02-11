@@ -4,7 +4,7 @@
 
 import wfc from '../../client/wfc'
 import MessageContentType from "../messageContentType";
-
+import { i18n } from '../../../main.js'
 import GroupNotificationContent from "./groupNotification";
 
 export default class ChangeGroupPortraitNotification extends GroupNotificationContent {
@@ -17,9 +17,9 @@ export default class ChangeGroupPortraitNotification extends GroupNotificationCo
 
     formatNotification() {
         if (this.fromSelf) {
-            return '您修改群头像';
+            return i18n.global.t('chat.you') + ' ' + i18n.global.t('chat.modified_group_avatar');
         } else {
-            return wfc.getGroupMemberDisplayName(this.groupId, this.operator) + '修改了群头像';
+            return wfc.getGroupMemberDisplayName(this.groupId, this.operator) + ' ' + i18n.global.t('chat.modified_group_avatar');
         }
     }
 
