@@ -808,8 +808,13 @@ export default {
         if (info.conversation._target && info.conversation._target._displayName) {
           return info.conversation._target._displayName;
         } else if (info.conversation.target) {
-          return info.conversation.target;
-        } 
+					// 聊天室
+					if (this.conversationInfo.conversation.type === ConversationType.ChatRoom) {
+						return this.$t('contact.chatroom');
+					} else {
+          	return info.conversation.target;
+					}
+        }
       }
       return "";
     },
