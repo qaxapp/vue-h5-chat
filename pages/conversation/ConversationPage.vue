@@ -341,6 +341,7 @@ export default {
 		},
 
 		isRecallable(message) {
+			console.log(message);
 			if (message) {
 				if (message.conversation.type === ConversationType.Group && message.direction !== 0) {
 					let groupInfo = wfc.getGroupInfo(message.conversation.target);
