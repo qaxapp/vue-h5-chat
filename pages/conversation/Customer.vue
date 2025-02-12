@@ -28,6 +28,7 @@
 					refresher-enabled="true"
 					:refresher-triggered="triggered"
 					:refresher-threshold="45"
+					:refresher-background="'#162837'"
 					@refresherpulling="onPulling"
 					@refresherrefresh="onRefresh"
 					@refresherrestore="onRestore"
