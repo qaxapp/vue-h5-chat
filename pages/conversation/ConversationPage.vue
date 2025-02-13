@@ -18,6 +18,7 @@
 					@refresherrestore="onRestore"
 					@refresherabort="onAbort"
 					@scroll="onScroll"
+					@scrolltoupper="onPCRefresh"
 				>
 					<view v-for="message in sharedConversationState.currentConversationMessageList" :id="'id-' + message.messageId" :key="message.messageId">
 						<!--todo 不同的消息类型 notification in out-->
@@ -690,6 +691,14 @@ export default {
 		onPulling(e) {
 			// console.log("onpulling", e);
 		},
+		
+		
+		onPCRefresh() {
+			if (!this.isMobile) {
+				this.triggered = true;
+				
+			}
+		},
 		onRefresh() {
 			console.log('onRresh...');
 			if (this._freshing) {
@@ -780,6 +789,11 @@ export default {
 	},
 
 	computed: {
+		
+		isMobile() {
+		  const systemInfo = uni.getSystemInfoSync();
+		  return systemInfo.platform === 'android' || systemInfo.platform === 'ios';
+		},
 		conversationTitle() {
 			let info = this.sharedConversationState.currentConversationInfo;
 			if (info) {
