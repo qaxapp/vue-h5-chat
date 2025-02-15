@@ -156,7 +156,7 @@
         <button class="close-btn" onclick="toggleChat()">
              <img src="ic_close.svg" alt="关闭">
         </button>
-        <iframe src="" id="link" allow="cross-origin-isolated"></iframe>
+        <iframe src="" id="link" allow="cross-origin-isolated" scrolling="no" style="overflow: hidden;"></iframe>
     </div>
 
     <script>
@@ -180,9 +180,14 @@
         function toggleChat() {
             const modal = document.getElementById('chatModal');
             const currentDisplay = modal.style.display;
-            modal.style.display = currentDisplay === 'block' ? 'none' : 'block';
-			document.getElementById('link').contentWindow.postMessage({ action: 'show' }, '*');
-
+            if (currentDisplay === 'block') {
+                modal.style.display = 'none';
+                document.body.style.overflow = 'auto';  // 恢复body滚动
+            } else {
+                modal.style.display = 'block';
+                document.body.style.overflow = 'hidden';  // 禁用body滚动
+            }
+            document.getElementById('link').contentWindow.postMessage({ action: 'show' }, '*');
         }
         const obj={
             wechat: true, //官网客服标志
