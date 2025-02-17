@@ -32,6 +32,7 @@
 								:message="message"
 								class="message-content-container-view"
 								@longpress.native.prevent="openMessageContextMenu($event, message)"
+								@contextmenu.prevent.native="openMessageContextMenu($event, message)"
 							/>
 						</div>
 						<QuoteMessageView

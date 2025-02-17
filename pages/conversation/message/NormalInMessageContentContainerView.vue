@@ -26,7 +26,8 @@
                         <div class="flex-row">
                             <MessageContentContainerView class="message-content-container"
                                                          :message="message"
-                                                         @longpress.prevent="openMessageContextMenu($event, message)"/>
+                                                         @longpress.prevent="openMessageContextMenu($event, message)"
+                                                         @contextmenu.prevent.native="openMessageContextMenu($event, message)"/>
                             <!--                            <LoadingView v-if="isDownloading"/>-->
                         </div>
                         <QuoteMessageView style="padding: 5px 0; max-width: 80%"

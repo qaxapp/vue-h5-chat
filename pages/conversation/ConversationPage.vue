@@ -13,6 +13,7 @@
 					refresher-enabled="true"
 					:refresher-triggered="triggered"
 					:refresher-threshold="45"
+					:refresher-background="'#162837'"
 					@refresherpulling="onPulling"
 					@refresherrefresh="onRefresh"
 					@refresherrestore="onRestore"
@@ -695,12 +696,13 @@ export default {
 		
 		onPCRefresh() {
 			if (!this.isMobile) {
-				this.triggered = true;
-				
+				this.$nextTick(() => {
+					this.triggered = true;
+				});
 			}
 		},
 		onRefresh() {
-			console.log('onRresh...');
+			console.log('onRefresh...');
 			if (this._freshing) {
 				return;
 			}
@@ -709,19 +711,19 @@ export default {
 			this.triggered = true;
 			store.loadConversationHistoryMessages(
 				() => {
-					console.log('onRresh... 11');
+					console.log('onRefresh...done');
 					this.triggered = false;
 					this._freshing = false;
 				},
 				() => {
-					console.log('onRresh... 12');
+					console.log('onRefresh...complete');
 					this.triggered = false;
 					this._freshing = false;
 				}
 			);
 		},
 		onRestore() {
-			this.triggered = 'restore'; // 需要重置
+			this.triggered = false; // 需要重置
 			console.log('onRestore');
 		},
 		onAbort() {

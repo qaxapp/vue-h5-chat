@@ -185,6 +185,36 @@ export default {
   /* #endif */
 }
 
+/* 背景颜色 */
+/* 所有平台通用 */
+page, body, html {
+  background-color: $cm-bg-color !important; /* 强制覆盖默认样式 */
+}
+
+/* 针对 H5 的额外设置（某些浏览器可能需要） */
+@media all and (min-width: 768px) {
+  body {
+    background: $cm-bg-color;
+  }
+}
+
+/* 全局覆盖 H5 下拉刷新背景色 */
+.uni-page-refresh {
+	background-color: $cm-bg-color !important;
+}
+/* 页面样式 */
+.uni-scroll-view-content {
+	background-color: $cm-bg-color !important; /* 覆盖下拉区域背景色 */
+}
+
+/* 针对 H5 的额外设置 */
+/* #ifdef H5 */
+.uni-page-body {
+	background-color: $cm-bg-color !important;
+}
+/* #endif */
+
+/* 滚动条 */
 /* 适用于 WebKit 内核浏览器（Chrome、Safari、Edge 等） */
 ::-webkit-scrollbar {
   width: 5px;   /* 垂直滚动条宽度 */

@@ -2,13 +2,19 @@
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
     <title>客服演示</title>
     <style>
         body {
             margin: 0;
             padding: 20px;
             font-family: Arial, sans-serif;
+            padding-top: env(safe-area-inset-top);
+            padding-bottom: env(safe-area-inset-bottom);
+            padding-left: env(safe-area-inset-left);
+            padding-right: env(safe-area-inset-right);
         }
 
         .content {
@@ -53,12 +59,18 @@
             box-shadow: 0 4px 20px rgba(0,0,0,0.15);
             z-index: 1000;
             overflow: hidden;
+            -webkit-overflow-scrolling: touch;
         }
 
         .chat-modal iframe {
             width: 100%;
             height: 100%;
             border: none;
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
         }
 
         .close-btn {
@@ -70,18 +82,67 @@
             font-size: 20px;
             cursor: pointer;
             color: #666;
+            padding: 0;
+            margin: 0;
+            width: 20px;
+            height: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1001;
         }
 
         .close-btn img {
             width: 20px;
             height: 20px;
+            display: block;
+            margin: 0;
+            padding: 0;
+        }
+
+        @media screen and (max-width: 768px) {
+            .chat-modal {
+                position: fixed;
+                bottom: calc(80px + env(safe-area-inset-bottom));
+                right: 10px;
+                left: auto;
+                transform: none;
+                width: calc(100% - 20px);
+                min-width: 200px;
+                max-width: 360px;
+                height: 70vh;
+                max-height: calc(100vh - 120px - env(safe-area-inset-top) - env(safe-area-inset-bottom));
+                border-radius: 12px;
+            }
+
+            .customer-service-btn {
+                bottom: calc(20px + env(safe-area-inset-bottom));
+                right: calc(20px + env(safe-area-inset-right));
+            }
+
+            .close-btn {
+                top: calc(12px + env(safe-area-inset-top));
+                right: calc(10px + env(safe-area-inset-right));
+            }
+        }
+
+        @media screen and (min-width: 769px) {
+            .chat-modal {
+                bottom: 100px;
+                right: 30px;
+                left: auto;
+                width: 350px;
+                min-width: 200px;
+                height: 500px;
+                border-radius: 12px;
+            }
         }
     </style>
 </head>
 <body>
     <div class="content">
         <h1>欢迎访问我们的网站</h1>
-        <p>这是一个演示客服功能的示例网站。点击右下角的按钮即可开始对话。</p>
+        <p>点击右下角的按钮即可开始对话。</p>
     </div>
 
     <button class="customer-service-btn" onclick="toggleChat()">
@@ -99,12 +160,29 @@
     </div>
 
     <script>
+        // 添加禁用缩放的触摸事件处理
+        document.addEventListener('touchstart', function(event) {
+            if (event.touches.length > 1) {
+                event.preventDefault();
+            }
+        }, { passive: false });
+
+        // 禁用双击缩放
+        let lastTouchEnd = 0;
+        document.addEventListener('touchend', function(event) {
+            const now = Date.now();
+            if (now - lastTouchEnd <= 300) {
+                event.preventDefault();
+            }
+            lastTouchEnd = now;
+        }, { passive: false });
+
         function toggleChat() {
             const modal = document.getElementById('chatModal');
             const currentDisplay = modal.style.display;
             modal.style.display = currentDisplay === 'block' ? 'none' : 'block';
-			document.getElementById('link').contentWindow.postMessage({ action: 'show' }, '*');
-	
+            document.getElementById('link').contentWindow.postMessage({ action: 'show' }, '*');
+
         }
         const obj={
             wechat: true, //官网客服标志
@@ -113,7 +191,7 @@
             token:'',
             chatId:'dc010c59d74e405382b62d8cac609bf8',  // 跟type一起搭配使用，如果type为0 chatId则为单聊的客服的uid，如果type为2，则为聊天室的idid
             type: 0,  // 聊天类型 0是私聊 2是聊天室
-            cacheBuster: 100 // 添加当前时间戳作为cacheBuster，以秒为单位
+            cacheBuster: 101 // 添加当前时间戳作为cacheBuster，以秒为单位
         }
         // 将JSON对象转换为查询字符串
             var queryString = Object.keys(obj).map(function(key) {
