@@ -30,7 +30,8 @@ DCloud为支持海外开发者，特推出“国际区”注册服务，注册�
 ### 打包
 
 1. 如果需要配置`publicPath`，可修改`vite.config.js`文件里面的`base`字段
-1. 使用 HBuilderX,顶部工具栏 -> 发行 -> 网站-PC Web或手机H5
+2. 使用 HBuilderX,顶部工具栏 -> 发行 -> 网站-PC Web或手机H5
+3. 导出 Web 路径为：unpackage/dist/build/web
 
 ### 命令行打包
 #### 安装 HBuilderX
@@ -59,6 +60,21 @@ cli publish --platform h5 --project vue-h5-chat
 # 不想配置 alias ，可以直接
 /Applications/HBuilderX.app/Contents/MacOS/cli publish --platform h5 --project vue-h5-chat
 ```
+
+## 部署
+打包出来是 h5 静态是纯静态应用。那么你可以将 web 目录里构建的内容部署到任何静态文件服务器中即可。
+```
+# nginx
+server
+{
+    listen 80;
+    listen 443 ssl http2 ;
+    server_name h5.ad-gone.com;
+	root xxxxx/web;
+}
+```
+#### root 目录文件：
+![img.png](nginx-root-files-img.png)
 
 ## 常见问题说明
 
