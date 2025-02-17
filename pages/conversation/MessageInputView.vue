@@ -158,7 +158,8 @@ export default {
 			groupMemberUserInfos: [],
 			currentMessageId: null,
 			preMessageId: null,
-			inputBarHeight: 50 // 假设输入框的高度
+			inputBarHeight: 50,
+			inputFocus: true,
 		};
 	},
 
@@ -282,7 +283,7 @@ export default {
 		},
 
 		onInputFocus() {
-			// this.showEmoji = false;
+			this.inputFocus = true;
 			this.showExt = false;
 		},
 
@@ -313,10 +314,11 @@ export default {
 		},
 		toggleEmoji() {
 			this.showEmoji = !this.showEmoji;
+			console.log("toggleEmoji")
 			if (this.showEmoji) {
 				this.updateStickersPosition(); // 确保 DOM 更新后再计算位置
 				this.currentEmojiStickerIndex = 0;
-			}
+			} 
 			this.showExt = false;
 			this.showVoice = false;
 			this.showPtt = false;
@@ -382,6 +384,11 @@ export default {
 		onClickEmoji(emoji) {
 			console.log('onClick emoji', emoji);
 			this.text = this.text + emoji;
+			// 保持输入框焦点
+			this.inputFocus = false;
+			this.$nextTick(() => {
+				this.inputFocus = true;
+			});
 		},
 		onClickSticker(sticker) {
 			console.log('onClick sticker', sticker);
@@ -497,14 +504,21 @@ export default {
 		//     lastQuotedMessage = this.sharedConversationState.quotedMessage;
 		//     return this.sharedConversationState.quotedMessage;
 		// },
-		inputFocus() {
-			return !this.showExt && !this.showEmoji && !this.showVoice;
-		},
-
 		stickersContainerStyle() {
 			return {
 				bottom: this.showEmoji ? `${this.inputBarHeight}px` : 'auto' // 根据状态设置底部位置
 			};
+		}
+	},
+	watch: {
+		showExt(newVal) {
+			this.inputFocus = !newVal;
+		},
+		showVoice(newVal) {
+			this.inputFocus = !newVal;
+		},
+		showEmoji(newVal) {
+			this.inputFocus = !newVal;
 		}
 	}
 };
