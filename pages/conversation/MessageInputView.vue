@@ -737,14 +737,9 @@ export default {
 
 .wf-message-input-container .wf-input-empty-textarea {
   padding: 2px 24rpx;
-  font-size: 28rpx; /* 改为正常字体大小 */
-  color: #6d8295;
-  opacity: 1;
-}
-
-.wf-message-input-container .wf-input-empty-textarea::placeholder {
-  font-size: 24rpx; /* 只对占位符应用较小的字体大小 */
-  color: #6d8295;
+  font-size: 10px; /* 设置占位符字体大小 */
+  color: #0000ff;
+  opacity: 1; /* 确保占位符不透明 */
 }
 
 .wf-input-voice-container {
