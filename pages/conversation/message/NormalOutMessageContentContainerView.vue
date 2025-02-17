@@ -3,7 +3,7 @@
 		<div class="message-time-container" v-bind:class="{ checked: sharedPickState.messages.indexOf(message) >= 0 }">
 			<p v-if="this.message._showTime && isSingle" class="time">{{ message._timeStr }}</p>
 			<div class="message-content-container" v-bind:class="{ checked: sharedPickState.messages.indexOf(message) >= 0 }" :style="{
-  paddingRight: (message.showAvatar && !wechat) ? '12px' : '0px'
+  paddingRight: (message.showAvatar) ? '12px' : '0px'
 }">
 				<checkbox
 					id="checkbox"
@@ -44,7 +44,7 @@
 							:show-close-button="false"
 						/>
 					</div>
-					<img v-if="message.showAvatar && !wechat" class="avatar" @click="onClickUserPortrait(message.from)" draggable="false" @error="onImageError" :src="message._from.portrait" alt="" />
+					<img v-if="message.showAvatar " class="avatar" @click="onClickUserPortrait(message.from)" draggable="false" @error="onImageError" :src="message._from.portrait" alt="" />
 				</div>
 			</div>
 		</div>

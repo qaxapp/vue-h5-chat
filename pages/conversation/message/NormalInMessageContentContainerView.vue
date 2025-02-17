@@ -9,6 +9,7 @@
                               :value="message"
                               :checked="isMessageChecked"/>
                     <img
+						v-if="message.showAvatar || !isSingle"
                         :style="{ visibility: message.showAvatar ? 'visible' : 'hidden' }"
                         @click="onClickUserPortrait(message.from)"
                         class="avatar"
