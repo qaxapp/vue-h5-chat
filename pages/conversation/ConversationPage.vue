@@ -161,7 +161,6 @@ export default {
 
 			triggered: false,
 			alertDialogOptions: {},
-			lastAvatarInfo: {}, // 用于存储每个用户最近的有头像的消息的时间戳
 			isChatroomManager: false
 		};
 	},
@@ -905,7 +904,7 @@ export default {
 			deep: true // 深度监听数组或对象内部的变化
 		},
 		lastMessageId(newValue, oldValue) {
-			this.processMessages();
+			// this.processMessages();
 			this.$nextTick(() => {
 				console.log('lastMessageId updated', newValue, this.sharedConversationState.shouldAutoScrollToBottom);
 				if (this.sharedConversationState.shouldAutoScrollToBottom) {
