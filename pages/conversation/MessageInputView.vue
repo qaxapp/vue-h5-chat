@@ -2,7 +2,11 @@
 	<view>
 		<view class="wf-message-input-container">
 			<view v-if="showEmoji" class="wf-stickers-container" :style="stickersContainerStyle">
-				<i @click="toggleEmoji" class="icon-ion-close"></i>
+				<i @click="toggleEmoji" >
+					
+					  <img src="@/assets/images/close.svg" alt="icon" />
+
+				</i>
 
 				<scroll-view v-if="currentEmojiStickerIndex === 0" :scroll-y="true" class="wf-emoji-container">
 					<view class="wf-emoji-content">
@@ -789,9 +793,8 @@ export default {
 /* 关闭按钮样式 */
 .wf-message-input-container i {
 	position: absolute; /* 绝对定位 */
-	top: -15px; /* 距离顶部10px */
+	top: -22px; /* 距离顶部10px */
 	right: 5px; /* 距离右边10px */
-	color: #c5ddf0;
 }
 
 .wf-message-input-container i::before {
