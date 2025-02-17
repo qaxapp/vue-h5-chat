@@ -283,6 +283,7 @@ export default {
 		},
 
 		onInputFocus() {
+			console.log("onInputFocus")
 			this.inputFocus = true;
 			this.showExt = false;
 		},
@@ -383,12 +384,10 @@ export default {
 
 		onClickEmoji(emoji) {
 			console.log('onClick emoji', emoji);
+			
 			this.text = this.text + emoji;
-			// 保持输入框焦点
-			this.inputFocus = false;
-			this.$nextTick(() => {
-				this.inputFocus = true;
-			});
+			this.inputFocus = true
+			 document.querySelector('textarea').focus();
 		},
 		onClickSticker(sticker) {
 			console.log('onClick sticker', sticker);
