@@ -249,9 +249,8 @@ export default {
 
 	methods: {
 		fatherClick() {
-			if (getItem('showEmoji')) {
-				this.$refs.messageInputView.toggleEmoji();
-			}
+			this.$refs.messageInputView.close();
+			
 		},
 		toggleMessageMultiSelectionActionView(message) {
 			store.toggleMessageMultiSelection(message);
