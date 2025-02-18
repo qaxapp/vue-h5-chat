@@ -30,7 +30,8 @@ DCloud为支持海外开发者，特推出“国际区”注册服务，注册�
 ### 打包
 
 1. 如果需要配置`publicPath`，可修改`vite.config.js`文件里面的`base`字段
-1. 使用 HBuilderX,顶部工具栏 -> 发行 -> 网站-PC Web或手机H5
+2. 使用 HBuilderX,顶部工具栏 -> 发行 -> 网站-PC Web或手机H5
+3. 导出 Web 路径为：unpackage/dist/build/web
 
 ### 命令行打包
 #### 安装 HBuilderX
@@ -60,6 +61,21 @@ cli publish --platform h5 --project vue-h5-chat
 /Applications/HBuilderX.app/Contents/MacOS/cli publish --platform h5 --project vue-h5-chat
 ```
 
+## 部署
+打包出来是 h5 静态是纯静态应用。那么你可以将 web 目录里构建的内容部署到任何静态文件服务器中即可。
+```
+# nginx
+server
+{
+    listen 80;
+    listen 443 ssl http2 ;
+    server_name h5.ad-gone.com;
+	root xxxxx/web;
+}
+```
+#### root 目录文件：
+![img.png](nginx-root-files-img.png)
+
 ## 常见问题说明
 
 ## 颜色值
@@ -78,4 +94,23 @@ onClickUserPortrait(userId) {
 ```
 
 ### 网站接入
-通过 iframe 的方式接入，参考 kf-site/index.html
+通过 iframe 的方式接入，参考 kf-site/index.html, kf-site/chatroom.html
+
+### im-server 配置
+客服的账号，需要配置为允许聊天, 允许 web 多端登陆。
+
+im-server/config/wildfirechat.conf
+```
+##是否禁止陌生人聊天
+message.disable_stranger_chat true
+
+##当禁止陌生人聊天时，允许聊天的用户id，比如管理员或者文件传输助手等。用户id以英文逗号分割。
+message.allow_stranger_chat_list admin,FireRobot,wfc_file_transfer
+
+## 是否支持任意多端登陆，为true时支持任意平台任意多个客户端同时登录；为false时每个平台只支持一个端登录，但不同平台可以同时登录。
+## Android/iOS为移动平台，windows/mac/linux为pc平台，web为web平台，小程序为小程序平台，iPad和Android Pad为Pad平台。
+## 建议使用false
+server.multi_endpoint false
+## 是否支持Web多端登陆，当server.multi_endpoint为true时，此开关无意义，当为false时，可以单独打开Web端多端登录。
+server.multi_web_endpoint true
+```
