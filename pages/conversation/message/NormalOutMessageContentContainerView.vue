@@ -2,9 +2,7 @@
 	<div>
 		<div class="message-time-container" v-bind:class="{ checked: sharedPickState.messages.indexOf(message) >= 0 }">
 			<p v-if="this.message._showTime && isSingle" class="time">{{ message._timeStr }}</p>
-			<div class="message-content-container" v-bind:class="{ checked: sharedPickState.messages.indexOf(message) >= 0 }" :style="{
-  paddingRight: (message.showAvatar) ? '12px' : '0px'
-}">
+			<div class="message-content-container" v-bind:class="{ checked: sharedPickState.messages.indexOf(message) >= 0 }" >
 				<checkbox
 					id="checkbox"
 					v-if="sharedConversationState.enableMessageMultiSelection"
@@ -44,7 +42,6 @@
 							:show-close-button="false"
 						/>
 					</div>
-					<img v-if="message.showAvatar " class="avatar" @click="onClickUserPortrait(message.from)" draggable="false" @error="onImageError" :src="message._from.portrait" alt="" />
 				</div>
 			</div>
 		</div>
@@ -260,11 +257,11 @@ export default {
 
 .message-time-container .time {
 	width: 100%;
-	margin-bottom: 20px;
+	margin-top: 10px;
+	margin-bottom: 18px;
 	text-align: center;
 	color: #90A4B6;
 	font-size: 11px;
-	/* background-color: #f3f3f3; */
 }
 
 .message-time-container .receipt {
@@ -278,7 +275,7 @@ export default {
 	width: 100%;
 	display: flex;
 	padding: 5px 12px;
- //    padding-right: 7px;
+    padding-right: 0px;
 	justify-content: space-between;
 	align-items: center;
 	position: relative;

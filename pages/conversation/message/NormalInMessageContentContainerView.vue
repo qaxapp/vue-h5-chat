@@ -152,8 +152,9 @@ export default {
 .message-time-container .time {
     align-self: center;
     color: #b4b4b4;
-    height: 20px;
-    font-size: 10px;
+    margin-top: 10px;
+    margin-bottom: 18px;
+    font-size: 11px;
 }
 
 .message-time-container.checked {

@@ -341,7 +341,6 @@ export default {
 					message.showAvatar = false;
 					continue;
 				}
-
 				// 第一条消息总是显示头像
 				if (i === 0) {
 					message.showAvatar = true;
@@ -352,22 +351,28 @@ export default {
 				// 检查与最近的有头像的消息的时间差
 				const lastInfo = lastAvatarInfo[currentUserId];
 				const previousMessage = this.sharedConversationState.currentConversationMessageList[i - 1];
-
+				if (previousMessage.messageContent.type === MessageContentType.RecallMessage_Notification) {
+					message.showAvatar = true;
+					lastAvatarInfo[currentUserId] = currentTimestamp; // 更新为当前消息的时间戳
+					continue;
+				}
 				if (lastInfo) {
 					const timeDiff = currentTimestamp - lastInfo; // 时间差（秒）
 
 					// 如果时间差超过60秒，或者当前消息的发送者与上一个有头像的消息的发送者不同，则显示头像
 					if (timeDiff > 60 || previousMessage.from !== currentUserId) {
 						message.showAvatar = true;
+						lastAvatarInfo[currentUserId] = currentTimestamp; // 更新为当前消息的时间戳
 					} else {
 						message.showAvatar = false; // 否则不显示头像
 					}
 				} else {
 					message.showAvatar = true; // 如果没有记录，显示头像
+					lastAvatarInfo[currentUserId] = currentTimestamp; // 更新为当前消息的时间戳
 				}
 
 				// 更新最近的有头像的消息的时间戳
-				lastAvatarInfo[currentUserId] = currentTimestamp; // 更新为当前消息的时间戳
+				// 	lastAvatarInfo[currentUserId] = currentTimestamp; // 更新为当前消息的时间戳
 			}
 		},
 		fatherClick() {
