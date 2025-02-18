@@ -2,7 +2,7 @@
 	<div>
 		<div class="message-time-container" v-bind:class="{ checked: sharedPickState.messages.indexOf(message) >= 0 }">
 			<p v-if="this.message._showTime && isSingle" class="time">{{ message._timeStr }}</p>
-			<div class="message-content-container" v-bind:class="{ checked: sharedPickState.messages.indexOf(message) >= 0 }" >
+			<div class="message-content-container" v-bind:class="{ checked: sharedPickState.messages.indexOf(message) >= 0 }" :style="{paddingTop: message.showAvatar ? '20px': '8px'}">
 				<checkbox
 					id="checkbox"
 					v-if="sharedConversationState.enableMessageMultiSelection"
@@ -274,7 +274,7 @@ export default {
 .message-content-container {
 	width: 100%;
 	display: flex;
-	padding: 5px 12px;
+	padding: 4px 12px;
     padding-right: 0px;
 	justify-content: space-between;
 	align-items: center;

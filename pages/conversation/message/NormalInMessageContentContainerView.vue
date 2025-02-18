@@ -1,16 +1,16 @@
 <template>
     <div class="container">
         <div class="message-time-container"
-             v-bind:class="{checked:sharedPickState.messages.indexOf(message) >= 0}">
+             v-bind:class="{checked:sharedPickState.messages.indexOf(message) >= 0}":style="{paddingTop: message.showAvatar ? '20px': '8px'}">
 			<p v-if="this.message._showTime && isSingle" class="time">{{ message._timeStr }}</p>
-            <div class="message-avatar-content-container">
+            <div class="message-avatar-content-container" >
                 <div class="avatar-container">
                     <checkbox id="checkbox" v-if="sharedConversationState.enableMessageMultiSelection" type="checkbox"
                               :value="message"
                               :checked="isMessageChecked"/>
                     <img
 						v-if="message.showAvatar || !isSingle"
-                        :style="{ visibility: message.showAvatar ? 'visible' : 'hidden' }"
+                        :style="{ visibility: message.showAvatar ? 'visible' : 'hidden', height: message.showAvatar ? '40px': '0px' }"
                         @click="onClickUserPortrait(message.from)"
                         class="avatar"
                         draggable="false"
@@ -145,7 +145,7 @@ export default {
     width: 100%;
     display: flex;
     flex-direction: column;
-    padding: 5px 12px;
+    padding: 4px 12px;
     align-items: flex-start;
 }
 
