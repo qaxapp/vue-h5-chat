@@ -34,7 +34,6 @@ export const processMessages = (messages) => {
 				message._showTime = true;
 			}
 		}
-		message._showTime = true;
 
 		// 检查与最近的有头像的消息的时间差
 		const lastInfo = lastAvatarInfo[currentUserId];
