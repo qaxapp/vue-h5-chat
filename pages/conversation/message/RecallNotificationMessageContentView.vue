@@ -49,7 +49,7 @@ export default {
 }
 
 .notification-container .notification {
-    margin: 20px 0;
+    margin: 20px 10px 0 10px;
     color: #90A4B6;
     font-size: 11px;
 }
@@ -57,7 +57,7 @@ export default {
 .notification-container a {
     color: #1EFFE4;
     text-decoration: none;
-    margin-left: 10px;
+    margin-right: 10px;
     font-size: 14px;
 }
 
