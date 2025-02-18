@@ -1,7 +1,7 @@
 <template>
     <div class="notification-container">
         <p class="notification">{{ message.messageContent.digest(message) }}</p>
-        <a v-if="isReeditable(message)" href="#" @click="reedit">{{ $t('chat_im_i18n.re_edit') }}</a>
+<!--        <a v-if="isReeditable(message)" href="#" @click="reedit">{{ $t('chat_im_i18n.re_edit') }}</a>-->
     </div>
 </template>
 
