@@ -22,10 +22,6 @@ export const processMessages = (messages) => {
 		const message = messages[i];
 		const currentTimestamp = convertTimestampFromObject(message.timestamp);
 		const currentUserId = message.from;
-		if (message.conversation.type === ConversationType.Single) {
-			message.showAvatar = false;
-			continue;
-		}
 		// 第一条消息总是显示头像
 		if (i === 0) {
 			message.showAvatar = true;

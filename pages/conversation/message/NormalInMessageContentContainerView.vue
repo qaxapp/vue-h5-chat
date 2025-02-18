@@ -9,8 +9,8 @@
                               :value="message"
                               :checked="isMessageChecked"/>
                     <img
-						v-if="message.showAvatar || !isSingle"
-                        :style="{ visibility: message.showAvatar ? 'visible' : 'hidden', height: message.showAvatar ? '40px': '0px' }"
+						v-if="visibilityAvatar"
+                        :style="{ visibility: message.showAvatar ? 'visible' : 'hidden', height: visibilityAvatar ? '40px': '0px' }"
                         @click="onClickUserPortrait(message.from)"
                         class="avatar"
                         draggable="false"
@@ -116,6 +116,12 @@ export default {
         }
     },
     computed: {
+		visibilityAvatar() {
+			if (this.message.conversation.type === ConversationType.Single) {
+				return false;
+			}
+			return true;
+		},
         isDownloading() {
             return store.isDownloadingMessage(this.message.messageId);
         },
@@ -124,7 +130,7 @@ export default {
             return this.sharedPickState.messages.findIndex(m => m.messageId === this.message.messageId) >= 0;
         },
 		isSingle () {
-			return this.message.conversation.type == ConversationType.Single;
+			return this.message.conversation.type === ConversationType.Single;
 		}
     },
     components: {
