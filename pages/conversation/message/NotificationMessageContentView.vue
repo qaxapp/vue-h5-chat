@@ -27,7 +27,7 @@ export default {
 }
 
 .notification-container .notification {
-    margin: 20px 10px 0 10px;
+    margin: 16px 10px 0 10px;
     color: #90A4B6;
     font-size: 11px;
 }
