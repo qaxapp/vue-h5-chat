@@ -257,7 +257,7 @@
       "location": "位置",
       "business_card": "名片",
       "everyone": "所有人",
-      "at_everyone": "@所有人",
+      "at_everyone": "\\@所有人",
       "chat_history": "聊天记录",
       "enter_keyword_to_search": "请输入关键字进行搜索",
       "no_search_results": "没有搜索结果",
