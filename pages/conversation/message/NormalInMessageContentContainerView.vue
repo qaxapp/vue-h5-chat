@@ -13,10 +13,11 @@
                         :style="{ visibility: message.showAvatar ? 'visible' : 'hidden', height: message.showAvatar ? '40px': '0px' }"
                         @click="onClickUserPortrait(message.from)"
 						@longpress.prevent="altUser($event, message)"
+						@contextmenu.prevent.native="altUser($event, message)"
                         class="avatar"
                         draggable="false"
                         :src="message._from.portrait" alt=""
-												@error="onImageAvatarError">
+						@error="onImageAvatarError">
                 </div>
                 <!--消息内容 根据情况，if-else-->
                 <div class="message-name-content-container">
