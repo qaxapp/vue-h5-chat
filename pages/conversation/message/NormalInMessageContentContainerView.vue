@@ -12,6 +12,7 @@
 						v-if="visibilityAvatar"
                         :style="{ visibility: message.showAvatar ? 'visible' : 'hidden', height: message.showAvatar ? '40px': '0px' }"
                         @click="onClickUserPortrait(message.from)"
+						@longpress.prevent="altUser($event, message)"
                         class="avatar"
                         draggable="false"
                         :src="message._from.portrait" alt=""
@@ -98,6 +99,11 @@ export default {
             this.$eventBus.$emit('openMessageContextMenu', [event, message])
             this.highLight = true;
         },
+		
+		altUser(event, message) {
+			this.$eventBus.$emit('altUser', [event, message])
+			
+		}
     },
     mounted() {
         if (this.message.messageContent.quoteInfo) {

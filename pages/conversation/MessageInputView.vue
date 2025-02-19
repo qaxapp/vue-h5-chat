@@ -211,6 +211,12 @@ export default {
 				// deleting
 			}
 		},
+		
+		inputAltUser(user) {
+			this.text = this.text + `@${user.displayName} `;
+			this.mentions.push(user);
+			this.inputFocus = true;
+		},
 
 		mention() {},
 		send() {

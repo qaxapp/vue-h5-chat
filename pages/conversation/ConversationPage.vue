@@ -763,10 +763,15 @@ export default {
 		this.$eventBus.$on('openMessageContextMenu', ([event, message]) => {
 			this.showMessageContextMenu(event, message);
 		});
+		this.$eventBus.$on('altUser', ([event, message]) => {
+			this.$refs.messageInputView.inputAltUser(message._from);
+		});
+		
 	},
 
 	unmounted() {
 		this.$eventBus.$off('openMessageContextMenu');
+		this.$eventBus.$off('altUser');
 	},
 
 	beforeUpdate() {},
