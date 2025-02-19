@@ -26,6 +26,7 @@ export default {
     },
 
     methods: {
+		
         escapeHtml(text) {
             return text.replace(/&/g, '&amp;')
                 .replace(/</g, '&lt;')
@@ -33,7 +34,19 @@ export default {
                 .replace(/ /g, '&nbsp;')
                 .replace(/<script/gi, "&lt;script")
                 .replace(/<iframe/gi, "&lt;iframe");
-        }
+        },
+		convertUrlsToLinks(text) {
+						
+			const urlRegEx = /((http|https|ftp):\/\/|www\.)[a-zA-Z0-9\.\-]+(:[0-9]{1,5})?([\/a-zA-Z0-9\.\-\~!@#$%^&*+?:_=<>]*)?/g;
+		    return text.replace(urlRegEx, (url) => {
+				let link = url;
+				 if (!/^https?:\/\//i.test(url)) {
+				        // 给 www. 开头的 URL 加上 https:// 协议
+				        link = 'https://' + url;
+				}
+				return `<a href="${link}" target="_blank" style="color: #1E90FF">${url}</a>`
+			} );
+		}
     },
 
     computed: {
@@ -47,6 +60,7 @@ export default {
                 }
 
             content = emojiParse(content);
+			content = this.convertUrlsToLinks(content);
             // tmp = marked.parse(tmp);
             if (content.indexOf('<img') >= 0) {
                 content = content.replace(/<img/g, '<img style="max-width:400px;"')
