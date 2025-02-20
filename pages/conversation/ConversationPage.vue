@@ -527,37 +527,22 @@ export default {
 			if (this.isCopyable(message)) {
 				this.contextMenuItems.push({
 					title: this.$t('common.copy'),
+					icon: "/assets/images/menus/copy.png",
 					message: message,
 					tag: 'copy'
 				});
 			}
-			// if (this.isDownloadAble(message)) {
-			//   this.contextMenuItems.push({
-			//     title: this.$t('common.save'),
-			//     message: message,
-			//     tag: "save",
-			//   });
-			// }
-			// this.contextMenuItems.push({
-			//     title: '本地删除',
-			//     message: message,
-			//     tag: 'delete',
-			// })
+	
 			this.contextMenuItems.push({
 				title: this.$t('common.delete'),
+				icon: "/assets/images/menus/delete.png",
 				message: message,
 				tag: 'deleteRemote'
 			});
-			// if (this.isForwardable(message)) {
-			//   this.contextMenuItems.push({
-			//     title: "转发",
-			//     message: message,
-			//     tag: "forward",
-			//   });
-			// }
 			if (this.isRecallable(message)) {
 				this.contextMenuItems.push({
 					title: this.$t('common.recall'),
+					icon: "/assets/images/menus/recall.png",
 					message: message,
 					tag: 'recall'
 				});
@@ -565,47 +550,14 @@ export default {
 			if (this.isQuotable(message)) {
 				this.contextMenuItems.push({
 					title: this.$t('common.quote'),
+					icon: "/assets/images/menus/quote.png",
 					message: message,
 					tag: 'quote'
 				});
 			}
-			// this.contextMenuItems.push({
-			//   title: "多选",
-			//   message: message,
-			//   tag: "multiSelection",
-			// });
+		
 			this.showContextMenu = true;
 
-			// <!--                    <li v-if="isCopyable(message)">-->
-			//     <!--                        <a @click.prevent="copy(message)">{{ $t('common.copy') }}</a>-->
-			//     <!--                    </li>-->
-			//     <!--                    <li v-if="isDownloadAble(message)">-->
-			//     <!--                        <a @click.prevent="download(message)">{{ $t('common.save') }}</a>-->
-			//     <!--                    </li>-->
-			//     <!--                    <li>-->
-			//     <!--                        <a @click.prevent="delMessage(message)">{{ $t('common.delete') }}</a>-->
-			//     <!--                    </li>-->
-			//     <!--                    <li v-if="isForwardable(message)">-->
-			//     <!--                        <a @click.prevent="_forward(message)">{{ $t('common.forward') }}</a>-->
-			//     <!--                    </li>-->
-			//     <!--                    <li v-if="isFavable(message)">-->
-			//     <!--                        <a @click.prevent="favMessage(message)">{{ $t('common.fav') }}</a>-->
-			//     <!--                    </li>-->
-			//     <!--                    <li v-if="isQuotable(message)">-->
-			//     <!--                        <a @click.prevent="quoteMessage(message)">{{ $t('common.quote') }}</a>-->
-			//     <!--                    </li>-->
-			//     <!--                    <li>-->
-			//     <!--                        <a @click.prevent="multiSelect(message)">{{ $t('common.multi_select') }}</a>-->
-			//     <!--                    </li>-->
-			//     <!--                    <li v-if="isRecallable(message)">-->
-			//     <!--                        <a @click.prevent="recallMessage(message)">{{ $t('common.recall') }}</a>-->
-			//     <!--                    </li>-->
-			//     <!--                    <li v-if="isLocalFile(message)">-->
-			//     <!--                        <a @click.prevent="openFile(message)">{{ $t('common.open') }}</a>-->
-			//     <!--                    </li>-->
-			//     <!--                    <li v-if="isLocalFile(message)">-->
-			//     <!--                        <a @click.prevent="openDir(message)">{{ $t('common.open_dir') }}</a>-->
-			//     <!--                    </li>-->
 		},
 
 		onContextMenuItemSelect(t) {

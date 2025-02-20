@@ -1,14 +1,30 @@
 <template>
 	<view class="mask" :class="!show?'':'mask-show'" :style="{backgroundColor:show?maskBg:'rgba(0,0,0,0)'}" @tap="tapMask">
-		<view class="popups" :class="[theme]"
+		<view class="popups"
 			:style="{top: popupsTop ,left: popupsLeft,flexDirection:direction}">
-			<text :class="dynPlace" :style="{width:'0px',height:'0px'}" v-if="triangle"></text>
-			<view v-for="(item,index) in popData" :key="index" @tap.stop="tapItem(item)" 
+ 			<text :class="dynPlace" :style="{width:'0px',height:'0px'}" v-if="triangle"></text>
+			
+			<view v-for="(item,index) in items" :key="index" @tap.stop="tapItem(item)" 
 				class="itemChild view" :class="[direction==='row'?'solid-right':'solid-bottom',item.disabled?'disabledColor':'']">
-				<image class="image" :src="item.icon" v-if="item.icon"></image>{{item.title}}
+				<text>{{item.title}}</text>
+				<image class="icon-image" :src="item.icon" v-if="item.icon"></image>
 			</view>
 			<slot></slot>
+			
 		</view>
+		<view class="popups"
+			v-if="deleteItem"
+			@tap.stop="tapItem(deleteItem)"
+			:style="{top: 'calc(' + popupsTop + ' + ' + items.length * 40 + 'rpx' + ' + 4rpx)' ,left: popupsLeft,flexDirection:direction}">
+			
+			<view class="itemChild view":style="{ justifyContent: deleteItem.icon ? 'space-between' : 'center' }">
+				<text>{{deleteItem.title}}</text>
+				<image class="icon-image" :src="deleteItem.icon" v-if="deleteItem.icon"></image>
+			</view>
+			
+		</view>
+		
+		
 	</view>
 </template>
 
@@ -65,10 +81,20 @@
 				popupsTop:'0px',
 				popupsLeft:'0px',
 				show:false,
-				dynPlace:''
+				dynPlace:'', 
+				
+			}
+		},
+		computed: {
+			deleteItem() {
+				return this.popData.find((item) => item.tag === "deleteRemote");
+			},
+			items() {
+				return this.popData.filter((item) => item.tag !== "deleteRemote");
 			}
 		},
 		mounted() {
+			console.log(this.popData)
 			this.popupsPosition()
 		},
 		methods:{
@@ -216,19 +242,21 @@
 	}
 	.popups{
 		position: absolute;
-		padding: 20rpx;
-		border-radius: 5px;
+		padding: 0rpx 20rpx;
+		border-radius: 8rpx;
 		display:flex;
+		background-color: #2E4558;
 		.view{
-			padding: 10rpx;
+			padding: 10rpx 0;
 		}
-		.image{
+		
+		.icon-image{
 			display: inline-block;
 			vertical-align: middle;
-			width: 40rpx;
-			height: 40rpx;
-			margin-right: 20rpx;
+			width: 20rpx;
+			height: 20rpx;
 		}
+			
 	}
 	.dark{
 		background-color: #0C1822;
@@ -320,12 +348,22 @@
 		}
 	}
 	.solid-bottom{
-		border-bottom: 1px solid $cm-split-line-color;
+		border-bottom: 1px solid #546E86;
 	}
 	.solid-right{
 		
-		border-right: 1px solid $cm-split-line-color;
+		border-right: 1px solid #546E86;
 	}
+	.popups .itemChild {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		width: 90rpx;
+		height: 40rpx;
+		color: white;
+		font-size: 12rpx
+	}
+
 	.popups .itemChild:last-child{
 		border: none;
 	}
