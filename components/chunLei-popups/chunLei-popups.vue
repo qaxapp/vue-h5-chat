@@ -17,7 +17,7 @@
 			@tap.stop="tapItem(deleteItem)"
 			:style="{top: 'calc(' + popupsTop + ' + ' + items.length * 40 + 'rpx' + ' + 4rpx)' ,left: popupsLeft,flexDirection:direction}">
 			
-			<view class="itemChild view":style="{ justifyContent: deleteItem.icon ? 'space-between' : 'center' }">
+			<view class="itemChild view":style="{ justifyContent: deleteItem.icon ? 'space-between' : 'center', color: '#EA0000' }">
 				<text>{{deleteItem.title}}</text>
 				<image class="icon-image" :src="deleteItem.icon" v-if="deleteItem.icon"></image>
 			</view>
